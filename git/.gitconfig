@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = main
+[user]
+	name = j-zunino
+	email = zuninojuanbautista@gmail.com
+[core]
+	editor = code
