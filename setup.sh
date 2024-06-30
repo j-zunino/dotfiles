@@ -22,8 +22,9 @@ ln -s /usr/bin/batcat ~/.local/bin/bat
 # Cortile Window Manager
 echo_info "Installing Cortile"
 curl -LO https://github.com/leukipp/cortile/releases/download/v2.5.0/cortile_2.5.0_linux_amd64.tar.gz
-tar -xzf cortile_2.5.0_linux_amd64.tar.gz -C /usr/local/bin cortile
+sudo tar -xzf cortile_2.5.0_linux_amd64.tar.gz -C /usr/local/bin cortile
 rm cortile_2.5.0_linux_amd64.tar.gz
+
 
 echo_info "Creating Cortile service"
 cat << EOF | sudo tee /etc/systemd/system/cortile.service
@@ -69,21 +70,41 @@ echo_info "Updating package lists"
 sudo apt update
 
 echo_info "Installing programs"
-sudo apt install -y alacritty code gimp inkscape plank ulauncher vlc steam-installer discord brave-browser
+sudo apt install -y alacritty code gimp inkscape plank vlc steam-installer brave-browser
+
+# Download Discord
+echo_info "Downloading Discord"
+curl -L -o discord.deb "https://discord.com/api/download?platform=linux&format=deb"
+
+# Install Discord
+echo_info "Installing Discord"
+sudo dpkg -i discord.deb
+sudo apt install -f
+rm discord.deb
+
+# Install Ulacuncher
+echo_info "Installing Ulacuncher"
+sudo apt update && sudo apt install -y gnupg
+gpg --keyserver keyserver.ubuntu.com --recv 0xfaf1020699503176
+gpg --export 0xfaf1020699503176 | sudo tee /usr/share/keyrings/ulauncher-archive-keyring.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/ulauncher-archive-keyring.gpg] \
+          http://ppa.launchpad.net/agornostal/ulauncher/ubuntu jammy main" \
+          | sudo tee /etc/apt/sources.list.d/ulauncher-jammy.list
+sudo apt update && sudo apt install ulauncher -y
 
 echo_info "Installing and setting themes"
 # Download and set everforest-gtk theme
 mkdir -p ~/.themes
-git clone https://github.com/germanfr/adara-theme ~/.themes/adara-theme
+git clone https://github.com/germanfr/adara-theme ~/.themes/
 git clone https://github.com/theory-of-everything/everforest-gtk ~/.themes/everforest-gtk
 
 # Custom css for theme
-cp ./everforest-gtk/gtk.css ~/.themes/everforest-gtk/
+cp -f ./everforest-gtk/gtk.css ~/.themes/everforest-gtk/gtk-3.20
 
 # Download and install an icon pack
 mkdir -p ~/.icons
 git clone https://github.com/vinceliuice/Colloid-icon-theme
-./Colloid-icon-theme/install.sh -s everforest
+./Colloid-icon-theme/install.sh -s everforest -t green
 
 # Set themes
 gsettings set org.cinnamon.theme name "Adara-Dark"
@@ -100,8 +121,7 @@ wget -qO- https://cinnamon-spices.linuxmint.com/files/applets/temperature@fevimu
 wget -qO- https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip | bsdtar -xvf- -C ~/.local/share/cinnamon/applets/
 
 echo_info "Installing applets packages"
-sudo apt install gpaste
-sudo apt install gir1.2-gpaste-1.0
+sudo apt install gpaste-2 gir1.2-gpaste-2 -y
 
 sudo apt-get install xclip python3-xlib
 
@@ -120,17 +140,17 @@ cp ./git/.gitconfig ~/.gitconfig
 # Neovim configuration
 echo_info "Setting up Neovim"
 mkdir -p ~/.config/nvim
-cp ./nvim/init.vim ~/.config/nvim/init.vim
+cp ./nvim/init.lua ~/.config/nvim/init.lua
 
 # Brave configuration
 echo_info "Setting up Brave"
 mkdir -p ~/.config/BraveSoftware/Brave-Browser/Default
-cp ./brave/BravePreferences ~/.config/BraveSoftware/Brave-Browser/Default/
+cp ./brave/Preferences ~/.config/BraveSoftware/Brave-Browser/Default/
 
 # Ulauncher configuration
 echo_info "Setting up Ulauncher"
 mkdir -p ~/.config/ulauncher
-cp ./ulauncher/ ~/.config/ulauncher/
+cp -r ./ulauncher/* ~/.config/ulauncher/
 
 echo_info "Creating Ulauncher service"
 mkdir -p ~/.config/autostart
