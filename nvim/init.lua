@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.cmd 'language en_US'
+vim.cmd 'language en_US-8'
 
 vim.g.have_nerd_font = true
 
@@ -12,7 +12,7 @@ vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
 
 -- Don't show the mode
-vim.opt.showmode = false
+vim.opt.showmode = true
 
 vim.opt.clipboard = 'unnamedplus'
 
@@ -50,10 +50,11 @@ vim.opt.scrolloff = 10
 
 -- [[ Basic Keymaps ]]
 vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>')
+vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { noremap = true, silent = true })
 
 -- Redo
 vim.keymap.set('n', 'U', '<C-r>')
+
 
 -- Move cursor 5 line (up/down)
 vim.keymap.set('n', 'J', '5j')
@@ -85,6 +86,37 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 if vim.g.vscode then
   -- VSCode extension
+  vim.opt.showmode = false
+  function _G.get_mode()
+    local mode = vim.api.nvim_get_mode().mode
+    local mode_map = {
+      ['n'] = 'NORMAL',
+      ['no'] = 'N·OPERATOR PENDING ',
+      ['v'] = 'VISUAL',
+      ['V'] = 'V·LINE',
+      ['\x16'] = 'V·BLOCK',
+      ['s'] = 'SELECT',
+      ['S'] = 'S·LINE',
+      ['^S'] = 'S·BLOCK',
+      ['i'] = 'INSERT',
+      ['R'] = 'REPLACE',
+      ['Rv'] = 'V·REPLACE',
+      ['Rx'] = 'C·REPLACE',
+      ['Rc'] = 'C·REPLACE',
+      [':'] = 'COMMAND',
+      ['cv'] = 'VIM EX',
+      ['ce'] = 'EX',
+      ['r'] = 'PROMPT',
+      ['rm'] = 'MORE',
+      ['r?'] = 'CONFIRM',
+      ['!'] = 'SHELL',
+      ['t'] = 'TERMINAL',
+    }
+    return mode_map[mode] or mode
+  end
+
+  -- Set the statusline
+  vim.o.statusline = '%#PmenuSel# ' .. '%{v:lua.get_mode()}'
 
   vim.opt.timeoutlen = 500
 
@@ -113,16 +145,27 @@ if vim.g.vscode then
     end
   end
 
+  -- Function to center the screen
+  local function center_screen()
+    vim.cmd("normal zz")
+  end
+
   -- Split vertical
   local function split_vertical()
     vim.fn.VSCodeNotify 'workbench.action.splitEditor'
-    vim.cmd 'vsplit'
+    vim.defer_fn(function()
+      vim.cmd('vsplit')
+      center_screen()
+    end, 50) -- Delay
   end
 
   -- Split horizontal
   local function split_horizontal()
     vim.fn.VSCodeNotify 'workbench.action.splitEditorDown'
-    vim.cmd 'split'
+    vim.defer_fn(function()
+      vim.cmd('split')
+      center_screen()
+    end, 50)
   end
 
   -- Split width
@@ -202,7 +245,7 @@ else
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
     -- "gc" to comment visual regions/lines
-    { 'numToStr/Comment.nvim', opts = {} },
+    { 'numToStr/Comment.nvim',    opts = {} },
 
     { -- Adds git related signs to the gutter, as well as utilities for managing changes
       'lewis6991/gitsigns.nvim',
@@ -217,7 +260,7 @@ else
       },
     },
 
-    { -- Useful plugin to show you pending keybinds.
+    {                     -- Useful plugin to show you pending keybinds.
       'folke/which-key.nvim',
       event = 'VimEnter', -- Sets the loading event to 'VimEnter'
       config = function() -- This is the function that runs, AFTER loading
@@ -239,7 +282,7 @@ else
         }, { mode = 'v' })
       end,
     },
-    { -- Useful plugin to show you pending keybinds.
+    {                     -- Useful plugin to show you pending keybinds.
       'folke/which-key.nvim',
       event = 'VimEnter', -- Sets the loading event to 'VimEnter'
       config = function() -- This is the function that runs, AFTER loading
@@ -279,7 +322,7 @@ else
         },
         { 'nvim-telescope/telescope-ui-select.nvim' },
 
-        { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+        { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
       },
       config = function()
         require('telescope').setup {
@@ -351,11 +394,11 @@ else
 
         -- Useful status updates for LSP.
         -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-        { 'j-hui/fidget.nvim', opts = {} },
+        { 'j-hui/fidget.nvim',       opts = {} },
 
         -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
         -- used for completion, annotations and signatures of Neovim apis
-        { 'folke/neodev.nvim', opts = {} },
+        { 'folke/neodev.nvim',       opts = {} },
       },
       config = function()
         vim.api.nvim_create_autocmd('LspAttach', {
@@ -774,7 +817,7 @@ else
     -- require 'kickstart.plugins.debug',
     -- require 'kickstart.plugins.indent_line',
     -- require 'kickstart.plugins.lint',
-    -- require 'kickstart.plugins.autopairs',
+    require 'kickstart.plugins.autopairs',
     require 'kickstart.plugins.neo-tree',
     -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
