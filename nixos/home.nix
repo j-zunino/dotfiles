@@ -8,7 +8,7 @@
     git = {
       enable = true;
       userName = "j-zunino";
-      userEmail = "zuninojuannbautista@gmail.com";
+      userEmail = "zuninojuanbautista@gmail.com";
 
       extraConfig = {
         init.defaultBranch = "main";
