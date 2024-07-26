@@ -18,12 +18,20 @@
 
 
   home.packages = with pkgs; [
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    wget
+    curl
+    bat
+    fzf
+    gcc
+    ripgrep
+    python3
+    fastfetch
+    vscode-fhs
+    brave
+    discord
+    gimp
+    inkscape
+    vlc
 
   ];
 
