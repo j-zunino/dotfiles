@@ -27,6 +27,9 @@
     gcc
     gnumake
     unzip
+    nodejs_22
+    python312Packages.pip
+    pip3
     ripgrep
     python3
     fastfetch
