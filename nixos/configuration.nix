@@ -138,6 +138,8 @@
       vim
       neovim
       alacritty
+      xclip
+      xsel
 
     ];
   };

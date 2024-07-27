@@ -4,6 +4,8 @@
   home.username = "juan";
   home.homeDirectory = "/home/juan";
 
+  nixpkgs.config.allowUnfree = true;
+
   programs = {
     git = {
       enable = true;
@@ -23,6 +25,8 @@
     bat
     fzf
     gcc
+    gnumake
+    unzip
     ripgrep
     python3
     fastfetch
