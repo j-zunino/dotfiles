@@ -80,7 +80,14 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
+  services.xserver.windowManager.dwm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      dwm = prev.dwm.overrideAttrs (old: {src = /home/juan/suckless/dwm-flexipatch/;}); #FIX ME: Update with path to your dwm folder
+    })
+  ];
 
   # Configure keymap in X11
   services.xserver = {
@@ -141,6 +148,21 @@
       xclip
       xsel
 
+      # [ DWM ]
+      dwm
+      dmenu
+      st
+
+      xdg-desktop-portal-gtk
+      xfce.thunar
+      xorg.libX11
+      xorg.libX11.dev
+      xorg.libxcb
+      xorg.libXft
+      xorg.libXinerama
+      xorg.xinit
+      xorg.xinput
+
     ];
   };
 
@@ -149,6 +171,7 @@
     fira-code
     (nerdfonts.override { fonts = [ "CascadiaCode" "FiraCode" ]; })
   ];
+
 
   system.stateVersion = "24.05";
 
