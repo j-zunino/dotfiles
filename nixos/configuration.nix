@@ -85,7 +85,7 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      dwm = prev.dwm.overrideAttrs (old: {src = /home/juan/suckless/dwm-flexipatch/;}); #FIX ME: Update with path to your dwm folder
+      dwm = prev.dwm.overrideAttrs (old: {src = ~/suckless/dwm-flexipatch/;});
     })
   ];
 
