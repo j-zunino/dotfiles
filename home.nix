@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ ./terminal/alacritty.nix ];
+
   home.username = "juan";
   home.homeDirectory = "/home/juan";
 
@@ -15,11 +17,8 @@
         init.defaultBranch = "main";
       };
     };
-
-    alacritty = {
-      import ./terminal/alacritty.nix { inherit pkgs; };
-    };
   };
+
   home.packages = with pkgs; [
     wget
     curl
