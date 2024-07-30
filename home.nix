@@ -6,15 +6,20 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  programs.git = {
-    enable = true;
-    userName = "j-zunino";
-    userEmail = "zuninojuanbautista@gmail.com";
-    extraConfig = {
-      init.defaultBranch = "main";
+  programs = {
+    git = {
+      enable = true;
+      userName = "j-zunino";
+      userEmail = "zuninojuanbautista@gmail.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
+    };
+
+    alacritty = {
+      import ./terminal/alacritty.nix { inherit pkgs; };
     };
   };
-
   home.packages = with pkgs; [
     wget
     curl
