@@ -1,15 +1,10 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan
+    [
       ./hardware-configuration.nix
     ];
-
 
   # [ Bootloader ]
   boot = {
@@ -23,7 +18,8 @@
       efi = {
         canTouchEfiVariables = true;
       };
-    timeout = 5;
+
+      timeout = 5;
     };
   };
 
@@ -37,7 +33,6 @@
     settings = {
       # auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
-
     };
 
     gc = {
@@ -47,88 +42,91 @@
     };
   };
 
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nixos";
+    networkmanager.enable = true;
+    # wireless.enable = true; # Enables wireless support via wpa_supplicant
+  };
 
   # Set your time zone
   time.timeZone = "America/Argentina/Buenos_Aires";
 
   # Select internationalisation properties
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "es_AR.UTF-8";
-    LC_IDENTIFICATION = "es_AR.UTF-8";
-    LC_MEASUREMENT = "es_AR.UTF-8";
-    LC_MONETARY = "es_AR.UTF-8";
-    LC_NAME = "es_AR.UTF-8";
-    LC_NUMERIC = "es_AR.UTF-8";
-    LC_PAPER = "es_AR.UTF-8";
-    LC_TELEPHONE = "es_AR.UTF-8";
-    LC_TIME = "es_AR.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "es_AR.UTF-8";
+      LC_IDENTIFICATION = "es_AR.UTF-8";
+      LC_MEASUREMENT = "es_AR.UTF-8";
+      LC_MONETARY = "es_AR.UTF-8";
+      LC_NAME = "es_AR.UTF-8";
+      LC_NUMERIC = "es_AR.UTF-8";
+      LC_PAPER = "es_AR.UTF-8";
+      LC_TELEPHONE = "es_AR.UTF-8";
+      LC_TIME = "es_AR.UTF-8";
+    };
   };
-
 
   console = {
     keyMap = "la-latin1";
   };
 
+  services = {
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+    displayManager.sddm.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.xserver.windowManager.dwm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+    printing.enable = true;
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      dwm = prev.dwm.overrideAttrs (old: {src = /home/juan/suckless/dwm-flexipatch/;}); #FIX ME: Update with path to your dwm folder
-    })
-  ];
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      # jack.enable = true;
+    };
 
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "latam";
-    xkbVariant = "";
+    xserver = {
+      enable = true;
+
+      desktopManager.plasma5.enable = true;
+
+      windowManager = {
+        dwm.enable = true;
+
+        dwm.package = pkgs.dwm.overrideAttrs {
+        src = /home/juan/dwm; # Put the path to your dwm config here.
+        };
+      };
+
+      displayManager = {
+        defaultSession = "none+dwm";
+
+        autoLogin.enable = true;
+        autoLogin.user = "juan";
+      };
+
+
+      layout = "latam";
+      xkbVariant = "";
+
+      # Touchpad support
+      # libinput.enable = true;
+    };
   };
-
-
-  # Enable CUPS to print documents
-  services.printing.enable = true;
 
   # Enable sound with pipewire
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager)
-  # services.xserver.libinput.enable = true;
 
   # Define a user account
   users.users.juan = {
     isNormalUser = true;
-    # description = "juan";
     initialPassword = "password";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    ];
+    packages = with pkgs; [];
   };
-
-  # Enable automatic login for the user
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "juan";
-
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -140,6 +138,7 @@
       EDITOR = "nvim";
       VISUAL = "nvim";
     };
+
     systemPackages = with pkgs; [
       git
       vim
@@ -147,22 +146,9 @@
       alacritty
       xclip
       xsel
-
       # [ DWM ]
-      dwm
       dmenu
       st
-
-      xdg-desktop-portal-gtk
-      xfce.thunar
-      xorg.libX11
-      xorg.libX11.dev
-      xorg.libxcb
-      xorg.libXft
-      xorg.libXinerama
-      xorg.xinit
-      xorg.xinput
-
     ];
   };
 
@@ -172,7 +158,5 @@
     (nerdfonts.override { fonts = [ "CascadiaCode" "FiraCode" ]; })
   ];
 
-
   system.stateVersion = "24.05";
-
 }
