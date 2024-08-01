@@ -31,7 +31,7 @@
 
   nix = {
     settings = {
-      # auto-optimise-store = true;
+      auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
     };
 
@@ -74,7 +74,15 @@
 
   services = {
 
-    displayManager.sddm.enable = true;
+    displayManager = {
+      sddm.enable = true;
+      defaultSession = "none+dwm";
+
+      autoLogin = {
+        enable = true;
+        user = "juan";
+      };
+    };
 
     printing.enable = true;
 
@@ -93,24 +101,18 @@
      desktopManager.plasma5.enable = true;
 
       windowManager = {
-        dwm.enable = true;
-
-        dwm.package = pkgs.dwm.overrideAttrs {
-        src = /home/juan/dwm; # Put the path to your dwm config here.
+        dwm = {
+          enable = true;
+          package = pkgs.dwm.overrideAttrs {
+            src = /home/juan/dwm; # Put the path to your dwm dir here.
+          };
         };
       };
 
-      displayManager = {
-        defaultSession = "none+dwm";
-
-        autoLogin.enable = true;
-        autoLogin.user = "juan";
+      xkb = {
+        layout = "latam";
+        variant = "";
       };
-
-
-      layout = "latam";
-      xkbVariant = "";
-
       # Touchpad support
       # libinput.enable = true;
     };
