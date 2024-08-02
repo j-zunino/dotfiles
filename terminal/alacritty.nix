@@ -11,7 +11,7 @@
             family = "CaskaydiaCove Nerd Font";
             style = "Regular";
           };
-          size = 10.0;
+          size = 9.7;
         };
         colors = {
           primary = {
