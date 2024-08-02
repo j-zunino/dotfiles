@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./terminal/alacritty.nix ];
+  imports = [
+    ./terminal/alacritty.nix
+  ];
 
   home.username = "juan";
   home.homeDirectory = "/home/juan";

@@ -3,7 +3,8 @@
 {
   imports =
     [
-      ./system/hardware-configuration.nix
+      ./hardware-configuration.nix
+      ./system/keyboard/keyboard.nix
     ];
 
   # [ Bootloader ]
@@ -144,6 +145,7 @@
       alacritty
       xclip
       xsel
+      brightnessctl
 
       # [ DWM ]
       xorg.libX11
