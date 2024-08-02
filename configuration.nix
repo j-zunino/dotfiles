@@ -3,7 +3,7 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
+      ./system/hardware-configuration.nix
     ];
 
   # [ Bootloader ]
@@ -73,6 +73,7 @@
   };
 
   services = {
+    printing.enable = true;
 
     displayManager = {
       sddm.enable = true;
@@ -83,8 +84,6 @@
         user = "juan";
       };
     };
-
-    printing.enable = true;
 
     pipewire = {
       enable = true;
@@ -130,9 +129,6 @@
     packages = with pkgs; [];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   environment = {
     variables = {
@@ -148,7 +144,10 @@
       alacritty
       xclip
       xsel
+
       # [ DWM ]
+      xorg.libX11
+      xorg.xbacklight
       dmenu
       st
     ];
@@ -159,6 +158,9 @@
     fira-code
     (nerdfonts.override { fonts = [ "CascadiaCode" "FiraCode" ]; })
   ];
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "24.05";
 }
