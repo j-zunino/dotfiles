@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.cmd 'language en_US-8'
+vim.cmd 'language en_US.UTF-8'
 
 vim.g.have_nerd_font = true
 
