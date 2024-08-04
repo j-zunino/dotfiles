@@ -4,6 +4,7 @@
   imports = [
     ./terminal/alacritty.nix
     ./program/git.nix
+    ./program/nvim.nix
   ];
 
   home.username = "juan";
