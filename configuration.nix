@@ -150,7 +150,10 @@
       # [ DWM ]
       xorg.libX11
       xorg.xbacklight
-      dmenu
+
+      (pkgs.dmenu.overrideAttrs (oldAttrs: {
+      src = /home/juan/dmenu; # Put the path to your dmenu dir here.
+      }))
     ];
   };
 
