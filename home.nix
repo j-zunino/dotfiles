@@ -3,23 +3,13 @@
 {
   imports = [
     ./terminal/alacritty.nix
+    ./program/git.nix
   ];
 
   home.username = "juan";
   home.homeDirectory = "/home/juan";
 
   nixpkgs.config.allowUnfree = true;
-
-  programs = {
-    git = {
-      enable = true;
-      userName = "j-zunino";
-      userEmail = "zuninojuanbautista@gmail.com";
-      extraConfig = {
-        init.defaultBranch = "main";
-      };
-    };
-  };
 
   home.packages = with pkgs; [
     wget
