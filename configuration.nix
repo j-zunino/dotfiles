@@ -151,7 +151,6 @@
       xorg.libX11
       xorg.xbacklight
       dmenu
-      st
     ];
   };
 
