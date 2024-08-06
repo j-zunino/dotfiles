@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./system/keyboard/keyboard.nix
+      ./system/keyboard.nix
     ];
 
   # [ Bootloader ]
