@@ -36,6 +36,13 @@
   home.file = {
   };
 
+  programs.bash.enable = true;
+  programs.zsh.enable = true;
+
+  home.sessionPath = [
+    "$HOME/dotfiles/script"
+  ];
+
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
