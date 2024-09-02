@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       ./system/keyboard.nix
+      ./program/gaming.nix
     ];
 
   # [ Bootloader ]
@@ -24,7 +25,7 @@
     };
   };
 
-  # Auto-update
+  # [ Auto-update ]
   system.autoUpgrade = {
     enable = true;
     channel = "https://nixos.org/channels/nixos-24.05";
@@ -49,10 +50,8 @@
     # wireless.enable = true; # Enables wireless support via wpa_supplicant
   };
 
-  # Set your time zone
   time.timeZone = "America/Argentina/Buenos_Aires";
 
-  # Select internationalisation properties
   i18n = {
     defaultLocale = "en_US.UTF-8";
 
@@ -75,6 +74,8 @@
 
   services = {
     printing.enable = true;
+    dbus.enable = true;
+    flatpak.enable = true;
 
     displayManager = {
       sddm.enable = true;
@@ -118,11 +119,9 @@
     };
   };
 
-  # Enable sound with pipewire
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
-  # Define a user account
   users.users.juan = {
     isNormalUser = true;
     initialPassword = "password";
@@ -130,7 +129,6 @@
     packages = with pkgs; [];
   };
 
-  # List packages installed in system profile. To search, run:
   environment = {
     variables = {
       TERMINAL = "alacritty";
@@ -146,11 +144,14 @@
       xclip
       xsel
       brightnessctl
+      # dunst
+      # libnotify
 
       # [ DWM ]
       xorg.libX11
       xorg.xbacklight
 
+      # [ DMENU ]
       (pkgs.dmenu.overrideAttrs (oldAttrs: {
       src = /home/juan/dmenu; # Put the path to your dmenu dir here.
       }))
@@ -163,7 +164,6 @@
     (nerdfonts.override { fonts = [ "CascadiaCode" "FiraCode" ]; })
   ];
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "24.05";
