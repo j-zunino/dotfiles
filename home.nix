@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
     ./terminal/alacritty.nix
     ./program/git.nix
     ./program/nvim.nix
+    ./program/spicetify.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
