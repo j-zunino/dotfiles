@@ -39,10 +39,9 @@
       gnumake
       unzip
       nodejs_22
-      python312Packages.pip
       ripgrep
-      python3
       fastfetch
+      tree
       vscode-fhs
       brave
       discord
