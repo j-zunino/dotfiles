@@ -8,74 +8,63 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Enable mouse mode
 vim.opt.mouse = 'a'
 
--- Don't show the mode
 vim.opt.showmode = true
 
 vim.opt.clipboard = 'unnamedplus'
 
--- Enable break indent
 vim.opt.breakindent = true
 
--- Save undo history
 vim.opt.undofile = true
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
 
--- Decrease update time
 vim.opt.updatetime = 250
 
--- Configure how new splits should be opened
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- Sets how neovim will display certain whitespace characters in the editor.
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
--- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
--- Show which line your cursor is on
 vim.opt.cursorline = true
 
--- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 5
 
--- [[ Basic Keymaps ]]
+-- [[ basic keymaps ]]
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { noremap = true, silent = true })
 
--- Redo
+-- redo
 vim.keymap.set('n', 'U', '<C-r>')
 
 
--- Move cursor 5 line (up/down)
+-- move cursor 5 line (up/down)
 vim.keymap.set('n', 'J', '5j')
 vim.keymap.set('n', 'K', '5k')
 
--- Copy entire line
+-- copy entire line
 vim.keymap.set('n', 'Y', 'yy')
 -- vim.keymap.set("n", "Y", "^y$")
 
--- Copy line up/down
+-- copy line up/down
 vim.keymap.set('n', 'yJ', 'Yp')
 vim.keymap.set('n', 'yK', 'YP')
 
 -- Copy all
 vim.keymap.set('n', 'yA', ':%y<cr>')
 
--- Skip folds
+-- skip folds
 vim.cmd 'nmap j gj'
 vim.cmd 'nmap k gk'
 
--- Highlight when yanking text
+-- highlight yank
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -84,8 +73,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- neovim VSCode extension
 if vim.g.vscode then
-  -- VSCode extension
   vim.opt.showmode = false
   function _G.get_mode()
     local mode = vim.api.nvim_get_mode().mode
@@ -115,19 +104,19 @@ if vim.g.vscode then
     return mode_map[mode] or mode
   end
 
-  -- Set the statusline
+  -- set the statusline
   vim.o.statusline = '%#PmenuSel# ' .. '%{v:lua.get_mode()}'
 
   vim.opt.timeoutlen = 500
 
   -- vim.keymap.set('n', '<leader>i', function() vim.fn.VSCodeNotify('extension.toggleBool') end)
 
-  -- Function to check if the current split is on the left
+  -- function to check if the current split is on the left
   local function is_left_split()
     return vim.fn.winnr '$' == vim.fn.winnr()
   end
 
-  -- Function to increase the width of the current split
+  -- function to increase the width of the current split
   local function increase_width()
     if is_left_split() then
       vim.fn.VSCodeNotify 'workbench.action.decreaseViewWidth'
@@ -136,7 +125,7 @@ if vim.g.vscode then
     end
   end
 
-  -- Function to decrease the width of the current split
+  -- function to decrease the width of the current split
   local function decrease_width()
     if is_left_split() then
       vim.fn.VSCodeNotify 'workbench.action.increaseViewWidth'
@@ -145,21 +134,21 @@ if vim.g.vscode then
     end
   end
 
-  -- Function to center the screen
+  -- function to center the screen
   local function center_screen()
     vim.cmd("normal zz")
   end
 
-  -- Split vertical
+  -- split vertical
   local function split_vertical()
     vim.fn.VSCodeNotify 'workbench.action.splitEditor'
     vim.defer_fn(function()
       vim.cmd('vsplit')
       center_screen()
-    end, 50) -- Delay
+    end, 50)
   end
 
-  -- Split horizontal
+  -- split horizontal
   local function split_horizontal()
     vim.fn.VSCodeNotify 'workbench.action.splitEditorDown'
     vim.defer_fn(function()
@@ -168,11 +157,11 @@ if vim.g.vscode then
     end, 50)
   end
 
-  -- Split width
+  -- split width
   vim.keymap.set('n', '<C-w>v', split_vertical)
   vim.keymap.set('n', '<C-w>s', split_horizontal)
 
-  -- Set keybindings
+  -- set keybindings
   vim.keymap.set('n', '<C-h>', increase_width)
   vim.keymap.set('n', '<C-l>', decrease_width)
   vim.keymap.set('n', '+', function()
@@ -183,23 +172,22 @@ if vim.g.vscode then
   end)
 else
   -- ordinary Neovim
-
   vim.opt.timeoutlen = 300
 
   -- move focus to next/prev window
   vim.keymap.set('n', '<C-j>', '<C-w>w', { desc = 'Move focus to the next window' })
   vim.keymap.set('n', '<C-k>', '<C-w>W', { desc = 'Move focus to the previous window' })
 
-  -- Split width
+  -- split width
   vim.keymap.set('n', '<C-w>s', '<cmd>split<CR>')
   vim.keymap.set('n', '<C-w>v', '<cmd>vsplit<CR>')
 
-  -- Function to check if the current split is on the left
+  -- function to check if the current split is on the left
   local function is_left_split()
     return vim.fn.winnr() == 1
   end
 
-  -- Function to increase the width of the current split
+  -- function to increase the width of the current split
   local function increase_width()
     local original_win = vim.fn.winnr()
     if is_left_split() then
@@ -210,7 +198,7 @@ else
     vim.cmd(original_win .. 'wincmd w')
   end
 
-  -- Function to decrease the width of the current split
+  -- function to decrease the width of the current split
   local function decrease_width()
     local original_win = vim.fn.winnr()
     if is_left_split() then
@@ -221,13 +209,13 @@ else
     vim.cmd(original_win .. 'wincmd w')
   end
 
-  -- Set keybindings
+  -- set keybindings
   vim.keymap.set('n', '<C-l>', increase_width, { noremap = true, silent = true })
   vim.keymap.set('n', '<C-h>', decrease_width, { noremap = true, silent = true })
   vim.keymap.set('n', '+', '<C-w>+')
   vim.keymap.set('n', '-', '<C-w>-')
 
-  -- Diagnostic keymaps
+  -- diagnostic keymaps
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
   vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
@@ -719,9 +707,9 @@ else
       priority = 1000,
       config = function()
         require('everforest').setup {
-          background = 'soft',
+          background = 'medium',
           transparent_background_level = 0,
-          italics = true,
+          italics = false,
           disable_italic_comments = false,
           sign_column_background = 'none',
           ui_contrast = 'low',
