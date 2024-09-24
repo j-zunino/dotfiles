@@ -1,21 +1,6 @@
-# Linux Mint Debian Edition Configuration Script
+<p align='center'>
+  <img src="https://nixos.org/logo/nixos-logo-only-hires.png" width="100" align="center" alt="NixOS">
+</p>
+<h1 align='center'>NixOS</h1>
 
-Simple bash script to automate the setup of LMDE with custom themes, applets, and configurations.
-
-## Usage
-
-1. Clone this repository:
-
-   ```bash
-   git clone https://github.com/j-zunino/dotfiles
-   cd dotfiles
-   ```
-
-2. Make the setup.sh script executable:
-   ```bash
-   chmod +x setup.sh
-   ```
-3. Run the script:
-   ```bash
-   ./setup.sh
-   ```
+just my NixOS and Home-manager configuration.
