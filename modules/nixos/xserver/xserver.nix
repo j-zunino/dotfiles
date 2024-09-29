@@ -12,6 +12,7 @@
                 variant = "";
                 model = "latitude";
             };
+
             # Touchpad support
             # libinput.enable = true;
         };

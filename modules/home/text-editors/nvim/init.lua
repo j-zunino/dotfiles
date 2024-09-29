@@ -1,6 +1,8 @@
 require 'core.options'
 require 'core.keymaps'
 
+vim.g.have_nerd_font = true
+
 vim.cmd 'language en_US.UTF-8'
 
 -- neovim VSCode extension

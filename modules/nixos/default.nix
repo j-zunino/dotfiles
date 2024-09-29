@@ -2,6 +2,7 @@
     imports = [
         ./boot/bootloader.nix
         ./xserver/xserver.nix
+        ./window-managers/common.nix
         ./window-managers/dwm.nix
         ./network/networking.nix
         ./services/pipewire.nix
