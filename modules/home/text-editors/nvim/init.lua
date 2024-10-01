@@ -133,6 +133,8 @@ else
                     'c',
                     'diff',
                     'html',
+                    'css',
+                    'javascript',
                     'lua',
                     'luadoc',
                     'markdown',

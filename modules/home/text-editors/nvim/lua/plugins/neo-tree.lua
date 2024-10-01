@@ -1,4 +1,4 @@
-eturn {
+return {
     "nvim-neo-tree/neo-tree.nvim",
     version = "*",
     dependencies = {
