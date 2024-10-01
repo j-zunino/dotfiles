@@ -18,7 +18,7 @@
         homeDirectory = "/home/juan";
 
         sessionPath = [
-            "$HOME/dots/home/scripts"
+            "$HOME/dotfiles/home/scripts"
         ];
 
         sessionVariables = {
