@@ -22,6 +22,10 @@
             (pkgs.dmenu.overrideAttrs (oldAttrs: {
                 src = /home/juan/dmenu;
             }))
+
+            (pkgs.st.overrideAttrs (oldAttrs: {
+                src = /home/juan/st;
+            }))
         ];
     };
 
