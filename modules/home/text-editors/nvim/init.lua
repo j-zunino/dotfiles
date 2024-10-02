@@ -1,5 +1,6 @@
 require('core.options')
 require('core.keymaps')
+require('core.tabline')
 
 vim.g.have_nerd_font = true
 
@@ -10,46 +11,6 @@ if vim.g.vscode then
     require('vscode.vscode')
 else
     local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-
-    -- buffer tabs
-    vim.opt.termguicolors = true
-    vim.opt.showtabline = 2
-
-    -- everforest color scheme --
-    -- tab: bg3, tab sel: green, separator: bg1
-    vim.cmd([[
-        highlight MyTabLine guibg=NONE guifg=#475258
-        highlight MyTabLineSel guibg=NONE guifg=#a7c080 gui=bold 
-        highlight MyTabLineSeparator guibg=NONE guifg=#343F44
-    ]])
-
-    function Tabline()
-        local tabline = ''
-        local separator = '%#MyTabLineSeparator#|'
-        local buffers = vim.fn.getbufinfo({ buflisted = 1 })
-
-        for i, buf in ipairs(buffers) do
-            local buf_name = vim.fn.fnamemodify(buf.name, ':t')
-            local modified = buf.changed == 1
-            local active = buf.bufnr == vim.fn.bufnr('%')
-
-            local buf_label = (modified and '~ ' or '') .. buf_name
-
-            if active then
-                tabline = tabline .. '%#MyTabLineSel# ' .. buf_label .. ' '
-            else
-                tabline = tabline .. '%#MyTabLine# ' .. buf_label .. ' '
-            end
-
-            if i < #buffers then
-                tabline = tabline .. separator
-            end
-        end
-
-        return tabline
-    end
-
-    vim.o.tabline = '%!v:lua.Tabline()'
 
     if not vim.loop.fs_stat(lazypath) then
         local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -66,7 +27,6 @@ else
     vim.opt.rtp:prepend(lazypath)
 
     require('lazy').setup({
-
         { 'numToStr/Comment.nvim', opts = {} },
 
         require('plugins.theme'),
