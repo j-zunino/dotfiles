@@ -28,7 +28,14 @@ return {
 
         formatters_by_ft = {
             lua = { "stylua" },
-            javascript = { { "prettierd", "prettier" } },
+
+            html = { "prettierd", "prettier" },
+            css = { "prettierd", "prettier" },
+            javascript = { "prettierd", "prettier" },
+            typescript = { "prettierd", "prettier" },
+            json = { "prettierd", "prettier" },
+            markdown = { "prettierd", "prettier" },
+
             -- Conform can also run multiple formatters sequentially
             -- python = { "isort", "black" },
             --

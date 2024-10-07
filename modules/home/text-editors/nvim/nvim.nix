@@ -7,6 +7,7 @@
     home = {
         packages = with pkgs; [
             stylua
+            nodePackages.prettier
         ];
 
         file."/home/juan/dotfiles/.stylua.toml".text = ''
@@ -16,5 +17,18 @@
             quote_style = "AutoPreferSingle"
         '';
 
+        file.".prettierrc.toml" = {
+            text = ''
+                # .prettierrc.toml
+                tabWidth = 4
+                semi = true
+                singleQuote = true
+                useTabs = false
+                quoteProps = "consistent"
+                trailingComma = "none"
+                bracketSpacing = true
+                bracketSameLine = false
+            '';
+        };
     };
 }

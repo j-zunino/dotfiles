@@ -38,6 +38,10 @@ vim.keymap.set("n", "N", "Nzz", opts)
 vim.cmd("nmap j gj")
 vim.cmd("nmap k gk")
 
+-- move line up/down
+vim.keymap.set("n", "<leader>J", ":move +1<CR>", opts)
+vim.keymap.set("n", "<leader>K", ":move -2<CR>", opts)
+
 -- diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })

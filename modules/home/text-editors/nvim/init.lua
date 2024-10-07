@@ -35,6 +35,7 @@ else
         require('plugins.telescope'),
         require('plugins.neo-tree'),
         require('plugins.autopairs'),
+        require('plugins.template-string'),
         require('plugins.conform'),
         require('plugins.lsp'),
         require('plugins.cmp'),

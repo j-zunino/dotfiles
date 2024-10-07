@@ -17,7 +17,11 @@ return {
                 local lspconfig = require("lspconfig")
                 lspconfig.html.setup({ capabilities = capabilities, })
                 lspconfig.cssls.setup({})
-                lspconfig.tsserver.setup({})
+                lspconfig.tsserver.setup({
+                    on_attach = function(client, bufnr)
+                        client.server_capabilities.documentFormattingProvider = false
+                    end,
+                })
             end,
         },
     },
