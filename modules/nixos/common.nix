@@ -3,14 +3,17 @@
 {
     users.users.juan = {
         isNormalUser = true;
+        shell = pkgs.zsh;
         initialPassword = "password";
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [];
     };
 
+    programs.zsh.enable = true;
+
     system.autoUpgrade = {
         enable = true;
-        channel = "https://nixos.org/channels/nixos-24.05";
+        channel = "https://nixos.org/channels/nixos-unstable";
     };
 
     time.timeZone = "America/Argentina/Buenos_Aires";

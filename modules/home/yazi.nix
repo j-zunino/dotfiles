@@ -6,10 +6,8 @@
 
         settings = {
             manager = {
-                layout = [
-                    1
-                    3
-                    4
+                ratio = [
+                    1 3 4
                 ];
 
                 sort_by = "natural";
