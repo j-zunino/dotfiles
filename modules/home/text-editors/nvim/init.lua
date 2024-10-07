@@ -39,6 +39,7 @@ else
         require('plugins.conform'),
         require('plugins.lsp'),
         require('plugins.cmp'),
+        require('plugins.colorizer'),
 
         -- Highlight todo, notes, etc in comments
         {
