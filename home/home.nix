@@ -10,22 +10,17 @@
     programs = {
         home-manager.enable = true;
         bash.enable = true;
-        zsh.enable = true;
     };
 
     home = {
         username = "juan";
         homeDirectory = "/home/juan";
 
-        sessionPath = [
-            "$HOME/dotfiles/home/scripts"
-        ];
+        stateVersion = "24.05";
 
         sessionVariables = {
-            # EDITOR = "emacs";
+            EDITOR = "nvim";
         };
-
-        stateVersion = "24.05";
 
         packages = with pkgs; [
             wget
@@ -45,5 +40,6 @@
             inkscape
             vlc
         ];
+
     };
 }
