@@ -39,6 +39,8 @@
             gimp
             inkscape
             vlc
+
+            prismlauncher
         ];
 
     };
