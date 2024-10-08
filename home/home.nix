@@ -32,7 +32,6 @@
             unzip
             nodejs_22
             ripgrep
-            fastfetch
             tree
             brave
             discord
