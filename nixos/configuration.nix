@@ -25,6 +25,7 @@
 
             (pkgs.st.overrideAttrs (oldAttrs: {
                 src = /home/juan/st;
+                buildInputs = oldAttrs.buildInputs or [] ++ [ pkgs.harfbuzz ];
             }))
         ];
     };
