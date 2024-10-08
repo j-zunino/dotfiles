@@ -7,5 +7,7 @@
         ./yazi.nix
         ./btop.nix
         ./zsh.nix
+        ./scripts/default.nix
+        ./fastfetch.nix
     ];
 }
