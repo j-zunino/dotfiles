@@ -1,11 +1,11 @@
-{ pkgs, lib, spicetify-nix, ... }:
+{ pkgs, lib, inputs, ... }:
 
 let
-    spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
     imports = [
-        spicetify-nix.homeManagerModules.default
+        inputs.spicetify-nix.homeManagerModules.default
     ];
 
     programs.spicetify = {
