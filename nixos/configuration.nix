@@ -18,7 +18,6 @@
             xclip
             xsel
 
-            # [ DMENU ]
             (pkgs.dmenu.overrideAttrs (oldAttrs: {
                 src = /home/juan/dmenu;
             }))

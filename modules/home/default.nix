@@ -9,5 +9,8 @@
         ./zsh.nix
         ./scripts/default.nix
         ./fastfetch.nix
+        ./hyprland/default.nix
+        ./wezterm.nix
+        ./dunst.nix
     ];
 }

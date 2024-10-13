@@ -2,13 +2,12 @@
     imports = [
         ./boot/bootloader.nix
         ./xserver/xserver.nix
-        ./window-managers/common.nix
-        ./window-managers/dwm.nix
+        ./window-managers/default.nix
         ./network/networking.nix
-        ./services/pipewire.nix
-        ./services/services.nix
+        ./services/default.nix
         ./common.nix
         ./fonts.nix
         ./gaming.nix
+        ./ly.nix
     ];
 }

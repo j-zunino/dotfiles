@@ -3,13 +3,7 @@
 {
     services = {
         displayManager = {
-            sddm.enable = true;
-            defaultSession = "none+dwm";
-
-            autoLogin = {
-                enable = true;
-                user = "juan";
-            };
+            defaultSession = "hyprland";
         };
     };
 
@@ -19,9 +13,6 @@
             xorg.xbacklight
             brightnessctl
             playerctl
-
-            # dunst
-            # libnotify
         ];
     };
 }

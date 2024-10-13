@@ -14,17 +14,19 @@
             url = "github:Gerg-L/spicetify-nix";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        hyprland = {
+            url = "github:hyprwm/Hyprland";
+        };
+
+        wezterm.url = "github:wez/wezterm?dir=nix";
     };
 
-    outputs = { self, nixpkgs, flake-utils, home-manager, spicetify-nix, ... } @ inputs:
-    let
-        system = "x86_64-linux";
-        pkgs = import nixpkgs { system = system; };
-    in
-    {
+    outputs = inputs @ { nixpkgs, flake-utils, home-manager, ... }:{
         nixosConfigurations = {
             nixos = nixpkgs.lib.nixosSystem {
-                system = system;
+                system = "x86_64-linux";
+                specialArgs = { inherit inputs; };
                 modules = [
                     ./nixos/configuration.nix
                     ./nixos/hardware-configuration.nix
@@ -34,8 +36,8 @@
 
         homeConfigurations = {
             juan = home-manager.lib.homeManagerConfiguration {
-                pkgs = pkgs;
-                extraSpecialArgs = inputs;
+                pkgs = import nixpkgs { system = "x86_64-linux"; };
+                extraSpecialArgs = { inherit inputs; };
                 modules = [
                     ./home/home.nix
                 ];
