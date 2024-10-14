@@ -12,8 +12,26 @@
             source ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
             setopt PROMPT_SUBST
 
-            export PS1='%B%F{green}[%n%F{cyan}@%F{blue}%m] %F{blue}  %F{red} %~ %B%F{yellow}$(__git_ps1 " %s")%f%b 
-            %F{green}$%b%f '
+            bindkey -v
+
+            KEYTIMEOUT=1
+
+            zle-keymap-select () {
+                if [[ $KEYMAP == vicmd ]]; then
+                    echo -ne '\e[2 q'
+                else
+                    echo -ne '\e[5 q'
+                fi
+            }
+
+            precmd_functions+=(zle-keymap-select)
+            zle -N zle-keymap-select
+
+            # export PS1='%B%F{green}[%n%F{cyan}@%F{blue}%m] %F{blue}  %F{red} %~ %B%F{yellow}$(__git_ps1 " %s")%f%b 
+            # %F{green}$%b%f '
+
+            export PS1='%B%F{red} %~ %B%F{yellow}$(__git_ps1 " %s")%f%b 
+            %F{green} %b%f '
         '';
 
         shellAliases = {
@@ -24,13 +42,13 @@
             v = "vim";
             y = "yazi";
             f = "yazi";
+            gs = "git status";
         };
 
         history = {
             size = 10000;
             path = "${config.xdg.dataHome}/zsh/history";
         };
-
     };
 }
 
