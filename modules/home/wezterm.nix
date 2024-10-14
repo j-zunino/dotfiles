@@ -11,26 +11,29 @@
 
                 local config = wezterm.config_builder()
 
-                config.color_scheme = 'everforest'
+                config = {
+                    color_scheme = 'everforest',
 
-                -- config.font = wezterm.font 'CaskaydiaCove Nerd Font'
-                config.font = wezterm.font 'JetBrainsMono Nerd Font'
+                    -- font = wezterm.font 'CaskaydiaCove Nerd Font'
+                    font = wezterm.font 'JetBrainsMono Nerd Font',
 
-                config.enable_tab_bar = false
+                    enable_tab_bar = false,
 
-                config.hide_mouse_cursor_when_typing = true
+                    hide_mouse_cursor_when_typing = true,
 
-                config.window_background_opacity = 0.9
+                    window_background_opacity = 0.9,
 
-                config.cursor_blink_rate = 0
+                    cursor_blink_rate = 0,
 
-                config.scroll_to_bottom_on_input = true
+                    enable_scroll_bar = false,
+                    scroll_to_bottom_on_input = true,
 
-                config.window_padding = {
-                    left = 0,
-                    right = 0,
-                    top = 0,
-                    bottom = 0,
+                    window_padding = {
+                        left = 3,
+                        right = 0,
+                        top = 0,
+                        bottom = 0,
+                    },
                 }
 
                 return config
