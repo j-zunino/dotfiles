@@ -68,7 +68,7 @@
                     "clock#time" = {
                         interval = 60;
                         format = "{:%H:%M}";
-                        format-alt = "{:%A, %B %d, %Y (%R)}  ";
+                        format-alt = "{:%A, %B %d, %Y (%R)}";
                         tooltip-format = "<tt><small>{calendar}</small></tt>";
                         calendar = {
                             mode = "month";
@@ -289,6 +289,11 @@
                     font-weight: bold;
                 }
 
+                #workspaces button:hover {
+                    background: @bg2;
+                    color: @gray2;
+                }
+
                 #window {
                     background: @bg1;
                     padding: 0 8px;
@@ -344,6 +349,16 @@
                     background: @green;
                     color: @bg_dim;
                     padding: 0 8px 0 3px;
+                }
+
+                tooltip {
+                    background: @bg0;
+                    border: 2px solid @green;
+                }
+
+                tooltip label {
+                    color: @fg;
+                    padding: 0px 8px;
                 }
 
                 /* - [ ARROWS ] - */
