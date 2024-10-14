@@ -12,7 +12,7 @@ let
 in
 {
     home = {
-        packages = with pkgs; [
+        packages = [
             dm-hub
             dm-wifi
             dm-logout

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     imports = [
@@ -38,8 +38,9 @@
             gimp
             inkscape
             vlc
+            cargo
 
-            prismlauncher
+            # prismlauncher
         ];
 
     };
