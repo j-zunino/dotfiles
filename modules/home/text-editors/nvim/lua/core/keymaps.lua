@@ -21,6 +21,8 @@ vim.keymap.set("n", "X", '"_X', opts)
 
 vim.keymap.set("v", "p", '"_dP', opts)
 
+vim.keymap.set("n", "P", ":put!<CR>`[v`]=", opts)
+
 -- move cursor 5 lines
 vim.keymap.set({ "n", "v" }, "J", "5j")
 vim.keymap.set({ "n", "v" }, "K", "5k")
