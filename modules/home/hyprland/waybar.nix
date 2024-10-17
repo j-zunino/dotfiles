@@ -102,18 +102,30 @@
                     };
 
                     "cpu" = {
-                        format = "  {usage}%";
+                        format = " {usage}%";
+
+                        states = {
+                            warning = 70;
+                            critical = 90;
+                        };
+
                     };
 
                     "memory" = {
-                        format = "  {percentage}%";
+                        format = " {percentage}%";
+
+                        states = {
+                            warning = 70;
+                            critical = 90;
+                        };
+
                     };
 
                     "backlight" = {
                         # format = "{icon} {percent}%";
                         format = "{icon}";
                         format-icons = [ "󱩎 " "󱩏 " "󱩐 " "󱩑 " "󱩒 " "󱩓 " "󱩔 " "󱩕 " "󱩖 " "󰛨 " ];
-                        tooltip-format = "{icon} {percent}%";
+                        tooltip-format = "{icon}{percent}%";
                     };
 
                     "pulseaudio" = {
@@ -122,7 +134,7 @@
                         format = "{icon}";
                         format-bluetooth = "{icon}";
                         format-muted = "󰖁 ";
-                        tooltip-format = "{icon} {volume}%";
+                        tooltip-format = "{icon}{volume}%";
                         format-icons = {
                             headphone = " ";
                             # hands-free = "";
@@ -151,14 +163,14 @@
                     };
 
                     "battery" = {
-                        interval = 10;
+                        interval = 5;
                         states = {
                             warning = 30;
-                            critical = 15;
+                            critical = 20;
                         };
 
-                        format = "{icon} {capacity}%";
-                        format-charging = "󰂄 {capacity}%";
+                        format = "{icon}{capacity}%";
+                        format-charging = "󰂄{capacity}%";
                         format-icons = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
 
                         max-length = 25;
@@ -264,15 +276,14 @@
                 window#waybar {
                     background: @bg0;
                     color: @fg;
-                    padding: 0 8px;
                 }
+
 
                 /* - [ LEFT ] - */
                 #custom-nix-logo {
                     font-size: 20px;
                     background: @green;
                     color: @bg_dim;
-                    padding: 0 0 0 3px;
                 }
 
                 #workspaces {
@@ -281,7 +292,6 @@
 
                 #workspaces button {
                     color: @bg4;
-                    padding: 0 4px;
                 }
 
                 #workspaces button.active {
@@ -296,12 +306,10 @@
 
                 #window {
                     background: @bg1;
-                    padding: 0 8px;
                 }
 
                 /* - [ CENTER ] - */
                 #clock {
-                    padding: 0 8px;
                 }
 
                 #clock.day,
@@ -323,7 +331,7 @@
                 #backlight,
                 #network,
                 #battery {
-                    padding: 0 4px;
+                    /* padding: 0 4px; */
                 }
 
                 #tray,
@@ -339,6 +347,18 @@
                     background: @bg2;
                 }
 
+                #battery.charging {
+                    color: @green;
+                }
+
+                #cpu.warning, #memory.warning, #battery.warning {
+                    color: @yellow;
+                }
+
+                #cpu.critical, #memory.critical, #battery.critical {
+                    color: @red;
+                }
+
                 /* #battery {
                     background: @green;
                     color: @bg_dim;
@@ -348,7 +368,6 @@
                     font-size: 20px;
                     background: @green;
                     color: @bg_dim;
-                    padding: 0 8px 0 3px;
                 }
 
                 tooltip {
@@ -358,7 +377,6 @@
 
                 tooltip label {
                     color: @fg;
-                    padding: 0px 8px;
                 }
 
                 /* - [ ARROWS ] - */
@@ -416,6 +434,33 @@
                 #custom-arrow-r-3 {
                     background: @bg2;
                     color: @green;
+                }
+
+
+                #custom-nix-logo {
+                    padding: 0 0 0 4px;
+                }
+                #custom-poweroff {
+                    padding: 0 12px 0 4px;
+                }
+
+                #workspaces button {
+                    padding: 0 4px;
+                }
+
+                #workspaces,
+                #window,
+                #clock.day,
+                #clock.time,
+                #clock.date,
+                #tray,
+                #cpu,
+                #memory,
+                #backlight,
+                #pulseaudio,
+                #network,
+                #battery {
+                    padding: 0 8px;
                 }
             '';
         };
