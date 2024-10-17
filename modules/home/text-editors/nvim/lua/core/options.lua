@@ -1,7 +1,7 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 2
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 
 vim.opt.clipboard = "unnamedplus"
 
