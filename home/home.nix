@@ -31,6 +31,7 @@
             gnumake
             unzip
             nodejs_22
+            pnpm
             ripgrep
             tree
             brave
@@ -39,6 +40,7 @@
             inkscape
             vlc
             cargo
+            hyprshot
 
             # prismlauncher
         ];

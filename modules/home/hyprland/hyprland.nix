@@ -1,16 +1,6 @@
 { ... }:
 
 {
-    programs = {
-        kitty = {
-            enable = true;
-        };
-
-        wofi = {
-            enable = true;
-        };
-    };
-
     wayland.windowManager.hyprland = {
         enable = true;
         settings = {
@@ -21,7 +11,6 @@
             "$browser" = "brave";
             "$terminal" = "wezterm";
             "$menu" = "dmenu_run";
-
 
             # - [ ENV VARIABLES ] -
             env = [
@@ -62,12 +51,6 @@
 
             # - [ MONITORS ] -
             monitor = ",preferred,auto,auto";
-
-
-            misc = {
-                force_default_wallpaper = -1;
-                disable_hyprland_logo = false;
-            };
 
             master = {
                 new_status = "slave";
@@ -148,14 +131,16 @@
             };
 
             misc = {
+                force_default_wallpaper = 0;
+                disable_hyprland_logo = true;
                 disable_splash_rendering = true;
+                animate_manual_resizes = true;
                 # font_family = "CaskaydiaMono Nerd Font";
                 font_family = "JetBrainsMono Nerd Font";
-                animate_manual_resizes = true;
             };
 
             cursor = {
-                enable_hyprcursor = false;
+                # enable_hyprcursor = true;
                 no_warps = true;
             };
 
@@ -181,6 +166,9 @@
 
                 "$mod_shift, J, swapnext"
                 "$mod_shift, K, swapnext, prev"
+
+                "$mod_shift, S, exec, hyprshot -m region --c"
+                "$mod, PRINT, exec, hyprshot -m output"
             ]
             ++ (
 
