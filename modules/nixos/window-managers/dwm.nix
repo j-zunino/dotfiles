@@ -5,7 +5,7 @@
         xserver = {
             windowManager = {
                 dwm = {
-                    enable = true;
+                    enable = false;
                     package = pkgs.dwm.overrideAttrs {
                         src = /home/juan/dwm;
                     };

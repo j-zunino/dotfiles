@@ -6,6 +6,8 @@
         ../modules/nixos/default.nix
     ];
 
+  nixpkgs.overlays = [ (import ../overlays/nixos/dmenu.nix) ];
+
     nix = {
         settings = {
             experimental-features = [ "nix-command" "flakes" ];
@@ -17,15 +19,6 @@
             vim
             xclip
             xsel
-
-            (pkgs.dmenu.overrideAttrs (oldAttrs: {
-                src = /home/juan/dmenu;
-            }))
-
-            (pkgs.st.overrideAttrs (oldAttrs: {
-                src = /home/juan/st;
-                buildInputs = oldAttrs.buildInputs or [] ++ [ pkgs.harfbuzz ];
-            }))
         ];
     };
 
