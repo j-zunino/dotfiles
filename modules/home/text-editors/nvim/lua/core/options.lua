@@ -2,6 +2,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 2
 vim.opt.cmdheight = 1
+vim.g.have_nerd_font = true
 
 vim.opt.clipboard = "unnamedplus"
 

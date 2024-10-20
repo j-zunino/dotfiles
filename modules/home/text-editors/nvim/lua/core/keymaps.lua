@@ -64,6 +64,10 @@ vim.keymap.set("n", "Y", "yy")
 vim.keymap.set("n", "yJ", "Yp")
 vim.keymap.set("n", "yK", "YP")
 
+-- toggle comment
+vim.keymap.set('n', '<C-}>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
+vim.keymap.set('v', '<C-}>', ':lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
+
 -- highlight yank
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking (copying) text",
