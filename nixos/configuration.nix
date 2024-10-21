@@ -6,8 +6,6 @@
         ../modules/nixos/default.nix
     ];
 
-  nixpkgs.overlays = [ (import ../overlays/nixos/dmenu.nix) ];
-
     nix = {
         settings = {
             experimental-features = [ "nix-command" "flakes" ];
@@ -19,6 +17,7 @@
             vim
             xclip
             xsel
+            dmenu
         ];
     };
 
