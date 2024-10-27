@@ -1,30 +1,41 @@
 return {
     'nvim-treesitter/nvim-treesitter',
+    event = { 'BufReadPost', 'BufNewFile' },
     build = ':TSUpdate',
-    opts = {
-        ensure_installed = {
-            'bash',
-            'c',
-            'diff',
-            'html',
-            'css',
-            'javascript',
-            'lua',
-            'luadoc',
-            'markdown',
-            'vim',
-            'vimdoc',
-        },
-        auto_install = true,
-        highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = { 'ruby' },
-        },
-        indent = { enable = true, disable = { 'ruby' } },
-    },
-    config = function(_, opts)
-        require('nvim-treesitter.install').prefer_git = true
-        ---@diagnostic disable-next-line: missing-fields
-        require('nvim-treesitter.configs').setup(opts)
+    config = function()
+        local treesitter = require('nvim-treesitter.configs')
+        treesitter.setup({
+            highlight = {
+                enable = true,
+            },
+            indent = { enable = true },
+
+            auto_install = true,
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = '<C-space>',
+                    node_incremental = '<C-space>',
+                    node_decremental = '<BS>',
+                    scope_incremental = false,
+                },
+            },
+            ensure_installed = {
+                'html',
+                'css',
+                'javascript',
+                'typescript',
+                'tsx',
+                'lua',
+                'luadoc',
+                'markdown',
+                'vim',
+                'vimdoc',
+                'bash',
+                'c',
+                'diff',
+                'nix',
+            },
+        })
     end,
 }

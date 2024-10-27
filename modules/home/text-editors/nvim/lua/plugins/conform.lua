@@ -1,37 +1,35 @@
 return {
-    "stevearc/conform.nvim",
-    lazy = false,
-    keys = {
-        {
-            "<leader>f",
-            function()
-                require("conform").format({ async = true, lsp_fallback = true })
-            end,
-            mode = "",
-            desc = "[F]ormat buffer",
-        },
-    },
+    'stevearc/conform.nvim',
+    lazy = true,
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+        local conform = require('conform')
 
-    opts = {
-        notify_on_error = false,
-        format_on_save = function(bufnr)
-            local disable_filetypes = { c = true, cpp = true }
+        conform.setup({
+            vim.keymap.set({ 'n', 'v' }, '<leader>f', function()
+                conform.format({
+                    lsp_fallback = true,
+                    async = false,
+                    timeout_ms = 1000,
+                })
+            end, { desc = 'Format buffer' }),
 
-            return {
-                timeout_ms = 500,
-                lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-            }
-        end,
-
-        formatters_by_ft = {
-            lua = { "stylua" },
-
-            html = { "prettierd", "prettier" },
-            css = { "prettierd", "prettier" },
-            javascript = { "prettierd", "prettier" },
-            typescript = { "prettierd", "prettier" },
-            json = { "prettierd", "prettier" },
-            markdown = { "prettierd", "prettier" },
-        },
-    },
+            formatters_by_ft = {
+                html = { 'prettierd', 'prettier' },
+                css = { 'prettierd', 'prettier' },
+                javascript = { 'prettierd', 'prettier' },
+                typescript = { 'prettierd', 'prettier' },
+                javascriptreact = { 'prettierd', 'prettier' },
+                typescriptreact = { 'prettierd', 'prettier' },
+                json = { 'prettierd', 'prettier' },
+                markdown = { 'prettierd', 'prettier' },
+                lua = { 'stylua' },
+            },
+            format_on_save = {
+                lsp_fallback = true,
+                async = false,
+                timeout_ms = 1000,
+            },
+        })
+    end,
 }

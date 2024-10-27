@@ -7,7 +7,12 @@
     home = {
         packages = with pkgs; [
             stylua
-            nodePackages.prettier
+            nodePackages_latest.prettier
+            prettierd
+            lua-language-server
+            typescript
+            typescript-language-server
+            lazygit
         ];
 
         file."/home/juan/dotfiles/.stylua.toml".text = ''
