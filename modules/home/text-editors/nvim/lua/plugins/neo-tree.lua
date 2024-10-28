@@ -10,6 +10,17 @@ return {
     config = function()
         local neotree = require('neo-tree')
 
+        local function hideCursor()
+            vim.cmd("highlight Cursor guibg='NONE' guifg='NONE'")
+            vim.cmd('highlight! Cursor blend=100')
+            vim.cmd('set guicursor+=a:Cursor/lCursor')
+        end
+
+        local function showCursor()
+            vim.cmd('highlight! Cursor blend=0')
+            vim.cmd('set guicursor+=a:Cursor/lCursor')
+        end
+
         local function getTelescopeOpts(state, path)
             return {
                 cwd = path,
@@ -115,19 +126,29 @@ return {
                         vim.cmd(
                             "highlight NeoTreeFloatTitle guibg='NONE' guifg='#859289'"
                         )
-                        vim.cmd("highlight Cursor guibg='NONE' guifg='NONE'")
-                        vim.cmd('highlight! Cursor blend=100')
-                        vim.cmd('set guicursor+=a:Cursor/lCursor')
+                        hideCursor()
                     end,
                 },
+                {
+                    event = 'neo_tree_popup_buffer_leave',
+                    handler = function()
+                        hideCursor()
+                    end,
+                },
+
                 {
                     event = 'neo_tree_buffer_leave',
                     handler = function()
                         vim.cmd(
                             "highlight NormalFloat guibg='#3d484d' guifg='#d3c6aa'"
                         )
-                        vim.cmd('highlight! Cursor blend=0')
-                        vim.cmd('set guicursor+=a:Cursor/lCursor')
+                        showCursor()
+                    end,
+                },
+                {
+                    event = 'neo_tree_popup_buffer_enter',
+                    handler = function()
+                        showCursor()
                     end,
                 },
             },
