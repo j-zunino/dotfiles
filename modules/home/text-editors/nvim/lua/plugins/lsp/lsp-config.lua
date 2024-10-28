@@ -92,19 +92,44 @@ return {
 
                 -- [ vtsls ]
                 opts.desc = 'Restart'
-                vim.keymap.set('n', '<leader>tr', '<cmd>VtsExec restart_tsserver<CR>', opts)
+                vim.keymap.set(
+                    'n',
+                    '<leader>tr',
+                    '<cmd>VtsExec restart_tsserver<CR>',
+                    opts
+                )
 
                 opts.desc = 'Organize imports'
-                vim.keymap.set('n', '<leader>to', '<cmd>VtsExec organize_imports<CR>', opts)
+                vim.keymap.set(
+                    'n',
+                    '<leader>to',
+                    '<cmd>VtsExec organize_imports<CR>',
+                    opts
+                )
 
                 opts.desc = 'Sort imports'
-                vim.keymap.set('n', '<leader>ts', '<cmd>VtsExec sort_imports<CR>', opts)
+                vim.keymap.set(
+                    'n',
+                    '<leader>ts',
+                    '<cmd>VtsExec sort_imports<CR>',
+                    opts
+                )
 
                 opts.desc = 'Remove unused imports'
-                vim.keymap.set('n', '<leader>tu', '<cmd>VtsExec remove_unused_imports<CR>', opts)
+                vim.keymap.set(
+                    'n',
+                    '<leader>tu',
+                    '<cmd>VtsExec remove_unused_imports<CR>',
+                    opts
+                )
 
                 opts.desc = 'Add missing imports'
-                vim.keymap.set('n', '<leader>ta', '<cmd>VtsExec add_missing_imports<CR>', opts)
+                vim.keymap.set(
+                    'n',
+                    '<leader>ta',
+                    '<cmd>VtsExec add_missing_imports<CR>',
+                    opts
+                )
             end,
         })
 
