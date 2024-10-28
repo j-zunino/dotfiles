@@ -1,6 +1,7 @@
 return {
     'echasnovski/mini.comment',
     lazy = true,
+    keys = '<C-}>',
     event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
         {
