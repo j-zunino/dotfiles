@@ -6,14 +6,13 @@ return {
         'hrsh7th/cmp-nvim-lsp',
         { 'antosha417/nvim-lsp-file-operations', config = true },
         { 'folke/neodev.nvim', opts = {} },
+        'yioneko/nvim-vtsls',
     },
 
     config = function()
         local lspconfig = require('lspconfig')
         local mason_lspconfig = require('mason-lspconfig')
         local cmp_nvim_lsp = require('cmp_nvim_lsp')
-
-        lspconfig.ts_ls.setup({})
 
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -90,6 +89,22 @@ return {
 
                 opts.desc = 'Goto declaration'
                 vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, opts)
+
+                -- [ vtsls ]
+                opts.desc = 'Restart'
+                vim.keymap.set('n', '<leader>tr', '<cmd>VtsExec restart_tsserver<CR>', opts)
+
+                opts.desc = 'Organize imports'
+                vim.keymap.set('n', '<leader>to', '<cmd>VtsExec organize_imports<CR>', opts)
+
+                opts.desc = 'Sort imports'
+                vim.keymap.set('n', '<leader>ts', '<cmd>VtsExec sort_imports<CR>', opts)
+
+                opts.desc = 'Remove unused imports'
+                vim.keymap.set('n', '<leader>tu', '<cmd>VtsExec remove_unused_imports<CR>', opts)
+
+                opts.desc = 'Add missing imports'
+                vim.keymap.set('n', '<leader>ta', '<cmd>VtsExec add_missing_imports<CR>', opts)
             end,
         })
 
@@ -109,6 +124,17 @@ return {
                 })
             end,
 
+            ['vtsls'] = function()
+                lspconfig['vtsls'].setup({
+                    capabilities = capabilities,
+                    handlers = {
+                        source_definition = function(err, locations) end,
+                        file_references = function(err, locations) end,
+                        code_action = function(err, actions) end,
+                    },
+                })
+            end,
+
             ['emmet_ls'] = function()
                 lspconfig['emmet_ls'].setup({
                     capabilities = capabilities,
@@ -124,6 +150,7 @@ return {
                     },
                 })
             end,
+
             ['lua_ls'] = function()
                 lspconfig['lua_ls'].setup({
                     capabilities = capabilities,

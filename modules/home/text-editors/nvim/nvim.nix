@@ -6,6 +6,9 @@
 
     home = {
         packages = with pkgs; [
+            # lua
+            lua51Packages.lua
+            luarocks
             stylua
             nodePackages_latest.prettier
             prettierd
@@ -13,6 +16,11 @@
             typescript
             typescript-language-server
             lazygit
+            emmet-ls
+            eslint_d
+            vscode-langservers-extracted
+            tailwindcss-language-server
+            python313
         ];
 
         file."/home/juan/dotfiles/.stylua.toml".text = ''

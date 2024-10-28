@@ -141,13 +141,13 @@ return {
             -- Toggles
             map(
                 'n',
-                '<leader>tb',
+                '<leader>hB',
                 gitsigns.toggle_current_line_blame,
                 { desc = 'Toggle git show blame line' }
             )
             map(
                 'n',
-                '<leader>tD',
+                '<leader>hD',
                 gitsigns.toggle_deleted,
                 { desc = 'Toggle git show deleted' }
             )
