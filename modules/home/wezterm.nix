@@ -29,11 +29,11 @@
                             background = "none",
 
                             active_tab = {
-                                bg_color = "#a7c080",
-                                fg_color = "#232a2e",
+                                bg_color = "none",
+                                fg_color = "#a7c080",
                             },
                             inactive_tab = {
-                                bg_color = "#343f44",
+                                bg_color = "none",
                                 fg_color = "#4f585e",
                             },
 
