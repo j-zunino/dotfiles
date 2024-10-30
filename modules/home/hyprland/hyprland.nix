@@ -170,6 +170,8 @@
 
                 "$mod_shift, S, exec, hyprshot -m region --c"
                 "$mod, PRINT, exec, hyprshot -m output"
+
+                "$mod, C, exec, hyprpicker -a"
             ]
             ++ (
 
