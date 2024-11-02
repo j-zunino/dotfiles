@@ -12,5 +12,6 @@
         ./hyprland/default.nix
         ./wezterm.nix
         ./dunst.nix
+        ./rofi.nix
     ];
 }

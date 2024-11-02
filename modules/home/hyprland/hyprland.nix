@@ -10,7 +10,7 @@
 
             "$browser" = "brave";
             "$terminal" = "wezterm";
-            "$menu" = "dmenu_run";
+            "$menu" = "rofi -show run";
 
             # - [ ENV VARIABLES ] -
             env = [
