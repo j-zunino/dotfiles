@@ -21,6 +21,7 @@
             vscode-langservers-extracted
             tailwindcss-language-server
             python313
+            vale
         ];
 
         file."/home/juan/dotfiles/.stylua.toml".text = ''
