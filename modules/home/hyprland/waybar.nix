@@ -274,7 +274,7 @@
                 }
 
                 window#waybar {
-                    background: @bg0;
+                    background: @bg1;
                     color: @fg;
                 }
 
@@ -287,11 +287,11 @@
                 }
 
                 #workspaces {
-                    background: @bg2;
+                    background: @bg3;
                 }
 
                 #workspaces button {
-                    color: @bg4;
+                    color: @bg5;
                 }
 
                 #workspaces button.active {
@@ -300,12 +300,12 @@
                 }
 
                 #workspaces button:hover {
-                    background: @bg2;
+                    background: @bg3;
                     color: @gray2;
                 }
 
                 #window {
-                    background: @bg1;
+                    background: @bg2;
                 }
 
                 /* - [ CENTER ] - */
@@ -314,7 +314,7 @@
 
                 #clock.day,
                 #clock.date {
-                    background: @bg1;
+                    background: @bg2;
                     color: @fg;
                 }
 
@@ -337,14 +337,14 @@
                 #tray,
                 #memory,
                 #cpu {
-                    background: @bg1;
+                    background: @bg2;
                 }
 
                 #pulseaudio,
                 #backlight,
                 #network,
                 #battery {
-                    background: @bg2;
+                    background: @bg3;
                 }
 
                 #battery.charging {
@@ -371,7 +371,7 @@
                 }
 
                 tooltip {
-                    background: @bg0;
+                    background: @bg1;
                     border: 2px solid @green;
                 }
 
@@ -395,44 +395,44 @@
 
                 /* - [ ARROWS LEFT ] - */
                 #custom-arrow-l-1 {
-                    background: @bg2;
+                    background: @bg3;
                     color: @green;
                 }
 
                 #custom-arrow-l-2 {
+                    background: @bg2;
+                    color: @bg3;
+                }
+
+                #custom-arrow-l-3 {
                     background: @bg1;
                     color: @bg2;
                 }
 
-                #custom-arrow-l-3 {
-                    background: @bg0;
-                    color: @bg1;
-                }
-
                 /* - [ ARROWS CENTER ] - */
                 #custom-arrow-c-1, #custom-arrow-c-4 {
-                    background: @bg0;
-                    color: @bg1;
+                    background: @bg1;
+                    color: @bg2;
                 }
 
                 #custom-arrow-c-2, #custom-arrow-c-3 {
-                    background: @bg1;
+                    background: @bg2;
                     color: @green;
                 }
 
                 /* - [ ARROWS RIGHT ] - */
                 #custom-arrow-r-1 {
-                    background: @bg0;
-                    color: @bg1;
-                }
-
-                #custom-arrow-r-2 {
                     background: @bg1;
                     color: @bg2;
                 }
 
-                #custom-arrow-r-3 {
+                #custom-arrow-r-2 {
                     background: @bg2;
+                    color: @bg3;
+                }
+
+                #custom-arrow-r-3 {
+                    background: @bg3;
                     color: @green;
                 }
 
