@@ -1,7 +1,8 @@
 return {
     'axelvc/template-string.nvim',
-    -- event = 'VeryLazy',
     lazy = true,
+    -- event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
     config = function()
         require('template-string').setup({
             filetypes = {
