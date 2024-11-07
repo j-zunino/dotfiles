@@ -43,6 +43,13 @@
             y = "yazi";
             f = "yazi";
             gs = "git status";
+            ga = "git add";
+            gaa = "git add --all";
+            gc = "git commit";
+            gp = "git push";
+            gd = "git diff";
+            gds = "git diff --staged";
+            gf = "git fetch";
         };
 
         history = {
