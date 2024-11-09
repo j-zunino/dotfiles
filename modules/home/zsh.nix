@@ -50,6 +50,8 @@
             gd = "git diff";
             gds = "git diff --staged";
             gf = "git fetch";
+
+            hms = "home-manager switch --flake ~/dotfiles/.";
         };
 
         history = {
