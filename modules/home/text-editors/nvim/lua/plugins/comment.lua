@@ -1,7 +1,7 @@
 return {
     'echasnovski/mini.comment',
     lazy = true,
-    keys = '<C-}>',
+    -- keys = '<C-}>',
     event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
         {
@@ -18,13 +18,14 @@ return {
 
         require('mini.comment').setup({
             options = {
+                ignore_blank_line = false,
                 custom_commentstring = function()
                     return require('ts_context_commentstring').calculate_commentstring()
                         or vim.bo.commentstring
                 end,
             },
             mappings = {
-                comment = '<C}>',
+                comment = '<C-}>',
 
                 comment_line = '<C-}>',
 
