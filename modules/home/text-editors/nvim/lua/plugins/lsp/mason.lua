@@ -2,8 +2,8 @@ return {
     'williamboman/mason.nvim',
     lazy = true,
     event = { 'BufReadPre', 'BufNewFile' },
-    cmd = 'Mason',
     -- event = 'LspAttach',
+    cmd = 'Mason',
     dependencies = {
         'williamboman/mason-lspconfig.nvim',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -32,6 +32,7 @@ return {
                 'tailwindcss',
                 'lua_ls',
                 'nil_ls',
+                'vtsls'
             },
         })
 
