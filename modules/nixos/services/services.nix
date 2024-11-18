@@ -23,7 +23,7 @@
         picom = {
             enable = true;
             backend = "egl";
-            vSync = "opengl";
+            vSync = true;
         };
     };
 }

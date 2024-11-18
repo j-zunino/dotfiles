@@ -7,7 +7,7 @@ return {
             transparent_background_level = 1,
             disable_italic_comments = true,
             sign_column_background = 'none',
-            diagnostic_text_highlight = true,
+            diagnostic_text_highlight = false,
             diagnostic_line_highlight = true,
             float_style = 'bright',
         })

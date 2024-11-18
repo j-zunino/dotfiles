@@ -81,10 +81,9 @@
                 dim_inactive = true;
                 dim_strength = 0.2;
 
-                drop_shadow = false;
-                shadow_range = 0;
-                shadow_render_power = 0;
-                #"col.shadow" = "$bg_dim";
+                shadow = {
+                    enabled = false;
+                };
 
                 blur = {
                     enabled = true;

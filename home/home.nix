@@ -41,6 +41,7 @@
             vlc
             cargo
             hyprshot
+            godot_4
 
             # prismlauncher
         ];
