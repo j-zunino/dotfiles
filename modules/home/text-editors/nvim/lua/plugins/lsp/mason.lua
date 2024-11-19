@@ -32,7 +32,7 @@ return {
                 'tailwindcss',
                 'lua_ls',
                 'nil_ls',
-                'vtsls'
+                'vtsls',
             },
         })
 

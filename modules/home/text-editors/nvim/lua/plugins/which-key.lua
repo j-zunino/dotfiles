@@ -39,14 +39,15 @@ return {
 
         spec = {
             { '<leader>c', group = 'Code', mode = { 'n', 'x' } },
-            { '<leader>d', group = 'Document' },
-            { '<leader>r', group = 'Rename' },
-            { '<leader>s', group = 'Telescope' },
-            { '<leader>w', group = 'Workspace' },
-            { '<leader>t', group = 'Vtsls' },
-            { '<leader>l', group = 'LazyGit' },
-            { '<leader>z', group = 'ZenMode' },
+            { '<leader>d', group = 'Document', mode = { 'n' } },
+            { '<leader>r', group = 'Rename', mode = { 'n' } },
+            { '<leader>s', group = 'Telescope', mode = { 'n' } },
+            { '<leader>w', group = 'Workspace', mode = { 'n' } },
+            { '<leader>t', group = 'Vtsls', mode = { 'n' } },
+            { '<leader>l', group = 'LazyGit', mode = { 'n' } },
+            { '<leader>z', group = 'ZenMode', mode = { 'n' } },
             { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
+            { '<leader>b', group = 'Buffers', mode = { 'n' } },
         },
     },
 }

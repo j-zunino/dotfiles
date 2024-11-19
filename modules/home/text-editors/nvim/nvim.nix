@@ -22,6 +22,7 @@
             tailwindcss-language-server
             python313
             vale
+            chafa
         ];
 
         file."/home/juan/dotfiles/.stylua.toml".text = ''
