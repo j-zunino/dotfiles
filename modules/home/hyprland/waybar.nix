@@ -68,6 +68,7 @@
                     "clock#time" = {
                         interval = 60;
                         format = "{:%H:%M}";
+                        timezone = "America/Argentina/Buenos_Aires";
                         format-alt = "{:%A, %B %d, %Y (%R)}";
                         tooltip-format = "<tt><small>{calendar}</small></tt>";
                         calendar = {
