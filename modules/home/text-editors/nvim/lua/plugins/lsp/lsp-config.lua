@@ -152,10 +152,18 @@ return {
             ['vtsls'] = function()
                 lspconfig['vtsls'].setup({
                     capabilities = capabilities,
-                    handlers = {
-                        source_definition = function(err, locations) end,
-                        file_references = function(err, locations) end,
-                        code_action = function(err, actions) end,
+                    -- handlers = {
+                    --     source_definition = function(err, locations) end,
+                    --     file_references = function(err, locations) end,
+                    --     code_action = function(err, actions) end,
+                    -- },
+                    filetypes = {
+                        'javascript',
+                        'javascriptreact',
+                        'javascript.jsx',
+                        'typescript',
+                        'typescriptreact',
+                        'typescript.tsx',
                     },
                 })
             end,
@@ -168,10 +176,10 @@ return {
                         'css',
                         'sass',
                         'scss',
-                        'javascript',
-                        'typescript',
-                        'javascriptreact',
-                        'typescriptreact',
+                        -- 'javascript',
+                        -- 'typescript',
+                        -- 'javascriptreact',
+                        -- 'typescriptreact',
                     },
                 })
             end,
