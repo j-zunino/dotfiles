@@ -23,6 +23,7 @@
             python313
             vale
             chafa
+            tty-clock
         ];
 
         file."/home/juan/dotfiles/.stylua.toml".text = ''

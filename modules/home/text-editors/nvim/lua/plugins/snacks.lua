@@ -107,6 +107,16 @@ return {
         math.randomseed(os.time())
         local randomNumber = math.random(1, maxIndex)
 
+        vim.cmd([[
+            highlight link SnacksDashboardTitle green
+            highlight link SnacksDashboardIcon green
+            highlight SnacksDashboardFile guifg='#d3c6aa'
+            highlight link SnacksDashboardSpecial Comment
+            highlight link SnacksDashboardNormal Comment
+            highlight link SnacksDashboardDir Comment
+            highlight link SnacksDashboardFooter Comment
+        ]])
+
         snacks.setup({
             bufdelete = { enabled = true },
             notify = { enabled = true },
@@ -131,20 +141,23 @@ return {
                     {
                         pane = 1,
                         section = 'terminal',
-                        cmd = 'chafa ~/dotfiles/modules/home/text-editors/nvim/lua/plugins/dashboard/'
-                            .. randomNumber
-                            .. '.png --format symbols --symbols vhalf --size 60x30; sleep .1',
+                        cmd = 'chafa ~/dotfiles/modules/home/text-editors/nvim/lua/plugins/dashboard/' .. randomNumber .. '.png --format symbols --symbols vhalf --size 60x30; sleep .1',
                         height = 30,
                         padding = 1,
                     },
                     {
                         pane = 2,
                         {
+                            section = 'terminal',
+                            cmd = 'tty-clock -c -D; sleep .1',
+                            padding = 1,
+                        },
+                        {
                             section = 'recent_files',
                             title = 'Recent Files',
                             icon = ' ',
                             padding = 1,
-                            indent = 1,
+                            indent = 3,
                         },
                         {
                             section = 'startup',
@@ -153,16 +166,5 @@ return {
                 },
             },
         })
-
-
-        vim.cmd([[
-            highlight link SnacksDashboardTitle green
-            highlight link SnacksDashboardIcon green
-            highlight SnacksDashboardFile guifg='#d3c6aa'
-            highlight link SnacksDashboardSpecial Comment
-            highlight link SnacksDashboardNormal Comment
-            highlight link SnacksDashboardDir Comment
-            highlight link SnacksDashboardFooter Comment
-        ]])
     end,
 }
