@@ -17,7 +17,8 @@ return {
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),
             callback = function(event)
-                local opts = { buffer = event.buf, silent = true }
+                local opts =
+                    { buffer = event.buf, noremap = true, silent = true }
 
                 opts.desc = 'Hover'
                 vim.keymap.set(
@@ -176,10 +177,10 @@ return {
                         'css',
                         'sass',
                         'scss',
-                        -- 'javascript',
-                        -- 'typescript',
-                        -- 'javascriptreact',
-                        -- 'typescriptreact',
+                        'javascript',
+                        'typescript',
+                        'javascriptreact',
+                        'typescriptreact',
                     },
                 })
             end,

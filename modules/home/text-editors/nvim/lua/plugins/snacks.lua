@@ -109,20 +109,15 @@ return {
 
         -- terminal
         opts.desc = 'Toggle floating terminal'
-        vim.keymap.set(
-            { 'n', 't' },
-            '<leader>T',
-            function()
-                Snacks.terminal.toggle("zsh", {
-                    win = {
-                        border = "single",
-                        width = 0.7,
-                        height = 0.8,
-                    },
-                })
-            end,
-            opts
-        )
+        vim.keymap.set({ 'n', 't' }, '<leader>T', function()
+            Snacks.terminal.toggle('zsh', {
+                win = {
+                    border = 'single',
+                    width = 0.7,
+                    height = 0.8,
+                },
+            })
+        end, opts)
 
         opts.desc = 'Toggle bottom terminal'
         vim.keymap.set(
@@ -133,12 +128,7 @@ return {
         )
 
         opts.desc = 'Close terminal'
-        vim.keymap.set(
-            't',
-            '<C-q>',
-            '<cmd>bd!<CR>',
-            opts
-        )
+        vim.keymap.set('t', '<C-q>', '<cmd>bd!<CR>', opts)
 
         opts.desc = 'Move focus to the next window'
         vim.keymap.set('t', '<C-j>', '<cmd>wincmd w<CR>', opts)
@@ -216,7 +206,7 @@ return {
             terminal = {
                 enabled = true,
                 win = {
-                    title = "Terminal",
+                    title = 'Terminal',
                 },
             },
         })

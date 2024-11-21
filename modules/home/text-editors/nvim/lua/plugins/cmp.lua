@@ -20,24 +20,23 @@ return {
         local luasnip = require('luasnip')
         local lspkind = require('lspkind')
         local f = luasnip.function_node
-        local postfix = require("luasnip.extras.postfix").postfix
+        local postfix = require('luasnip.extras.postfix').postfix
 
         -- require('luasnip.loaders.from_vscode').lazy_load()
         require('luasnip.loaders.from_vscode').lazy_load({
             include = { 'javascriptreact', 'typescriptreact' },
         })
 
-
         luasnip.filetype_extend('javascriptreact', { 'html' })
         luasnip.filetype_extend('typescriptreact', { 'html' })
 
-        luasnip.add_snippets("javascriptreact", {
-            postfix("/", {
+        luasnip.add_snippets('javascriptreact', {
+            postfix('/', {
                 f(function(_, parent)
-                    return "<" .. parent.snippet.env.POSTFIX_MATCH .. " />"
+                    return '<' .. parent.snippet.env.POSTFIX_MATCH .. ' />'
                 end, {}),
-                desc = "Auto-complete JSX self-closing tags"
-            })
+                desc = 'Auto-complete JSX self-closing tags',
+            }),
         })
 
         cmp.setup({
