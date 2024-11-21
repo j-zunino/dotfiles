@@ -107,6 +107,46 @@ return {
         math.randomseed(os.time())
         local randomNumber = math.random(1, maxIndex)
 
+        -- terminal
+        opts.desc = 'Toggle floating terminal'
+        vim.keymap.set(
+            { 'n', 't' },
+            '<leader>T',
+            function()
+                Snacks.terminal.toggle("zsh", {
+                    win = {
+                        border = "single",
+                        width = 0.7,
+                        height = 0.8,
+                    },
+                })
+            end,
+            opts
+        )
+
+        opts.desc = 'Toggle bottom terminal'
+        vim.keymap.set(
+            { 'n', 't' },
+            '<C-{>',
+            '<cmd>lua Snacks.terminal.toggle()<CR>',
+            opts
+        )
+
+        opts.desc = 'Close terminal'
+        vim.keymap.set(
+            't',
+            '<C-q>',
+            '<cmd>bd!<CR>',
+            opts
+        )
+
+        opts.desc = 'Move focus to the next window'
+        vim.keymap.set('t', '<C-j>', '<cmd>wincmd w<CR>', opts)
+
+        opts.desc = 'Move focus to the previous window'
+        vim.keymap.set('t', '<C-k>', '<cmd>wincmd p<CR>', opts)
+
+        -- highlights
         vim.cmd([[
             highlight link SnacksDashboardTitle green
             highlight link SnacksDashboardIcon green
@@ -115,6 +155,10 @@ return {
             highlight link SnacksDashboardNormal Comment
             highlight link SnacksDashboardDir Comment
             highlight link SnacksDashboardFooter Comment
+            highlight link SnacksNormal Normal
+            highlight link SnacksNormalNC Normal
+            highlight FloatBorder guibg='NONE'
+            highlight FloatTitle guibg='NONE'
         ]])
 
         snacks.setup({
@@ -135,13 +179,16 @@ return {
                 date_format = '%R',
                 refresh = 50,
             },
+
             dashboard = {
                 enabled = true,
                 sections = {
                     {
                         pane = 1,
                         section = 'terminal',
-                        cmd = 'chafa ~/dotfiles/modules/home/text-editors/nvim/lua/plugins/dashboard/' .. randomNumber .. '.png --format symbols --symbols vhalf --size 60x30; sleep .1',
+                        cmd = 'chafa ~/dotfiles/modules/home/text-editors/nvim/lua/plugins/dashboard/'
+                            .. randomNumber
+                            .. '.png --format symbols --symbols vhalf --size 60x30; sleep .1',
                         height = 30,
                         padding = 1,
                     },
@@ -163,6 +210,13 @@ return {
                             section = 'startup',
                         },
                     },
+                },
+            },
+
+            terminal = {
+                enabled = true,
+                win = {
+                    title = "Terminal",
                 },
             },
         })
