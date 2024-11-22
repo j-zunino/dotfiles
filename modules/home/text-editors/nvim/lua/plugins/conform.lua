@@ -16,12 +16,12 @@ return {
 
             formatters = {
                 stylua = {
-                    command = '/home/juan/.nix-profile/bin/stylua',
+                    command = '/$HOME/.nix-profile/bin/stylua',
                     args = {
-                        '--search-parent-directories', -- Search for the .stylua.toml file in parent directories
+                        '--search-parent-directories',
                         '--stdin-filepath',
-                        '$FILENAME', -- Use the current file path for context
-                        '-', -- Read from stdin
+                        '$FILENAME',
+                        '-',
                     },
                 },
             },
