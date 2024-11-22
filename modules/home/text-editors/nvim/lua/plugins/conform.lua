@@ -16,7 +16,7 @@ return {
 
             formatters = {
                 stylua = {
-                    command = '/$HOME/.nix-profile/bin/stylua',
+                    command = '/home/juan/.nix-profile/bin/stylua',
                     args = {
                         '--search-parent-directories',
                         '--stdin-filepath',
