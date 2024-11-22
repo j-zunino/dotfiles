@@ -14,6 +14,18 @@ return {
                 })
             end, { desc = 'Format buffer' }),
 
+            formatters = {
+                stylua = {
+                    command = '/home/juan/.nix-profile/bin/stylua',
+                    args = {
+                        '--search-parent-directories', -- Search for the .stylua.toml file in parent directories
+                        '--stdin-filepath',
+                        '$FILENAME', -- Use the current file path for context
+                        '-', -- Read from stdin
+                    },
+                },
+            },
+
             formatters_by_ft = {
                 html = { 'prettierd', 'prettier' },
                 css = { 'prettierd', 'prettier' },
