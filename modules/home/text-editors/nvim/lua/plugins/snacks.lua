@@ -43,6 +43,14 @@ return {
         vim.keymap.set('n', '<leader>bn', '<cmd>enew<CR>', opts)
 
         -- notifier
+        opts.desc = 'Show notifications history'
+        vim.keymap.set(
+            'n',
+            '<leader>nh',
+            '<cmd>lua Snacks.notifier.show_history()<CR>',
+            opts
+        )
+
         ---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
         local progress = vim.defaulttable()
         vim.api.nvim_create_autocmd('LspProgress', {
