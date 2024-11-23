@@ -5,7 +5,7 @@ return {
     dependencies = {
         'hrsh7th/cmp-nvim-lsp',
         { 'antosha417/nvim-lsp-file-operations', config = true },
-        { 'folke/neodev.nvim',                   opts = {} },
+        { 'folke/neodev.nvim', opts = {} },
         'yioneko/nvim-vtsls',
     },
 
@@ -18,7 +18,7 @@ return {
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),
             callback = function(event)
                 local opts =
-                { buffer = event.buf, noremap = true, silent = true }
+                    { buffer = event.buf, noremap = true, silent = true }
 
                 opts.desc = 'Hover'
                 vim.keymap.set(
@@ -137,7 +137,7 @@ return {
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
         local signs =
-        { Error = ' ', Warn = ' ', Hint = '󰌵 ', Info = ' ' }
+            { Error = ' ', Warn = ' ', Hint = '󰌵 ', Info = ' ' }
         for type, icon in pairs(signs) do
             local hl = 'DiagnosticSign' .. type
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
@@ -198,6 +198,16 @@ return {
                                 callSnippet = 'Replace',
                             },
                         },
+                    },
+                })
+            end,
+
+            ['cssls'] = function()
+                lspconfig['cssls'].setup({
+                    capabilities = capabilities,
+                    cmd = {
+                        '/home/juan/.nix-profile/bin/vscode-css-language-server',
+                        '--stdio',
                     },
                 })
             end,
