@@ -54,6 +54,12 @@ return {
 
         vim.keymap.set(
             'n',
+            '<leader>sc',
+            builtin.spell_suggest,
+            { desc = 'Spell suggest Telescope' }
+        )
+        vim.keymap.set(
+            'n',
             '<leader>sh',
             builtin.help_tags,
             { desc = 'Search help' }
