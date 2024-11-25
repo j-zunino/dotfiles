@@ -22,7 +22,6 @@ return {
         local f = luasnip.function_node
         local postfix = require('luasnip.extras.postfix').postfix
 
-        -- require('luasnip.loaders.from_vscode').lazy_load()
         require('luasnip.loaders.from_vscode').lazy_load({
             include = { 'javascriptreact', 'typescriptreact' },
         })
@@ -31,25 +30,47 @@ return {
         luasnip.filetype_extend('typescriptreact', { 'html' })
 
         luasnip.add_snippets('javascriptreact', {
-            postfix('/', {
+            postfix({
+                trig = '/',
+                name = 'React component tag',
+                desc = 'Auto-complete React component tag',
+            }, {
                 f(function(_, parent)
                     return '<' .. parent.snippet.env.POSTFIX_MATCH .. ' />'
                 end, {}),
-                desc = 'Auto-complete JSX self-closing tags',
             }),
         })
 
+        vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'NONE' })
         cmp.setup({
-            window = {},
+            window = {
+                completion = {
+                    border = 'single',
+                    col_offset = 1,
+                },
+                documentation = {
+                    border = 'single',
+                    winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+                },
+            },
+
             completion = {
                 completeopt = 'menu,menuone,preview,noinsert',
                 preselect = cmp.PreselectMode.Item,
             },
+
+            view = {
+                entries = {
+                    follow_cursor = true,
+                },
+            },
+
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
                 end,
             },
+
             mapping = cmp.mapping.preset.insert({
                 ['<C-j>'] = cmp.mapping.select_next_item(),
                 ['<C-k>'] = cmp.mapping.select_prev_item(),
@@ -75,12 +96,14 @@ return {
                     end
                 end, { 'i', 's' }),
             }),
+
             sources = {
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' },
                 { name = 'buffer' },
                 { name = 'path' },
             },
+
             formatting = {
                 format = lspkind.cmp_format({
                     max_width = 50,
