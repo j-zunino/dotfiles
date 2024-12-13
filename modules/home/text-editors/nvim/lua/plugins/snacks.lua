@@ -144,6 +144,15 @@ return {
         opts.desc = 'Move focus to the previous window'
         vim.keymap.set('t', '<C-k>', '<cmd>wincmd p<CR>', opts)
 
+        -- lazygit
+        opts.desc = 'Open LazyGit'
+        vim.keymap.set(
+            'n',
+            '<leader>lg',
+            '<cmd>lua Snacks.lazygit.open()<CR>',
+            opts
+        )
+
         -- highlights
         vim.cmd([[
             highlight link SnacksDashboardTitle green
@@ -206,6 +215,7 @@ return {
                         },
                         {
                             section = 'startup',
+                            icon = '󰒲 ',
                         },
                     },
                 },
@@ -215,6 +225,16 @@ return {
                 enabled = true,
                 win = {
                     title = 'Terminal',
+                },
+            },
+
+            lazygit = {
+                enabled = true,
+                configure = true,
+                win = {
+                    title = 'LazyGit',
+                    style = 'lazygit',
+                    border = 'single',
                 },
             },
         })
