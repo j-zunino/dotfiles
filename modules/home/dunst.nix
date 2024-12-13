@@ -15,12 +15,12 @@
                     width = "(0, 400)";
                     height = "(0, 400)";
                     offset = "15x15";
-                    origin = "top-center";
-                    alignment = "center";
+                    origin = "top-right";
+                    alignment = "left";
                     progress_bar = true;
 
                     transparency = 10;
-                    background = "#232a2e";
+                    background = "#2d354b";
                     foreground = "#d3c6aa";
                     frame_width = 2;
                     frame_color = "#a7c080";
