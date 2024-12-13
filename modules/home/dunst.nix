@@ -20,7 +20,7 @@
                     progress_bar = true;
 
                     transparency = 10;
-                    background = "#2d354b";
+                    background = "#2d353b";
                     foreground = "#d3c6aa";
                     frame_width = 2;
                     frame_color = "#a7c080";
