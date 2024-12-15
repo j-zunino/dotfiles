@@ -61,15 +61,16 @@
 
                     # - [ CENTER ] -
                     "clock#day" = {
+                        timezone = "America/Argentina/Buenos_Aires";
                         format = "{:%a}";
                         tooltip = false;
                     };
 
                     "clock#time" = {
                         interval = 60;
-                        format = "{:%H:%M}";
+                        format = "{:%I:%M %p}";
                         timezone = "America/Argentina/Buenos_Aires";
-                        format-alt = "{:%A, %B %d, %Y (%R)}";
+                        format-alt = "{:%H:%M}";
                         tooltip-format = "<tt><small>{calendar}</small></tt>";
                         calendar = {
                             mode = "month";
@@ -93,6 +94,7 @@
 
                     "clock#date" = {
                         format = "{:%d/%m}";
+                        timezone = "America/Argentina/Buenos_Aires";
                         tooltip = false;
                     };
 
