@@ -22,6 +22,14 @@
             EDITOR = "nvim";
         };
 
+        pointerCursor = {
+            gtk.enable = true;
+            x11.enable = true;
+            package = pkgs.yaru-theme;
+            name = "Yaru";
+            size = 24;
+        };
+
         packages = with pkgs; [
             wget
             curl

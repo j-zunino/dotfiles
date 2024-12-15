@@ -20,9 +20,7 @@
             ];
 
             # - [ AUTOSTART ] -
-            # "exec-once" = "$terminal";
-            # "exec-once" = "waybar & hyprpaper";
-            "exec-once" = "sleep 5 & waybar & wpaperd";
+            "exec-once" = "sleep 5 & waybar & wpaperd & hyprctl setcursor yaru 24";
 
             # - [ COLORS ] -
             "$bg_dim" = "rgb(232a2e)"; #232a2e
