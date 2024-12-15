@@ -197,7 +197,7 @@
 
                 # Brightness controls
                 ",XF86MonBrightnessUp, exec, brightnessctl set 5%+ && sh ~/dotfiles/modules/home/scripts/dunst-notify.sh brightness"
-                ",XF86MonBrightnessDown, exec, brightnessctl set 5%- && sh ~/dotfiles/modules/home/scripts/dunst-notify.sh brightness"
+                ",XF86MonBrightnessDown, exec, brightnessctl -n1 set 5%- && sh ~/dotfiles/modules/home/scripts/dunst-notify.sh brightness"
 
                 # Media controls
                 ",XF86AudioNext, exec, playerctl next"
