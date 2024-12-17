@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-    fonts.packages = with pkgs; [
-        (nerdfonts.override { fonts = [ "CascadiaCode" "IosevkaTerm" "JetBrainsMono" "CommitMono" ]; })
+    fonts.packages = with pkgs.nerd-fonts; [
+        jetbrainsmono
+        commitmono
+        cascadiacode
+        iosevkaterm
     ];
 }
