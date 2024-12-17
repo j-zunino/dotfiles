@@ -163,6 +163,8 @@
                         tooltip-format-disconnected = "󰤮 ";
 
                         format-icons = [ "󰤯 " "󰤟 " "󰤢 " "󰤥 " "󰤨 " ];
+
+                        on-click = "dm-wifi";
                     };
 
                     "battery" = {

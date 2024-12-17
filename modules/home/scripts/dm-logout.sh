@@ -1,23 +1,20 @@
-#!${pkgs.stdenv.shell}
+#!/bin/bash
 #
 # Description: Logout, shutdown, reboot or lock screen.
-# Dependencies: dmenu, systemctl, slock, notify-send, Nerd Font
+# Dependencies: rofi, systemctl, slock, Nerd Font
 #
 # Credits: https://gitlab.com/dwt1/dmscripts
 
 set -euo pipefail
 
-# Function to display messages
-output() {
-    if [[ ${TERM} == 'dumb' ]]; then
-        notify-send "dm-logout" "$@"
-    else
-        echo "$@"
-    fi
+CONFIRM_OPTIONS=" No\n Yes"
+
+confirm_action() {
+    local action=$1
+    echo -e "$CONFIRM_OPTIONS" | rofi -dmenu -i -p "$action?"
 }
 
 main() {
-    # An array of options to choose.
     declare -a options=(
         " Lock screen"
         "󰒲 Suspend"
@@ -27,60 +24,59 @@ main() {
         " Quit"
     )
 
-    # Look up what window managers are used.
-    declare -a managers
-    while IFS= read -r manager; do
-        managers+=("${manager,,}")
-    done < <(grep -E 'Name=' /usr/share/xsessions/*.desktop | cut -d'=' -f2)
-    managers+=("xmonad-x86_64-linux")
+    declare -A actions=(
+        [" Lock screen"]="lock"
+        ["󰒲 Suspend"]="suspend"
+        [" Logout"]="logout"
+        ["⏻ Shutdown"]="shutdown"
+        [" Reboot"]="reboot"
+        [" Quit"]="quit"
+    )
 
-    # Piping the above array into dmenu.
-    choice=$(printf '%s\n' "${options[@]}" | dmenu -p "Choose an action:")
+    choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i -p "Choose an action:")
 
-    # Handle the user's choice.
-    case $choice in
-    ' Logout')
-        if [[ "$(echo -e " No\n Yes" | dmenu -p "${choice}?")" == " Yes" ]]; then
-            for manager in "${managers[@]}"; do
-                loginctl kill-user "$UID"
-            done
-        else
-            output "User chose not to logout." && exit 1
-        fi
-        ;;
-    ' Lock screen')
-        # Assuming slock is installed for locking the screen
-        slock
-        ;;
-    ' Reboot')
-        if [[ "$(echo -e " No\n Yes" | dmenu -p "${choice}?")" == " Yes" ]]; then
-            systemctl reboot
-        else
-            output "User chose not to reboot." && exit 0
-        fi
-        ;;
-    '⏻ Shutdown')
-        if [[ "$(echo -e " No\n Yes" | dmenu -p "${choice}?")" == " Yes" ]]; then
-            systemctl poweroff
-        else
-            output "User chose not to shutdown." && exit 0
-        fi
-        ;;
-    '󰒲 Suspend')
-        if [[ "$(echo -e " No\n Yes" | dmenu -p "${choice}?")" == " Yes" ]]; then
-            systemctl suspend
-        else
-            output "User chose not to suspend." && exit 0
-        fi
-        ;;
-    ' Quit')
-        output "Program terminated." && exit 0
-        ;;
-    *)
+    if [[ -z $choice ]]; then
         exit 0
-        ;;
+    fi
+
+    case ${actions["$choice"]} in
+        logout)
+            if [[ "$(confirm_action "$choice")" == " Yes" ]]; then
+                loginctl kill-user "$UID"
+            else
+                exit 1
+            fi
+            ;;
+        lock)
+            slock
+            ;;
+        reboot)
+            if [[ "$(confirm_action "$choice")" == " Yes" ]]; then
+                systemctl reboot
+            else
+                exit 0
+            fi
+            ;;
+        shutdown)
+            if [[ "$(confirm_action "$choice")" == " Yes" ]]; then
+                systemctl poweroff
+            else
+                exit 0
+            fi
+            ;;
+        suspend)
+            if [[ "$(confirm_action "$choice")" == " Yes" ]]; then
+                systemctl suspend
+            else
+                exit 0
+            fi
+            ;;
+        quit)
+            ;;
+        *)
+            exit 0
+            ;;
     esac
 }
 
-# Ensure this script is executed only when directly run, not sourced
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main

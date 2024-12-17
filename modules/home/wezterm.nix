@@ -14,6 +14,8 @@
                 config = {
                     color_scheme = 'everforest',
 
+                    max_fps = 240,
+
                     -- font = wezterm.font 'CaskaydiaCove Nerd Font'
                     font = wezterm.font 'JetBrainsMono Nerd Font',
                     font_size = 10.9,
