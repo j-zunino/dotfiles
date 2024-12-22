@@ -134,6 +134,7 @@
                 animate_manual_resizes = true;
                 # font_family = "CaskaydiaMono Nerd Font";
                 font_family = "JetBrainsMono Nerd Font";
+                disable_hyprland_qtutils_check = true;
             };
 
             cursor = {
