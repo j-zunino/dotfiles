@@ -237,6 +237,13 @@ return {
                     border = 'single',
                 },
             },
+
+            input = {
+                enabled = true,
+                win = {
+                    border = 'single',
+                },
+            },
         })
     end,
 }
