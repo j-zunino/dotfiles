@@ -11,11 +11,11 @@ in
     programs.spicetify = {
         enable = true;
         enabledExtensions = with spicePkgs.extensions; [
-            adblock
+            # adblock
             hidePodcasts
         ];
 
-        theme = spicePkgs.themes.text;
-        colorScheme = "text";
+        # theme = spicePkgs.themes.text;
+        # colorScheme = "text";
     };
 }

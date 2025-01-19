@@ -18,7 +18,7 @@
 
     time.timeZone = "America/Argentina/Buenos_Aires";
 
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
     security.rtkit.enable = true;
 
     i18n = {

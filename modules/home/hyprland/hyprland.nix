@@ -20,32 +20,7 @@
             ];
 
             # - [ AUTOSTART ] -
-            "exec-once" = "sleep 5 & waybar & wpaperd & hyprctl setcursor yaru 24";
-
-            # - [ COLORS ] -
-            "$bg_dim" = "rgb(232a2e)"; #232a2e
-            "$bg0" =    "rgb(2d353b)"; #2d353b
-            "$bg1" =    "rgb(343f44)"; #343f44
-            "$bg2" =    "rgb(3d484d)"; #3d484d
-            "$bg3" =    "rgb(475258)"; #475258
-            "$bg4" =    "rgb(4f585e)"; #4f585e
-            "$bg5" =    "rgb(56635f)"; #56635f
-
-            "$gray0" =  "rgb(7a8478)"; #7a8478
-            "$gray1" =  "rgb(859289)"; #859289
-            "$gray2" =  "rgb(9da9a0)"; #9da9a0
-
-            "$fg" =     "rgb(d3c6aa)"; #d3c6aa
-
-            "$red" =    "rgb(e67e80)"; #e67e80
-            "$orange" = "rgb(e69875)"; #e69875
-            "$yellow" = "rgb(dbbc7f)"; #dbbc7f
-            "$green" =  "rgb(a7c080)"; #a7c080
-            "$blue" =   "rgb(7fbbb3)"; #7fbbb3
-            "$aqua" =   "rgb(83c092)"; #83c092
-            "$purple" = "rgb(d699b6)"; #d699b6
-
-
+            "exec-once" = "waybar & wpaperd";
 
             # - [ MONITORS ] -
             monitor = ",preferred,auto,auto";
@@ -64,9 +39,6 @@
 
                 border_size = 2;
                 resize_on_border = true;
-
-                "col.active_border" = "$green";
-                "col.inactive_border" = "$bg_dim";
             };
 
 
@@ -132,8 +104,6 @@
                 disable_hyprland_logo = true;
                 disable_splash_rendering = true;
                 animate_manual_resizes = true;
-                # font_family = "CaskaydiaMono Nerd Font";
-                font_family = "JetBrainsMono Nerd Font";
                 disable_hyprland_qtutils_check = true;
             };
 

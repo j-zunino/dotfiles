@@ -9,5 +9,6 @@
         ./fonts.nix
         # ./gaming.nix
         ./ly.nix
+        ../stylix.nix
     ];
 }

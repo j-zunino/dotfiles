@@ -12,5 +12,7 @@
         ./wezterm.nix
         ./dunst.nix
         ./rofi.nix
+        ../stylix.nix
+        ./stylix-themes.nix
     ];
 }

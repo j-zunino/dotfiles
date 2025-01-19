@@ -18,6 +18,8 @@
         hyprland.url = "github:hyprwm/Hyprland";
 
         wezterm.url = "github:wez/wezterm?dir=nix";
+
+        stylix.url = "github:danth/stylix";
     };
 
     outputs = inputs @ { nixpkgs, flake-utils, home-manager, ... }:{
@@ -28,6 +30,7 @@
                 modules = [
                     ./nixos/configuration.nix
                     ./nixos/hardware-configuration.nix
+                    inputs.stylix.nixosModules.stylix
                 ];
             };
         };
@@ -38,6 +41,7 @@
                 extraSpecialArgs = { inherit inputs; };
                 modules = [
                     ./home/home.nix
+                    inputs.stylix.homeManagerModules.stylix
                 ];
             };
         };

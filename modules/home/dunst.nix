@@ -17,17 +17,12 @@
                     offset = "15x15";
                     origin = "top-right";
                     alignment = "left";
-                    progress_bar = true;
+                    progress_bar = false;
 
                     transparency = 10;
-                    background = "#2d353b";
-                    foreground = "#d3c6aa";
                     frame_width = 2;
-                    frame_color = "#a7c080";
                     gap_size = 8;
 
-                    # font = "CaskaydiaCove Nerd Font";
-                    font = "JetBrainsMono Nerd Font";
                     notification_limit = 5;
                 };
             };
