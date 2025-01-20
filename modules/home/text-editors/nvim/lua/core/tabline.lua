@@ -6,13 +6,6 @@ _G.tab_offset = 1
 _G.scroll_offset = 2
 _G.max_visible_tabs = 6
 
-vim.cmd([[
-    highlight MyTabLine guibg=NONE guifg=#4f585e
-    highlight MyTabLineSel guibg=NONE guifg=#a7c080 gui=bold
-    highlight MyTabLineSeparator guibg=NONE guifg=#475258
-    highlight MyScrollIcon guibg=NONE guifg=#4f585e
-]])
-
 function ToggleIcons()
     _G.show_icons = not _G.show_icons
     UpdateTabline()

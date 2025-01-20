@@ -118,14 +118,6 @@ return {
                 {
                     event = 'neo_tree_buffer_enter',
                     handler = function()
-                        vim.cmd("highlight NeoTreeCursorLine guibg='#425047'")
-                        vim.cmd(
-                            "highlight NormalFloat guibg='NONE' guifg='#859289'"
-                        )
-                        vim.cmd("highlight NeoTreeFloatBorder guibg='NONE'")
-                        vim.cmd(
-                            "highlight NeoTreeFloatTitle guibg='NONE' guifg='#859289'"
-                        )
                         hideCursor()
                     end,
                 },
@@ -139,9 +131,6 @@ return {
                 {
                     event = 'neo_tree_buffer_leave',
                     handler = function()
-                        vim.cmd(
-                            "highlight NormalFloat guibg='#3d484d' guifg='#d3c6aa'"
-                        )
                         showCursor()
                     end,
                 },

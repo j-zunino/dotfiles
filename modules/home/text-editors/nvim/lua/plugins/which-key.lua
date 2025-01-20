@@ -49,5 +49,9 @@ return {
             { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
             { '<leader>b', group = 'Buffers', mode = { 'n' } },
         },
+
+        win = {
+            border = 'single',
+        },
     },
 }

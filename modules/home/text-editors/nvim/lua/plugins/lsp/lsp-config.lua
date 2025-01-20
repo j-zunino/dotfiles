@@ -14,6 +14,11 @@ return {
         local mason_lspconfig = require('mason-lspconfig')
         local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
+        vim.lsp.handlers['textDocument/hover'] =
+            vim.lsp.with(vim.lsp.handlers.hover, {
+                border = 'single',
+            })
+
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),
             callback = function(event)

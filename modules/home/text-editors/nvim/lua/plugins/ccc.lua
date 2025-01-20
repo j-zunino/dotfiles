@@ -55,8 +55,5 @@ return {
                 S = mapping.set0,
             },
         })
-
-        vim.cmd("highlight CccFloatNormal guibg='NONE'")
-        vim.cmd("highlight CccFloatBorder guibg='NONE' guifg='#859289'")
     end,
 }

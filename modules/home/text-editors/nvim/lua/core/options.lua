@@ -56,7 +56,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 --     callback = toggle_trailing_whitespace_highlight,
 -- })
 
-vim.opt.statuscolumn = '%=%{v:relnum?v:relnum:v:lnum} %s'
+-- vim.opt.statuscolumn = '%=%{v:relnum?v:relnum:v:lnum} %s'
 
 vim.opt.inccommand = 'split'
 

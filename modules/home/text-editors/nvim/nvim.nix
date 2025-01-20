@@ -15,7 +15,6 @@
             lua-language-server
             typescript
             typescript-language-server
-            lazygit
             emmet-ls
             eslint_d
             vscode-langservers-extracted
@@ -24,6 +23,7 @@
             vale
             chafa
             tty-clock
+            bat
         ];
 
         file."/home/juan/dotfiles/.stylua.toml".text = ''
