@@ -40,6 +40,17 @@ return {
                 end, {}),
             }),
         })
+        luasnip.add_snippets('typescriptreact', {
+            postfix({
+                trig = '/',
+                name = 'React component tag',
+                desc = 'Auto-complete React component tag',
+            }, {
+                f(function(_, parent)
+                    return '<' .. parent.snippet.env.POSTFIX_MATCH .. ' />'
+                end, {}),
+            }),
+        })
 
         vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'NONE' })
         cmp.setup({
