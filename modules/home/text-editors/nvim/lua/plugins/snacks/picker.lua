@@ -1,11 +1,61 @@
 local opts = { noremap = true, silent = true }
 
--- vim.keymap.set(
---     'n',
---     '<leader>sc',
---     builtin.spell_suggest,
---     { desc = 'Spell suggest Telescope' }
--- )
+local custom_layout = {
+    reverse = true,
+    layout = {
+        box = 'horizontal',
+        backdrop = false,
+        width = 0.8,
+        height = 0.9,
+        border = 'none',
+        {
+            box = 'vertical',
+            border = 'single',
+            title = ' Results ',
+            title_pos = 'center',
+            { win = 'list', border = 'none' },
+            {
+                win = 'input',
+                title = '{title} {live} {flags}',
+                title_pos = 'center',
+                height = 1,
+                border = 'top',
+            },
+        },
+        {
+            win = 'preview',
+            title = '{preview}',
+            width = 0.45,
+            border = 'single',
+            title_pos = 'center',
+        },
+    },
+}
+
+local cursor_layout = {
+    reverse = false,
+    layout = {
+        relative = 'cursor',
+        box = 'horizontal',
+        backdrop = false,
+        width = 60,
+        height = 10,
+        row = 1,
+        border = 'none',
+        {
+            box = 'vertical',
+            border = 'single',
+            title = ' Spelling Suggestions ',
+            title_pos = 'center',
+            {
+                win = 'input',
+                height = 1,
+                border = 'none',
+            },
+            { win = 'list', border = 'top' },
+        },
+    },
+}
 
 opts.desc = 'Search files'
 vim.keymap.set('n', '<leader>sf', ':lua Snacks.picker.files()<CR>', opts)
@@ -50,3 +100,21 @@ vim.keymap.set(
     ':lua Snacks.picker.grep_word()<CR>',
     opts
 )
+
+opts.desc = 'Spelling suggestions'
+vim.keymap.set('n', '<leader>ss', function()
+    Snacks.picker.spelling({
+        layout = cursor_layout,
+        -- confirm = 'item_action',
+    })
+end, opts)
+
+opts.desc = 'Search icons'
+vim.keymap.set('n', '<leader>si', ':lua Snacks.picker.icons()<CR>', opts)
+
+opts.desc = 'Search projects'
+vim.keymap.set('n', '<leader>sp', ':lua Snacks.picker.projects()<CR>', opts)
+
+return {
+    custom_layout = custom_layout,
+}

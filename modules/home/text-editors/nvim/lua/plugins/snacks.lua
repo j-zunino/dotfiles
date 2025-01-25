@@ -9,45 +9,12 @@ return {
         require('plugins.snacks.notifier')
         require('plugins.snacks.terminal')
         require('plugins.snacks.lazygit')
-        require('plugins.snacks.picker')
+        local picker = require('plugins.snacks.picker')
 
         -- dashboard
         local maxIndex = 10
         math.randomseed(os.time())
         local randomNumber = math.random(1, maxIndex)
-
-        -- picker
-        local custom_layout = {
-            reverse = true,
-            layout = {
-                box = 'horizontal',
-                backdrop = false,
-                width = 0.8,
-                height = 0.9,
-                border = 'none',
-                {
-                    box = 'vertical',
-                    border = 'single',
-                    title = ' Results ',
-                    title_pos = 'center',
-                    { win = 'list', border = 'none' },
-                    {
-                        win = 'input',
-                        title = '{title} {live} {flags}',
-                        title_pos = 'center',
-                        height = 1,
-                        border = 'top',
-                    },
-                },
-                {
-                    win = 'preview',
-                    title = '{preview}',
-                    width = 0.45,
-                    border = 'single',
-                    title_pos = 'center',
-                },
-            },
-        }
 
         snacks.setup({
             bufdelete = { enabled = true },
@@ -149,7 +116,12 @@ return {
             picker = {
                 enabled = true,
                 prompt = '  ',
-                layout = custom_layout,
+                layout = picker.custom_layout,
+                formatters = {
+                    file = {
+                        truncate = 40,
+                    },
+                },
                 win = {
                     input = {
                         keys = {

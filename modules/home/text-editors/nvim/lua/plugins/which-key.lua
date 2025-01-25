@@ -41,7 +41,7 @@ return {
             { '<leader>c', group = 'Code', mode = { 'n', 'x' } },
             { '<leader>d', group = 'Document', mode = { 'n' } },
             { '<leader>r', group = 'Rename', mode = { 'n' } },
-            { '<leader>s', group = 'Telescope', mode = { 'n' } },
+            { '<leader>s', group = 'Picker', mode = { 'n' } },
             { '<leader>w', group = 'Workspace', mode = { 'n' } },
             { '<leader>t', group = 'Vtsls', mode = { 'n' } },
             { '<leader>l', group = 'LazyGit', mode = { 'n' } },
