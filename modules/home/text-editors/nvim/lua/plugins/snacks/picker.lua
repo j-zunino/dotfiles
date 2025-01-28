@@ -115,6 +115,9 @@ vim.keymap.set('n', '<leader>si', ':lua Snacks.picker.icons()<CR>', opts)
 opts.desc = 'Search projects'
 vim.keymap.set('n', '<leader>sp', ':lua Snacks.picker.projects()<CR>', opts)
 
+opts.desc = 'Search colorschemes'
+vim.keymap.set('n', '<leader>sc', ':lua Snacks.picker.colorschemes()<CR>', opts)
+
 return {
     custom_layout = custom_layout,
 }
