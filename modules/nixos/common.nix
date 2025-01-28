@@ -40,4 +40,6 @@
     console = {
         keyMap = "la-latin1";
     };
+
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
