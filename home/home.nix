@@ -46,6 +46,7 @@
             cargo
             hyprshot
             godot_4
+            nautilus
 
             # prismlauncher
         ];

@@ -9,6 +9,7 @@
             "$mod_shift" = "SUPER_SHIFT";
 
             "$browser" = "brave";
+            "$file-explorer" = "nautilus";
             "$terminal" = "wezterm";
             "$menu" = "rofi -show run";
 
@@ -117,6 +118,7 @@
                 "$mod, Q, exec, $terminal"
                 "$mod, P, exec, $menu"
                 "$mod_shift, RETURN, exec, $terminal"
+                "$mod, E, exec, $file-explorer"
 
                 "$mod_shift, C, killactive"
                 "$mod_shift, Q, exit"
