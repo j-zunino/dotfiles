@@ -60,7 +60,7 @@ local cursor_layout = {
 local explorer_layout = {
     reverse = false,
     layout = {
-        box = 'horizontal',
+        box = 'vertical',
         backdrop = false,
         width = 0.5,
         height = 0.9,
@@ -83,7 +83,7 @@ local explorer_layout = {
 }
 
 opts.desc = 'File explorer'
-vim.keymap.set('n', '<leader>sv', function()
+vim.keymap.set('n', '<C-e>', function()
     Snacks.picker.explorer({
         layout = explorer_layout,
         auto_close = true,

@@ -122,6 +122,14 @@ return {
                         truncate = 40,
                     },
                 },
+
+                icons = {
+                    tree = {
+                        vertical = '   ',
+                        middle = '   ',
+                        last = '   ',
+                    },
+                },
                 win = {
                     input = {
                         keys = {
