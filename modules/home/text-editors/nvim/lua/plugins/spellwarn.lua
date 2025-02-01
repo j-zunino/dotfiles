@@ -2,13 +2,7 @@ return {
     'ravibrock/spellwarn.nvim',
     lazy = true,
     event = {
-        'BufReadPre',
-        'BufNewFile',
-        'CursorHold',
         'InsertLeave',
-        'TextChanged',
-        'TextChangedI',
-        'TextChangedP',
     },
     config = function()
         require('spellwarn').setup({
