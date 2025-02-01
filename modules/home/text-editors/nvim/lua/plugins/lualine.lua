@@ -5,6 +5,44 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
         local lualine = require('lualine')
+
+        local icons = {
+            Error = ' ',
+            Warn = ' ',
+            Hint = '󰌵 ',
+            Info = ' ',
+
+            Added = '󱇬 ',
+            Modified = ' ',
+            Removed = ' ',
+        }
+
+        local filetype = { 'filetype', icon_only = true }
+
+        local diagnostics = {
+            'diagnostics',
+            colored = true,
+            sections = { 'error', 'warn', 'info', 'hint' },
+            symbols = {
+                error = icons.Error,
+                warn = icons.Warn,
+                info = icons.Info,
+                hint = icons.Hint,
+            },
+        }
+
+        local diff = {
+            'diff',
+            colored = true,
+            symbols = {
+                added = icons.Added,
+                modified = icons.Modified,
+                changed = icons.Modified,
+                changed_deleted = icons.Modified,
+                removed = icons.Removed,
+            },
+        }
+
         lualine.setup({
             options = {
                 icons_enabled = true,
@@ -18,19 +56,19 @@ return {
             },
             sections = {
                 lualine_a = { 'mode' },
-                lualine_b = { 'branch', 'diff', 'diagnostics' },
-                lualine_c = { 'filename' },
-                lualine_x = { 'filetype' },
-                lualine_y = { 'progress' },
-                lualine_z = { 'location' },
+                lualine_b = { '' },
+                lualine_c = { 'branch' },
+                lualine_x = { diff, diagnostics, filetype },
+                lualine_y = { '' },
+                lualine_z = { '' },
             },
             inactive_sections = {
-                lualine_a = { 'filename', 'diff', 'diagnostics' },
-                lualine_b = { '' },
-                lualine_c = { '' },
-                lualine_x = { '' },
-                lualine_y = { 'filetype' },
-                lualine_z = { 'location' },
+                lualine_a = { '*' },
+                lualine_b = { '*' },
+                lualine_c = { '*' },
+                lualine_x = { '*' },
+                lualine_y = { '*' },
+                lualine_z = { '*' },
             },
         })
     end,
