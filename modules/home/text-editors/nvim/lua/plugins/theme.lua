@@ -59,7 +59,8 @@ return {
     },
     {
         'ellisonleao/gruvbox.nvim',
-        priority = 1000,
+        lazy = true,
+        -- priority = 1000,
         config = function()
             require('gruvbox').setup({
                 italic = {
