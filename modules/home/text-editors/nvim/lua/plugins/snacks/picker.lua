@@ -57,6 +57,46 @@ local cursor_layout = {
     },
 }
 
+local explorer_layout = {
+    reverse = false,
+    layout = {
+        box = 'horizontal',
+        backdrop = false,
+        width = 0.5,
+        height = 0.9,
+        border = 'none',
+        {
+            box = 'vertical',
+            border = 'single',
+            title = '{title} {live} {flags}',
+            title_pos = 'center',
+            { win = 'list', border = 'none' },
+            {
+                win = 'input',
+                title = ' Filter ',
+                title_pos = 'center',
+                height = 1,
+                border = 'top',
+            },
+        },
+    },
+}
+
+opts.desc = 'File explorer'
+vim.keymap.set('n', '<leader>sv', function()
+    Snacks.picker.explorer({
+        layout = explorer_layout,
+        auto_close = true,
+        win = {
+            list = {
+                keys = {
+                    ['l'] = 'confirm',
+                },
+            },
+        },
+    })
+end, opts)
+
 opts.desc = 'Search files'
 vim.keymap.set('n', '<leader>sf', ':lua Snacks.picker.files()<CR>', opts)
 
@@ -120,4 +160,5 @@ vim.keymap.set('n', '<leader>sc', ':lua Snacks.picker.colorschemes()<CR>', opts)
 
 return {
     custom_layout = custom_layout,
+    explorer_layout = explorer_layout,
 }

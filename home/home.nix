@@ -47,6 +47,7 @@
             hyprshot
             godot_4
             nautilus
+            fd
 
             # prismlauncher
         ];

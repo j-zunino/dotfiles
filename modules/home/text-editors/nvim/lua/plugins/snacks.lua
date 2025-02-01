@@ -143,6 +143,9 @@ return {
                             },
                         },
                     },
+                    b = {
+                        minipairs_disable = true,
+                    },
                 },
             },
         })
