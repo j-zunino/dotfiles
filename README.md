@@ -3,4 +3,25 @@
 </p>
 <h1 align='center'>NixOS</h1>
 
-just my NixOS and Home-manager configuration.
+<img src='./.github/screenshots/1.png'>
+
+## Info
+
+| Component           |                         |
+| ------------------- | ----------------------- |
+| Shell               | Zsh                     |
+| Terminal            | WezTerm                 |
+| Editor              | Neovim                  |
+| Display Manager     | Ly                      |
+| Display Server      | Wayland                 |
+| Window Manager      | Hyprland                |
+| Bar                 | Waybar                  |
+| Launcher            | Rofi                    |
+| Notification Daemon | Dunst                   |
+| File Explorer       | Yazi / Nautilus         |
+| Browser             | Brave                   |
+| Theme               | Everforest              |
+| Font                | JetBrainsMono Nerd Font |
+| Screenshots         | Hyprshot                |
+| Color Picker        | Hyprpicker              |
+| Wallpaper           | Wpaperd                 |
