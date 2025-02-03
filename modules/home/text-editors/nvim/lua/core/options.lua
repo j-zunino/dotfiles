@@ -64,3 +64,5 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
 vim.opt.backspace = 'indent,eol,start'
+
+vim.opt.pumheight = 15

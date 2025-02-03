@@ -109,10 +109,12 @@ return {
             }),
 
             sources = {
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' },
-                { name = 'buffer' },
-                { name = 'path' },
+                { name = 'nvim_lsp', keyword_lenth = 0 },
+                { name = 'path', keyword_lenth = 2 },
+                { name = 'luasnip', keyword_lenth = 0 },
+
+                { name = 'buffer', keyword_lenth = 4 },
+                { name = 'spell', keyword_lenth = 4 },
             },
 
             formatting = {
