@@ -115,6 +115,7 @@ return {
 
             picker = {
                 enabled = true,
+                hidden = true,
                 prompt = '  ',
                 layout = picker.custom_layout,
                 formatters = {
