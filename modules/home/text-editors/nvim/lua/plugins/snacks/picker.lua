@@ -1,10 +1,9 @@
 local opts = { noremap = true, silent = true }
 
-local custom_layout = {
+local picker_layout = {
     reverse = true,
     layout = {
         box = 'horizontal',
-        backdrop = false,
         width = 0.8,
         height = 0.9,
         border = 'none',
@@ -15,30 +14,29 @@ local custom_layout = {
             title_pos = 'center',
             { win = 'list', border = 'none' },
             {
+                height = 1,
                 win = 'input',
+                border = 'top',
                 title = '{title} {live} {flags}',
                 title_pos = 'center',
-                height = 1,
-                border = 'top',
             },
         },
         {
             win = 'preview',
             title = '{preview}',
-            width = 0.45,
+            width = 0.5,
             border = 'single',
             title_pos = 'center',
         },
     },
 }
 
-local cursor_layout = {
+local spelling_layout = {
     reverse = false,
     layout = {
         relative = 'cursor',
         box = 'horizontal',
-        backdrop = false,
-        width = 60,
+        width = 40,
         height = 10,
         row = 1,
         border = 'none',
@@ -48,8 +46,8 @@ local cursor_layout = {
             title = ' Spelling Suggestions ',
             title_pos = 'center',
             {
-                win = 'input',
                 height = 1,
+                win = 'input',
                 border = 'none',
             },
             { win = 'list', border = 'top' },
@@ -60,42 +58,35 @@ local cursor_layout = {
 local explorer_layout = {
     reverse = false,
     layout = {
-        box = 'vertical',
-        backdrop = false,
+        box = 'horizontal',
+        zindex = 10,
         width = 0.5,
         height = 0.9,
-        border = 'none',
         {
             box = 'vertical',
             border = 'single',
             title = '{title} {live} {flags}',
             title_pos = 'center',
-            { win = 'list', border = 'none' },
             {
+                height = 1,
                 win = 'input',
+                border = 'none',
                 title = ' Filter ',
                 title_pos = 'center',
-                height = 1,
+            },
+            { win = 'list', border = 'top' },
+            {
+                win = 'preview',
                 border = 'top',
+                title = '{preview}',
+                title_pos = 'center',
             },
         },
     },
 }
 
 opts.desc = 'File explorer'
-vim.keymap.set('n', '<C-e>', function()
-    Snacks.picker.explorer({
-        layout = explorer_layout,
-        auto_close = true,
-        win = {
-            list = {
-                keys = {
-                    ['l'] = 'confirm',
-                },
-            },
-        },
-    })
-end, opts)
+vim.keymap.set('n', '<C-e>', ':lua Snacks.picker.explorer()<CR>', opts)
 
 opts.desc = 'Search files'
 vim.keymap.set('n', '<leader>sf', ':lua Snacks.picker.files()<CR>', opts)
@@ -142,12 +133,7 @@ vim.keymap.set(
 )
 
 opts.desc = 'Spelling suggestions'
-vim.keymap.set('n', '<leader>ss', function()
-    Snacks.picker.spelling({
-        layout = cursor_layout,
-        -- confirm = 'item_action',
-    })
-end, opts)
+vim.keymap.set('n', '<leader>ss', ':lua Snacks.picker.spelling()<CR>', opts)
 
 opts.desc = 'Search icons'
 vim.keymap.set('n', '<leader>si', ':lua Snacks.picker.icons()<CR>', opts)
@@ -159,6 +145,7 @@ opts.desc = 'Search colorschemes'
 vim.keymap.set('n', '<leader>sc', ':lua Snacks.picker.colorschemes()<CR>', opts)
 
 return {
-    custom_layout = custom_layout,
+    picker_layout = picker_layout,
+    spelling_layout = spelling_layout,
     explorer_layout = explorer_layout,
 }

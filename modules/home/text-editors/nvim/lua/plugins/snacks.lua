@@ -117,13 +117,12 @@ return {
                 enabled = true,
                 hidden = true,
                 prompt = '  ',
-                layout = picker.custom_layout,
+                layout = picker.picker_layout,
                 formatters = {
                     file = {
                         truncate = 40,
                     },
                 },
-
                 icons = {
                     tree = {
                         vertical = '   ',
@@ -131,7 +130,21 @@ return {
                         last = '   ',
                     },
                 },
+                sources = {
+                    spelling = {
+                        layout = picker.spelling_layout,
+                    },
+                    explorer = {
+                        follow_file = true,
+                        auto_close = true,
+                        jump = { close = false },
+                        layout = picker.explorer_layout,
+                    },
+                },
                 win = {
+                    b = {
+                        minipairs_disable = true,
+                    },
                     input = {
                         keys = {
                             ['<c-d>'] = {
@@ -151,9 +164,6 @@ return {
                                 mode = { 'i', 'n' },
                             },
                         },
-                    },
-                    b = {
-                        minipairs_disable = true,
                     },
                 },
             },
