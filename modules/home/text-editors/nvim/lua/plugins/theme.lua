@@ -94,6 +94,7 @@ return {
     },
     {
         'rose-pine/neovim',
+        lazy = true,
         config = function()
             require('rose-pine').setup({
                 variant = 'main',
