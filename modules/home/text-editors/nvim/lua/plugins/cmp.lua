@@ -13,12 +13,10 @@ return {
         },
         'saadparwaiz1/cmp_luasnip',
         'rafamadriz/friendly-snippets',
-        'onsails/lspkind.nvim',
     },
     config = function()
         local cmp = require('cmp')
         local luasnip = require('luasnip')
-        local lspkind = require('lspkind')
         local f = luasnip.function_node
         local postfix = require('luasnip.extras.postfix').postfix
 
@@ -116,12 +114,87 @@ return {
                 { name = 'buffer', keyword_lenth = 4 },
                 { name = 'spell', keyword_lenth = 4 },
             },
-
             formatting = {
-                format = lspkind.cmp_format({
-                    max_width = 50,
-                    elllipsis_char = '...',
-                }),
+                format = function(entry, vim_item)
+                    local KIND_ICONS = {
+                        Text = '󰉿',
+                        Method = '󰆧',
+                        Function = '󰊕',
+                        Constructor = '',
+                        Field = '󰜢',
+                        Variable = '󰀫',
+                        Class = '󰠱',
+                        Interface = '',
+                        Module = '',
+                        Property = '󰜢',
+                        Unit = '󰑭',
+                        Value = '󰎠',
+                        Enum = '',
+                        Keyword = '󰌋',
+                        Snippet = '',
+                        Color = '󰏘',
+                        File = '󰈙',
+                        Reference = '󰈇',
+                        Folder = '󰉋',
+                        EnumMember = '',
+                        Constant = '󰏿',
+                        Struct = '󰙅',
+                        Event = '',
+                        Operator = '󰆕',
+                        TypeParameter = '',
+                        Tailwind = '󰹞󰹞󰹞󰹞󰹞󰹞󰹞󰹞',
+                    }
+                    if
+                        vim_item.kind == 'Color'
+                        and entry.completion_item.documentation
+                    then
+                        local _, _, r, g, b =
+                            ---@diagnostic disable-next-line: param-type-mismatch
+                            string.find(
+                                entry.completion_item.documentation,
+                                '^rgb%((%d+), (%d+), (%d+)'
+                            )
+                        local color
+
+                        if r and g and b then
+                            color = string.format('%02x', r)
+                                .. string.format('%02x', g)
+                                .. string.format('%02x', b)
+                        else
+                            color = entry.completion_item.documentation:gsub(
+                                '#',
+                                ''
+                            )
+                        end
+                        local group = 'Tw_' .. color
+
+                        if
+                            vim.api.nvim_call_function('hlID', { group }) < 1
+                        then
+                            vim.api.nvim_command(
+                                'highlight'
+                                    .. ' '
+                                    .. group
+                                    .. ' '
+                                    .. 'guifg=#'
+                                    .. color
+                            )
+                        end
+
+                        vim_item.kind = KIND_ICONS.Tailwind
+                        vim_item.kind_hl_group = group
+
+                        return vim_item
+                    end
+
+                    vim_item.kind = string.format(
+                        '%s %s',
+                        KIND_ICONS[vim_item.kind] or '',
+                        vim_item.kind
+                    )
+
+                    return vim_item
+                end,
             },
         })
     end,
