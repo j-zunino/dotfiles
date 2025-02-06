@@ -25,6 +25,7 @@ return {
                 'css',
                 'javascript',
                 'typescript',
+                'jsx',
                 'tsx',
                 'lua',
                 'luadoc',

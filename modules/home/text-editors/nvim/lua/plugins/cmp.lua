@@ -6,13 +6,13 @@ return {
     dependencies = {
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
+        'saadparwaiz1/cmp_luasnip',
+        'rafamadriz/friendly-snippets',
         {
             'L3MON4D3/LuaSnip',
             version = 'v2.*',
             build = 'make install_jsregexp',
         },
-        'saadparwaiz1/cmp_luasnip',
-        'rafamadriz/friendly-snippets',
     },
     config = function()
         local cmp = require('cmp')
@@ -144,6 +144,7 @@ return {
                         TypeParameter = '',
                         Tailwind = '󰹞󰹞󰹞󰹞󰹞󰹞󰹞󰹞',
                     }
+
                     if
                         vim_item.kind == 'Color'
                         and entry.completion_item.documentation

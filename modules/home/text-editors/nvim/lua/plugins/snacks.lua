@@ -134,6 +134,11 @@ return {
                     spelling = {
                         layout = picker.spelling_layout,
                     },
+                    select = {
+                        config = function(opts)
+                            opts.layout.layout.height = 10
+                        end,
+                    },
                     explorer = {
                         follow_file = true,
                         auto_close = true,
