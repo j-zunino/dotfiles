@@ -11,7 +11,6 @@ return {
 
     config = function()
         local lspconfig = require('lspconfig')
-        local mason_lspconfig = require('mason-lspconfig')
         local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
         vim.diagnostic.config({
@@ -154,74 +153,75 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
         end
 
-        mason_lspconfig.setup_handlers({
-            function(server_name)
-                lspconfig[server_name].setup({
-                    capabilities = capabilities,
-                })
-            end,
-
-            ['vtsls'] = function()
-                lspconfig['vtsls'].setup({
-                    capabilities = capabilities,
-                    -- handlers = {
-                    --     source_definition = function(err, locations) end,
-                    --     file_references = function(err, locations) end,
-                    --     code_action = function(err, actions) end,
-                    -- },
-                    filetypes = {
-                        'javascript',
-                        'javascriptreact',
-                        'javascript.jsx',
-                        'typescript',
-                        'typescriptreact',
-                        'typescript.tsx',
+        lspconfig['lua_ls'].setup({
+            capabilities = capabilities,
+            cmd = { '/home/juan/.nix-profile/bin/lua-language-server' },
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { 'vim' },
                     },
-                })
-            end,
-
-            ['emmet_ls'] = function()
-                lspconfig['emmet_ls'].setup({
-                    capabilities = capabilities,
-                    filetypes = {
-                        'html',
-                        'css',
-                        'sass',
-                        'scss',
-                        -- 'javascript',
-                        -- 'typescript',
-                        'javascriptreact',
-                        'typescriptreact',
+                    completion = {
+                        callSnippet = 'Replace',
                     },
-                })
-            end,
+                },
+            },
+        })
 
-            ['lua_ls'] = function()
-                lspconfig['lua_ls'].setup({
-                    capabilities = capabilities,
-                    cmd = { '/home/juan/.nix-profile/bin/lua-language-server' },
-                    settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = { 'vim' },
-                            },
-                            completion = {
-                                callSnippet = 'Replace',
-                            },
-                        },
-                    },
-                })
-            end,
+        lspconfig['html'].setup({
+            capabilities = capabilities,
+        })
 
-            ['cssls'] = function()
-                lspconfig['cssls'].setup({
-                    capabilities = capabilities,
-                    cmd = {
-                        '/home/juan/.nix-profile/bin/vscode-css-language-server',
-                        '--stdio',
-                    },
-                })
-            end,
+        lspconfig['cssls'].setup({
+            capabilities = capabilities,
+            cmd = {
+                '/home/juan/.nix-profile/bin/vscode-css-language-server',
+                '--stdio',
+            },
+        })
+
+        lspconfig['emmet_ls'].setup({
+            capabilities = capabilities,
+            filetypes = {
+                'html',
+                'css',
+                'sass',
+                'scss',
+                -- 'javascript',
+                -- 'typescript',
+                'javascriptreact',
+                'typescriptreact',
+            },
+        })
+
+        lspconfig['tailwindcss'].setup({
+            capabilities = capabilities,
+            cmd = {
+                '/home/juan/.nix-profile/bin/tailwindcss-language-server',
+                '--stdio',
+            },
+            filetypes = {
+                'html',
+                'javascript',
+                'javascriptreact',
+                'typescript',
+                'typescriptreact',
+            },
+        })
+
+        lspconfig['vtsls'].setup({
+            capabilities = capabilities,
+            -- handlers = {
+            --     source_definition = function(err, locations) end,
+            --     file_references = function(err, locations) end,
+            --     code_action = function(err, actions) end,
+            -- },
+            filetypes = {
+                'javascript',
+                'javascriptreact',
+                'typescript',
+                'typescriptreact',
+            },
         })
     end,
 }

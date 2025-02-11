@@ -2,6 +2,7 @@ return {
     'williamboman/mason.nvim',
     lazy = true,
     event = { 'BufReadPre', 'BufNewFile' },
+    enabled = false,
     -- event = 'LspAttach',
     cmd = 'Mason',
     dependencies = {

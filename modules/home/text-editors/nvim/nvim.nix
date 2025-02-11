@@ -19,6 +19,7 @@
             eslint_d
             vscode-langservers-extracted
             tailwindcss-language-server
+            vtsls
             python313
             vale
             chafa
