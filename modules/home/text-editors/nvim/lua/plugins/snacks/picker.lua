@@ -59,7 +59,6 @@ local explorer_layout = {
     reverse = false,
     layout = {
         box = 'horizontal',
-        zindex = 10,
         width = 0.5,
         height = 0.9,
         {
@@ -86,7 +85,7 @@ local explorer_layout = {
 }
 
 opts.desc = 'File explorer'
-vim.keymap.set('n', '<C-e>', ':lua Snacks.picker.explorer()<CR>', opts)
+vim.keymap.set('n', '<C-e>', ':lua Snacks.explorer.open()<CR>', opts)
 
 opts.desc = 'Search files'
 vim.keymap.set('n', '<leader>sf', ':lua Snacks.picker.files()<CR>', opts)

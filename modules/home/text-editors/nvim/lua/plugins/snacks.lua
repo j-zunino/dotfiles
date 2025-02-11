@@ -1,6 +1,6 @@
 return {
     'folke/snacks.nvim',
-    priority = 500,
+    priority = 1000,
     lazy = false,
     config = function()
         local snacks = require('snacks')
@@ -113,6 +113,11 @@ return {
                 },
             },
 
+            explorer = {
+                enabled = true,
+                replace_netrw = true,
+                follow_file = true,
+            },
             picker = {
                 enabled = true,
                 hidden = true,

@@ -25,6 +25,7 @@
             chafa
             tty-clock
             bat
+            fd
         ];
 
         file."/home/juan/dotfiles/.stylua.toml".text = ''

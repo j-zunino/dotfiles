@@ -23,7 +23,7 @@ return {
 
         require('tailwind-sorter').setup({
             on_save_enabled = true,
-            trim_spaces = true,
+            trim_spaces = false,
         })
     end,
 }

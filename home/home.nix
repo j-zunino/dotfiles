@@ -46,7 +46,6 @@
             hyprshot
             godot_4
             nautilus
-            fd
             firefox
 
             # prismlauncher
