@@ -14,5 +14,6 @@
         ./rofi.nix
         ../stylix.nix
         ./stylix-themes.nix
+        ./browser.nix
     ];
 }

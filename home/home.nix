@@ -38,7 +38,6 @@
             pnpm
             ripgrep
             tree
-            brave
             discord
             gimp
             inkscape
@@ -48,6 +47,7 @@
             godot_4
             nautilus
             fd
+            firefox
 
             # prismlauncher
         ];
