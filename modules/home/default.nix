@@ -15,5 +15,6 @@
         ../stylix.nix
         ./stylix-themes.nix
         ./browser.nix
+        ./zoxide.nix
     ];
 }

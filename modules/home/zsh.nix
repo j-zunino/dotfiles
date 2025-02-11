@@ -32,6 +32,8 @@
 
             export PS1='%B%F{red} %~ %B%F{yellow}$(__git_ps1 " %s")%f%b 
             %F{green} %b%f '
+
+            eval "$(zoxide init zsh)"
         '';
 
         shellAliases = {
