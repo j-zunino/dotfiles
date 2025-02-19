@@ -15,11 +15,14 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        stylix = {
+            url = "github:danth/stylix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         hyprland.url = "github:hyprwm/Hyprland";
 
         wezterm.url = "github:wez/wezterm?dir=nix";
-
-        stylix.url = "github:danth/stylix";
 
         zen-browser.url = "github:0xc000022070/zen-browser-flake";
     };
