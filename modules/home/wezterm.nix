@@ -4,12 +4,14 @@
     programs = {
         wezterm = {
             enable = true;
-            # package = inputs.wezterm.packages.${pkgs.system}.default;
+            package = inputs.wezterm.packages.${pkgs.system}.default;
 
             extraConfig = ''
                     -- Stylix (~/dotfiles/modules/stylix.nix)
 
                     max_fps = 240,
+                    animation_fps = 0,
+                    cursor_blink_rate = 0,
 
                     enable_tab_bar = true,
                     hide_tab_bar_if_only_one_tab = false,
@@ -21,15 +23,13 @@
                     force_reverse_video_cursor = true,
                     window_background_opacity = 0.9,
 
-                    cursor_blink_rate = 0,
-
                     enable_scroll_bar = false,
                     scroll_to_bottom_on_input = true,
 
                     window_padding = {
-                        left = 3,
-                        right = 0,
-                        top = 0,
+                        left = '0.3%',
+                        right = '0.2%',
+                        top = '0.6%',
                         bottom = 0,
                     },
 
