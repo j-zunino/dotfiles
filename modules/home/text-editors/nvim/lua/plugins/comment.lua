@@ -2,6 +2,7 @@ return {
     'echasnovski/mini.comment',
     lazy = true,
     keys = '<C-}>',
+    event = { 'BufReadPost' },
     dependencies = {
         {
             'JoosepAlviste/nvim-ts-context-commentstring',

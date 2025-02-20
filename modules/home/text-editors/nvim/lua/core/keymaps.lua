@@ -1,148 +1,127 @@
-local function opts(desc)
-    return vim.tbl_extend(
-        'force',
-        { noremap = true, silent = true },
-        { desc = desc }
-    )
-end
+local set = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- disable other space keybinds
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', opts('Clear search highlight'))
+opts.desc = 'Clear search highlight'
+set('n', '<Esc>', ':nohlsearch<CR>', opts)
 
-vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', opts('Save file'))
+opts.desc = 'Save file'
+set('n', '<C-s>', '<cmd>w<CR>', opts)
 
-vim.keymap.set('n', '<C-q>', '<cmd>q<CR>', opts('Quit file'))
+opts.desc = 'Quit file'
+set('n', '<C-q>', '<cmd>q<CR>', opts)
 
-vim.keymap.set('n', 'x', '"_x', opts('Delete whitout saving intro register'))
-vim.keymap.set('n', 'X', '"_X', opts('Delete whitout saving intro register'))
+opts.desc = 'Next buffer'
+set('n', '<Tab>', ':bnext<CR>', opts)
 
-vim.keymap.set(
-    'v',
-    'p',
-    '"_dP',
-    { desc = 'Paste whiout saving intro register' }
-)
-vim.keymap.set(
-    'n',
-    'P',
-    ':put!<CR>`[v`]=',
-    { desc = 'Paste whitout saving intro registere' }
-)
+opts.desc = 'previous buffer'
+set('n', '<S-Tab>', ':bprevious<CR>', opts)
 
-vim.keymap.set({ 'n', 'v' }, 'J', '5j', opts('Move down 5 lines'))
-vim.keymap.set({ 'n', 'v' }, 'K', '5k', opts('Move up 5 lines'))
+-- opts.desc = 'Close buffer'
+-- vim.keymap.set('n', '<leader>x', ':bdelete<CR>', opts)
+-- opts.desc = 'Create new buffer'
+-- vim.keymap.set('n', '<leader>b', '<cmd>enew<CR>', opts)
 
-vim.keymap.set('n', '<C-d>', '<C-d>zz', opts('Scroll down'))
-vim.keymap.set('n', '<C-u>', '<C-u>zz', opts('Scroll up'))
+opts.desc = 'Delete whitout saving intro register'
+set('n', 'x', '"_x', opts)
 
-vim.keymap.set('n', 'n', 'nzz', opts('Find next'))
-vim.keymap.set('n', 'N', 'Nzz', opts('Find previous'))
+opts.desc = 'Delete whitout saving intro register'
+set('n', 'X', '"_X', opts)
 
-vim.keymap.set('n', '<leader>J', ':move +1<CR>', opts('Move line down'))
-vim.keymap.set('n', '<leader>K', ':move -2<CR>', opts('Move line up'))
+opts.desc = 'Paste whiout saving intro register'
+set('v', 'p', '"_dP', opts)
 
-vim.keymap.set('n', 'U', '<C-r>', { desc = 'Undo' })
+opts.desc = 'Paste whitout saving intro registere'
+set('n', 'P', ':put!<CR>`[v`]=', opts)
 
-vim.keymap.set('n', 'yA', ':%y<cr>', { desc = 'Copy all' })
+opts.desc = 'Move down 5 lines'
+set({ 'n', 'v' }, 'J', '5j', opts)
 
--- copy line
-vim.keymap.set('n', 'Y', 'yy', { desc = 'Copy line' })
+opts.desc = 'Move up 5 lines'
+set({ 'n', 'v' }, 'K', '5k', opts)
 
--- copy line up/down
-vim.keymap.set('n', 'yJ', 'Yp', { desc = 'Copy line down' })
-vim.keymap.set('n', 'yK', 'YP', { desc = 'Copy line up' })
+opts.desc = 'Scroll down'
+set('n', '<C-d>', '<C-d>zz', opts)
 
--- toggle comment
--- vim.keymap.set(
---     'n',
---     '<C-}>',
---     ":lua require('Comment.api').toggle.linewise.current()<CR>",
---     opts('Toggle Comment')
--- )
--- vim.keymap.set(
---     'v',
---     '<C-}>',
---     ":lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
---     opts('Toggle comment visual mode')
--- )
+opts.desc = 'Scroll up'
+set('n', '<C-u>', '<C-u>zz', opts)
 
--- vim.keymap.set('n', '<C-}>', function() require('mini.comment').toggle() end, { desc = 'Toggle Comment' })
---         vim.keymap.set('v', '<C-}>', function() require('mini.comment').toggle() end, { desc = 'Toggle Comment (visual mode)' })
+opts.desc = 'Find next'
+set('n', 'n', 'nzz', opts)
 
-vim.keymap.set('n', '<leader>+', '<C-a>', opts('Increment number'))
-vim.keymap.set('n', '<leader>-', '<C-x>', opts('Decrement number'))
+opts.desc = 'Find previous'
+set('n', 'N', 'Nzz', opts)
 
-vim.keymap.set(
+opts.desc = 'Move line down'
+set({ 'n', 'v' }, '<leader>J', ':move .+1<CR>==', opts)
+
+opts.desc = 'Move line up'
+set({ 'n', 'v' }, '<leader>K', ':move -2<CR>==', opts)
+
+opts.desc = 'Move line down (Visual)'
+set({ 'n', 'v' }, '<leader>J', ":move '>+1<CR>gv=gv", opts)
+
+opts.desc = 'Move line up (Visual)'
+set({ 'n', 'v' }, '<leader>K', ":move '<-2<CR>gv=gv", opts)
+
+set('n', 'U', '<C-r>', { desc = 'Undo' })
+
+set('n', 'yA', ':%y<cr>', { desc = 'Copy all' })
+
+set('n', 'Y', 'yy', { desc = 'Copy line' })
+
+set('n', 'yJ', 'Yp', { desc = 'Copy line down' })
+
+set('n', 'yK', 'YP', { desc = 'Copy line up' })
+
+opts.desc = 'Increment number'
+set('n', '<leader>+', '<C-a>', opts)
+
+opts.desc = 'Decrement number'
+set('n', '<leader>-', '<C-x>', opts)
+
+set(
     'n',
     '[d',
     vim.diagnostic.goto_prev,
     { desc = 'Go to previous diagnostic message' }
 )
-vim.keymap.set(
+
+set(
     'n',
     ']d',
     vim.diagnostic.goto_next,
     { desc = 'Go to next diagnostic message' }
 )
-vim.keymap.set(
+
+set(
     'n',
     '<leader>e',
     vim.diagnostic.open_float,
     { desc = 'Show diagnostic error messages' }
 )
-vim.keymap.set(
+
+set(
     'n',
     '<leader>q',
     vim.diagnostic.setloclist,
     { desc = 'Open diagnostic quickfix list' }
 )
 
--- highlight yank
-vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking text',
-    group = vim.api.nvim_create_augroup(
-        'kickstart-highlight-yank',
-        { clear = true }
-    ),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-})
+set('n', '<C-j>', '<C-w>w', { desc = 'Move focus to the next window' })
+set('n', '<C-k>', '<C-w>W', { desc = 'Move focus to the previous window' })
 
--- buffers
-vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts('Next buffer'))
-vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts('previous buffer'))
+set('n', '<C-w>s', '<cmd>split<CR>', { desc = 'Split horizontal' })
+set('n', '<C-w>v', '<cmd>vsplit<CR>', { desc = 'Split vertical' })
 
--- vim.keymap.set('n', '<leader>x', ':bdelete<CR>', opts('Close buffer'))
--- vim.keymap.set('n', '<leader>b', '<cmd>enew<CR>', opts('Create new buffer'))
-
-vim.keymap.set(
-    'n',
-    '<C-j>',
-    '<C-w>w',
-    { desc = 'Move focus to the next window' }
-)
-vim.keymap.set(
-    'n',
-    '<C-k>',
-    '<C-w>W',
-    { desc = 'Move focus to the previous window' }
-)
-
-vim.keymap.set('n', '<C-w>s', '<cmd>split<CR>', { desc = 'Split horizontal' })
-vim.keymap.set('n', '<C-w>v', '<cmd>vsplit<CR>', { desc = 'Split vertical' })
-
--- function to check if the current split is on the left
 local function is_left_split()
     return vim.fn.winnr() == 1
 end
 
--- function to increase the width of the current split
 local function increase_width()
     local original_win = vim.fn.winnr()
     if is_left_split() then
@@ -153,7 +132,6 @@ local function increase_width()
     vim.cmd(original_win .. 'wincmd w')
 end
 
--- function to decrease the width of the current split
 local function decrease_width()
     local original_win = vim.fn.winnr()
     if is_left_split() then
@@ -164,8 +142,22 @@ local function decrease_width()
     vim.cmd(original_win .. 'wincmd w')
 end
 
--- set keybindings
-vim.keymap.set('n', '<C-l>', increase_width, opts('Increase split width'))
-vim.keymap.set('n', '<C-h>', decrease_width, opts('decrease split width'))
-vim.keymap.set('n', '+', '<C-w>+', opts('Increase split height'))
-vim.keymap.set('n', '-', '<C-w>-', opts('Decrease split height'))
+opts.desc = 'Increase split width'
+set('n', '<C-l>', increase_width, opts)
+
+opts.desc = 'decrease split width'
+set('n', '<C-h>', decrease_width, opts)
+
+opts.desc = 'Increase split height'
+set('n', '+', '<C-w>+', opts)
+
+opts.desc = 'Decrease split height'
+set('n', '-', '<C-w>-', opts)
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking text',
+    group = vim.api.nvim_create_augroup('yighlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
