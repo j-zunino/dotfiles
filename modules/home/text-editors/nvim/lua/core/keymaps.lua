@@ -57,16 +57,16 @@ opts.desc = 'Find previous'
 set('n', 'N', 'Nzz', opts)
 
 opts.desc = 'Move line down'
-set({ 'n', 'v' }, '<leader>J', ':move .+1<CR>==', opts)
+set('n', '<leader>J', ':move +1<CR>', opts)
 
 opts.desc = 'Move line up'
-set({ 'n', 'v' }, '<leader>K', ':move -2<CR>==', opts)
+set('n', '<leader>K', ':move -2<CR>', opts)
 
 opts.desc = 'Move line down (Visual)'
-set({ 'n', 'v' }, '<leader>J', ":move '>+1<CR>gv=gv", opts)
+set('v', '<leader>J', ":move '>+1<CR>gv=gv", opts)
 
 opts.desc = 'Move line up (Visual)'
-set({ 'n', 'v' }, '<leader>K', ":move '<-2<CR>gv=gv", opts)
+set('v', '<leader>K', ":move '<-2<CR>gv=gv", opts)
 
 set('n', 'U', '<C-r>', { desc = 'Undo' })
 
@@ -77,6 +77,9 @@ set('n', 'Y', 'yy', { desc = 'Copy line' })
 set('n', 'yJ', 'Yp', { desc = 'Copy line down' })
 
 set('n', 'yK', 'YP', { desc = 'Copy line up' })
+
+opts.desc = 'Join lines'
+set('n', '<leader>j', 'J', opts)
 
 opts.desc = 'Increment number'
 set('n', '<leader>+', '<C-a>', opts)
