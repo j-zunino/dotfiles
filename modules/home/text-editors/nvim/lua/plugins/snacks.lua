@@ -19,6 +19,7 @@ return {
         snacks.setup({
             bufdelete = { enabled = true },
             notify = { enabled = true },
+
             notifier = {
                 enabled = true,
                 style = 'compact',
@@ -28,13 +29,25 @@ return {
                 refresh = 50,
             },
 
+            indent = {
+                enabled = true,
+
+                indent = {
+                    enabled = false,
+                },
+                scope = {
+                    enabled = true,
+                    hl = 'Comment',
+                },
+            },
+
             dashboard = {
                 enabled = true,
                 sections = {
                     {
                         pane = 1,
                         section = 'terminal',
-                        cmd = 'chafa ~/dotfiles/modules/home/text-editors/nvim/lua/plugins/dashboard/'
+                        cmd = 'chafa $HOME/dotfiles/modules/home/text-editors/nvim/lua/plugins/dashboard/'
                             .. randomNumber
                             .. '.png --format symbols --symbols vhalf --size 60x30; sleep .1',
                         height = 30,
@@ -128,6 +141,7 @@ return {
                         truncate = 40,
                     },
                 },
+                ---@diagnostic disable-next-line: missing-fields
                 icons = {
                     tree = {
                         vertical = '   ',
