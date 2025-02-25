@@ -9,6 +9,7 @@
             "$mod_shift" = "SUPER_SHIFT";
 
             "$browser" = "brave";
+            "$browser_firefox" = "zen";
             "$file-explorer" = "nautilus";
             "$terminal" = "wezterm";
             "$menu" = "rofi -show run";
@@ -115,6 +116,7 @@
 
             bind = [
                 "$mod, F, exec, $browser"
+                "$mod, B, exec, $browser_firefox"
                 "$mod, Q, exec, $terminal"
                 "$mod, P, exec, $menu"
                 "$mod_shift, RETURN, exec, $terminal"
