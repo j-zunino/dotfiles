@@ -4,9 +4,19 @@ return {
     event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
         'hrsh7th/cmp-nvim-lsp',
-        { 'antosha417/nvim-lsp-file-operations', config = true },
-        { 'folke/neodev.nvim', opts = {} },
         'yioneko/nvim-vtsls',
+        { 'antosha417/nvim-lsp-file-operations', config = true },
+        -- { 'folke/neodev.nvim', opts = {} },
+        {
+            'folke/lazydev.nvim',
+            ft = 'lua',
+            opts = {
+                library = {
+                    -- Load luvit types when the `vim.uv` word is found
+                    { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+                },
+            },
+        },
     },
 
     config = function()
@@ -158,9 +168,9 @@ return {
             cmd = { '/home/juan/.nix-profile/bin/lua-language-server' },
             settings = {
                 Lua = {
-                    diagnostics = {
-                        globals = { 'vim' },
-                    },
+                    -- diagnostics = {
+                    --     globals = { 'vim' },
+                    -- },
                     completion = {
                         callSnippet = 'Replace',
                     },
@@ -219,8 +229,37 @@ return {
             filetypes = {
                 'javascript',
                 'javascriptreact',
+                'javascript.jsx',
                 'typescript',
                 'typescriptreact',
+                'typescript.tsx',
+            },
+            settings = {
+                complete_function_calls = true,
+                vtsls = {
+                    enableMoveToFileCodeAction = true,
+                    autoUseWorkspaceTsdk = true,
+                    experimental = {
+                        maxInlayHintLength = 30,
+                        completion = {
+                            enableServerSideFuzzyMatch = true,
+                        },
+                    },
+                },
+                typescript = {
+                    updateImportsOnFileMove = { enabled = 'always' },
+                    suggest = {
+                        completeFunctionCalls = true,
+                    },
+                    inlayHints = {
+                        enumMemberValues = { enabled = true },
+                        functionLikeReturnTypes = { enabled = true },
+                        parameterNames = { enabled = 'literals' },
+                        parameterTypes = { enabled = true },
+                        propertyDeclarationTypes = { enabled = true },
+                        variableTypes = { enabled = false },
+                    },
+                },
             },
         })
     end,
