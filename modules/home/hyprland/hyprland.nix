@@ -162,15 +162,15 @@
 
             bindel = [
                 # Volume controls
-                ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && sh ~/dotfiles/modules/home/scripts/dunst-notify.sh volume"
-                ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && sh ~/dotfiles/modules/home/scripts/dunst-notify.sh volume"
+                ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && sh $HOME/dotfiles/modules/home/scripts/dunst-notify.sh volume"
+                ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && sh $HOME/dotfiles/modules/home/scripts/dunst-notify.sh volume"
 
                 # Volume mute/unmute
-                ",XF86AudioMute, exec, sh ~/dotfiles/modules/home/scripts/dunst-notify.sh mute"
+                ",XF86AudioMute, exec, sh $HOME/dotfiles/modules/home/scripts/dunst-notify.sh mute"
 
                 # Brightness controls
-                ",XF86MonBrightnessUp, exec, brightnessctl set 5%+ && sh ~/dotfiles/modules/home/scripts/dunst-notify.sh brightness"
-                ",XF86MonBrightnessDown, exec, brightnessctl -n1 set 5%- && sh ~/dotfiles/modules/home/scripts/dunst-notify.sh brightness"
+                ",XF86MonBrightnessUp, exec, brightnessctl set 5%+ && sh $HOME/dotfiles/modules/home/scripts/dunst-notify.sh brightness"
+                ",XF86MonBrightnessDown, exec, brightnessctl -n1 set 5%- && sh $HOME/dotfiles/modules/home/scripts/dunst-notify.sh brightness"
 
                 # Media controls
                 ",XF86AudioNext, exec, playerctl next"

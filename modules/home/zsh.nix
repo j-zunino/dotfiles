@@ -9,7 +9,7 @@
         oh-my-zsh.enable = true;
 
         initExtra = ''
-            source ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
+            source $HOME/.nix-profile/share/git/contrib/completion/git-prompt.sh
             setopt PROMPT_SUBST
 
             bindkey -v
@@ -53,7 +53,11 @@
             gds = "git diff --staged";
             gf = "git fetch";
 
-            hms = "home-manager switch --flake ~/dotfiles/.";
+            hms = "home-manager switch --flake $HOME/dotfiles/.";
+            nrs = "sudo nixos-rebuild switch --flake $HOME/dotfiles/.";
+
+            dev = "pnpm run dev";
+            build = "pnpm run build";
         };
 
         history = {
