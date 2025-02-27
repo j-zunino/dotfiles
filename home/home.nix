@@ -47,6 +47,7 @@
             godot_4
             nautilus
             firefox
+            syshud
 
             # prismlauncher
         ];

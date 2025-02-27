@@ -22,7 +22,7 @@
             ];
 
             # - [ AUTOSTART ] -
-            "exec-once" = "waybar & wpaperd";
+            "exec-once" = "waybar & wpaperd & syshud -p top -i 24 -m 5";
 
             # - [ MONITORS ] -
             monitor = ",preferred,auto,auto";
@@ -164,15 +164,15 @@
 
             bindel = [
                 # Volume controls
-                ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && sh $HOME/dotfiles/modules/home/scripts/dunst-notify.sh volume"
-                ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && sh $HOME/dotfiles/modules/home/scripts/dunst-notify.sh volume"
+                ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+                ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 
                 # Volume mute/unmute
-                ",XF86AudioMute, exec, sh $HOME/dotfiles/modules/home/scripts/dunst-notify.sh mute"
+                ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_SINK@ toggle"
 
                 # Brightness controls
-                ",XF86MonBrightnessUp, exec, brightnessctl set 5%+ && sh $HOME/dotfiles/modules/home/scripts/dunst-notify.sh brightness"
-                ",XF86MonBrightnessDown, exec, brightnessctl -n1 set 5%- && sh $HOME/dotfiles/modules/home/scripts/dunst-notify.sh brightness"
+                ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+                ",XF86MonBrightnessDown, exec, brightnessctl -n1 set 5%-"
 
                 # Media controls
                 ",XF86AudioNext, exec, playerctl next"
