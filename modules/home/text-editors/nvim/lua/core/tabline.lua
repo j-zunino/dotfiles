@@ -44,6 +44,29 @@ function AutoScrollTabline()
     UpdateTabline()
 end
 
+local function get_hl_color(hl_group, attr)
+    local color = vim.api.nvim_get_hl(0, { name = hl_group })[attr]
+    return color and string.format('#%06x', color) or 'NONE'
+end
+
+local function SetTablineColors()
+    local fg_color = get_hl_color('Normal', 'fg')
+    local comment_color = get_hl_color('Comment', 'fg')
+
+    vim.api.nvim_set_hl(0, 'MyTabLine', { fg = comment_color, bg = 'NONE' })
+    vim.api.nvim_set_hl(
+        0,
+        'MyTabLineSel',
+        { fg = fg_color, bg = 'NONE', bold = true }
+    )
+    vim.api.nvim_set_hl(
+        0,
+        'MyTabLineSeparator',
+        { fg = comment_color, bg = 'NONE' }
+    )
+    vim.api.nvim_set_hl(0, 'MyScrollIcon', { fg = comment_color, bg = 'NONE' })
+end
+
 function Tabline()
     local buffers = vim.fn.getbufinfo({ buflisted = 1 })
     local total_buffers = #buffers
@@ -66,29 +89,35 @@ function Tabline()
             local file_ext = vim.fn.fnamemodify(buf.name, ':e')
             local modified = buf.changed == 1
             local active = buf.bufnr == vim.fn.bufnr('%')
-            local icon = _G.show_icons
-                    and require('nvim-web-devicons').get_icon(
-                        buf_name,
-                        file_ext,
-                        { default = true }
-                    ) .. ' '
-                or ''
+            local icon = ''
+            if _G.show_icons then
+                local icons, hl, _ =
+                    require('mini.icons').get('extension', file_ext)
+                icon = icons
+                        and ('%#' .. hl .. '#' .. icons .. (active and '%#MyTabLineSel#' or '%#MyTabLine#'))
+                    or ''
+            end
 
-            -- Check if the buffer has a name
             if buf_name == '' then
                 buf_name = '[No Name]'
             end
 
-            local buf_label = (modified and ' ' or '') .. icon .. buf_name
+            local buf_label = (modified and ' ' or '')
+                .. icon
+                .. ' '
+                .. buf_name
 
-            -- Clickable buffer
             tabline = tabline
                 .. string.format('%%%d@v:lua.SwitchBuffer@', buf.bufnr)
             tabline = tabline
                 .. (active and '%#MyTabLineSel# ' or '%#MyTabLine# ')
                 .. buf_label
                 .. ' '
-            tabline = tabline .. '%X' .. separator
+            if i < end_index then
+                tabline = tabline .. '%X' .. separator
+            else
+                tabline = tabline .. '%X'
+            end
         end
     end
 
@@ -111,6 +140,7 @@ function UpdateTabline()
     vim.o.tabline = '%!v:lua.Tabline()'
 end
 
+SetTablineColors()
 UpdateTabline()
 
 vim.keymap.set(
@@ -131,4 +161,11 @@ vim.api.nvim_create_user_command('ToggleIcons', ToggleIcons, {})
 vim.api.nvim_create_autocmd({ 'BufWinEnter', 'BufEnter' }, {
     pattern = '*',
     callback = AutoScrollTabline,
+})
+
+vim.api.nvim_create_autocmd('ColorScheme', {
+    pattern = '*',
+    callback = function()
+        SetTablineColors()
+    end,
 })
