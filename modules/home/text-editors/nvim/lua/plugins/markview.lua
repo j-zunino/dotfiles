@@ -4,7 +4,7 @@ return {
     event = { 'BufReadPost', 'BufNewFile' },
     opts = {
         preview = {
-            icon_provider = 'devicons',
+            icon_provider = 'mini',
         },
     },
 }

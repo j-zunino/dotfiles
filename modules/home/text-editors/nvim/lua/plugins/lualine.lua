@@ -2,7 +2,7 @@ return {
     'nvim-lualine/lualine.nvim',
     lazy = true,
     event = { 'BufReadPost', 'BufNewFile' },
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { 'echasnovski/mini.icons' },
     config = function()
         local lualine = require('lualine')
 
