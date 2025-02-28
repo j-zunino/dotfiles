@@ -4,6 +4,7 @@ return {
         priority = 1000,
         lazy = false,
         config = function()
+            ---@diagnostic disable-next-line: missing-fields
             require('everforest').setup({
                 transparent_background_level = 1,
 
@@ -25,18 +26,6 @@ return {
                     hl.FloatBorder = { link = 'Comment' }
                     hl.FloatTitle = { link = 'Comment' }
 
-                    -- Tabline
-                    hl.MyTabLine = { link = 'Grey' }
-                    hl.MyTabLineSel = { fg = accent, bg = 'NONE', bold = true }
-                    hl.MyTabLineSeparator = { link = 'Grey' }
-                    hl.MyScrollIcon = { link = 'Grey' }
-
-                    -- Neo-Tree
-                    hl.NeoTreeCursorLine = { link = 'visual' }
-                    hl.NeoTreeFloatBorder = { link = 'Comment' }
-                    hl.NeoTreeFloatNormal = { link = 'Comment' }
-                    hl.NeoTreeFloatTitle = { link = 'Comment' }
-
                     -- Snacks
                     hl.SnacksDashboardTitle = { fg = accent }
                     hl.SnacksDashboardIcon = { fg = accent }
@@ -47,10 +36,6 @@ return {
                     hl.SnacksDashboardFooter = { link = 'Comment' }
                     hl.SnacksDashboardNormal = { link = 'Normal' }
                     hl.SnacksDashboardNormalNC = { link = 'Normal' }
-
-                    -- Color picker
-                    hl.CccFloatNormal = { fg = 'NONE', bg = 'NONE' }
-                    hl.CccFloatNormal = { link = 'NormalFloat' }
                 end,
             })
 
