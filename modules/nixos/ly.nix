@@ -7,6 +7,7 @@
                 enable = true;
                 settings = {
                     clear_password = true;
+                    hide_borders = true;
                     save = true;
                 };
             };

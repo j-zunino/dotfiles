@@ -6,7 +6,7 @@
 
         loader = {
             systemd-boot = {
-            enable = true;
+                enable = true;
             };
 
             efi = {
