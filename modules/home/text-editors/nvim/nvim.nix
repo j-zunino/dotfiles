@@ -8,6 +8,7 @@
         packages = with pkgs; [
             # lua
             lua51Packages.lua
+            imagemagick_light
             luarocks
             stylua
             nodePackages_latest.prettier
