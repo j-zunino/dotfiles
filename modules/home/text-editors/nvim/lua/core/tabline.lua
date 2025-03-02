@@ -102,17 +102,17 @@ function Tabline()
                 buf_name = '[No Name]'
             end
 
-            local buf_label = (modified and ' ' or '')
-                .. icon
+            local buf_label = icon
                 .. ' '
                 .. buf_name
+                .. ' '
+                .. (modified and ' ' or '')
 
             tabline = tabline
                 .. string.format('%%%d@v:lua.SwitchBuffer@', buf.bufnr)
             tabline = tabline
                 .. (active and '%#MyTabLineSel# ' or '%#MyTabLine# ')
                 .. buf_label
-                .. ' '
             if i < end_index then
                 tabline = tabline .. '%X' .. separator
             else
