@@ -7,13 +7,6 @@
         image = ../modules/home/hyprland/wallpapers/rock_2.png;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
 
-        iconTheme = {
-            enable = true;
-            package = pkgs.reversal-icon-theme;
-            light = "Reversal";
-            dark = "Reversal";
-        };
-
         cursor = {
             package = pkgs.apple-cursor;
             name = "macOS";
