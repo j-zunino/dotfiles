@@ -33,6 +33,10 @@
             export PS1='%B%F{red} %~ %B%F{yellow}$(__git_ps1 " %s")%f%b 
             %F{green} %b%f '
 
+            if [ -f "$HOME/dotfiles/.env" ]; then
+                export $(grep -v '^#' $HOME/dotfiles/.env | xargs)
+            fi
+
             eval "$(zoxide init zsh)"
         '';
 
