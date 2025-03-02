@@ -2,7 +2,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 2
 vim.opt.cmdheight = 1
-vim.g.have_nerd_font = true
 vim.cmd('let g:netrw_liststlye = 3')
 
 vim.opt.clipboard = 'unnamedplus'
