@@ -20,6 +20,20 @@ return {
             temperature = 0,
             max_tokens = 4096,
         },
+        windows = {
+            width = 40,
+            sidebar_header = {
+                align = 'left',
+                rounded = false,
+            },
+            edit = {
+                border = 'single',
+            },
+            ask = {
+                floating = false,
+                border = 'single',
+            },
+        },
     },
     build = 'make',
     dependencies = {
@@ -31,11 +45,5 @@ return {
         'hrsh7th/nvim-cmp',
         'ibhagwan/fzf-lua',
         'echasnovski/mini.icons',
-        {
-            'MeanderingProgrammer/render-markdown.nvim',
-            opts = {
-                file_types = { 'markdown', 'Avante' },
-            },
-        },
     },
 }
