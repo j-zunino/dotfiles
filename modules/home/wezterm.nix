@@ -20,7 +20,7 @@
                     tab_and_split_indices_are_zero_based = false,
 
                     hide_mouse_cursor_when_typing = true,
-                    force_reverse_video_cursor = true,
+                    force_reverse_video_cursor = false,
                     window_background_opacity = 0.9,
 
                     enable_scroll_bar = false,
