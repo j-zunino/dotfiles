@@ -3,11 +3,11 @@ return {
     version = '*',
     lazy = true,
     config = function()
-        local dir = { glyph = '󰉋', hl = 'MiniIconsGreen' }
+        local dir = { glyph = '󰉋', hl = 'Function' }
 
         require('mini.icons').setup({
             default = {
-                directory = { glyph = '󰉋', hl = 'MiniIconsGreen' },
+                directory = dir,
             },
             directory = {
                 ['.git'] = dir,
