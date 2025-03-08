@@ -19,11 +19,5 @@
                 };
             };
         };
-
-        picom = {
-            enable = true;
-            backend = "egl";
-            vSync = true;
-        };
     };
 }
