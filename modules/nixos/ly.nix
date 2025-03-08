@@ -7,7 +7,7 @@
                 enable = true;
                 settings = {
                     clear_password = true;
-                    hide_borders = true;
+                    animation = "matrix";
                     save = true;
                 };
             };
