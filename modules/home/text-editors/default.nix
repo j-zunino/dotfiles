@@ -1,6 +1,6 @@
 {
-    imports = [
-        ./nvim/nvim.nix
-        ./code/code.nix
-    ];
+  imports = [
+    ./nvim/nvim.nix
+    ./code/code.nix
+  ];
 }

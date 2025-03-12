@@ -1,53 +1,82 @@
-{ pkgs, ... }:
-
 {
-    programs.neovim.enable = true;
-    xdg.configFile.nvim.source = ../nvim;
+  pkgs,
+  inputs,
+  ...
+}: {
+  programs.neovim.enable = true;
+  xdg.configFile.nvim.source = ../nvim;
 
-    home = {
-        packages = with pkgs; [
-            # lua
-            lua51Packages.lua
-            imagemagick
-            luarocks
-            stylua
-            nodePackages_latest.prettier
-            prettierd
-            lua-language-server
-            typescript
-            typescript-language-server
-            emmet-ls
-            eslint_d
-            vscode-langservers-extracted
-            tailwindcss-language-server
-            vtsls
-            python313
-            vale
-            chafa
-            tty-clock
-            bat
-            fd
-        ];
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
-        file."/home/juan/dotfiles/.stylua.toml".text = ''
-            indent_type = "Spaces"
-            indent_width = 4
-            column_width = 80
-            quote_style = "AutoPreferSingle"
-        '';
+  home = {
+    packages = with pkgs; [
+      # Languages
+      vscode-langservers-extracted
+      tailwindcss-language-server
+      typescript-language-server
+      lua-language-server
+      lua51Packages.lua
+      typescript
+      python313
+      emmet-ls
+      vtsls
+      nixd
+      # lua
 
-        file.".prettierrc.toml" = {
-            text = ''
-                # .prettierrc.toml
-                tabWidth = 4
-                semi = true
-                singleQuote = true
-                useTabs = false
-                quoteProps = "consistent"
-                trailingComma = "none"
-                bracketSpacing = true
-                bracketSameLine = false
-            '';
-        };
+      # Formatters
+      nodePackages_latest.prettier
+      prettierd
+      alejandra
+      stylua
+
+      # Linters
+      eslint_d
+
+      # Tools
+      editorconfig-checker
+      imagemagick
+      tty-clock
+      luarocks
+      chafa
+      vale
+      bat
+      fd
+    ];
+
+    file."alejandra.toml".text = ''
+      indentation = "FourSpaces"
+    '';
+
+    file.".editorconfig" = {
+      text = ''
+        root = true
+
+        [*]
+        indent_style = space
+        indent_size = 4
+        tab_width = 4
+        end_of_line = lf
+        charset = utf-8
+        trim_trailing_whitespace = true
+        insert_final_newline = true
+        max_line_length = 80
+        quote_type = single
+        spaces_around_brackets = inside
+      '';
     };
+
+    # file.".prettierrc.toml" = {
+    #   text = ''
+    #     # .prettierrc.toml
+    #     tabWidth = 4
+    #     semi = true
+    #     singleQuote = true
+    #     useTabs = false
+    #     quoteProps = "consistent"
+    #     trailingComma = "none"
+    #     bracketSpacing = true
+    #     bracketSameLine = false
+    #   '';
+    # };
+  };
 }

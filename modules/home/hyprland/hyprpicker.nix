@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-
-{
-    home = {
-        packages = with pkgs; [
-            hyprpicker
-            wl-clipboard
-        ];
-    };
+{pkgs, ...}: {
+  home = {
+    packages = with pkgs; [
+      hyprpicker
+      wl-clipboard
+    ];
+  };
 }

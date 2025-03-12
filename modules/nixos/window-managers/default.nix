@@ -1,6 +1,6 @@
 {
-    imports = [
-        ./common.nix
-        ./hyprland.nix
-    ];
+  imports = [
+    ./common.nix
+    ./hyprland.nix
+  ];
 }
