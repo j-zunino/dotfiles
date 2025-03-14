@@ -1,6 +1,7 @@
 return {
     'yetone/avante.nvim',
-    event = 'VeryLazy',
+    -- event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
     lazy = true,
     keys = {
         '<leader>aa',
@@ -16,7 +17,7 @@ return {
     opts = {
         provider = 'gemini',
         gemini = {
-            model = 'gemini-1.5-flash-latest',
+            model = 'gemini-2.0-flash',
             temperature = 0,
             max_tokens = 4096,
         },
