@@ -49,16 +49,14 @@ return {
                         section = 'terminal',
                         cmd = 'chafa $HOME/dotfiles/modules/home/text-editors/nvim/lua/plugins/dashboard/'
                             .. randomNumber
-                            .. '.png --format symbols --symbols vhalf --size 60x30; sleep .1',
-                        height = 30,
-                        padding = 1,
+                            .. '.png --format symbols --symbols vhalf --align=center --size 55x25; sleep .1',
+                        height = 25,
                     },
                     {
                         pane = 2,
                         {
                             section = 'terminal',
                             cmd = 'tty-clock -c -D; sleep .1',
-                            padding = 1,
                         },
                         {
                             section = 'recent_files',
