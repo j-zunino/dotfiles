@@ -4,6 +4,8 @@ vim.opt.numberwidth = 2
 vim.opt.cmdheight = 1
 vim.cmd('let g:netrw_liststlye = 3')
 
+vim.opt.termguicolors = true
+
 vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.mouse = 'a'
@@ -20,7 +22,7 @@ vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.smartindent = true
