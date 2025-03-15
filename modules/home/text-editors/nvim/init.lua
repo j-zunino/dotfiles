@@ -4,7 +4,7 @@ vim.opt.spell = true
 
 require('core.options')
 require('core.keymaps')
-require('core.tabline')
+require('silly.bufline').setup()
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
