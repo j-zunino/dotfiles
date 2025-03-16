@@ -35,6 +35,19 @@ return {
                 border = 'single',
             },
         },
+        mappings = {
+            sidebar = {
+                close = {
+                    '<C-q>',
+                    '<Esc>',
+                    'q',
+                },
+                close_from_input = {
+                    normal = { '<C-q>', '<Esc>', 'q' },
+                    insert = { '<C-q>' },
+                },
+            },
+        },
     },
     build = 'make',
     dependencies = {
