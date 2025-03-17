@@ -16,5 +16,6 @@
     ./stylix-themes.nix
     ./browser.nix
     ./zoxide.nix
+    ./aichat.nix
   ];
 }
