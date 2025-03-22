@@ -129,7 +129,7 @@ return {
                 opts.desc = 'Sort imports'
                 vim.keymap.set(
                     'n',
-                    '<leader>tsi',
+                    '<leader>ti',
                     '<cmd>VtsExec sort_imports<CR>',
                     opts
                 )
