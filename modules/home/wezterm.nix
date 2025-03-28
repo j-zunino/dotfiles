@@ -11,7 +11,7 @@
       extraConfig = ''
             -- Stylix (~/dotfiles/modules/stylix.nix)
 
-            max_fps = 240,
+            max_fps = 60,
             animation_fps = 0,
             cursor_blink_rate = 0,
 
@@ -36,7 +36,6 @@
             },
 
 
-            -- tmux
             leader = { mods = "ALT", key = "w", timeout_milliseconds = 1000 },
             keys = {
                 {
