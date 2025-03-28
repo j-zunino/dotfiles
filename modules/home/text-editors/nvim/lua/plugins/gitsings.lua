@@ -31,76 +31,76 @@ return {
 
             -- Actions
             -- visual mode
-            map('v', '<leader>hs', function()
+            map('v', '<leader>ghs', function()
                 gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
             end, { desc = 'Stage git hunk' })
-            map('v', '<leader>hr', function()
+            map('v', '<leader>ghr', function()
                 gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
             end, { desc = 'Reset git hunk' })
 
             -- normal mode
             map(
                 'n',
-                '<leader>hs',
+                '<leader>ghs',
                 gitsigns.stage_hunk,
                 { desc = 'Git stage hunk' }
             )
             map(
                 'n',
-                '<leader>hr',
+                '<leader>ghr',
                 gitsigns.reset_hunk,
                 { desc = 'Git reset hunk' }
             )
             map(
                 'n',
-                '<leader>hS',
+                '<leader>ghS',
                 gitsigns.stage_buffer,
                 { desc = 'Git stage buffer' }
             )
             map(
                 'n',
-                '<leader>hu',
+                '<leader>ghu',
                 gitsigns.undo_stage_hunk,
                 { desc = 'Git undo stage hunk' }
             )
             map(
                 'n',
-                '<leader>hR',
+                '<leader>ghR',
                 gitsigns.reset_buffer,
                 { desc = 'Git reset buffer' }
             )
             map(
                 'n',
-                '<leader>hp',
+                '<leader>ghp',
                 gitsigns.preview_hunk,
                 { desc = 'Git preview hunk' }
             )
             map(
                 'n',
-                '<leader>hb',
+                '<leader>ghb',
                 gitsigns.blame_line,
                 { desc = 'Git blame line' }
             )
             map(
                 'n',
-                '<leader>hd',
+                '<leader>ghd',
                 gitsigns.diffthis,
                 { desc = 'Git diff against index' }
             )
-            map('n', '<leader>hD', function()
+            map('n', '<leader>ghD', function()
                 gitsigns.diffthis('@')
             end, { desc = 'Git diff against last commit' })
 
             -- Toggles
             map(
                 'n',
-                '<leader>hB',
+                '<leader>ghB',
                 gitsigns.toggle_current_line_blame,
                 { desc = 'Toggle git show blame line' }
             )
             map(
                 'n',
-                '<leader>hD',
+                '<leader>ghD',
                 gitsigns.toggle_deleted,
                 { desc = 'Toggle git show deleted' }
             )
