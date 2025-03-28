@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 opts.desc = 'Show notifications history'
 vim.keymap.set(
     'n',
-    '<leader>nh',
+    '<leader>n',
     '<cmd>lua Snacks.notifier.show_history()<CR>',
     opts
 )
