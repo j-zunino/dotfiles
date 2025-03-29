@@ -160,6 +160,9 @@ set('n', '-', '<C-w>-', opts)
 opts.desc = 'Toggle word wrap'
 set('n', '<leader>tw', '<cmd>set wrap!<CR>', opts)
 
+opts.desc = 'Open Lazy'
+set('n', '<leader>L', '<cmd>Lazy<CR>', opts)
+
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking text',
     group = vim.api.nvim_create_augroup('yighlight-yank', { clear = true }),

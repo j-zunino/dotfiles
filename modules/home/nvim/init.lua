@@ -22,7 +22,22 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+local lazy_config = {
+    ui = {
+        border = 'single',
+        title = ' Lazy ',
+        title_pos = 'center',
+        backdrop = 100,
+        icons = {
+            cmd = ' ',
+            event = ' ',
+            ft = '󰈔 ',
+            runtime = ' ',
+        },
+    },
+}
+
 require('lazy').setup({
     { import = 'plugins' },
     { import = 'plugins.lsp' },
-})
+}, lazy_config)
