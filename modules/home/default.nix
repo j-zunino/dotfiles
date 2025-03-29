@@ -1,7 +1,7 @@
 {
   imports = [
     ./git.nix
-    ./text-editors/default.nix
+    ./nvim.nix
     ./spicetify.nix
     ./yazi.nix
     ./btop.nix

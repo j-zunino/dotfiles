@@ -13,7 +13,7 @@ return {
 
         -- dashboard
         local dashboard_path = vim.fn.expand(
-            '$HOME/dotfiles/modules/home/text-editors/nvim/lua/plugins/dashboard/'
+            '$HOME/dotfiles/modules/home/nvim/lua/plugins/dashboard/'
         )
         local handle = io.popen('ls ' .. dashboard_path .. '*.png | wc -l')
         local maxIndex = tonumber(handle:read('*n'))
@@ -57,7 +57,7 @@ return {
                     {
                         pane = 1,
                         section = 'terminal',
-                        cmd = 'chafa $HOME/dotfiles/modules/home/text-editors/nvim/lua/plugins/dashboard/'
+                        cmd = 'chafa $HOME/dotfiles/modules/home/nvim/lua/plugins/dashboard/'
                             .. randomNumber
                             .. '.png --format symbols --symbols vhalf --align=center --size 55x25; sleep .1',
                         height = 25,

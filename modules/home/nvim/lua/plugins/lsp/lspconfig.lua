@@ -166,9 +166,9 @@ return {
             cmd = { '/home/juan/.nix-profile/bin/lua-language-server' },
             settings = {
                 Lua = {
-                    -- diagnostics = {
-                    --     globals = { 'vim' },
-                    -- },
+                    diagnostics = {
+                        globals = { 'vim' },
+                    },
                     completion = {
                         callSnippet = 'Replace',
                     },
