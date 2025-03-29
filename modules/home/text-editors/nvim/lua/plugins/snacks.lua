@@ -12,7 +12,17 @@ return {
         local picker = require('plugins.snacks.picker')
 
         -- dashboard
-        local maxIndex = 10
+        local dashboard_path = vim.fn.expand(
+            '$HOME/dotfiles/modules/home/text-editors/nvim/lua/plugins/dashboard/'
+        )
+        local handle = io.popen('ls ' .. dashboard_path .. '*.png | wc -l')
+        local maxIndex = tonumber(handle:read('*n'))
+        handle:close()
+
+        if maxIndex == nil then
+            maxIndex = 1
+        end
+
         math.randomseed(os.time())
         local randomNumber = math.random(1, maxIndex)
 
