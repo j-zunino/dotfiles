@@ -59,5 +59,6 @@ return {
         'hrsh7th/nvim-cmp',
         'ibhagwan/fzf-lua',
         'echasnovski/mini.icons',
+        'MeanderingProgrammer/render-markdown.nvim',
     },
 }
