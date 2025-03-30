@@ -1,7 +1,7 @@
 return {
     'hrsh7th/nvim-cmp',
     lazy = true,
-    event = 'LspAttach',
+    event = 'InsertEnter',
     version = false,
     dependencies = {
         'hrsh7th/cmp-buffer',
