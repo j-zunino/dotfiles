@@ -1,7 +1,5 @@
 return {
     'yetone/avante.nvim',
-    -- event = 'VeryLazy',
-    event = { 'BufReadPost', 'BufNewFile' },
     lazy = true,
     keys = {
         '<leader>aa',
