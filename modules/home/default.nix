@@ -17,5 +17,6 @@
     ./browser.nix
     ./zoxide.nix
     ./aichat.nix
+    ./ssh.nix
   ];
 }
