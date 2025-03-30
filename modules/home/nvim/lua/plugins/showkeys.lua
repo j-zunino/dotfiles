@@ -2,12 +2,14 @@ return {
     'nvzone/showkeys',
     cmd = 'ShowkeysToggle',
     keys = '<leader>tk',
-    opts = {
-        timeout = 3,
-        maxkeys = 10,
-    },
 
     config = function()
+        require('showkeys').setup({
+            timeout = 1,
+            maxkeys = 8,
+            show_count = true,
+        })
+
         vim.keymap.set(
             'n',
             '<leader>tk',
