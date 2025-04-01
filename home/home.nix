@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ../modules/home/default.nix
   ];
@@ -23,11 +18,6 @@
 
     sessionVariables = {
       EDITOR = "nvim";
-    };
-
-    pointerCursor = {
-      gtk.enable = true;
-      x11.enable = true;
     };
 
     packages = with pkgs; [
