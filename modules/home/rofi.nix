@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   programs = {
     rofi = {
       package = pkgs.rofi-wayland;
