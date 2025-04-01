@@ -67,3 +67,5 @@ vim.opt.timeoutlen = 300
 vim.opt.backspace = 'indent,eol,start'
 
 vim.opt.pumheight = 15
+
+vim.o.winborder = 'single'

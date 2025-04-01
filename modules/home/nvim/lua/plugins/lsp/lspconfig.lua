@@ -22,15 +22,14 @@ return {
         local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
         vim.diagnostic.config({
+            virtual_text = true,
+            virtual_lines = {
+                current_line = true,
+            },
             float = {
                 border = 'single',
             },
         })
-
-        vim.lsp.handlers['textDocument/hover'] =
-            vim.lsp.with(vim.lsp.handlers.hover, {
-                border = 'single',
-            })
 
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),
