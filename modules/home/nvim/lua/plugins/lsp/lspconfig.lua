@@ -29,6 +29,14 @@ return {
             float = {
                 border = 'single',
             },
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = ' ',
+                    [vim.diagnostic.severity.WARN] = ' ',
+                    [vim.diagnostic.severity.HINT] = '󰌵 ',
+                    [vim.diagnostic.severity.INFO] = ' ',
+                },
+            },
         })
 
         vim.api.nvim_create_autocmd('LspAttach', {
@@ -152,13 +160,6 @@ return {
         })
 
         local capabilities = cmp_nvim_lsp.default_capabilities()
-
-        local signs =
-            { Error = ' ', Warn = ' ', Hint = '󰌵 ', Info = ' ' }
-        for type, icon in pairs(signs) do
-            local hl = 'DiagnosticSign' .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-        end
 
         lspconfig['lua_ls'].setup({
             capabilities = capabilities,
