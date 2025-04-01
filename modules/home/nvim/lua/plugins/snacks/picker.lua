@@ -87,43 +87,17 @@ local explorer_layout = {
 opts.desc = 'File explorer'
 vim.keymap.set('n', '<C-e>', ':lua Snacks.explorer.open()<CR>', opts)
 
-opts.desc = 'Search files'
+opts.desc = 'Files'
 vim.keymap.set('n', '<leader>sf', ':lua Snacks.picker.files()<CR>', opts)
 
 -- Grep
-opts.desc = 'Search by Grep'
+opts.desc = 'Grep'
 vim.keymap.set('n', '<leader>sg', ':lua Snacks.picker.grep()<CR>', opts)
 
-opts.desc = 'Search word'
+opts.desc = 'Word'
 vim.keymap.set('n', '<leader>sw', ':lua Snacks.picker.grep_word()<CR>', opts)
 
-opts.desc = 'Search in open buffers'
-vim.keymap.set('n', '<leader>s/', ':lua Snacks.picker.grep_word()<CR>', opts)
-
-opts.desc = 'Search in open buffers'
-vim.keymap.set('n', '<leader>/', ':lua Snacks.picker.lines()<CR>', opts)
-
--- Git
-opts.desc = 'Search Git status'
-vim.keymap.set('n', '<leader>sG', ':lua Snacks.picker.git_status()<CR>', opts)
-
--- Other
-opts.desc = 'Search help'
-vim.keymap.set('n', '<leader>sh', ':lua Snacks.picker.help()<CR>', opts)
-
-opts.desc = 'Search keymaps'
-vim.keymap.set('n', '<leader>sk', ':lua Snacks.picker.keymaps()<CR>', opts)
-
-opts.desc = 'Search diagnostics'
-vim.keymap.set('n', '<leader>sd', ':lua Snacks.picker.diagnostics()<CR>', opts)
-
-opts.desc = 'Search resume'
-vim.keymap.set('n', '<leader>sR', ':lua Snacks.picker.resume()<CR>', opts)
-
-opts.desc = 'Search recent'
-vim.keymap.set('n', '<leader>sr', ':lua Snacks.picker.recent()<CR>', opts)
-
-opts.desc = 'Search in open buffers'
+opts.desc = 'In open buffers'
 vim.keymap.set(
     'n',
     '<leader><leader>',
@@ -131,16 +105,36 @@ vim.keymap.set(
     opts
 )
 
-opts.desc = 'Spelling suggestions'
+-- Git
+opts.desc = 'Git status'
+vim.keymap.set('n', '<leader>sG', ':lua Snacks.picker.git_status()<CR>', opts)
+
+-- Other
+opts.desc = 'Help'
+vim.keymap.set('n', '<leader>sh', ':lua Snacks.picker.help()<CR>', opts)
+
+opts.desc = 'Keymaps'
+vim.keymap.set('n', '<leader>sk', ':lua Snacks.picker.keymaps()<CR>', opts)
+
+opts.desc = 'Diagnostics'
+vim.keymap.set('n', '<leader>sd', ':lua Snacks.picker.diagnostics()<CR>', opts)
+
+opts.desc = 'Resume'
+vim.keymap.set('n', '<leader>sR', ':lua Snacks.picker.resume()<CR>', opts)
+
+opts.desc = 'Recent'
+vim.keymap.set('n', '<leader>sr', ':lua Snacks.picker.recent()<CR>', opts)
+
+opts.desc = 'Suggestions'
 vim.keymap.set('n', '<leader>ss', ':lua Snacks.picker.spelling()<CR>', opts)
 
-opts.desc = 'Search icons'
+opts.desc = 'Icons'
 vim.keymap.set('n', '<leader>si', ':lua Snacks.picker.icons()<CR>', opts)
 
-opts.desc = 'Search projects'
+opts.desc = 'Projects'
 vim.keymap.set('n', '<leader>sp', ':lua Snacks.picker.projects()<CR>', opts)
 
-opts.desc = 'Search colorschemes'
+opts.desc = 'Colorschemes'
 vim.keymap.set('n', '<leader>sc', ':lua Snacks.picker.colorschemes()<CR>', opts)
 
 return {
