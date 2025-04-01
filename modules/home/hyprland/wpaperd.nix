@@ -1,5 +1,5 @@
 {lib, ...}: {
-  programs.wpaperd = {
+  services.wpaperd = {
     enable = true;
     settings.any = {
       path = lib.mkForce "/home/juan/dotfiles/modules/home/hyprland/wallpapers";
