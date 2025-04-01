@@ -21,27 +21,25 @@
     };
 
     packages = with pkgs; [
-      wget
-      curl
-      fzf
-      gcc
-      gnumake
-      unzip
-      nodejs_22
-      pnpm
-      ripgrep
-      tree
-      discord
-      gimp
+      # Applications
       inkscape
-      vlc
-      cargo
-      hyprshot
-      godot_4
       nautilus
+      discord
       firefox
-      syshud
+      gimp
+      vlc
 
+      # Utilities
+      hyprshot
+      ripgrep
+      syshud
+      unzip
+      curl
+      tree
+      wget
+      fzf
+
+      # godot_4
       # prismlauncher
     ];
   };

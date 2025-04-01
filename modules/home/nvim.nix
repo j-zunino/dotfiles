@@ -10,27 +10,31 @@
 
   home = {
     packages = with pkgs; [
-      # Languages
+      # Language Servers
       vscode-langservers-extracted
       tailwindcss-language-server
       typescript-language-server
       lua-language-server
       lua51Packages.lua
-      typescript
       python313
       emmet-ls
       vtsls
       nixd
-      # lua
 
-      # Formatters
-      nodePackages_latest.prettier
+      # Formatters & Linters
       prettierd
       alejandra
+      eslint_d
       stylua
 
-      # Linters
-      eslint_d
+      # Compilers
+      gnumake
+      gcc
+
+      # Development Tools
+      nodejs
+      cargo
+      pnpm
 
       # Tools
       editorconfig-checker
