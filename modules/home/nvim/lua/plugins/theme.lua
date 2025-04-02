@@ -36,6 +36,9 @@ return {
                     hl.SnacksDashboardFooter = { link = 'Comment' }
                     hl.SnacksDashboardNormal = { link = 'Normal' }
                     hl.SnacksDashboardNormalNC = { link = 'Normal' }
+
+                    -- Blink
+                    hl.Pmenu = { link = 'Normal' }
                 end,
             })
 

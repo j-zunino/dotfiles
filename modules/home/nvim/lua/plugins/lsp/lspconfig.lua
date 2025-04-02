@@ -3,7 +3,7 @@ return {
     lazy = true,
     event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
-        'hrsh7th/cmp-nvim-lsp',
+        'saghen/blink.cmp',
         'yioneko/nvim-vtsls',
         { 'antosha417/nvim-lsp-file-operations', config = true },
         {
@@ -19,7 +19,6 @@ return {
 
     config = function()
         local lspconfig = require('lspconfig')
-        local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
         vim.diagnostic.config({
             virtual_text = true,
@@ -159,7 +158,7 @@ return {
             end,
         })
 
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        local capabilities = require('blink.cmp').get_lsp_capabilities()
 
         lspconfig['lua_ls'].setup({
             capabilities = capabilities,

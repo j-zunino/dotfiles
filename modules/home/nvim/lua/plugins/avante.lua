@@ -54,7 +54,7 @@ return {
         'nvim-lua/plenary.nvim',
         'MunifTanjim/nui.nvim',
         --- The below dependencies are optional,
-        'hrsh7th/nvim-cmp',
+        -- 'hrsh7th/nvim-cmp',
         'ibhagwan/fzf-lua',
         'echasnovski/mini.icons',
         'MeanderingProgrammer/render-markdown.nvim',
