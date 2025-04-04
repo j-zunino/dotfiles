@@ -1,6 +1,7 @@
 return {
     'laytan/tailwind-sorter.nvim',
     lazy = true,
+    enabled = false,
     event = 'LspAttach',
     dependencies = {
         'nvim-treesitter/nvim-treesitter',
