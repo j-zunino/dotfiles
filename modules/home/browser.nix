@@ -5,11 +5,12 @@
 }: {
   programs.chromium = {
     enable = true;
+    package = pkgs.brave;
+
     extensions = [
       {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
       {id = "fmkadmapgofadopljbjfkapdkoienihi";} # React developer tools
     ];
-    package = pkgs.brave;
   };
 
   home.packages = with pkgs; [
