@@ -54,6 +54,7 @@
       gd = "git diff";
       gds = "git diff --staged";
       gf = "git fetch";
+      lg = "lazygit";
 
       hms = "home-manager switch --flake $HOME/dotfiles/.";
       nrs = "sudo nixos-rebuild switch --flake $HOME/dotfiles/.";
