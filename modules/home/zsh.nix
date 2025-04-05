@@ -22,6 +22,7 @@
           fi
       }
 
+      # Prompt
       precmd_functions+=(zle-keymap-select)
       zle -N zle-keymap-select
 
@@ -35,6 +36,19 @@
           export $(grep -v '^#' $HOME/dotfiles/.env | xargs)
       fi
 
+      # Fzf
+      fzf_file_preview() {
+        local file
+        file=$(fd --type f | fzf \
+          --bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down') || return
+        [[ -n "$file" ]] && nvim "$file"
+        zle reset-prompt
+      }
+
+      zle -N fzf_file_preview
+      bindkey '^F' fzf_file_preview
+
+      # Zoxide
       eval "$(zoxide init zsh)"
     '';
 
