@@ -37,16 +37,40 @@
       fi
 
       # Fzf
-      fzf_file_preview() {
+      fzf_file() {
         local file
         file=$(fd --type f | fzf \
+          --border-label=' Select a file to open ' \
           --bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down') || return
         [[ -n "$file" ]] && nvim "$file"
         zle reset-prompt
       }
 
-      zle -N fzf_file_preview
-      bindkey '^F' fzf_file_preview
+      fzf_cd() {
+        local dir
+        dir=$(fd --type d . ~ | fzf \
+          --no-preview \
+          --border-label=' Select a folder to cd into ') || return
+        [[ -n "$dir" ]] && cd "$dir"
+        zle reset-prompt
+      }
+
+      fzf_zoxide_cd() {
+        local dir
+        dir=$(zoxide query -ls | fzf \
+          --no-preview \
+          --border-label=' Select a folder to cd into ') || return
+        [[ -n "$dir" ]] && cd "$dir"
+        zle reset-prompt
+      }
+
+      zle -N fzf_file
+      zle -N fzf_cd
+      zle -N fzf_zoxide_cd
+
+      bindkey '^F' fzf_file
+      bindkey '^G' fzf_cd
+      bindkey '^Z' fzf_zoxide_cd
 
       # Zoxide
       eval "$(zoxide init zsh)"
