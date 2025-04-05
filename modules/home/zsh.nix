@@ -57,10 +57,10 @@
 
       fzf_zoxide_cd() {
         local dir
-        dir=$(zoxide query -ls | fzf \
+        dir=$(zoxide query -l | fzf \
           --no-preview \
           --border-label=' Select a folder to cd into ') || return
-        [[ -n "$dir" ]] && cd "$dir"
+        [[ -n "$dir" ]] && z "$dir"
         zle reset-prompt
       }
 
