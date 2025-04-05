@@ -18,5 +18,6 @@
     ./zoxide.nix
     ./aichat.nix
     ./ssh.nix
+    ./fzf.nix
   ];
 }

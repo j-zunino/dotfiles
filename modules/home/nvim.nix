@@ -43,7 +43,6 @@
       luarocks
       chafa
       vale
-      bat
       fd
     ];
 

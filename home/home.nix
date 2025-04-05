@@ -8,6 +8,7 @@
   programs = {
     home-manager.enable = true;
     bash.enable = true;
+    bat.enable = true;
   };
 
   home = {
@@ -37,7 +38,6 @@
       curl
       tree
       wget
-      fzf
 
       # godot_4
       # prismlauncher
