@@ -1,6 +1,22 @@
-{...}: {
+{pkgs, ...}: {
+  home = {
+    pointerCursor = {
+      hyprcursor = {
+        enable = true;
+      };
+    };
+    packages = with pkgs; [
+      hyprpicker
+      wl-clipboard
+    ];
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
+    plugins = with pkgs.hyprlandPlugins; [
+      hypr-dynamic-cursors
+    ];
+
     settings = {
       # - [ VARIABLES ] -
       "$mod" = "SUPER";
@@ -20,7 +36,7 @@
       ];
 
       # - [ AUTOSTART ] -
-      "exec-once" = "waybar & wpaperd & syshud -p bottom -i 24 -m 5";
+      exec-once = ["waybar" "wpaperd" "syshud -p bottom -i 24 -m 5"];
 
       # - [ MONITORS ] -
       monitor = ",preferred,auto,auto";
@@ -106,7 +122,7 @@
       };
 
       cursor = {
-        # enable_hyprcursor = true;
+        enable_hyprcursor = true;
         no_warps = true;
       };
 
@@ -177,6 +193,25 @@
         ",XF86AudioPlay, exec, playerctl play-pause"
         ",XF86AudioPrev, exec, playerctl previous"
       ];
+
+      "plugin:dynamic-cursors" = {
+        enabled = true;
+        mode = "stretch";
+
+        stretch = {
+          limit = 4000;
+        };
+
+        shake = {
+          enabled = true;
+          base = 2.0;
+        };
+
+        hyprcursor = {
+          enabled = true;
+          resulution = "-1";
+        };
+      };
     };
   };
 }
