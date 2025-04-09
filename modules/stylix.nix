@@ -2,13 +2,13 @@
   stylix = {
     enable = true;
 
-    image = ../modules/home/hyprland/wallpapers/rock_2.png;
+    image = ../modules/home/hyprland/wallpapers/flowers.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
 
     cursor = {
       package = pkgs.apple-cursor;
       name = "macOS";
-      size = 30;
+      size = 32;
     };
 
     fonts = {
