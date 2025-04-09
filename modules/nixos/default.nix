@@ -7,7 +7,7 @@
     ./services/default.nix
     ./common.nix
     ./fonts.nix
-    # ./gaming.nix
+    ./gaming.nix
     ./ly.nix
     ../stylix.nix
   ];
