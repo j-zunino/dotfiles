@@ -31,64 +31,56 @@
             key = "<c-a>";
             description = "Pick AI commit";
             command = ''
-              aichat "Please suggest 10 commit messages, given the following diff:
-
-              \`\`\`diff
+                bash -c '
+                  prompt="$(
+                    cat <<EOF
+              Suggest 10 commit messages based on the following diff:
+              --- START DIFF ---
               $(git diff --cached)
-              \`\`\`
+              --- END DIFF ---
 
-              **Criteria:**
+              Rules:
+              1. Format: <type>(<scope>): <description> — using Conventional Commits.
+              2. Type must be one of: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert.
+              3. Focus on purpose and impact.
+              4. Each message must be <70 characters.
+              5. Each message must cover / describe a different perspective,
+                 aspect or benefit.
+              6. Easily understood by someone unfamiliar with the codebase.
 
-              1. **Format:** Each commit message must follow the conventional commits format, which is \`<type>(<scope>): <description>\`.
-              2. **Relevance:** Avoid mentioning a module name unless it's directly relevant to the change.
-              3. **Enumeration:** List the commit messages from 1 to 10.
-              4. **Clarity and Conciseness:** Each message should clearly and concisely convey the change made.
+              Recent commits:
+              --- START RECENT COMMITS ---
+              $(git log -n 15 --pretty=format:"%h %s")
+              --- END RECENT COMMITS ---
 
-              **Commit Message Examples:**
+              Goal:
+              Provide a wide range of expressive, valid, and relevant commit messages. The user will pick only ONE to use.
 
-              - fix(app): add password regex pattern
-              - test(unit): add new test cases
-              - style: remove unused imports
-              - refactor(pages): extract common code to \`utils/wait.ts\`
+              Output format:
+              Only the raw commit messages, one per line. No numbers, decorations, or extra explanations.
 
-              **Recent Commits on Repo for Reference:**
+              Instructions:
+              Abstract the changes to a higher level and write 10 distinct commit messages from different angles.
+              EOF
+                  )"
 
-              \`\`\`
-              $(git log -n 10 --pretty=format:'%h %s')
-              \`\`\`
+                  selected_message=$(aichat "$prompt" \
+                    | fzf --ansi --preview "echo {}" --preview-window=up:40%:wrap)
 
-              **Output Template**
-
-              Follow this output template and ONLY output raw commit messages without spacing, numbers or other decorations.
-
-              fix(app): add password regex pattern
-              test(unit): add new test cases
-              style: remove unused imports
-              refactor(pages): extract common code to \`utils/wait.ts\`
-
-
-              **Instructions:**
-
-              - Take a moment to understand the changes made in the diff.
-              - Think about the impact of these changes on the project (e.g., bug fixes, new features, performance improvements, code refactoring, documentation updates). It's critical to my career you abstract the changes to a higher level and not just describe the code changes.
-              - Generate commit messages that accurately describe these changes, ensuring they are helpful to someone reading the project's history.
-              - Remember, a well-crafted commit message can significantly aid in the maintenance and understanding of the project over time.
-              - If multiple changes are present, make sure you capture them all in each commit message.
-
-              Keep in mind you will suggest 10 commit messages. Only 1 will be used. It's better to push yourself (esp to synthesize to a higher level) and maybe wrong about some of the 10 commits because only one needs to be good. I'm looking for your best commit, not the best average commit. It's better to cover more scenarios than include a lot of overlap.
-
-              Write your 10 commit messages below in the format shown in Output Template section above." \
-                | fzf --height 40% --border --ansi --preview "echo {}" --preview-window=up:wrap \
-                | xargs -I {} bash -c '
+                  if [ -n "$selected_message" ]; then
                     COMMIT_MSG_FILE=$(mktemp)
-                    echo "{}" > "$COMMIT_MSG_FILE"
-                    ''${EDITOR:-vim} "$COMMIT_MSG_FILE"
+                    echo "$selected_message" > "$COMMIT_MSG_FILE"
+                    nvim "$COMMIT_MSG_FILE"
                     if [ -s "$COMMIT_MSG_FILE" ]; then
-                        git commit -F "$COMMIT_MSG_FILE"
+                      git commit -F "$COMMIT_MSG_FILE"
                     else
-                        echo "Commit message is empty, commit aborted."
+                      echo "Commit message is empty, commit aborted."
                     fi
-                    rm -f "$COMMIT_MSG_FILE"'
+                    rm -f "$COMMIT_MSG_FILE"
+                  else
+                    echo "No message selected, commit aborted."
+                  fi
+                '
             '';
             context = "files";
             subprocess = true;
