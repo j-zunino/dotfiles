@@ -25,6 +25,9 @@ return {
                 align = 'left',
                 rounded = false,
             },
+            input = {
+                prefix = ' ',
+            },
             edit = {
                 border = 'single',
             },
