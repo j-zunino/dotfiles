@@ -36,7 +36,7 @@
       ];
 
       # - [ AUTOSTART ] -
-      exec-once = ["waybar" "wpaperd" "syshud -p bottom -i 24 -m 5"];
+      exec-once = ["sleep 5" "waybar" "wpaperd" "syshud -p bottom -i 24 -m 5"];
 
       # - [ MONITORS ] -
       monitor = ",preferred,auto,auto";
