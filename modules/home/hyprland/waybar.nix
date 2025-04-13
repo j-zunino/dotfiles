@@ -52,7 +52,7 @@
             interval = 60;
             timezone = "America/Argentina/Buenos_Aires";
             format = "{:%d.%m.%y | %I:%M %p}";
-            format-alt = "{:%d.%m | %H:%M}";
+            format-alt = "{:%d.%m.%y | %H:%M}";
             tooltip-format = "<tt><small>{calendar}</small></tt>";
 
             calendar = {
@@ -174,8 +174,8 @@
               critical = 20;
             };
 
-            format = "{capacity}%{icon}";
-            format-charging = "{capacity}%󰂄";
+            format = "{capacity}% {icon}";
+            format-charging = "{capacity}% 󰂄";
             format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
 
             max-length = 25;
@@ -223,7 +223,7 @@
         }
 
         #network {
-          padding: 0 2px 0 8px;
+          padding: 0 4px 0 8px;
         }
 
         #cpu,
