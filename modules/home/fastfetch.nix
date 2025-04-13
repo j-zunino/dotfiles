@@ -16,7 +16,6 @@
         size = {
           binaryPrefix = "si";
         };
-        color = "green";
         separator = " ";
       };
 
