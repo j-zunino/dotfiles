@@ -4,209 +4,196 @@
   config,
   ...
 }: let
-  bg0 = lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
-  bg1 = lib.mkForce "rgb(${config.lib.stylix.colors.base01})";
-  bg2 = lib.mkForce "rgb(${config.lib.stylix.colors.base02})";
+  color = config.lib.stylix.colors;
 
-  grey1 = lib.mkForce "rgb(${config.lib.stylix.colors.base03})";
-  grey2 = lib.mkForce "rgb(${config.lib.stylix.colors.base04})";
+  inherit
+    (color)
+    base00
+    base01
+    base02
+    base03
+    base04
+    base05
+    base08
+    base09
+    base0A
+    base0B
+    base0C
+    base0D
+    base0E
+    ;
 
-  fg = lib.mkForce "rgb(${config.lib.stylix.colors.base05})";
+  hex = c: "#${c}";
+  rgb = c: "rgb(${c})";
 
-  red = lib.mkForce "rgb(${config.lib.stylix.colors.base08})";
-  orange = lib.mkForce "rgb(${config.lib.stylix.colors.base09})";
-  yellow = lib.mkForce "rgb(${config.lib.stylix.colors.base0A})";
-  green = lib.mkForce "rgb(${config.lib.stylix.colors.base0B})";
-  aqua = lib.mkForce "rgb(${config.lib.stylix.colors.base0C})";
-  blue = lib.mkForce "rgb(${config.lib.stylix.colors.base0D})";
-  purple = lib.mkForce "rgb(${config.lib.stylix.colors.base0E})";
+  colors = {
+    bg0 = lib.mkForce (rgb base00);
+    bg1 = lib.mkForce (rgb base01);
+    bg2 = lib.mkForce (rgb base02);
+    grey1 = lib.mkForce (rgb base03);
+    grey2 = lib.mkForce (rgb base04);
+    fg = lib.mkForce (rgb base05);
+    red = lib.mkForce (rgb base08);
+    orange = lib.mkForce (rgb base09);
+    yellow = lib.mkForce (rgb base0A);
+    green = lib.mkForce (rgb base0B);
+    aqua = lib.mkForce (rgb base0C);
+    blue = lib.mkForce (rgb base0D);
+    purple = lib.mkForce (rgb base0E);
 
-  bg0-hex = "#${config.lib.stylix.colors.base00}";
-  bg1-hex = "#${config.lib.stylix.colors.base01}";
-  bg2-hex = "#${config.lib.stylix.colors.base02}";
+    bg0-hex = hex base00;
+    bg1-hex = hex base01;
+    bg2-hex = hex base02;
+    grey1-hex = hex base03;
+    grey2-hex = hex base04;
+    fg-hex = hex base05;
+    red-hex = hex base08;
+    orange-hex = hex base09;
+    yellow-hex = hex base0A;
+    green-hex = hex base0B;
+    aqua-hex = hex base0C;
+    blue-hex = hex base0D;
+    purple-hex = hex base0E;
 
-  grey1-hex = "#${config.lib.stylix.colors.base03}";
-  grey2-hex = "#${config.lib.stylix.colors.base04}";
-
-  fg-hex = "#${config.lib.stylix.colors.base05}";
-
-  red-hex = "#${config.lib.stylix.colors.base08}";
-  orange-hex = "#${config.lib.stylix.colors.base09}";
-  yellow-hex = "#${config.lib.stylix.colors.base0A}";
-  green-hex = "#${config.lib.stylix.colors.base0B}";
-  aqua-hex = "#${config.lib.stylix.colors.base0C}";
-  blue-hex = "#${config.lib.stylix.colors.base0D}";
-  purple-hex = "#${config.lib.stylix.colors.base0E}";
-
-  accent = green;
-  accent-hex = green-hex;
-in {
-  stylix = {
-    targets = {
+    accent = lib.mkForce (rgb base0B);
+    accent-hex = hex base0B;
+  };
+in
+  with colors; {
+    stylix.targets = {
       waybar.enable = false;
       neovim.enable = false;
     };
 
-    iconTheme = {
+    stylix.iconTheme = {
       enable = true;
       package = pkgs.reversal-icon-theme;
       light = "Reversal";
       dark = "Reversal";
     };
-  };
 
-  wayland.windowManager.hyprland.settings.general = {
-    "col.active_border" = accent;
-    "col.inactive_border" = bg0;
-  };
-
-  programs.waybar = {
-    settings = {
-      mainBar = {
-        "clock#time" = {
-          calendar = {
-            format = {
-              months = "<span color='${accent-hex}'><b>{}</b></span>";
-              days = "<span color='${fg-hex}'><b>{}</b></span>";
-              weeks = "<span color='${bg2-hex}'><b>W{}</b></span>";
-              weekdays = "<span color='${grey1-hex}'><b>{}</b></span>";
-              today = "<span color='${red-hex}'><b><u>{}</u></b></span>";
-            };
-          };
-        };
-      };
+    wayland.windowManager.hyprland.settings.general = {
+      "col.active_border" = accent;
+      "col.inactive_border" = bg0;
     };
 
-    style = lib.mkAfter ''
-      window#waybar {
+    programs.waybar = {
+      settings.mainBar."clock#date".calendar.format = {
+        months = "<span color='${accent-hex}'><b>{}</b></span>";
+        days = "<span color='${fg-hex}'><b>{}</b></span>";
+        weeks = "<span color='${bg2-hex}'><b>W{}</b></span>";
+        weekdays = "<span color='${grey1-hex}'><b>{}</b></span>";
+        today = "<span color='${red-hex}'><b><u>{}</u></b></span>";
+      };
+
+      style = lib.mkAfter ''
+        window#waybar {
           background: ${bg1-hex};
-          color: ${fg-hex};
-      }
-
-      /* - [ LEFT ] - */
-      #custom-nix-logo {
-          background: ${accent-hex};
-          color: ${bg0-hex};
-      }
-
-      #workspaces {
-          background: ${bg2-hex};
-      }
-
-      #workspaces button {
           color: ${grey1-hex};
-      }
+        }
 
-      #workspaces button.active {
-          color: ${accent-hex};
-          font-weight: bold;
-      }
-
-      #workspaces button:hover {
-          background: none;
-          color: ${fg-hex};
-      }
-
-      #window {
-          background: ${bg1-hex};
-      }
-
-      /* - [ CENTER ] - */
-      #clock.day,
-      #clock.date {
-          background: ${bg2-hex};
-          color: ${fg-hex};
-      }
-
-      #clock.time {
-          background: ${accent-hex};
-          color: ${bg0-hex};
-      }
-
-      /* - [ RIGHT ] - */
-      #tray,
-      #memory,
-      #cpu {
-          background: ${bg1-hex};
-      }
-
-      #pulseaudio,
-      #backlight,
-      #network,
-      #battery {
-          background: ${bg2-hex};
-      }
-
-      #battery.charging {
-          color: ${accent-hex};
-      }
-
-      #cpu.warning, #memory.warning, #battery.warning {
-          color: ${yellow-hex};
-      }
-
-      #cpu.critical, #memory.critical, #battery.critical {
-          color: ${red-hex};
-      }
-
-      #custom-poweroff {
-          background: ${accent-hex};
-          color: ${bg0-hex};
-      }
-
-      tooltip {
+        tooltip {
           background: ${bg0-hex};
           border: 2px solid ${accent-hex};
-      }
+        }
 
-      tooltip label {
+        tooltip label {
           color: ${fg-hex};
-      }
+        }
 
-      /* - [ Arrows accent ] - */
-      #custom-arrow-l-1,
-      #custom-arrow-r-3,
-      #custom-arrow-c-2,
-      #custom-arrow-c-3 {
-          background: ${bg2-hex};
+        #custom-nix-logo {
+          background: ${accent-hex};
+          color: ${bg0-hex};
+        }
+        #custom-nix-logo:hover {
+          color: ${bg1-hex};
+        }
+
+        #workspaces button {
+          color: ${grey1-hex};
+        }
+
+        #workspaces button.active {
           color: ${accent-hex};
-      }
+          font-weight: bold;
+        }
 
-
-      /* - [ Arrows gray ] - */
-      #custom-arrow-l-2,
-      #custom-arrow-r-1,
-      #custom-arrow-r-2,
-      #custom-arrow-c-1,
-      #custom-arrow-c-4 {
+        #window {
           background: ${bg1-hex};
+        }
+
+        #clock.date {
+          color: ${grey1-hex};
+        }
+
+        #group-expand,
+        #custom-expand {
+          padding: 0px 5px;
+        }
+
+        #custom-expand {
+          color: ${grey1-hex};
+        }
+
+        #cpu.warning,
+        #memory.warning,
+        #battery.warning {
+          color: ${yellow-hex};
+        }
+
+        #cpu.critical,
+        #memory.critical,
+        #battery.critical,
+        #temperature.critical {
+          color: ${red-hex};
+          font-weight: bold;
+        }
+
+        #battery.charging {
+          color: ${accent-hex};
+        }
+
+        #custom-arrow {
+          background: ${bg1-hex};
+          color: ${accent-hex};
+        }
+
+        #custom-separator {
           color: ${bg2-hex};
-      }
-    '';
-  };
+        }
 
-  services.dunst.settings = {
-    global = {
-      background = bg0;
-      foreground = fg;
-      frame_color = accent;
+        #workspaces button:hover,
+        #window:hover,
+        #clock.date:hover,
+        #custom-expand:hover,
+        #cpu:hover,
+        #memory:hover,
+        #temperature:hover,
+        #backlight:hover,
+        #pulseaudio:hover,
+        #network:hover,
+        #battery:hover {
+          background: none;
+          color: ${fg-hex};
+          font-weight: bold;
+        }
+      '';
     };
 
-    urgency_low = {
-      frame_color = lib.mkForce blue-hex;
+    services.dunst.settings = {
+      global = {
+        background = bg0;
+        foreground = fg;
+        frame_color = accent;
+      };
+
+      urgency_low.frame_color = lib.mkForce blue-hex;
+      urgency_normal.frame_color = lib.mkForce green-hex;
+      urgency_critical.frame_color = lib.mkForce red-hex;
     };
 
-    urgency_normal = {
-      frame_color = lib.mkForce green-hex;
-    };
-
-    urgency_critical = {
-      frame_color = lib.mkForce red-hex;
-    };
-  };
-
-  programs.rofi.theme = lib.mkForce (builtins.toFile "rofi-theme.rasi" ''
-    * {
+    programs.rofi.theme = lib.mkForce (builtins.toFile "rofi-theme.rasi" ''
+      * {
         bg0: ${bg0-hex};
         bg1: ${bg1-hex};
         fg: ${fg-hex};
@@ -220,116 +207,110 @@ in {
         margin: 0;
         padding: 0;
         spacing: 0;
-    }
+      }
 
-    window {
+      window {
         location: center;
         width: 580;
-
         background-color: @bg0;
         border: 2px;
         border-color: @accent-color;
-    }
+      }
 
-    inputbar {
+      inputbar {
         spacing: 4px;
         padding: 4px;
-
         background-color: @bg1;
-    }
+      }
 
-    prompt, entry, element-icon, element-text {
+      prompt, entry, element-icon, element-text {
         vertical-align: 0.5;
-    }
+      }
 
-    prompt {
+      prompt {
         text-color: @accent-color;
-    }
+      }
 
-    textbox {
+      textbox {
         padding: 4px;
         background-color: @bg1;
-    }
+      }
 
-    listview {
+      listview {
         padding: 4px 0;
         lines: 8;
         columns: 1;
-
         fixed-height: false;
-    }
+      }
 
-    element {
+      element {
         padding: 4px;
         spacing: 4px;
-    }
+      }
 
-    element normal normal {
+      element normal normal {
         text-color: @fg;
-    }
+      }
 
-    element normal urgent {
+      element normal urgent {
         text-color: @urgent-color;
-    }
+      }
 
-    element normal active {
+      element normal active,
+      element alternate active {
         text-color: @accent-color;
-    }
+      }
 
-    element alternate active {
-        text-color: @accent-color;
-    }
-
-    element selected {
+      element selected {
         text-color: @bg0;
-    }
+      }
 
-    element selected normal, element selected active {
+      element selected normal,
+      element selected active {
         background-color: @accent-color;
-    }
+      }
 
-    element selected urgent {
+      element selected urgent {
         background-color: @urgent-color;
-    }
+      }
 
-    element-icon {
+      element-icon {
         size: 0.8em;
-    }
+      }
 
-    element-text {
+      element-text {
         text-color: inherit;
-    }
-  '');
+      }
+    '');
 
-  programs.wezterm.extraConfig = ''
-    config = {
+    programs.wezterm.extraConfig = ''
+      config = {
         colors = {
-            tab_bar = {
-                background = "none",
-
-                active_tab = {
-                    bg_color = "none",
-                    fg_color = "${accent-hex}",
-                },
-                inactive_tab = {
-                    bg_color = "none",
-                    fg_color = "${bg2-hex}",
-                },
-                inactive_tab_hover = {
-                  bg_color = "none",
-                  fg_color = "${grey1-hex}",
-                },
-                new_tab = {
-                    bg_color = "none",
-                    fg_color = "${bg2-hex}",
-                },
-                new_tab_hover = {
-                    bg_color = "none",
-                    fg_color = "${grey1-hex}",
-                },
-            },
-        },
+          tab_bar = {
+            background = "none";
+            active_tab = {
+              bg_color = "none";
+              fg_color = "${accent-hex}";
+            };
+            inactive_tab = {
+              bg_color = "none";
+              fg_color = "${bg2-hex}";
+            };
+            inactive_tab_hover = {
+              bg_color = "none";
+              fg_color = "${grey1-hex}";
+            };
+            new_tab = {
+              bg_color = "none";
+              fg_color = "${bg2-hex}";
+            };
+            new_tab_hover = {
+              bg_color = "none";
+              fg_color = "${grey1-hex}";
+            };
+          };
+        };
 
         -- Normal config here (~/dotfiles/modules/home/wezterm.nix)
-  '';
-}
+    '';
+  }
