@@ -49,8 +49,8 @@
       general = {
         layout = "master";
 
-        gaps_in = 5;
-        gaps_out = 7;
+        gaps_in = 4;
+        gaps_out = 8;
 
         border_size = 2;
         resize_on_border = true;
@@ -74,7 +74,7 @@
           size = 3;
           passes = 1;
 
-          vibrancy = 0.1696;
+          vibrancy = 0.2;
         };
       };
 
@@ -209,7 +209,7 @@
 
         hyprcursor = {
           enabled = true;
-          resulution = "-1";
+          resulution = -1;
         };
       };
     };
