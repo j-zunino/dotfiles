@@ -36,13 +36,6 @@ return {
             input = {
                 prefix = ' ',
             },
-            edit = {
-                border = 'single',
-            },
-            ask = {
-                floating = false,
-                border = 'single',
-            },
         },
         mappings = {
             sidebar = {
