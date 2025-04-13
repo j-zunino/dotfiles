@@ -1,5 +1,7 @@
 return {
     'yetone/avante.nvim',
+    version = false,
+    build = 'make',
     lazy = true,
     keys = {
         '<leader>aa',
@@ -11,7 +13,13 @@ return {
         '<leader>ah',
         '<leader>as',
     },
-    version = false,
+    dependencies = {
+        'nvim-treesitter/nvim-treesitter',
+        'nvim-lua/plenary.nvim',
+        'MunifTanjim/nui.nvim',
+        'echasnovski/mini.icons',
+        'MeanderingProgrammer/render-markdown.nvim',
+    },
     opts = {
         provider = 'gemini',
         gemini = {
@@ -49,17 +57,5 @@ return {
                 },
             },
         },
-    },
-    build = 'make',
-    dependencies = {
-        'nvim-treesitter/nvim-treesitter',
-        -- 'stevearc/dressing.nvim',
-        'nvim-lua/plenary.nvim',
-        'MunifTanjim/nui.nvim',
-        --- The below dependencies are optional,
-        -- 'hrsh7th/nvim-cmp',
-        'ibhagwan/fzf-lua',
-        'echasnovski/mini.icons',
-        'MeanderingProgrammer/render-markdown.nvim',
     },
 }
