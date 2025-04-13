@@ -29,11 +29,6 @@
       firefox
       gimp
       vlc
-      (retroarch.withCores (cores:
-        with cores; [
-          citra
-          melonds
-        ]))
 
       # Utilities
       hyprshot
