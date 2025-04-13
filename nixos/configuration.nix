@@ -13,8 +13,6 @@
   environment = {
     systemPackages = with pkgs; [
       vim
-      # xclip
-      # xsel
     ];
   };
 

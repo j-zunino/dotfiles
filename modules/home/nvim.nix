@@ -67,19 +67,5 @@
         spaces_around_brackets = inside
       '';
     };
-
-    # file.".prettierrc.toml" = {
-    #   text = ''
-    #     # .prettierrc.toml
-    #     tabWidth = 4
-    #     semi = true
-    #     singleQuote = true
-    #     useTabs = false
-    #     quoteProps = "consistent"
-    #     trailingComma = "none"
-    #     bracketSpacing = true
-    #     bracketSameLine = false
-    #   '';
-    # };
   };
 }

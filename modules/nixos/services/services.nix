@@ -3,7 +3,6 @@
     acpid.enable = true;
     printing.enable = true;
     dbus.enable = true;
-    #flatpak.enable = true;
     keyd = {
       enable = true;
       keyboards = {
