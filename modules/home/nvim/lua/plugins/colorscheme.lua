@@ -39,6 +39,9 @@ return {
 
                     -- Blink
                     hl.Pmenu = { link = 'Normal' }
+
+                    -- Avante
+                    hl.AvanteSidebarWinSeparator = { link = 'FloatBorder' }
                 end,
             })
 
