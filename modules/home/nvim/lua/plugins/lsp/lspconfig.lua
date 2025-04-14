@@ -165,11 +165,17 @@ return {
             cmd = { '/home/juan/.nix-profile/bin/lua-language-server' },
             settings = {
                 Lua = {
+                    telemetry = { enable = false },
                     diagnostics = {
-                        globals = { 'vim' },
+                        globals = { 'vim', 'love' },
                     },
                     completion = {
                         callSnippet = 'Replace',
+                    },
+                    workspace = {
+                        library = {
+                            '${3rd}/love2d/library',
+                        },
                     },
                 },
             },

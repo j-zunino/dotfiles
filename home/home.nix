@@ -27,6 +27,7 @@
       nautilus
       discord
       firefox
+      love
       gimp
       vlc
 
