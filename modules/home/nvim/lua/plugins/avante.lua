@@ -29,7 +29,7 @@ return {
             width = 45,
             wrap = false,
             sidebar_header = {
-                align = 'left',
+                align = 'center',
                 rounded = false,
             },
             input = {
