@@ -49,31 +49,28 @@ return {
                     score_offset = 100,
                 },
 
-                avante_commands = {
-                    name = 'avante_commands',
-                    module = 'blink.compat.source',
-                    score_offset = 90,
-                    opts = {},
-                    enabled = function()
-                        return vim.bo.filetype == 'avante'
-                    end,
-                },
                 avante_files = {
                     name = 'avante_files',
                     module = 'blink.compat.source',
                     score_offset = 100,
-                    opts = {},
                     enabled = function()
-                        return vim.bo.filetype == 'avante'
+                        return vim.bo.filetype == 'AvanteInput'
                     end,
                 },
                 avante_mentions = {
                     name = 'avante_mentions',
                     module = 'blink.compat.source',
                     score_offset = 1000,
-                    opts = {},
                     enabled = function()
-                        return vim.bo.filetype == 'avante'
+                        return vim.bo.filetype == 'AvanteInput'
+                    end,
+                },
+                avante_commands = {
+                    name = 'avante_commands',
+                    module = 'blink.compat.source',
+                    score_offset = 90,
+                    enabled = function()
+                        return vim.bo.filetype == 'AvanteInput'
                     end,
                 },
             },
