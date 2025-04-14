@@ -17,8 +17,6 @@ return {
         'nvim-treesitter/nvim-treesitter',
         'nvim-lua/plenary.nvim',
         'MunifTanjim/nui.nvim',
-        'echasnovski/mini.icons',
-        'MeanderingProgrammer/render-markdown.nvim',
     },
     opts = {
         provider = 'gemini',
@@ -28,7 +26,8 @@ return {
             max_tokens = 4096,
         },
         windows = {
-            width = 40,
+            width = 45,
+            wrap = false,
             sidebar_header = {
                 align = 'left',
                 rounded = false,
