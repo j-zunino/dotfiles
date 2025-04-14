@@ -60,9 +60,6 @@ return {
                     operators = false,
                     folds = false,
                 },
-                palette_overrides = {},
-                overrides = {},
-                dim_inactive = false,
             })
         end,
     },
