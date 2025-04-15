@@ -185,12 +185,12 @@
 
       style = ''
         * {
-          border: none;
-          border-radius: 0;
-          min-height: 0;
           margin: 0;
           padding: 0;
+          border: none;
+          min-height: 0;
           box-shadow: none;
+          border-radius: 0;
           text-shadow: none;
           font-family: JetBrainsMono Nerd Font;
         }
@@ -199,44 +199,63 @@
         #custom-nix-logo {
           font-size: 20px;
         }
-
         #custom-nix-logo {
           padding-left: 4px;
         }
 
-        #tray,
-        #clock.date,
-        #temperature,
-        #pulseaudio {
-          padding: 0 8px;
+        tooltip {
+          border: 2px solid;
         }
 
-        #backlight {
-          padding: 0 12px 0 8px;
-        }
-
-        #window,
-        #battery,
-        #workspaces,
         #workspaces button {
-          padding: 0 4px;
+          font-weight: normal;
         }
 
-        #network {
-          padding: 0 4px 0 8px;
+        #battery,
+        #clock.date,
+        /* CRITICAL STATE */
+        #cpu.critical,
+        #memory.critical,
+        #battery.critical,
+        #temperature.critical,
+        /* HOVER */
+        #cpu:hover,
+        #window:hover,
+        #memory:hover,
+        #network:hover,
+        #battery:hover,
+        #backlight:hover,
+        #clock.date:hover,
+        #pulseaudio:hover,
+        #temperature:hover,
+        #custom-expand:hover,
+        #workspaces button:hover,
+        #workspaces button.active {
+          font-weight: bold;
+        }
+
+        #tray,
+        #memory,
+        #backlight,
+        #clock.date,
+        #pulseaudio,
+        #temperature {
+          margin: 0 8px;
         }
 
         #cpu,
-        #memory {
-          padding: 0 2px;
-        }
-
-        #cpu {
-          margin-right: 4px;
-        }
-
-        #memory {
-          margin: 0 12px 0 4px;
+        #memory,
+        #window,
+        #network,
+        #battery,
+        #backlight,
+        #pulseaudio,
+        #workspaces,
+        #temperature,
+        #group-expand,
+        #custom-expand,
+        #workspaces button {
+          padding: 0 4px;
         }
       '';
     };

@@ -93,8 +93,8 @@ in
         }
 
         tooltip {
-          background: ${bg0-hex};
-          border: 2px solid ${accent-hex};
+          background: ${bg1-hex};
+          border-color: ${accent-hex};
         }
 
         tooltip label {
@@ -115,7 +115,6 @@ in
 
         #workspaces button.active {
           color: ${accent-hex};
-          font-weight: bold;
         }
 
         #window {
@@ -123,16 +122,7 @@ in
         }
 
         #clock.date {
-          color: ${grey1-hex};
-        }
-
-        #group-expand,
-        #custom-expand {
-          padding: 0px 5px;
-        }
-
-        #custom-expand {
-          color: ${grey1-hex};
+          color: ${grey2-hex};
         }
 
         #cpu.warning,
@@ -146,7 +136,6 @@ in
         #battery.critical,
         #temperature.critical {
           color: ${red-hex};
-          font-weight: bold;
         }
 
         #battery.charging {
@@ -158,24 +147,37 @@ in
           color: ${accent-hex};
         }
 
+
+        #cpu:hover,
+        #memory:hover,
+        #window:hover,
+        #network:hover,
+        #battery:hover,
+        #backlight:hover,
+        #pulseaudio:hover,
+        #clock.date:hover,
+        #temperature:hover,
+        #custom-expand:hover,
+        #workspaces button:hover {
+          background: none;
+          color: ${fg-hex};
+        }
+
         #custom-separator {
           color: ${bg2-hex};
         }
 
-        #workspaces button:hover,
-        #window:hover,
-        #clock.date:hover,
-        #custom-expand:hover,
-        #cpu:hover,
-        #memory:hover,
-        #temperature:hover,
-        #backlight:hover,
-        #pulseaudio:hover,
-        #network:hover,
-        #battery:hover {
-          background: none;
-          color: ${fg-hex};
-          font-weight: bold;
+        #cpu,
+        #memory,
+        #window,
+        #battery,
+        #network,
+        #backlight,
+        #pulseaudio,
+        #temperature,
+        #custom-expand,
+        #workspaces button {
+          color: ${grey1-hex};
         }
       '';
     };
