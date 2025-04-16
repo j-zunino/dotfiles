@@ -151,7 +151,7 @@
               default = ["󰖁" "󰕿" "󰕿" "󰕿" "󰕿" "󰕿" "󰖀" "󰖀" "󰖀" "󰖀" "󰖀" "󰖀" "󰖀" "󰖀" "󰖀" "󰖀" "󰕾"];
             };
             scroll-step = 1;
-            on-click = "sh $HOME/dotfiles/modules/home/scripts/dunst-notify.sh mute";
+            on-click = " wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             ignored-sinks = ["Easy Effects Sink"];
           };
 
