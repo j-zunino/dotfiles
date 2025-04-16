@@ -16,7 +16,7 @@ return {
                 {
                     '<leader>c',
                     group = 'Code',
-                    icon = { icon = '', color = 'red' },
+                    icon = { icon = ' ', color = 'red' },
                 },
                 {
                     '<leader>d',
