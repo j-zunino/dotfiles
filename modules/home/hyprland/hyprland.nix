@@ -8,6 +8,7 @@
     packages = with pkgs; [
       hyprpicker
       wl-clipboard
+      cliphist
     ];
   };
 
@@ -36,7 +37,13 @@
       ];
 
       # - [ AUTOSTART ] -
-      exec-once = ["sleep 5" "waybar" "wpaperd" "syshud -p bottom -i 24 -m 5"];
+      exec-once = [
+        "sleep 5"
+        "waybar"
+        "wpaperd"
+        "syshud -p bottom -i 24 -m 5"
+        "wl-paste --watch cliphist store"
+      ];
 
       # - [ MONITORS ] -
       monitor = ",preferred,auto,auto";
@@ -137,6 +144,7 @@
 
           "$mod_shift, C, killactive"
           "$mod_shift, Q, exec, dm-logout"
+          "$mod_shift, V, exec, dm-clipboard"
           "$mod_shift, SPACE, exec, hyprctl --batch 'dispatch togglefloating ; dispatch centerwindow'"
 
           "$mod, J, layoutmsg, cyclenext"
