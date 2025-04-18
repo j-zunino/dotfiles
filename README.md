@@ -5,23 +5,16 @@
 
 <img src='./.github/screenshots/1.png'>
 
+## WSL
+
+This branch is specifically tailored for use within Windows Subsystem for Linux (WSL). [NixOS-WSL](https://github.com/nix-community/NixOS-WSL)
+
 ## Info
 
-| Component           |                         |
-| ------------------- | ----------------------- |
-| Shell               | Zsh                     |
-| Terminal            | WezTerm                 |
-| Editor              | Neovim                  |
-| Display Manager     | Ly                      |
-| Display Server      | Wayland                 |
-| Window Manager      | Hyprland                |
-| Bar                 | Waybar                  |
-| Launcher            | Rofi                    |
-| Notification Daemon | Dunst                   |
-| File Explorer       | Yazi / Nautilus         |
-| Browser             | Brave                   |
-| Theme               | Everforest              |
-| Font                | JetBrainsMono Nerd Font |
-| Screenshots         | Hyprshot                |
-| Color Picker        | Hyprpicker              |
-| Wallpaper           | Wpaperd                 |
+| Component     |            |
+| ------------- | ---------- |
+| Shell         | Zsh        |
+| Terminal      | WezTerm    |
+| Editor        | Neovim     |
+| File Explorer | Yazi       |
+| Theme         | Everforest |

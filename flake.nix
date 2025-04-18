@@ -4,32 +4,18 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    wezterm.url = "github:wez/wezterm?dir=nix";
-
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = inputs @ {
     nixpkgs,
     flake-utils,
+    nixos-wsl,
     home-manager,
     ...
   }: {
@@ -38,9 +24,17 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+	  nixos-wsl.nixosModules.default
+	  {
+	    system.stateVersion = "24.11";
+	    wsl.enable = true;
+	  }
+	  home-manager.nixosModules.home-manager
+	  {
+	    home-manager.useGlobalPkgs = true;
+	    home-manager.useUserPackages = true;
+	  }
           ./nixos/configuration.nix
-          ./nixos/hardware-configuration.nix
-          inputs.stylix.nixosModules.stylix
         ];
       };
     };
@@ -51,7 +45,6 @@
         extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home/home.nix
-          inputs.stylix.homeManagerModules.stylix
         ];
       };
     };

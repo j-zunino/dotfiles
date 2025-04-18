@@ -15,6 +15,7 @@
     username = "juan";
     homeDirectory = "/home/juan";
 
+
     stateVersion = "24.05";
 
     sessionVariables = {
@@ -23,25 +24,14 @@
 
     packages = with pkgs; [
       # Applications
-      inkscape
-      nautilus
-      discord
-      firefox
       love
-      gimp
-      vlc
 
       # Utilities
-      hyprshot
       ripgrep
-      syshud
       unzip
       curl
       tree
       wget
-
-      # godot_4
-      # prismlauncher
     ];
   };
 }
