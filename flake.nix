@@ -24,16 +24,11 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-	  nixos-wsl.nixosModules.default
-	  {
-	    system.stateVersion = "24.11";
-	    wsl.enable = true;
-	  }
-	  home-manager.nixosModules.home-manager
-	  {
-	    home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
-	  }
+          nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "24.11";
+            wsl.enable = true;
+          }
           ./nixos/configuration.nix
         ];
       };
