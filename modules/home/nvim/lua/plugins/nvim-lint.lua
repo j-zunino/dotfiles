@@ -16,6 +16,7 @@ return {
         }
 
         lint.linters.spell = {
+            name = 'Spelling warning',
             cmd = 'cat',
             stdin = true,
             parser = function(_, bufnr)
@@ -36,13 +37,23 @@ return {
             end,
         }
 
+        local excluded_filetypes = {
+            snacks_picker_list = true,
+            snacks_picker_input = true,
+        }
+
         vim.api.nvim_create_autocmd(
             { 'BufWritePost', 'BufEnter', 'InsertLeave' },
             {
                 group = vim.api.nvim_create_augroup('lint', { clear = true }),
-                callback = function()
-                    lint.try_lint()
-                    lint.try_lint('spell')
+                callback = function(args)
+                    local ft = vim.bo[args.buf].filetype
+                    if not excluded_filetypes[ft] then
+                        lint.try_lint()
+                        lint.try_lint('spell')
+                    else
+                        vim.diagnostic.reset(nil, args.buf)
+                    end
                 end,
             }
         )
