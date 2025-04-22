@@ -122,7 +122,7 @@ config = {
         {
             mods = 'ALT',
             key = 'q',
-            action = wezterm.action.CloseCurrentPane({ confirm = true }),
+            action = wezterm.action.CloseCurrentPane({ confirm = false }),
         },
 
         {
