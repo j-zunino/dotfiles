@@ -85,7 +85,7 @@ return {
 
         completion = {
             ghost_text = {
-                enabled = true,
+                enabled = false,
             },
 
             list = {
