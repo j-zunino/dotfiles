@@ -4,18 +4,15 @@
     enableZshIntegration = true;
 
     defaultOptions = [
-      "--style=full"
+      "--style=full:sharp"
       "--border=none"
 
       "--input-label=' Input '"
-      "--input-border=sharp"
 
       "--list-label=' Results '"
-      "--list-border=sharp"
 
       "--preview='bat --style=numbers --color=always {} --line-range=:500 {}'"
       "--preview-window=right:60%"
-      "--preview-border=sharp"
 
       "--prompt=' '"
       "--marker=' '"
