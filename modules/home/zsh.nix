@@ -16,9 +16,9 @@
 
       zle-keymap-select () {
           if [[ $KEYMAP == vicmd ]]; then
-              echo -ne '\e[2 q'
+              echo -ne "\e[2 q"
           else
-              echo -ne '\e[5 q'
+              echo -ne "\e[5 q"
           fi
       }
 
@@ -26,32 +26,23 @@
       precmd_functions+=(zle-keymap-select)
       zle -N zle-keymap-select
 
-      # export PS1='%B%F{green}[%n%F{cyan}@%F{blue}%m] %F{blue}  %F{red} %~ %B%F{yellow}$(__git_ps1 " %s")%f%b
-      # %F{green}$%b%f '
+      # export PS1="%B%F{green}[%n%F{cyan}@%F{blue}%m] %F{blue}  %F{red} %~ %B%F{yellow}$(__git_ps1 " %s")%f%b
+      # %F{green}$%b%f "
 
-      export PS1='%B%F{red}󰉋 %~ %B%F{yellow}$(__git_ps1 " %s")%f%b
-      %F{green} %b%f '
+      export PS1="%B%F{red}󰉋 %~ %B%F{yellow}$(__git_ps1 " %s")%f%b
+      %F{green} %b%f "
 
       if [ -f "$HOME/dotfiles/.env" ]; then
-          export $(grep -v '^#' $HOME/dotfiles/.env | xargs)
+          export $(grep -v "^#" $HOME/dotfiles/.env | xargs)
       fi
 
       # Fzf
       fzf_file() {
         local file
         file=$(fd --type f | fzf \
-          --border-label=' Select a file to open ' \
-          --bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down') || return
+          --border-label=" Select a file to open " \
+          --bind "ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down") || return
         [[ -n "$file" ]] && nvim "$file"
-        zle reset-prompt
-      }
-
-      fzf_cd() {
-        local dir
-        dir=$(fd --type d . ~ | fzf \
-          --no-preview \
-          --border-label=' Select a folder to cd into ') || return
-        [[ -n "$dir" ]] && cd "$dir"
         zle reset-prompt
       }
 
@@ -64,13 +55,36 @@
         zle reset-prompt
       }
 
-      zle -N fzf_file
-      zle -N fzf_cd
-      zle -N fzf_zoxide_cd
+      live_grep() {
+        local query result file linenumber
 
-      bindkey '^F' fzf_file
-      bindkey '^G' fzf_cd
-      bindkey '^Z' fzf_zoxide_cd
+        if [[ -z "$1" ]]; then
+          read -r "query?Enter search pattern: "
+        else
+          query="$*"
+        fi
+
+        result=$(rg --ignore-case --color=always --line-number --no-heading "$query" 2>/dev/null |
+          fzf --ansi \
+              --delimiter ":" \
+              --preview "bat --style=numbers --color=always {1} --highlight-line {2}" \
+              --preview-window "+{2}+3/3,~3" \
+              --bind "ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" )
+
+        file="''${result%%:*}"
+        linenumber="$(echo "''${result}" | cut -d: -f2)"
+        if [[ -n "$file" ]]; then
+          $EDITOR +"$linenumber" "$file"
+        fi
+      }
+
+      zle -N fzf_file
+      zle -N fzf_zoxide_cd
+      zle -N live_grep
+
+      bindkey "^F" fzf_file
+      bindkey "^Z" fzf_zoxide_cd
+      bindkey "^G" live_grep
 
       # Zoxide
       eval "$(zoxide init zsh)"
