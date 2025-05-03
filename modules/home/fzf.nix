@@ -7,6 +7,9 @@
       "--style=full:sharp"
       "--border=none"
 
+      "--keep-right"
+      "--smart-case"
+
       "--input-label=' Input '"
 
       "--list-label=' Results '"
