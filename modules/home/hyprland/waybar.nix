@@ -164,7 +164,7 @@
 
             format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
 
-            on-click = "dm-wifi";
+            on-click = "iwmenu --launcher rofi";
           };
 
           "battery" = {

@@ -25,6 +25,8 @@
     wezterm.url = "github:wez/wezterm?dir=nix";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    iwmenu.url = "github:e-tho/iwmenu";
   };
 
   outputs = inputs @ {

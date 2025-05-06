@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs = {
     rofi = {
       package = pkgs.rofi-wayland;
@@ -13,5 +17,13 @@
         kb-element-prev = "ISO_Left_Tab";
       };
     };
+  };
+
+  home = {
+    packages = [
+      inputs.iwmenu.packages.${pkgs.system}.default
+      pkgs.dbus
+      pkgs.iwd
+    ];
   };
 }
