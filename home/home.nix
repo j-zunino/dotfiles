@@ -7,7 +7,6 @@
 
   programs = {
     home-manager.enable = true;
-    bash.enable = true;
     bat.enable = true;
   };
 
@@ -23,7 +22,6 @@
 
     packages = with pkgs; [
       # Applications
-      inkscape
       nautilus
       discord
       firefox
@@ -41,7 +39,6 @@
       tree
       wget
 
-      # godot_4
       # prismlauncher
     ];
   };
