@@ -102,6 +102,7 @@
       input = {
         kb_layout = "latam";
         kb_model = "latitude";
+        kb_options = "caps:swapescape";
         repeat_delay = 300;
 
         follow_mouse = 1;
