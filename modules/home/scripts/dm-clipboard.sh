@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 selection=$(printf " Clear clipboard\n%s" "$(cliphist list)" | rofi -dmenu -i -p "󰅍 Clipboard")
 

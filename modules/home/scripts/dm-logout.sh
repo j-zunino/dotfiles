@@ -1,5 +1,5 @@
-#!/bin/bash
-#
+#!/usr/bin/env bash
+
 # Description: Logout, shutdown, reboot or lock screen.
 # Dependencies: rofi, systemctl, slock, Nerd Font
 #
