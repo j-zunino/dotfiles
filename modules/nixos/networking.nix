@@ -1,11 +1,19 @@
 {...}: {
+  services.connman.wifi.backend = "iwd";
+
   networking = {
     hostName = "nixos";
 
+    networkmanager.wifi.backend = "iwd";
+
     wireless.iwd.enable = true;
-    networkmanager = {
-      enable = true;
-      wifi.backend = "iwd";
+    wireless.iwd.settings = {
+      IPv6 = {
+        Enabled = true;
+      };
+      Settings = {
+        AutoConnect = true;
+      };
     };
   };
 }
