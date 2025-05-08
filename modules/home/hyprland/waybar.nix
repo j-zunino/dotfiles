@@ -13,7 +13,7 @@
             "custom/nix-logo"
             "custom/arrow"
             "hyprland/workspaces"
-            "hyprland/window"
+            # "hyprland/window"
           ];
 
           modules-center = [
@@ -211,8 +211,6 @@
           font-weight: normal;
         }
 
-        #battery,
-        #clock.date,
         /* CRITICAL STATE */
         #cpu.critical,
         #memory.critical,
