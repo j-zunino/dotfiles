@@ -7,13 +7,46 @@
     oh-my-zsh.enable = true;
 
     initExtra = ''
-      source $HOME/.nix-profile/share/git/contrib/completion/git-prompt.sh
-      setopt PROMPT_SUBST
-
-      bindkey -v
+      autoload -Uz vcs_info
 
       KEYTIMEOUT=1
+      bindkey -v
 
+      # Prompt
+      zstyle ':vcs_info:*' enable git
+      zstyle ':vcs_info:*' formats '%F{yellow} %b%f%m'
+      zstyle ':vcs_info:*' actionformats '%F{yellow} %b%f %F{blue}%a%f'
+      zstyle ':vcs_info:git*+set-message:*' hooks git-check
+
+      +vi-git-check() {
+        if [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == 'true' ]]; then
+          local GIT_STATUS UNPUSHED UNPULLED STAGED UNSTAGED UNTRACKED
+
+          UNPUSHED=$(git log --oneline @{u}.. 2>/dev/null | wc -l)
+          [[ $UNPUSHED -gt 0 ]] && hook_com[misc]+=" %F{blue}↑$UNPUSHED%f"
+
+          UNPULLED=$(git log --oneline ..@{u} 2>/dev/null | wc -l)
+          [[ $UNPULLED -gt 0 ]] && hook_com[misc]+=" %F{magenta}↓$UNPULLED%f"
+
+          GIT_STATUS=$(git status --porcelain)
+
+          STAGED=$(echo "$GIT_STATUS" | grep -v '??' | grep -E '^[^ ]' | wc -l)
+          [[ $STAGED   -gt 0 ]] && hook_com[misc]+=" %F{green}+$STAGED%f"
+
+          UNSTAGED=$(echo "$GIT_STATUS" | grep -E '^ ' | wc -l)
+          [[ $UNSTAGED -gt 0 ]] && hook_com[misc]+=" %F{yellow}*$UNSTAGED%f"
+
+          UNTRACKED=$(echo "$GIT_STATUS" | grep '^??' | wc -l)
+          [[ $UNTRACKED -gt 0 ]] && hook_com[misc]+=" %F{red}??$UNTRACKED%f"
+        fi
+      }
+
+      setopt PROMPT_SUBST
+      export PS1='%B%F{red}󰉋 %~%f $(print -P "$vcs_info_msg_0_")
+      %B%F{green} %f%b '
+
+
+      # Vim cursor
       zle-keymap-select () {
           if [[ $KEYMAP == vicmd ]]; then
               echo -ne "\e[2 q"
@@ -21,20 +54,28 @@
               echo -ne "\e[5 q"
           fi
       }
-
-      # Prompt
       precmd_functions+=(zle-keymap-select)
       zle -N zle-keymap-select
 
-      # export PS1="%B%F{green}[%n%F{cyan}@%F{blue}%m] %F{blue}  %F{red} %~ %B%F{yellow}$(__git_ps1 " %s")%f%b
-      # %F{green}$%b%f "
 
-      export PS1="%B%F{red}󰉋 %~ %B%F{yellow}$(__git_ps1 " %s")%f%b
-      %F{green} %b%f "
+      precmd() {
+        psvar=()
+        vcs_info
+        [[ -n $vcs_info_msg_0_ ]] && print -v 'psvar[1]' -Pr -- "$vcs_info_msg_0_"
+        zle-keymap-select  # mantener el cursor estilo vim
+      }
 
+
+      # Source .env
       if [ -f "$HOME/dotfiles/.env" ]; then
-          export $(grep -v "^#" $HOME/dotfiles/.env | xargs)
+        set -a
+        source "$HOME/dotfiles/.env"
+        set +a
       fi
+
+      # Zoxide
+      eval "$(zoxide init zsh)"
+
 
       # Fzf
       fzf_file() {
@@ -85,9 +126,6 @@
       bindkey "^F" fzf_file
       bindkey "^Z" fzf_zoxide_cd
       bindkey "^G" live_grep
-
-      # Zoxide
-      eval "$(zoxide init zsh)"
     '';
 
     shellAliases = {
