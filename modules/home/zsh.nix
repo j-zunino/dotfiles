@@ -93,6 +93,8 @@
           --no-preview \
           --border-label=' Select a folder to cd into ') || return
         [[ -n "$dir" ]] && z "$dir"
+
+        precmd
         zle reset-prompt
       }
 
