@@ -74,7 +74,7 @@ in
 
     wayland.windowManager.hyprland.settings.general = {
       "col.active_border" = accent;
-      "col.inactive_border" = bg0;
+      "col.inactive_border" = bg1;
     };
 
     programs.waybar = {
