@@ -87,7 +87,7 @@
         zle reset-prompt
       }
 
-      fzf_zoxide_cd() {
+      fzf_zoxide() {
         local dir
         dir=$(zoxide query -l | fzf \
           --no-preview \
@@ -122,11 +122,11 @@
       }
 
       zle -N fzf_file
-      zle -N fzf_zoxide_cd
+      zle -N fzf_zoxide
       zle -N live_grep
 
       bindkey "^F" fzf_file
-      bindkey "^Z" fzf_zoxide_cd
+      bindkey "^Z" fzf_zoxide
       bindkey "^G" live_grep
     '';
 
