@@ -146,21 +146,9 @@
           "$mod_shift, C, killactive"
           "$mod_shift, Q, exec, dm-logout"
           "$mod_shift, V, exec, dm-clipboard"
-          "$mod_shift, SPACE, exec, hyprctl --batch 'dispatch togglefloating ; dispatch centerwindow'"
-
-          "$mod, J, layoutmsg, cyclenext"
-          "$mod, K, layoutmsg, cycleprev"
-
-          "$mod_shift, J, layoutmsg, swapnext"
-          "$mod_shift, K, layoutmsg, swapprev"
+          "$mod_shift, SPACE, exec, hyprctl --batch 'dispatch togglefloating; dispatch centerwindow'"
 
           "$mod, M, fullscreen"
-
-          "$mod, H, resizeactive, -20 0"
-          "$mod, L, resizeactive, 20 0"
-
-          "$mod_shift, H, resizeactive, 0 -20"
-          "$mod_shift, L, resizeactive, 0 20"
 
           "$mod_shift, S, exec, hyprshot -m region --c"
           "$mod, PRINT, exec, hyprshot -m output"
@@ -178,6 +166,20 @@
             )
             9)
         );
+
+      binde = [
+        "$mod, J, layoutmsg, cyclenext"
+        "$mod, K, layoutmsg, cycleprev"
+
+        "$mod_shift, J, layoutmsg, swapnext"
+        "$mod_shift, K, layoutmsg, swapprev"
+
+        "$mod, H, resizeactive, -20 0"
+        "$mod, L, resizeactive, 20 0"
+
+        "$mod_shift, H, resizeactive, 0 -20"
+        "$mod_shift, L, resizeactive, 0 20"
+      ];
 
       bindm = [
         "$mod, mouse:272, movewindow"
