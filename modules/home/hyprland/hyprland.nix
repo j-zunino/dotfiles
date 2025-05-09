@@ -56,8 +56,8 @@
       general = {
         layout = "master";
 
-        gaps_in = 4;
-        gaps_out = 8;
+        gaps_in = 0;
+        gaps_out = 0;
 
         border_size = 2;
         resize_on_border = true;
@@ -67,10 +67,10 @@
         rounding = 0;
 
         active_opacity = 1.0;
-        inactive_opacity = 0.9;
+        inactive_opacity = 1.0;
 
         dim_inactive = true;
-        dim_strength = 0.2;
+        dim_strength = 0.05;
 
         shadow = {
           enabled = false;
@@ -86,8 +86,8 @@
       };
 
       animations = {
-        enabled = true;
-        first_launch_animation = true;
+        enabled = false;
+        first_launch_animation = false;
 
         bezier = "myBezier, 0, 0.4, 0.2, 1";
 
