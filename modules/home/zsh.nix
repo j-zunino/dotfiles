@@ -145,19 +145,24 @@
       v = "vim";
       y = "yazi";
       f = "yazi";
-      gs = "git status";
+
+      # Git
+      lg = "lazygit";
+      gs = "git status --short";
       ga = "git add";
       gaa = "git add --all";
       gc = "git commit";
       gp = "git push";
+      gu = "git pull";
+      gf = "git fetch";
       gd = "git diff";
       gds = "git diff --staged";
-      gf = "git fetch";
-      lg = "lazygit";
 
+      # Nix
       hms = "home-manager switch --flake $HOME/dotfiles/.";
       nrs = "sudo nixos-rebuild switch --flake $HOME/dotfiles/.";
 
+      # Dev
       dev = "pnpm run dev";
       build = "pnpm run build";
     };

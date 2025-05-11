@@ -4,9 +4,26 @@
       enable = true;
       userName = "j-zunino";
       userEmail = "zuninojuanbautista@gmail.com";
-      delta.enable = true;
+      delta = {
+        enable = true;
+        options = {
+          dark = true;
+          tabs = 4;
+        };
+      };
       extraConfig = {
         init.defaultBranch = "main";
+
+        status = {
+          branch = true;
+          showStash = true;
+        };
+
+        diff = {
+          context = 3;
+          renames = "copies";
+          interHunkContext = 10;
+        };
       };
     };
 
