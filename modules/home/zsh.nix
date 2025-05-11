@@ -128,6 +128,10 @@
       bindkey "^F" fzf_file
       bindkey "^Z" fzf_zoxide
       bindkey "^G" live_grep
+
+      bindkey '^J' history-search-backward
+      bindkey '^K' history-search-forward
+      bindkey '^L' autosuggest-accept
     '';
 
     shellAliases = {
