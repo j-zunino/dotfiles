@@ -8,6 +8,7 @@
   programs = {
     home-manager.enable = true;
     bat.enable = true;
+    eza.enable = true;
   };
 
   home = {
@@ -24,7 +25,6 @@
       # Applications
       nautilus
       discord
-      firefox
       tiled
       love
       gimp
@@ -36,7 +36,6 @@
       syshud
       unzip
       curl
-      tree
       wget
 
       # prismlauncher
