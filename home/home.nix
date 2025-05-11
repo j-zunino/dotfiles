@@ -9,12 +9,12 @@
     home-manager.enable = true;
     bash.enable = true;
     bat.enable = true;
+    eza.enable = true;
   };
 
   home = {
     username = "juan";
     homeDirectory = "/home/juan";
-
 
     stateVersion = "24.05";
 
@@ -30,7 +30,6 @@
       ripgrep
       unzip
       curl
-      tree
       wget
     ];
   };
