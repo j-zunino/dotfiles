@@ -10,5 +10,6 @@
     ./aichat.nix
     ./ssh.nix
     ./fzf.nix
+    ./themes.nix
   ];
 }
