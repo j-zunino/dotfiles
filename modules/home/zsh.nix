@@ -6,7 +6,7 @@
     syntaxHighlighting.enable = true;
     oh-my-zsh.enable = true;
 
-    initExtra = ''
+    initContent = ''
       autoload -Uz vcs_info
 
       KEYTIMEOUT=1
@@ -65,13 +65,6 @@
         zle-keymap-select  # mantener el cursor estilo vim
       }
 
-
-      # Source .env
-      if [ -f "$HOME/dotfiles/.env" ]; then
-        set -a
-        source "$HOME/dotfiles/.env"
-        set +a
-      fi
 
       # Zoxide
       eval "$(zoxide init zsh)"
@@ -132,6 +125,14 @@
       bindkey '^J' history-search-backward
       bindkey '^K' history-search-forward
       bindkey '^L' autosuggest-accept
+    '';
+
+    envExtra = ''
+      if [ -f "$HOME/dotfiles/.env" ]; then
+        set -a
+        source "$HOME/dotfiles/.env"
+        set +a
+      fi
     '';
 
     shellAliases = {
