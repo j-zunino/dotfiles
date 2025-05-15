@@ -1,18 +1,18 @@
 {...}: {
-  services = {
-    xserver = {
-      enable = true;
+    services = {
+        xserver = {
+            enable = true;
 
-      desktopManager.plasma5.enable = false;
+            desktopManager.plasma5.enable = false;
 
-      xkb = {
-        layout = "latam";
-        variant = "";
-        model = "latitude";
-      };
+            xkb = {
+                layout = "latam";
+                variant = "";
+                model = "latitude";
+            };
 
-      # Touchpad support
-      # libinput.enable = true;
+            # Touchpad support
+            # libinput.enable = true;
+        };
     };
-  };
 }

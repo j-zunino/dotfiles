@@ -1,14 +1,14 @@
 {pkgs, ...}: {
-  services = {
-    displayManager = {
-      defaultSession = "hyprland";
+    services = {
+        displayManager = {
+            defaultSession = "hyprland";
+        };
     };
-  };
 
-  environment = {
-    systemPackages = with pkgs; [
-      brightnessctl
-      playerctl
-    ];
-  };
+    environment = {
+        systemPackages = with pkgs; [
+            brightnessctl
+            playerctl
+        ];
+    };
 }

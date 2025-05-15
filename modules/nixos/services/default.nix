@@ -1,6 +1,6 @@
 {
-  imports = [
-    ./pipewire.nix
-    ./services.nix
-  ];
+    imports = [
+        ./pipewire.nix
+        ./services.nix
+    ];
 }
