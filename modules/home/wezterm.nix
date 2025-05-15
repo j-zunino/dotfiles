@@ -10,6 +10,7 @@
 
       extraConfig = ''
             -- Stylix (~/dotfiles/modules/stylix.nix)
+            color_scheme="stylix",
 
             max_fps = 60,
             animation_fps = 0,
