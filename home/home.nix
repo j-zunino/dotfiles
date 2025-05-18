@@ -24,6 +24,7 @@
 
     packages = with pkgs; [
       # Applications
+      zathura
       love
 
       # Utilities
