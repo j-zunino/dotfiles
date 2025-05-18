@@ -15,6 +15,10 @@ return {
             end, { desc = 'Format buffer' }),
 
             formatters = {
+                typstyle = {
+                    command = '/home/juan/.nix-profile/bin/typstyle',
+                },
+
                 stylua = {
                     command = '/home/juan/.nix-profile/bin/stylua',
                     args = {
@@ -36,6 +40,7 @@ return {
                 json = { 'prettierd' },
                 markdown = { 'prettierd' },
                 lua = { 'stylua' },
+                typst = { 'typstyle' },
             },
             format_on_save = {
                 lsp_fallback = true,
