@@ -43,6 +43,7 @@
       editorconfig-checker
       imagemagick
       tty-clock
+      websocat
       luarocks
       chafa
       vale
