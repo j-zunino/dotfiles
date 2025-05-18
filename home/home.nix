@@ -24,6 +24,7 @@
         packages = with pkgs; [
             # Applications
             nautilus
+            zathura
             discord
             tiled
             love
