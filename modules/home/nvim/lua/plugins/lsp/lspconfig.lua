@@ -203,6 +203,13 @@ return {
             },
         })
 
+        lspconfig['tinymist'].setup({
+            capabilities = capabilities,
+            cmd = {
+                '/home/juan/.nix-profile/bin/tinymist',
+            },
+        })
+
         lspconfig['html'].setup({
             capabilities = capabilities,
         })

@@ -17,6 +17,7 @@
       lua-language-server
       lua51Packages.lua
       python313
+      tinymist
       emmet-ls
       vtsls
       nixd
@@ -29,6 +30,7 @@
 
       # Compilers
       gnumake
+      typst
       gcc
 
       # Development Tools
@@ -46,7 +48,7 @@
       fd
     ];
 
-    file."alejandra.toml".text = ''
+    file."dotfiles/alejandra.toml".text = ''
       indentation = "FourSpaces"
     '';
 
