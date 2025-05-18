@@ -25,6 +25,7 @@
             # Formatters & Linters
             prettierd
             alejandra
+            typstyle
             eslint_d
             stylua
 
