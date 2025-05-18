@@ -160,7 +160,7 @@
                         format-wifi = "{icon} ";
                         format-disconnected = "󰤮";
                         tooltip-format-wifi = "{essid} {icon} {signalStrength}%";
-                        tooltip-format-disconnected = "󰤮";
+                        tooltip-format-disconnected = "󰤮 ";
 
                         format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
 
