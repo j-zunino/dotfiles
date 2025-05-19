@@ -30,7 +30,7 @@
                     "custom/nix-logo" = {
                         format = " ";
                         tooltip = false;
-                        on-click = "dm-logout";
+                        on-click = "logout";
                     };
 
                     "custom/arrow" = {
