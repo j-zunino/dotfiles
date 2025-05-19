@@ -205,7 +205,6 @@ in
 
             window {
                 width: 50%;
-                location: center;
                 padding: 4px;
                 background-color: ${bg0-hex};
             }
@@ -233,8 +232,9 @@ in
             }
 
             textbox {
-                padding: 4px;
-                background-color: ${bg0-hex};
+                border: 1px;
+                padding: 5px;
+                border-color: ${grey1-hex};
             }
 
             listview {
