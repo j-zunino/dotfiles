@@ -197,92 +197,91 @@ in
 
         programs.rofi.theme = lib.mkForce (builtins.toFile "rofi-theme.rasi" ''
             * {
-              bg0: ${bg0-hex};
-              bg1: ${bg1-hex};
-              fg: ${fg-hex};
-
-              accent-color: ${accent-hex};
-              urgent-color: ${yellow-hex};
-
-              background-color: transparent;
-              text-color: @fg;
-
-              margin: 0;
-              padding: 0;
-              spacing: 0;
+                background-color: transparent;
+                text-color: ${fg-hex};
+                margin: 0;
+                padding: 0;
             }
 
             window {
-              location: center;
-              width: 580;
-              background-color: @bg0;
-              border: 2px;
-              border-color: @accent-color;
+                width: 50%;
+                location: center;
+                padding: 4px;
+                background-color: ${bg0-hex};
+            }
+
+            #mainbox {
+                border: 1px;
+                border-color: ${grey1-hex};
+                padding: 5px;
             }
 
             inputbar {
-              spacing: 4px;
-              padding: 4px;
-              background-color: @bg1;
+                spacing: 4px;
+                padding: 4px 0 9px 0;
+                background-color: ${bg0-hex};
+                border: 0 0 1px 0;
+                border-color: ${grey1-hex};
             }
 
             prompt, entry, element-icon, element-text {
-              vertical-align: 0.5;
+                vertical-align: 0.5;
             }
 
             prompt {
-              text-color: @accent-color;
+                text-color: ${accent-hex};
             }
 
             textbox {
-              padding: 4px;
-              background-color: @bg1;
+                padding: 4px;
+                background-color: ${bg0-hex};
             }
 
             listview {
-              padding: 4px 0;
-              lines: 8;
-              columns: 1;
-              fixed-height: false;
+                padding: 5px 0 0 0;
+                lines: 8;
+                columns: 1;
+                fixed-height: false;
             }
 
             element {
-              padding: 4px;
-              spacing: 4px;
+                padding: 2px 8px;
+                spacing: 4px;
             }
 
-            element normal normal {
-              text-color: @fg;
+            element normal {
+                text-color: ${fg-hex};
             }
 
-            element normal urgent {
-              text-color: @urgent-color;
+            element urgent {
+                text-color: ${yellow-hex};
             }
 
-            element normal active,
-            element alternate active {
-              text-color: @accent-color;
+            element active,
+            element alternate.active {
+                text-color: ${accent-hex};
             }
 
             element selected {
-              text-color: @bg0;
+                text-color: ${fg-hex};
             }
 
-            element selected normal,
-            element selected active {
-              background-color: @accent-color;
+            element.selected.normal,
+            element.selected.active {
+                background-color: ${accent-hex}33;
             }
 
-            element selected urgent {
-              background-color: @urgent-color;
+            element.selected.urgent {
+                background-color: ${yellow-hex};
             }
 
             element-icon {
-              size: 0.8em;
+                size: 0.8em;
             }
 
             element-text {
-              text-color: inherit;
+                text-color: inherit;
+                highlight: bold ${accent-hex};
             }
         '');
 
