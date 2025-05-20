@@ -205,19 +205,19 @@ in
 
             window {
                 width: 50%;
-                padding: 4px;
+                padding: 10px 4px;
                 background-color: ${bg0-hex};
             }
 
             #mainbox {
                 border: 1px;
                 border-color: ${grey1-hex};
-                padding: 5px;
+                padding: 8px 4px;
             }
 
             inputbar {
                 spacing: 4px;
-                padding: 4px 0 9px 0;
+                padding: 2px 0 10px 0;
                 background-color: ${bg0-hex};
                 border: 0 0 1px 0;
                 border-color: ${grey1-hex};
@@ -233,13 +233,12 @@ in
 
             textbox {
                 border: 1px;
-                padding: 5px;
+                padding: 10px 4px;
                 border-color: ${grey1-hex};
             }
 
             listview {
-                padding: 5px 0 0 0;
-                lines: 8;
+                padding: 10px 0 2px 0;
                 columns: 1;
                 fixed-height: false;
             }
@@ -276,7 +275,7 @@ in
             }
 
             element-icon {
-                size: 0.8em;
+                size: 1em;
             }
 
             element-text {
