@@ -1,27 +1,27 @@
 {...}: {
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
+    programs.fzf = {
+        enable = true;
+        enableZshIntegration = true;
 
-    defaultOptions = [
-      "--style=full:sharp"
-      "--border=none"
+        defaultOptions = [
+            "--style=full:sharp"
+            "--border=none"
 
-      "--keep-right"
-      "--smart-case"
+            "--keep-right"
+            "--smart-case"
 
-      "--input-label=' Input '"
+            "--input-label=' Input '"
 
-      "--list-label=' Results '"
+            "--list-label=' Results '"
 
-      "--preview='bat --style=numbers --color=always {} --line-range=:500 {}'"
-      "--preview-window=right:60%"
+            "--preview='bat --style=numbers --color=always {} --line-range=:500 {}'"
+            "--preview-window=right:60%"
 
-      "--prompt=' '"
-      "--marker=' '"
-      "--pointer="
-      "--scrollbar=█"
-      "--bind='focus:transform-preview-label:echo {1} '"
-    ];
-  };
+            "--prompt=' '"
+            "--marker=' '"
+            "--pointer="
+            "--scrollbar=█"
+            "--bind='focus:transform-preview-label:echo {1} '"
+        ];
+    };
 }

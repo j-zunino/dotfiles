@@ -1,176 +1,176 @@
 {config, ...}: {
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    oh-my-zsh.enable = true;
+    programs.zsh = {
+        enable = true;
+        enableCompletion = true;
+        autosuggestion.enable = true;
+        syntaxHighlighting.enable = true;
+        oh-my-zsh.enable = true;
 
-    initContent = ''
-      autoload -Uz vcs_info
+        initContent = ''
+            autoload -Uz vcs_info
 
-      KEYTIMEOUT=1
-      bindkey -v
+            KEYTIMEOUT=1
+            bindkey -v
 
-      # Prompt
-      zstyle ':vcs_info:*' enable git
-      zstyle ':vcs_info:*' formats '%F{yellow} %b%f%m'
-      zstyle ':vcs_info:*' actionformats '%F{yellow} %b%f %F{blue}%a%f'
-      zstyle ':vcs_info:git*+set-message:*' hooks git-check
+            # Prompt
+            zstyle ':vcs_info:*' enable git
+            zstyle ':vcs_info:*' formats '%F{yellow} %b%f%m'
+            zstyle ':vcs_info:*' actionformats '%F{yellow} %b%f %F{blue}%a%f'
+            zstyle ':vcs_info:git*+set-message:*' hooks git-check
 
-      +vi-git-check() {
-        if [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == 'true' ]]; then
-          local GIT_STATUS UNPUSHED UNPULLED STAGED UNSTAGED UNTRACKED
+            +vi-git-check() {
+              if [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == 'true' ]]; then
+                local GIT_STATUS UNPUSHED UNPULLED STAGED UNSTAGED UNTRACKED
 
-          UNPUSHED=$(git log --oneline @{u}.. 2>/dev/null | wc -l)
-          [[ $UNPUSHED -gt 0 ]] && hook_com[misc]+=" %F{blue}↑$UNPUSHED%f"
+                UNPUSHED=$(git log --oneline @{u}.. 2>/dev/null | wc -l)
+                [[ $UNPUSHED -gt 0 ]] && hook_com[misc]+=" %F{blue}↑$UNPUSHED%f"
 
-          UNPULLED=$(git log --oneline ..@{u} 2>/dev/null | wc -l)
-          [[ $UNPULLED -gt 0 ]] && hook_com[misc]+=" %F{magenta}↓$UNPULLED%f"
+                UNPULLED=$(git log --oneline ..@{u} 2>/dev/null | wc -l)
+                [[ $UNPULLED -gt 0 ]] && hook_com[misc]+=" %F{magenta}↓$UNPULLED%f"
 
-          GIT_STATUS=$(git status --porcelain)
+                GIT_STATUS=$(git status --porcelain)
 
-          STAGED=$(echo "$GIT_STATUS" | grep -v '??' | grep -E '^[^ ]' | wc -l)
-          [[ $STAGED   -gt 0 ]] && hook_com[misc]+=" %F{green}+$STAGED%f"
+                STAGED=$(echo "$GIT_STATUS" | grep -v '??' | grep -E '^[^ ]' | wc -l)
+                [[ $STAGED   -gt 0 ]] && hook_com[misc]+=" %F{green}+$STAGED%f"
 
-          UNSTAGED=$(echo "$GIT_STATUS" | grep -E '^ ' | wc -l)
-          [[ $UNSTAGED -gt 0 ]] && hook_com[misc]+=" %F{yellow}*$UNSTAGED%f"
+                UNSTAGED=$(echo "$GIT_STATUS" | grep -E '^ ' | wc -l)
+                [[ $UNSTAGED -gt 0 ]] && hook_com[misc]+=" %F{yellow}*$UNSTAGED%f"
 
-          UNTRACKED=$(echo "$GIT_STATUS" | grep '^??' | wc -l)
-          [[ $UNTRACKED -gt 0 ]] && hook_com[misc]+=" %F{red}??$UNTRACKED%f"
-        fi
-      }
+                UNTRACKED=$(echo "$GIT_STATUS" | grep '^??' | wc -l)
+                [[ $UNTRACKED -gt 0 ]] && hook_com[misc]+=" %F{red}??$UNTRACKED%f"
+              fi
+            }
 
-      setopt PROMPT_SUBST
-      export PS1='%B%F{red}󰉋 %~%f $(print -P "$vcs_info_msg_0_")
-      %B%F{green} %f%b '
-
-
-      # Vim cursor
-      zle-keymap-select () {
-          if [[ $KEYMAP == vicmd ]]; then
-              echo -ne "\e[2 q"
-          else
-              echo -ne "\e[5 q"
-          fi
-      }
-      precmd_functions+=(zle-keymap-select)
-      zle -N zle-keymap-select
+            setopt PROMPT_SUBST
+            export PS1='%B%F{red}󰉋 %~%f $(print -P "$vcs_info_msg_0_")
+            %B%F{green} %f%b '
 
 
-      precmd() {
-        psvar=()
-        vcs_info
-        [[ -n $vcs_info_msg_0_ ]] && print -v 'psvar[1]' -Pr -- "$vcs_info_msg_0_"
-        zle-keymap-select  # mantener el cursor estilo vim
-      }
+            # Vim cursor
+            zle-keymap-select () {
+                if [[ $KEYMAP == vicmd ]]; then
+                    echo -ne "\e[2 q"
+                else
+                    echo -ne "\e[5 q"
+                fi
+            }
+            precmd_functions+=(zle-keymap-select)
+            zle -N zle-keymap-select
 
 
-      # Zoxide
-      eval "$(zoxide init zsh)"
+            precmd() {
+              psvar=()
+              vcs_info
+              [[ -n $vcs_info_msg_0_ ]] && print -v 'psvar[1]' -Pr -- "$vcs_info_msg_0_"
+              zle-keymap-select  # mantener el cursor estilo vim
+            }
 
 
-      # Fzf
-      fzf_file() {
-        local file
-        file=$(fd --type f | fzf \
-          --border-label=" Select a file to open " \
-          --bind "ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down") || return
-        [[ -n "$file" ]] && nvim "$file"
-        zle reset-prompt
-      }
+            # Zoxide
+            eval "$(zoxide init zsh)"
 
-      fzf_zoxide() {
-        local dir
-        dir=$(zoxide query -l | fzf \
-          --no-preview \
-          --border-label=' Select a folder to cd into ') || return
-        [[ -n "$dir" ]] && z "$dir"
 
-        precmd
-        zle reset-prompt
-      }
+            # Fzf
+            fzf_file() {
+              local file
+              file=$(fd --type f | fzf \
+                --border-label=" Select a file to open " \
+                --bind "ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down") || return
+              [[ -n "$file" ]] && nvim "$file"
+              zle reset-prompt
+            }
 
-      live_grep() {
-        local query result file linenumber
+            fzf_zoxide() {
+              local dir
+              dir=$(zoxide query -l | fzf \
+                --no-preview \
+                --border-label=' Select a folder to cd into ') || return
+              [[ -n "$dir" ]] && z "$dir"
 
-        if [[ -z "$1" ]]; then
-          read -r "query?Enter search pattern: "
-        else
-          query="$*"
-        fi
+              precmd
+              zle reset-prompt
+            }
 
-        result=$(rg --ignore-case --color=always --line-number --no-heading "$query" 2>/dev/null |
-          fzf --ansi \
-              --delimiter ":" \
-              --preview "bat --style=numbers --color=always {1} --highlight-line {2}" \
-              --preview-window "+{2}+3/3,~3" \
-              --bind "ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" )
+            live_grep() {
+              local query result file linenumber
 
-        file="''${result%%:*}"
-        linenumber="$(echo "''${result}" | cut -d: -f2)"
-        if [[ -n "$file" ]]; then
-          $EDITOR +"$linenumber" "$file"
-        fi
-      }
+              if [[ -z "$1" ]]; then
+                read -r "query?Enter search pattern: "
+              else
+                query="$*"
+              fi
 
-      zle -N fzf_file
-      zle -N fzf_zoxide
-      zle -N live_grep
+              result=$(rg --ignore-case --color=always --line-number --no-heading "$query" 2>/dev/null |
+                fzf --ansi \
+                    --delimiter ":" \
+                    --preview "bat --style=numbers --color=always {1} --highlight-line {2}" \
+                    --preview-window "+{2}+3/3,~3" \
+                    --bind "ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" )
 
-      bindkey "^F" fzf_file
-      bindkey "^Z" fzf_zoxide
-      bindkey "^G" live_grep
+              file="''${result%%:*}"
+              linenumber="$(echo "''${result}" | cut -d: -f2)"
+              if [[ -n "$file" ]]; then
+                $EDITOR +"$linenumber" "$file"
+              fi
+            }
 
-      bindkey '^J' history-search-backward
-      bindkey '^K' history-search-forward
-      bindkey '^L' autosuggest-accept
-    '';
+            zle -N fzf_file
+            zle -N fzf_zoxide
+            zle -N live_grep
 
-    envExtra = ''
-      if [ -f "$HOME/dotfiles/.env" ]; then
-        set -a
-        source "$HOME/dotfiles/.env"
-        set +a
-      fi
-    '';
+            bindkey "^F" fzf_file
+            bindkey "^Z" fzf_zoxide
+            bindkey "^G" live_grep
 
-    shellAliases = {
-      ls = "eza --group-directories-first --icons=always --color=always";
-      la = "eza -a --group-directories-first --icons=always --color=always";
-      ll = "eza -l --icons=always --color=always";
-      tree = "eza -T --icons=always --color=always";
-      ff = "fastfetch";
-      c = "clear";
-      n = "nvim";
-      v = "vim";
-      y = "yazi";
-      f = "yazi";
+            bindkey '^J' history-search-backward
+            bindkey '^K' history-search-forward
+            bindkey '^L' autosuggest-accept
+        '';
 
-      # Git
-      lg = "lazygit";
-      gs = "git status --short";
-      ga = "git add";
-      gaa = "git add --all";
-      gc = "git commit";
-      gp = "git push";
-      gu = "git pull";
-      gf = "git fetch";
-      gd = "git diff";
-      gds = "git diff --staged";
+        envExtra = ''
+            if [ -f "$HOME/dotfiles/.env" ]; then
+              set -a
+              source "$HOME/dotfiles/.env"
+              set +a
+            fi
+        '';
 
-      # Nix
-      hms = "home-manager switch --flake $HOME/dotfiles/.";
-      nrs = "sudo nixos-rebuild switch --flake $HOME/dotfiles/.";
+        shellAliases = {
+            ls = "eza --group-directories-first --icons=always --color=always";
+            la = "eza -a --group-directories-first --icons=always --color=always";
+            ll = "eza -l --icons=always --color=always";
+            tree = "eza -T --icons=always --color=always";
+            ff = "fastfetch";
+            c = "clear";
+            n = "nvim";
+            v = "vim";
+            y = "yazi";
+            f = "yazi";
 
-      # Dev
-      dev = "pnpm run dev";
-      build = "pnpm run build";
+            # Git
+            lg = "lazygit";
+            gs = "git status --short";
+            ga = "git add";
+            gaa = "git add --all";
+            gc = "git commit";
+            gp = "git push";
+            gu = "git pull";
+            gf = "git fetch";
+            gd = "git diff";
+            gds = "git diff --staged";
+
+            # Nix
+            hms = "home-manager switch --flake $HOME/dotfiles/.";
+            nrs = "sudo nixos-rebuild switch --flake $HOME/dotfiles/.";
+
+            # Dev
+            dev = "pnpm run dev";
+            build = "pnpm run build";
+        };
+
+        history = {
+            size = 10000;
+            path = "${config.xdg.dataHome}/zsh/history";
+        };
     };
-
-    history = {
-      size = 10000;
-      path = "${config.xdg.dataHome}/zsh/history";
-    };
-  };
 }

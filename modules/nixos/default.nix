@@ -1,6 +1,6 @@
 {
-  imports = [
-    ./common.nix
-    ./nix/nix-settings.nix
-  ];
+    imports = [
+        ./common.nix
+        ./nix/nix-settings.nix
+    ];
 }
