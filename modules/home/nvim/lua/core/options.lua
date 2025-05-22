@@ -68,4 +68,17 @@ vim.opt.backspace = 'indent,eol,start'
 
 vim.opt.pumheight = 15
 
-vim.o.winborder = 'single'
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'snacks_dashboard',
+    callback = function()
+        vim.o.winborder = 'none'
+    end,
+})
+
+vim.api.nvim_create_autocmd('BufEnter', {
+    callback = function()
+        if vim.bo.filetype ~= 'snacks_dashboard' then
+            vim.o.winborder = 'single'
+        end
+    end,
+})
