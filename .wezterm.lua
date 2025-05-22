@@ -11,13 +11,9 @@ config = {
     max_fps = 240,
     animation_fps = 0,
     cursor_blink_rate = 0,
+    allow_square_glyphs_to_overflow_width = 'Always',
 
-    enable_tab_bar = true,
-    hide_tab_bar_if_only_one_tab = false,
-    tab_bar_at_bottom = true,
-    use_fancy_tab_bar = false,
-    tab_and_split_indices_are_zero_based = false,
-
+    enable_tab_bar = false,
     hide_mouse_cursor_when_typing = true,
     force_reverse_video_cursor = false,
     window_background_opacity = 1,
@@ -26,10 +22,10 @@ config = {
     scroll_to_bottom_on_input = true,
 
     window_padding = {
-        left = '0.3%',
-        right = '0.2%',
-        top = '0.6%',
-        bottom = 0,
+        left = '1cell',
+        right = '1cell',
+        top = '0.5cell',
+        bottom = '0.5cell',
     },
 
     color_scheme = 'everforest',
@@ -69,32 +65,6 @@ config = {
         },
     },
 
-    colors = {
-        tab_bar = {
-            background = 'none',
-            active_tab = {
-                bg_color = 'none',
-                fg_color = '#a7c080',
-            },
-            inactive_tab = {
-                bg_color = 'none',
-                fg_color = '#475258',
-            },
-            inactive_tab_hover = {
-                bg_color = 'none',
-                fg_color = '#859289',
-            },
-            new_tab = {
-                bg_color = 'none',
-                fg_color = '#475258',
-            },
-            new_tab_hover = {
-                bg_color = 'none',
-                fg_color = '#859289',
-            },
-        },
-    },
-
     window_frame = {
         active_titlebar_bg = '#859289',
         active_titlebar_fg = '#d3c6aa',
@@ -112,85 +82,48 @@ config = {
         inactive_titlebar_border_bottom = '#859289',
     },
 
-    leader = { mods = 'ALT', key = 'w', timeout_milliseconds = 1000 },
     keys = {
         {
             mods = 'ALT',
             key = 'Enter',
-            action = wezterm.action.SpawnTab('CurrentPaneDomain'),
+            action = wezterm.action.DisableDefaultAssignment,
         },
         {
             mods = 'ALT',
             key = 'q',
-            action = wezterm.action.CloseCurrentPane({ confirm = false }),
+            action = wezterm.action.DisableDefaultAssignment,
         },
-
         {
             mods = 'ALT',
             key = '{',
-            action = wezterm.action.ActivateTabRelative(-1),
+            action = wezterm.action.DisableDefaultAssignment,
         },
         {
             mods = 'ALT',
             key = '}',
-            action = wezterm.action.ActivateTabRelative(1),
+            action = wezterm.action.DisableDefaultAssignment,
         },
-
         {
             mods = 'ALT',
             key = 's',
-            action = wezterm.action.SplitVertical({
-                domain = 'CurrentPaneDomain',
-            }),
+            action = wezterm.action.DisableDefaultAssignment,
         },
         {
             mods = 'ALT',
             key = 'v',
-            action = wezterm.action.SplitHorizontal({
-                domain = 'CurrentPaneDomain',
-            }),
+            action = wezterm.action.DisableDefaultAssignment,
         },
-
         {
             mods = 'ALT',
             key = 'j',
-            action = wezterm.action.ActivatePaneDirection('Next'),
+            action = wezterm.action.DisableDefaultAssignment,
         },
         {
             mods = 'ALT',
             key = 'k',
-            action = wezterm.action.ActivatePaneDirection('Prev'),
-        },
-
-        {
-            mods = 'LEADER',
-            key = 'h',
-            action = wezterm.action.AdjustPaneSize({ 'Left', 5 }),
-        },
-        {
-            mods = 'LEADER',
-            key = 'l',
-            action = wezterm.action.AdjustPaneSize({ 'Right', 5 }),
-        },
-        {
-            mods = 'LEADER',
-            key = 'j',
-            action = wezterm.action.AdjustPaneSize({ 'Down', 5 }),
-        },
-        {
-            mods = 'LEADER',
-            key = 'k',
-            action = wezterm.action.AdjustPaneSize({ 'Up', 5 }),
+            action = wezterm.action.DisableDefaultAssignment,
         },
     },
 }
-
-for i = 0, 8 do
-    table.insert(config.keys, {
-        mods = 'ALT',
-        key = tostring(i + 1),
-        action = wezterm.action.ActivateTab(i),
-    })
-end
 
 return config
