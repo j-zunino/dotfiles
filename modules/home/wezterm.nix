@@ -15,6 +15,7 @@
                     max_fps = 60,
                     animation_fps = 0,
                     cursor_blink_rate = 0,
+                    allow_square_glyphs_to_overflow_width = "Always",
 
                     enable_tab_bar = true,
                     hide_tab_bar_if_only_one_tab = false,
