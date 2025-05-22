@@ -7,7 +7,6 @@ return {
 
         require('plugins.snacks.bufdelete')
         require('plugins.snacks.notifier')
-        require('plugins.snacks.terminal')
         require('plugins.snacks.lazygit')
         local picker = require('plugins.snacks.picker')
 
@@ -80,13 +79,6 @@ return {
                             icon = '󰒲 ',
                         },
                     },
-                },
-            },
-
-            terminal = {
-                enabled = true,
-                win = {
-                    title = 'Terminal',
                 },
             },
 
