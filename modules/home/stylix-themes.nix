@@ -284,35 +284,35 @@ in
             }
         '');
 
-        programs.wezterm.extraConfig = ''
-            config = {
-              colors = {
-                tab_bar = {
-                  background = "none";
-                  active_tab = {
-                    bg_color = "none";
-                    fg_color = "${accent-hex}";
-                  };
-                  inactive_tab = {
-                    bg_color = "none";
-                    fg_color = "${bg2-hex}";
-                  };
-                  inactive_tab_hover = {
-                    bg_color = "none";
-                    fg_color = "${grey1-hex}";
-                  };
-                  new_tab = {
-                    bg_color = "none";
-                    fg_color = "${bg2-hex}";
-                  };
-                  new_tab_hover = {
-                    bg_color = "none";
-                    fg_color = "${grey1-hex}";
-                  };
-                };
-              };
+        xdg.configFile."zellij/layouts/default.kdl".text = ''
+            layout {
+                pane split_direction="vertical" {
+                    pane
+                }
 
-              -- Normal config here (~/dotfiles/modules/home/wezterm.nix)
+                pane size=1 borderless=true {
+                    plugin location="file:${pkgs.zjstatus}/bin/zjstatus.wasm" {
+                        format_left "#[bg=${bg1-hex}]{mode}{tabs}"
+                        format_right "#[bg=${bg1-hex},fg=${grey1-hex}]{session} | {datetime}"
+                        format_space "#[bg=${bg1-hex}]"
+
+                        mode_normal "#[bg=${accent-hex},fg=${bg0-hex},bold] NORMAL #[bg=${bg1-hex},fg=${accent-hex}]"
+                        mode_locked  "#[bg=${red-hex},fg=${bg0-hex},bold] LOCKED #[bg=${bg1-hex},fg=${red-hex}]"
+                        mode_scroll  "#[bg=${aqua-hex},fg=${bg0-hex},bold] SCROLL #[bg=${bg1-hex},fg=${aqua-hex}]"
+                        mode_session "#[bg=${purple-hex},fg=${bg0-hex},bold] SESSION #[bg=${bg1-hex},fg=${purple-hex}]"
+
+                        tab_normal "#[bg=${bg1-hex},fg=${grey1-hex}] {index}: {name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
+                        tab_active "#[bg=${bg1-hex},fg=${accent-hex},bold] {index}: {name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
+                        tab_fullscreen_indicator "󰊓"
+                        tab_sync_indicator "󰓦"
+                        tab_floating_indicator "󰉈"
+
+                        datetime "#[bg=${bg1-hex},fg=${grey1-hex}]{format} "
+                        datetime_format "%A, %d %b %Y %H:%M"
+                        datetime_timezone "America/Argentina/Buenos_Aires"
+                    }
+                }
+            }
         '';
 
         programs.yazi.theme = {

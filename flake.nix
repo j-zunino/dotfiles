@@ -27,12 +27,15 @@
         zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
         iwmenu.url = "github:e-tho/iwmenu";
+
+        zjstatus.url = "github:dj95/zjstatus";
     };
 
     outputs = inputs @ {
         nixpkgs,
         flake-utils,
         home-manager,
+        zjstatus,
         ...
     }: {
         nixosConfigurations = {
@@ -49,7 +52,14 @@
 
         homeConfigurations = {
             juan = home-manager.lib.homeManagerConfiguration {
-                pkgs = import nixpkgs {system = "x86_64-linux";};
+                pkgs = import nixpkgs {
+                    system = "x86_64-linux";
+                    overlays = [
+                        (final: prev: {
+                            zjstatus = inputs.zjstatus.packages."x86_64-linux".default;
+                        })
+                    ];
+                };
                 extraSpecialArgs = {inherit inputs;};
                 modules = [
                     ./home/home.nix
