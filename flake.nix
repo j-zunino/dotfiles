@@ -10,6 +10,8 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        zjstatus.url = "github:dj95/zjstatus";
     };
 
     outputs = inputs @ {
@@ -17,6 +19,7 @@
         flake-utils,
         nixos-wsl,
         home-manager,
+        zjstatus,
         ...
     }: {
         nixosConfigurations = {
@@ -36,7 +39,14 @@
 
         homeConfigurations = {
             juan = home-manager.lib.homeManagerConfiguration {
-                pkgs = import nixpkgs {system = "x86_64-linux";};
+                pkgs = import nixpkgs {
+                    system = "x86_64-linux";
+                    overlays = [
+                        (final: prev: {
+                            zjstatus = inputs.zjstatus.packages."x86_64-linux".default;
+                        })
+                    ];
+                };
                 extraSpecialArgs = {inherit inputs;};
                 modules = [
                     ./home/home.nix
