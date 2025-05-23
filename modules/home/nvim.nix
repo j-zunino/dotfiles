@@ -28,6 +28,7 @@
             typstyle
             eslint_d
             stylua
+            jq
 
             # Compilers
             gnumake
@@ -45,6 +46,7 @@
             tty-clock
             websocat
             luarocks
+            posting
             chafa
             vale
             fd
