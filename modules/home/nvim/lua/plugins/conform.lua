@@ -19,6 +19,10 @@ return {
                     command = '/home/juan/.nix-profile/bin/typstyle',
                 },
 
+                jq = {
+                    command = '/home/juan/.nix-profile/bin/jq',
+                },
+
                 stylua = {
                     command = '/home/juan/.nix-profile/bin/stylua',
                     args = {
@@ -37,7 +41,7 @@ return {
                 typescript = { 'prettierd' },
                 javascriptreact = { 'prettierd' },
                 typescriptreact = { 'prettierd' },
-                json = { 'prettierd' },
+                json = { 'jq' },
                 markdown = { 'prettierd' },
                 lua = { 'stylua' },
                 typst = { 'typstyle' },
