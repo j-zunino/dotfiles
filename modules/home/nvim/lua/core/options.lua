@@ -27,6 +27,18 @@ vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.smartindent = true
 
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.o.foldtext = 'v:lua.custom_fold_text()'
+vim.o.foldenable = true
+vim.o.foldlevel = 99
+
+function _G.custom_fold_text()
+    local line = vim.fn.getline(vim.v.foldstart)
+    local lines = vim.v.foldend - vim.v.foldstart + 1
+    return line .. ' … ' .. lines .. ' lines'
+end
+
 vim.opt.undofile = true
 vim.opt.swapfile = false
 

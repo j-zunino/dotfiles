@@ -117,7 +117,7 @@ return {
             statuscolumn = {
                 enabled = true,
                 left = { 'mark', 'sign' },
-                right = { 'git' },
+                right = { 'fold', 'git' },
                 folds = {
                     open = false,
                 },
