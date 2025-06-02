@@ -54,23 +54,6 @@ vim.opt.list = true
 
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
--- vim.opt.listchars = { tab = '» ', trail = '░', nbsp = '␣' }
---
--- local function toggle_trailing_whitespace_highlight()
---     if vim.bo.filetype == "alpha" then
---         vim.cmd("match none")
---     else
---         vim.cmd("match errorMsg /\\s\\+$/")
---     end
--- end
-
--- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter", "FileType"}, {
---     pattern = "*",
---     callback = toggle_trailing_whitespace_highlight,
--- })
-
--- vim.opt.statuscolumn = '%=%{v:relnum?v:relnum:v:lnum} %s'
-
 vim.opt.inccommand = 'split'
 
 vim.opt.updatetime = 250
