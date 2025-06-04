@@ -127,35 +127,11 @@ set('n', '<C-k>', '<C-w>W', { desc = 'Move focus to the previous window' })
 set('n', '<C-w>s', '<cmd>split<CR>', { desc = 'Split horizontal' })
 set('n', '<C-w>v', '<cmd>vsplit<CR>', { desc = 'Split vertical' })
 
-local function is_left_split()
-    return vim.fn.winnr() == 1
-end
-
-local function increase_width()
-    local original_win = vim.fn.winnr()
-    if is_left_split() then
-        vim.cmd('vertical resize +5')
-    else
-        vim.cmd('wincmd l | vertical resize -5')
-    end
-    vim.cmd(original_win .. 'wincmd w')
-end
-
-local function decrease_width()
-    local original_win = vim.fn.winnr()
-    if is_left_split() then
-        vim.cmd('vertical resize -5')
-    else
-        vim.cmd('wincmd l | vertical resize +5')
-    end
-    vim.cmd(original_win .. 'wincmd w')
-end
-
 opts.desc = 'Increase split width'
-set('n', '<C-l>', increase_width, opts)
+set('n', '<C-l>', ':vertical resize +5<CR>', opts)
 
-opts.desc = 'decrease split width'
-set('n', '<C-h>', decrease_width, opts)
+opts.desc = 'Decrease split width'
+set('n', '<C-h>', ':vertical resize -5<CR>', opts)
 
 opts.desc = 'Increase split height'
 set('n', '+', '<C-w>+', opts)
