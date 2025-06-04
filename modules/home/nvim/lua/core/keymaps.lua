@@ -26,6 +26,12 @@ set('n', '<S-Tab>', ':bprevious<CR>', opts)
 -- opts.desc = 'Create new buffer'
 -- vim.keymap.set('n', '<leader>b', '<cmd>enew<CR>', opts)
 
+opts.desc = 'Comment line'
+set('n', '<leader>}', 'gcc', { remap = true })
+
+opts.desc = 'Comment lines'
+set('v', '<leader>}', 'gc', { remap = true })
+
 opts.desc = 'Delete whitout saving intro register'
 set('n', 'x', '"_x', opts)
 
