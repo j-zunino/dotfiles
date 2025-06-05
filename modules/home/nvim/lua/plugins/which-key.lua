@@ -11,7 +11,7 @@ return {
                 {
                     '<leader>a',
                     group = 'Avante',
-                    icon = { icon = '', color = 'yellow' },
+                    icon = { icon = '', color = 'yellow' },
                 },
                 {
                     '<leader>c',
@@ -39,14 +39,14 @@ return {
                     icon = { icon = '', color = 'blue' },
                 },
                 {
-                    '<leader>t',
-                    group = 'Typescript vtsls',
+                    '<leader>ts',
+                    group = 'Typescript',
                     icon = { icon = '', color = 'cyan' },
                 },
                 {
-                    '<leader>z',
-                    group = 'Zen-mode',
-                    icon = { icon = '' },
+                    '<leader>tw',
+                    group = 'Tailwind',
+                    icon = { icon = '󱏿', color = 'cyan' },
                 },
                 {
                     '<leader>g',

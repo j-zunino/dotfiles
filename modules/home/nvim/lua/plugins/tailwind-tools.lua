@@ -1,8 +1,9 @@
+---@diagnostic disable: missing-fields
 return {
     'luckasRanarison/tailwind-tools.nvim',
     name = 'tailwind-tools',
     build = ':UpdateRemotePlugins',
-    keys = '<leader>ts',
+    keys = { '<leader>tws', '<leader>twc' },
     dependencies = {
         'nvim-treesitter/nvim-treesitter',
     },
@@ -11,9 +12,15 @@ return {
     config = function()
         vim.keymap.set(
             'n',
-            '<leader>ts',
-            '<cmd>TailwindSort<CR>',
-            { noremap = true, silent = true, desc = 'Sort tailwind' }
+            '<leader>tws',
+            ':TailwindSort<CR>',
+            { noremap = true, silent = true, desc = 'Tailwind sort' }
+        )
+        vim.keymap.set(
+            'n',
+            '<leader>twc',
+            ':TailwindConcealToggle<CR>',
+            { noremap = true, silent = true, desc = 'Tailwind conceal' }
         )
 
         require('tailwind-tools').setup({
@@ -25,6 +32,10 @@ return {
             },
             conceal = {
                 enabled = false,
+                symbol = '…',
+                highlight = {
+                    fg = '',
+                },
             },
         })
     end,
