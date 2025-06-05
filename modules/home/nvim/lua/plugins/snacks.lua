@@ -28,6 +28,7 @@ return {
         snacks.setup({
             bufdelete = { enabled = true },
             notify = { enabled = true },
+            rename = { enabled = true },
 
             notifier = {
                 enabled = true,
