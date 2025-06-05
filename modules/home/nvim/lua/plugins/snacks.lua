@@ -11,10 +11,10 @@ return {
         local picker = require('plugins.snacks.picker')
 
         -- dashboard
-        local dashboard_path = vim.fn.expand(
-            '$HOME/dotfiles/modules/home/nvim/lua/plugins/dashboard/'
-        )
-        local handle = io.popen('ls ' .. dashboard_path .. '*.png | wc -l')
+        local dashboard_dir =
+            '$HOME/dotfiles/modules/home/nvim/lua/plugins/snacks/dashboard/'
+
+        local handle = io.popen('ls ' .. dashboard_dir .. '*.png | wc -l')
         local maxIndex = tonumber(handle:read('*n'))
         handle:close()
 
@@ -56,7 +56,8 @@ return {
                     {
                         pane = 1,
                         section = 'terminal',
-                        cmd = 'chafa $HOME/dotfiles/modules/home/nvim/lua/plugins/dashboard/'
+                        cmd = 'chafa '
+                            .. dashboard_dir
                             .. randomNumber
                             .. '.png --format symbols --symbols vhalf --align=center --size 55x25; sleep .1',
                         height = 25,
