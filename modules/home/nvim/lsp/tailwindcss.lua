@@ -69,6 +69,8 @@ return {
         'postcss.config.mjs',
         'postcss.config.ts',
         'vite.config.js',
+        'package.json',
+        '.git',
     },
     settings = {
         tailwindCSS = {
