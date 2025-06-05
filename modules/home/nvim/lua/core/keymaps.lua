@@ -34,7 +34,7 @@ map('v', '<leader>}', 'gc', 'Comment lines', { remap = true })
 
 map('n', 'x', '"_x', 'Delete without saving into register')
 map('n', 'X', '"_X', 'Delete without saving into register')
-map('n', 'p', '"_dP', 'Paste without saving into register')
+map('v', 'p', '"_dP', 'Paste without saving into register')
 map('n', 'P', ':put!<CR>`[v`]=', 'Paste without saving into register')
 
 map({ 'n', 'v' }, 'J', '5j', 'Move down 5 lines')
