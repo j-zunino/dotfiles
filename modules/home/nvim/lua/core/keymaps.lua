@@ -1,154 +1,68 @@
-local set = vim.keymap.set
-local opts = { noremap = true, silent = true }
+local map = function(mode, keys, func, desc, opts)
+    local options = vim.tbl_extend('force', {
+        noremap = true,
+        silent = true,
+        desc = desc,
+    }, opts or {})
+
+    vim.keymap.set(mode, keys, func, options)
+end
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+map({ 'n', 'v' }, '<Space>', '<Nop>')
 
-opts.desc = 'Clear search highlight'
-set('n', '<Esc>', ':nohlsearch<CR>', opts)
+map('n', '<leader>L', '<cmd>Lazy<CR>', 'Open Lazy')
 
-opts.desc = 'Save file'
-set('n', '<C-s>', '<cmd>w<CR>', opts)
+map('n', '<leader>j', 'J', 'Join lines')
 
-opts.desc = 'Quit file'
-set('n', '<C-q>', '<cmd>q<CR>', opts)
+map('n', '<leader>tw', '<cmd>set wrap!<CR>', 'Toggle word wrap')
 
-opts.desc = 'Next buffer'
-set('n', '<Tab>', ':bnext<CR>', opts)
+map('n', 'U', '<C-r>', 'Undo')
 
-opts.desc = 'previous buffer'
-set('n', '<S-Tab>', ':bprevious<CR>', opts)
+map('n', '<Esc>', ':nohls<CR>', 'Clear search highlight')
 
--- opts.desc = 'Close buffer'
--- vim.keymap.set('n', '<leader>x', ':bdelete<CR>', opts)
--- opts.desc = 'Create new buffer'
--- vim.keymap.set('n', '<leader>b', '<cmd>enew<CR>', opts)
+map('n', '<C-s>', ':w<CR>', 'Save file')
+map('n', '<C-q>', ':q<CR>', 'Quit file')
 
-opts.desc = 'Comment line'
-set('n', '<leader>}', 'gcc', { remap = true })
+map('n', '<Tab>', ':bnext<CR>', 'Next buffer')
+map('n', '<S-Tab>', ':bprevious<CR>', 'Previous buffer')
 
-opts.desc = 'Comment lines'
-set('v', '<leader>}', 'gc', { remap = true })
+map('n', '<leader>}', 'gcc', 'Comment line', { remap = true })
+map('v', '<leader>}', 'gc', 'Comment lines', { remap = true })
 
-opts.desc = 'Delete whitout saving intro register'
-set('n', 'x', '"_x', opts)
+map('n', 'x', '"_x', 'Delete without saving into register')
+map('n', 'X', '"_X', 'Delete without saving into register')
+map('n', 'p', '"_dP', 'Paste without saving into register')
+map('n', 'P', ':put!<CR>`[v`]=', 'Paste without saving into register')
 
-opts.desc = 'Delete whitout saving intro register'
-set('n', 'X', '"_X', opts)
+map({ 'n', 'v' }, 'J', '5j', 'Move down 5 lines')
+map({ 'n', 'v' }, 'K', '5k', 'Move up 5 lines')
 
-opts.desc = 'Paste whiout saving intro register'
-set('v', 'p', '"_dP', opts)
+map('n', '<leader>J', ':move +1<CR>', 'Move line down')
+map('n', '<leader>k', ':move -2<CR>', 'Move line up')
+map('v', '<leader>J', ":move '>+1<CR>gv=gv", 'Move line down (Visual)')
+map('v', '<leader>k', ":move '<-2<CR>gv=gv", 'Move line up (Visual)')
 
-opts.desc = 'Paste whitout saving intro registere'
-set('n', 'P', ':put!<CR>`[v`]=', opts)
+map({ 'n', 'v' }, '<C-d>', '<C-d>zz', 'Scroll down')
+map({ 'n', 'v' }, '<C-u>', '<C-u>zz', 'Scroll up')
 
-opts.desc = 'Move down 5 lines'
-set({ 'n', 'v' }, 'J', '5j', opts)
+map('n', 'n', 'nzz', 'Find next')
+map('n', 'N', 'Nzz', 'Find previous')
 
-opts.desc = 'Move up 5 lines'
-set({ 'n', 'v' }, 'K', '5k', opts)
+map('n', 'Y', 'yy', 'Copy line')
+map('n', 'yA', ':%y<cr>', 'Copy all')
+map('n', 'yJ', 'Yp', 'Copy line down')
+map('n', 'yK', 'YP', 'Copy line up')
 
-opts.desc = 'Scroll down'
-set('n', '<C-d>', '<C-d>zz', opts)
+map('n', '<C-j>', '<C-w>w', 'Move focus to the next window')
+map('n', '<C-k>', '<C-w>W', 'Move focus to the previous window')
 
-opts.desc = 'Scroll up'
-set('n', '<C-u>', '<C-u>zz', opts)
+map('n', '<C-w>s', ':split<CR>', 'Split horizontal')
+map('n', '<C-w>v', ':vsplit<CR>', 'Split vertical')
 
-opts.desc = 'Find next'
-set('n', 'n', 'nzz', opts)
-
-opts.desc = 'Find previous'
-set('n', 'N', 'Nzz', opts)
-
-opts.desc = 'Move line down'
-set('n', '<leader>J', ':move +1<CR>', opts)
-
-opts.desc = 'Move line up'
-set('n', '<leader>K', ':move -2<CR>', opts)
-
-opts.desc = 'Move line down (Visual)'
-set('v', '<leader>J', ":move '>+1<CR>gv=gv", opts)
-
-opts.desc = 'Move line up (Visual)'
-set('v', '<leader>K', ":move '<-2<CR>gv=gv", opts)
-
-set('n', 'U', '<C-r>', { desc = 'Undo' })
-
-set('n', 'yA', ':%y<cr>', { desc = 'Copy all' })
-
-set('n', 'Y', 'yy', { desc = 'Copy line' })
-
-set('n', 'yJ', 'Yp', { desc = 'Copy line down' })
-
-set('n', 'yK', 'YP', { desc = 'Copy line up' })
-
-opts.desc = 'Join lines'
-set('n', '<leader>j', 'J', opts)
-
-opts.desc = 'Increment number'
-set('n', '<leader>+', '<C-a>', opts)
-
-opts.desc = 'Decrement number'
-set('n', '<leader>-', '<C-x>', opts)
-
-set(
-    'n',
-    '[d',
-    vim.diagnostic.goto_prev,
-    { desc = 'Go to previous diagnostic message' }
-)
-
-set(
-    'n',
-    ']d',
-    vim.diagnostic.goto_next,
-    { desc = 'Go to next diagnostic message' }
-)
-
-set(
-    'n',
-    '<leader>e',
-    vim.diagnostic.open_float,
-    { desc = 'Show diagnostic error messages' }
-)
-
-set(
-    'n',
-    '<leader>q',
-    vim.diagnostic.setloclist,
-    { desc = 'Open diagnostic quickfix list' }
-)
-
-set('n', '<C-j>', '<C-w>w', { desc = 'Move focus to the next window' })
-set('n', '<C-k>', '<C-w>W', { desc = 'Move focus to the previous window' })
-
-set('n', '<C-w>s', '<cmd>split<CR>', { desc = 'Split horizontal' })
-set('n', '<C-w>v', '<cmd>vsplit<CR>', { desc = 'Split vertical' })
-
-opts.desc = 'Increase split width'
-set('n', '<C-l>', ':vertical resize +5<CR>', opts)
-
-opts.desc = 'Decrease split width'
-set('n', '<C-h>', ':vertical resize -5<CR>', opts)
-
-opts.desc = 'Increase split height'
-set('n', '+', '<C-w>+', opts)
-
-opts.desc = 'Decrease split height'
-set('n', '-', '<C-w>-', opts)
-
-opts.desc = 'Toggle word wrap'
-set('n', '<leader>tw', '<cmd>set wrap!<CR>', opts)
-
-opts.desc = 'Open Lazy'
-set('n', '<leader>L', '<cmd>Lazy<CR>', opts)
-
-vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking text',
-    group = vim.api.nvim_create_augroup('yighlight-yank', { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-})
+map('n', '<C-l>', ':vertical resize +5<CR>', 'Increase split width')
+map('n', '<C-h>', ':vertical resize -5<CR>', 'Decrease split width')
+map('n', '+', '<C-w>+', 'Increase split height')
+map('n', '-', '<C-w>-', 'Decrease split height')
