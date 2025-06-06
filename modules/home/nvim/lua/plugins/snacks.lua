@@ -47,7 +47,7 @@ return {
                 },
                 scope = {
                     enabled = true,
-                    hl = 'Comment',
+                    hl = 'SnacksIndent',
                 },
             },
 
