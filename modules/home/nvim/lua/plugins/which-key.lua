@@ -29,6 +29,11 @@ return {
                     icon = { icon = '' },
                 },
                 {
+                    '<leader>R',
+                    group = 'Rest',
+                    icon = { icon = '' },
+                },
+                {
                     '<leader>s',
                     group = 'Snacks picker',
                     icon = { icon = '󱥰', color = 'purple' },
