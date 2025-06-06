@@ -3,21 +3,21 @@
     pkgs,
     ...
 }: let
-    dm-logout = pkgs.writeScriptBin "logout" ''
-        ${pkgs.stdenv.shell} ${config.home.homeDirectory}/dotfiles/modules/home/scripts/logout.sh
+    rofi_logout = pkgs.writeScriptBin "rofi_logout" ''
+        ${pkgs.stdenv.shell} ${config.home.homeDirectory}/dotfiles/modules/home/scripts/rofi_logout.sh
     '';
-    dm-clipboard = pkgs.writeScriptBin "clipboard" ''
-        ${pkgs.stdenv.shell} ${config.home.homeDirectory}/dotfiles/modules/home/scripts/clipboard.sh
+    rofi_clipboard = pkgs.writeScriptBin "rofi_clipboard" ''
+        ${pkgs.stdenv.shell} ${config.home.homeDirectory}/dotfiles/modules/home/scripts/rofi_clipboard.sh
     '';
-    dm-tailwind = pkgs.writeScriptBin "tailwind" ''
-        ${pkgs.stdenv.shell} ${config.home.homeDirectory}/dotfiles/modules/home/scripts/tailwind.sh
+    rofi_tailwind = pkgs.writeScriptBin "tailwind" ''
+        ${pkgs.stdenv.shell} ${config.home.homeDirectory}/dotfiles/modules/home/scripts/rofi_tailwind.sh
     '';
 in {
     home = {
         packages = [
-            dm-logout
-            dm-clipboard
-            dm-tailwind
+            rofi_logout
+            rofi_clipboard
+            rofi_tailwind
         ];
     };
 }

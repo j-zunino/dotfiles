@@ -30,7 +30,7 @@
                     "custom/nix-logo" = {
                         format = " ";
                         tooltip = false;
-                        on-click = "logout";
+                        on-click = "rofi_logout";
                     };
 
                     "custom/arrow" = {

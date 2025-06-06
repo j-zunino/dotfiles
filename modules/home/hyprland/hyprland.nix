@@ -144,8 +144,8 @@
                     "$mod, E, exec, $file-explorer"
 
                     "$mod_shift, C, killactive"
-                    "$mod_shift, Q, exec, logout"
-                    "$mod_shift, V, exec, clipboard"
+                    "$mod_shift, Q, exec, rofi_logout"
+                    "$mod_shift, V, exec, rofi_clipboard"
                     "$mod_shift, SPACE, exec, hyprctl --batch 'dispatch togglefloating; dispatch centerwindow'"
 
                     "$mod, M, fullscreen"
