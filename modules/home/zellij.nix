@@ -53,27 +53,12 @@
                 bind "Alt c" "Esc" { SwitchToMode "Scroll"; }
                 bind "Enter" { SwitchToMode "Search"; }
             }
-            // renametab {
-            //     bind "Alt c" { SwitchToMode "Normal"; }
-            //     bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
-            // }
-            // renamepane {
-            //     bind "Alt c" { SwitchToMode "Normal"; }
-            //     bind "Esc" { UndoRenamePane; SwitchToMode "Pane"; }
-            // }
             session {
                 bind "Alt o" { SwitchToMode "Normal"; }
                 bind "Alt s" { SwitchToMode "Scroll"; }
                 bind "d" { Detach; }
                 bind "w" {
                     LaunchOrFocusPlugin "session-manager" {
-                        floating true
-                        move_to_focused_tab true
-                    };
-                    SwitchToMode "Normal"
-                }
-                bind "c" {
-                    LaunchOrFocusPlugin "configuration" {
                         floating true
                         move_to_focused_tab true
                     };
@@ -96,10 +81,9 @@
             }
 
             shared_except "locked" {
+                bind "Alt g" { SwitchToMode "Locked"; }
                 bind "Alt s" { SwitchToMode "Scroll"; }
                 bind "Alt o" { SwitchToMode "Session"; }
-
-                bind "Alt g" { SwitchToMode "Locked"; }
 
 
                 // Change pane focus
@@ -152,25 +136,6 @@
         }
         shared_except "session" "locked" {
             bind "Alt o" { SwitchToMode "Session"; }
-        }
-
-        plugins {
-            tab-bar location="zellij:tab-bar"
-            status-bar location="zellij:status-bar"
-            strider location="zellij:strider"
-            compact-bar location="zellij:compact-bar"
-            session-manager location="zellij:session-manager"
-            filepicker location="zellij:strider" {
-                cwd "/"
-            }
-            configuration location="zellij:configuration"
-            plugin-manager location="zellij:plugin-manager"
-            about location="zellij:about"
-        }
-
-        load_plugins {
-          // "file:/path/to/my-plugin.wasm"
-          // "https://example.com/my-plugin.wasm"
         }
     '';
 }
