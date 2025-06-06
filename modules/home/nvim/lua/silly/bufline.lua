@@ -61,8 +61,8 @@ H.create_default_hl = function()
     set_hl('SillyBuflineNormal', { fg = bufnormal, bg = nil, bold = false })
     set_hl( 'SillyBuflineModifiedSelected', { fg = bufmodified, bg = nil, bold = true })
     set_hl( 'SillyBuflineModifiedNormal', { fg = bufmodified, bg = nil, bold = false })
-    set_hl( 'SillyBuflineSeparator',{ fg = bufnormal, bg = nil, bold = false })
-    set_hl( 'SillyBuflineFill',{ link = 'Normal' })
+    set_hl( 'SillyBuflineSeparator', { fg = bufnormal, bg = nil, bold = false })
+    set_hl( 'SillyBuflineFill', { bg = 'None' })
 end
 
 H.concat_buffers = function(buffers)
