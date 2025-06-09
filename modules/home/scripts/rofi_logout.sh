@@ -48,7 +48,7 @@ main() {
             fi
             ;;
         lock)
-            slock
+            hyprlock
             ;;
         reboot)
             if [[ "$(confirm_action "$choice")" == " Yes" ]]; then

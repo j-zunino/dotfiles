@@ -64,6 +64,7 @@ in
             waybar.enable = false;
             neovim.enable = false;
             yazi.enable = false;
+            hyprlock.enable = false;
         };
 
         stylix.iconTheme = {
