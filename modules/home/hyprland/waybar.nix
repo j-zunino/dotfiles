@@ -158,7 +158,7 @@
                     "network" = {
                         format = "{ifname}";
                         format-wifi = "{icon} ";
-                        format-disconnected = "󰤮";
+                        format-disconnected = "󰤮 ";
                         tooltip-format-wifi = "{essid} {icon} {signalStrength}%";
                         tooltip-format-disconnected = "󰤮 ";
 
