@@ -37,6 +37,9 @@ api.nvim_create_autocmd(
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
     callback = function(event)
+        local buftype =
+            vim.api.nvim_get_option_value('filetype', { buf = event.buf })
+
         -- LSP keymaps
         local map = function(keys, func, desc)
             vim.keymap.set(
@@ -64,12 +67,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
         map('<leader>e', vim.diagnostic.open_float, 'Show diagnostic error messages')
         map('<leader>q', vim.diagnostic.setloclist, 'Open diagnostic quickfix list')
 
-        -- [ Typescript vtsls ]
-        map('<leader>tsr', ':VtsExec restart_tsserver<CR>', 'Restart server')
-        map('<leader>tso', ':VtsExec organize_imports<CR>', 'Organize imports')
-        map('<leader>tss', ':VtsExec sort_imports<CR>', 'Sort imports')
-        map('<leader>tsa', ':VtsExec add_missing_imports<CR>', 'Add missing imports')
-        map('<leader>tsu', ':VtsExec remove_unused_imports<CR>', 'Remove unused imports')
+        -- [ Typescript ]
+        if vim.tbl_contains({ 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', }, buftype) then
+            map('<leader>cr', ':VtsExec restart_tsserver<CR>', 'Restart server')
+            map('<leader>co', ':VtsExec organize_imports<CR>', 'Organize imports')
+            map('<leader>cs', ':VtsExec sort_imports<CR>', 'Sort imports')
+            map('<leader>ci', ':VtsExec add_missing_imports<CR>', 'Add missing imports')
+            map('<leader>cu', ':VtsExec remove_unused_imports<CR>', 'Remove unused imports')
+        end
         -- stylua: ignore end
 
         local function client_supports_method(client, method, bufnr)
