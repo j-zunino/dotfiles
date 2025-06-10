@@ -1,7 +1,7 @@
 return {
     'nvzone/showkeys',
     cmd = 'ShowkeysToggle',
-    keys = '<leader>tk',
+    keys = '<leader>Tk',
 
     config = function()
         require('showkeys').setup({
@@ -12,9 +12,9 @@ return {
 
         vim.keymap.set(
             'n',
-            '<leader>tk',
+            '<leader>Tk',
             '<cmd>ShowkeysToggle<CR>',
-            { noremap = true, silent = true, desc = 'Toggle show keys' }
+            { noremap = true, silent = true, desc = 'Show keys' }
         )
     end,
 }
