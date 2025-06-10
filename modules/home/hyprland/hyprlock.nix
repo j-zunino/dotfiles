@@ -55,7 +55,7 @@
                     text = "cmd[update:1000] echo $(date +'%A, %B %d')";
                     color = "rgba(242, 243, 244, 0.75)";
                     font_size = 20;
-                    font_family = "SF Pro Display Bold";
+                    font_family = "Noto Sans";
                     position = "0, -4%";
                     halign = "center";
                     valign = "top";
@@ -66,8 +66,8 @@
                     text = "cmd[update:1000] echo $(date +'%k:%M')";
                     color = "rgba(242, 243, 244, 0.75)";
                     font_size = 93;
-                    font_family = "SF Pro Display Bold";
                     position = "0, -5%";
+                    font_family = "Noto Sans Bold";
                     halign = "center";
                     valign = "top";
                 }
