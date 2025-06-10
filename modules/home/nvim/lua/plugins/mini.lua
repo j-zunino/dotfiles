@@ -11,31 +11,31 @@ return {
             highlighters = {
                 perf = {
                     pattern = '().%f[%w]PERF%f[%W].()',
-                    group = 'MiniIconsPurple',
+                    group = 'MiniStatuslineModeOther',
                 },
                 fix = {
                     pattern = '().%f[%w]FIX%f[%W].()',
-                    group = 'MiniIconsRed',
+                    group = 'MiniHipatternsFixme',
                 },
                 fixme = {
                     pattern = '().%f[%w]FIXME%f[%W].()',
-                    group = 'MiniIconsRed',
+                    group = 'MiniHipatternsFixme',
                 },
                 hack = {
                     pattern = '().%f[%w]HACK%f[%W].()',
-                    group = 'MiniIconsYellow',
+                    group = 'MiniHipatternsHack',
                 },
                 warning = {
                     pattern = '().%f[%w]WARNING%f[%W].()',
-                    group = 'MiniIconsYellow',
+                    group = 'MiniHipatternsHack',
                 },
                 todo = {
                     pattern = '().%f[%w]TODO%f[%W].()',
-                    group = 'MiniIconsBlue',
+                    group = 'MiniHipatternsNote',
                 },
                 note = {
                     pattern = '().%f[%w]NOTE%f[%W].()',
-                    group = 'MiniIconsGreen',
+                    group = 'MiniHipatternsTodo',
                 },
             },
         })
