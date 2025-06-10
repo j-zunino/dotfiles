@@ -3,7 +3,7 @@ return {
     'luckasRanarison/tailwind-tools.nvim',
     name = 'tailwind-tools',
     build = ':UpdateRemotePlugins',
-    keys = { '<leader>tws', '<leader>twc' },
+    keys = { '<leader>ws', '<leader>wc' },
     dependencies = {
         'nvim-treesitter/nvim-treesitter',
     },
@@ -12,15 +12,15 @@ return {
     config = function()
         vim.keymap.set(
             'n',
-            '<leader>tws',
+            '<leader>ws',
             ':TailwindSort<CR>',
-            { noremap = true, silent = true, desc = 'Tailwind sort' }
+            { noremap = true, silent = true, desc = 'Sort' }
         )
         vim.keymap.set(
             'n',
-            '<leader>twc',
+            '<leader>wc',
             ':TailwindConcealToggle<CR>',
-            { noremap = true, silent = true, desc = 'Tailwind conceal' }
+            { noremap = true, silent = true, desc = 'Conceal' }
         )
 
         require('tailwind-tools').setup({
