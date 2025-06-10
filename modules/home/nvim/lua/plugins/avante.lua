@@ -19,11 +19,12 @@ return {
         'MunifTanjim/nui.nvim',
     },
     opts = {
+        mode = 'agentic',
         provider = 'gemini',
-        gemini = {
-            model = 'gemini-2.0-flash',
-            temperature = 0,
-            max_tokens = 4096,
+        providers = {
+            gemini = {
+                model = 'gemini-2.0-flash',
+            },
         },
         windows = {
             width = 45,
