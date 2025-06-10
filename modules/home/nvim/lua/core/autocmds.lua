@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         map('gs', vim.lsp.buf.signature_help, 'Signature cocumentation')
         map('<leader>d', vim.lsp.buf.type_definition, 'Type definition')
         map('<leader>rn', vim.lsp.buf.rename, 'Rename')
-        map('<leader>ca', vim.lsp.buf.code_action, 'Code action')
+        map('<leader>ca', vim.lsp.buf.code_action, 'Action')
 
         -- [ Diagnostics ]
         map('[d', function () vim.diagnostic.jump({ count = 1, float = true }) end, 'Go to previous diagnostic message')
