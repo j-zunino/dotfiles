@@ -17,7 +17,7 @@ map('n', '<leader>L', '<cmd>Lazy<CR>', 'Open Lazy')
 
 map('n', '<leader>j', 'J', 'Join lines')
 
-map('n', '<leader>tw', '<cmd>set wrap!<CR>', 'Toggle word wrap')
+map('n', '<leader>Tw', '<cmd>set wrap!<CR>', 'Word wrap')
 
 map('n', 'U', '<C-r>', 'Undo')
 
