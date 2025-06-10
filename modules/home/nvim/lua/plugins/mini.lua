@@ -1,10 +1,44 @@
 return {
-    'echasnovski/mini.icons',
+    'echasnovski/mini.nvim',
     version = '*',
-    lazy = true,
     config = function()
         local dir = { glyph = '󰉋', hl = 'Function' }
 
+        require('mini.pairs').setup()
+        require('mini.surround').setup()
+        require('mini.ai').setup({ n_lines = 80 })
+        require('mini.hipatterns').setup({
+            highlighters = {
+                perf = {
+                    pattern = '().%f[%w]PERF%f[%W].()',
+                    group = 'MiniIconsPurple',
+                },
+                fix = {
+                    pattern = '().%f[%w]FIX%f[%W].()',
+                    group = 'MiniIconsRed',
+                },
+                fixme = {
+                    pattern = '().%f[%w]FIXME%f[%W].()',
+                    group = 'MiniIconsRed',
+                },
+                hack = {
+                    pattern = '().%f[%w]HACK%f[%W].()',
+                    group = 'MiniIconsYellow',
+                },
+                warning = {
+                    pattern = '().%f[%w]WARNING%f[%W].()',
+                    group = 'MiniIconsYellow',
+                },
+                todo = {
+                    pattern = '().%f[%w]TODO%f[%W].()',
+                    group = 'MiniIconsBlue',
+                },
+                note = {
+                    pattern = '().%f[%w]NOTE%f[%W].()',
+                    group = 'MiniIconsGreen',
+                },
+            },
+        })
         require('mini.icons').setup({
             default = {
                 directory = dir,
@@ -58,6 +92,5 @@ return {
                 ['TODO.md'] = { glyph = '' },
             },
         })
-        MiniIcons.mock_nvim_web_devicons()
     end,
 }
