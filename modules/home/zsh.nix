@@ -41,6 +41,7 @@
             v = "vim";
             y = "yazi";
             f = "yazi";
+            zj = "zellij attach --index 0";
 
             # Git
             lg = "lazygit";
