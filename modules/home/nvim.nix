@@ -36,6 +36,7 @@
             gcc
 
             # Development Tools
+            vi-mongo
             nodejs
             cargo
             pnpm
