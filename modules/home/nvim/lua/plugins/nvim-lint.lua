@@ -4,7 +4,7 @@ return {
     config = function()
         local lint = require('lint')
 
-        vim.keymap.set('n', '<leader>tl', function()
+        vim.keymap.set('n', '<leader>cl', function()
             lint.try_lint()
         end, { silent = true, noremap = true, desc = 'Try lint' })
 
