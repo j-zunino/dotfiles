@@ -6,6 +6,7 @@ vim.lsp.enable({
     'cssls',
     'tailwindcss',
     'emmet_ls',
+    'jsonls',
     'tinymist',
 })
 

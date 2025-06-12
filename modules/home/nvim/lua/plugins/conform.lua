@@ -21,6 +21,7 @@ return {
 
                 jq = {
                     command = '/home/juan/.nix-profile/bin/jq',
+                    args = { '.' },
                 },
 
                 stylua = {
@@ -42,6 +43,8 @@ return {
                 javascriptreact = { 'prettierd' },
                 typescriptreact = { 'prettierd' },
                 json = { 'jq' },
+                jsonc = { 'jq' },
+                lock = { 'jq' },
                 markdown = { 'prettierd' },
                 lua = { 'stylua' },
                 typst = { 'typstyle' },
