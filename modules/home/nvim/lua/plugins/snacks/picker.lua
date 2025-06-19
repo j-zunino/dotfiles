@@ -84,8 +84,8 @@ local explorer_layout = {
     },
 }
 
-opts.desc = 'File explorer'
-vim.keymap.set('n', '<C-e>', ':lua Snacks.explorer.open()<CR>', opts)
+-- opts.desc = 'File explorer'
+-- vim.keymap.set('n', '<C-e>', ':lua Snacks.explorer.open()<CR>', opts)
 
 opts.desc = 'Files'
 vim.keymap.set('n', '<leader>sf', ':lua Snacks.picker.files()<CR>', opts)

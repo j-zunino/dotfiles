@@ -129,7 +129,7 @@ return {
             },
 
             explorer = {
-                enabled = true,
+                enabled = false,
                 replace_netrw = true,
                 follow_file = true,
             },
