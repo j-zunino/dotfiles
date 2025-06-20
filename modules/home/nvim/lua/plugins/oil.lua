@@ -13,6 +13,11 @@ return {
 
         require('oil').setup({
             default_file_explorer = true,
+            keymaps = {
+                ['<C-h>'] = 'actions.parent',
+                ['<C-l>'] = 'actions.select',
+                ['<C-r>'] = 'actions.refresh',
+            },
 
             win_options = {
                 signcolumn = 'yes',
