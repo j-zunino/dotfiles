@@ -10,6 +10,7 @@
         extensions = [
             {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
             {id = "fmkadmapgofadopljbjfkapdkoienihi";} # React developer tools
+            {id = "hfjbmagddngcpeloejdejnfgbamkjaeg";} # Vimium C
         ];
     };
 
