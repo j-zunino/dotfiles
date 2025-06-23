@@ -10,12 +10,12 @@
             KEYTIMEOUT=1
             bindkey -v
 
-            # Zoxide
             eval "$(zoxide init zsh)"
 
             source $HOME/dotfiles/modules/home/scripts/promp.zsh
             source $HOME/dotfiles/modules/home/scripts/fzf_scripts.zsh
             source $HOME/dotfiles/modules/home/scripts/zellij_tabs.zsh
+            source $HOME/dotfiles/modules/home/scripts/zellij_sessionizer.zsh
 
             bindkey '^J' history-search-backward
             bindkey '^K' history-search-forward
