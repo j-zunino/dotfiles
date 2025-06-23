@@ -71,12 +71,11 @@ main() {
                 exit 0
             fi
             ;;
-        quit)
-            ;;
+        quit) ;;
         *)
             exit 0
             ;;
     esac
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main
+[[ ${BASH_SOURCE[0]} == "${0}" ]] && main
