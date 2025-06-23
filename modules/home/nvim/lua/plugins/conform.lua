@@ -24,6 +24,18 @@ return {
                     args = { '.' },
                 },
 
+                shfmt = {
+                    command = '/home/juan/.nix-profile/bin/shfmt',
+                    args = {
+                        '-i',
+                        '4',
+                        '-ci',
+                        '-s',
+                        '-',
+                    },
+                    stdin = true,
+                },
+
                 stylua = {
                     command = '/home/juan/.nix-profile/bin/stylua',
                     args = {
@@ -48,6 +60,8 @@ return {
                 markdown = { 'prettierd' },
                 lua = { 'stylua' },
                 typst = { 'typstyle' },
+                sh = { 'shfmt' },
+                zsh = { 'shfmt' },
             },
             format_on_save = {
                 lsp_fallback = true,
