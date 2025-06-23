@@ -28,6 +28,7 @@
             typstyle
             eslint_d
             stylua
+            shfmt
             jq
 
             # Compilers
