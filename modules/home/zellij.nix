@@ -1,6 +1,11 @@
-{...}: {
+{pkgs, ...}: {
     programs.zellij = {
         enable = true;
+    };
+
+    home.file.".config/zellij/plugins/zellij-sessionizer.wasm".source = pkgs.fetchurl {
+        url = "https://github.com/laperlej/zellij-sessionizer/releases/download/v0.4.3/zellij-sessionizer.wasm";
+        sha256 = "sha256-AGuWbuRX7Yi9tPdZTzDKULXh3XLUs4navuieCimUgzQ=";
     };
 
     home.file.".config/zellij/config.kdl".text = ''
@@ -11,7 +16,6 @@
         show_release_notes false
         show_startup_tips false
         on_force_close "detach"
-
 
         keybinds clear-defaults=true {
             normal {
@@ -77,13 +81,21 @@
                     };
                     SwitchToMode "Normal"
                 }
+
+                bind "f" { LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-sessionizer.wasm" {
+                        floating true
+                        move_to_focused_tab true
+                        cwd "/"
+                        root_dirs "/home/juan;/home/juan/workspace"
+                        session_layout "default"
+                    }; SwitchToMode "Locked";
+                }
             }
 
             shared_except "locked" {
                 bind "Alt g" { SwitchToMode "Locked"; }
                 bind "Alt s" { SwitchToMode "Scroll"; }
                 bind "Alt o" { SwitchToMode "Session"; }
-
 
                 // Change pane focus
                 bind "Alt j" { FocusNextPane; }
