@@ -100,7 +100,7 @@
                               '
                         '';
                         context = "files";
-                        subprocess = true;
+                        output = "terminal";
                     }
                 ];
             };
