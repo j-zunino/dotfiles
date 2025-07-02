@@ -3,10 +3,8 @@
     inputs,
     ...
 }: {
-    programs.chromium = {
+    programs.brave = {
         enable = true;
-        package = pkgs.brave;
-
         extensions = [
             {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
             {id = "fmkadmapgofadopljbjfkapdkoienihi";} # React developer tools
