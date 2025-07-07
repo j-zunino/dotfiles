@@ -211,31 +211,4 @@ in
                 };
             };
         };
-
-        xdg.configFile."zellij/layouts/default.kdl".text = ''
-            layout {
-                pane size=1 borderless=true {
-                    plugin location="file:${pkgs.zjstatus}/bin/zjstatus.wasm" {
-                        format_left "{mode}"
-                        format_center "[#,fg=${grey1-hex}]{tabs}"
-                        format_right "[#,fg=${grey1-hex}]{session}"
-
-                        mode_normal ""
-                        mode_locked  "[#,fg=${red-hex},bold] "
-                        mode_scroll  "[#,fg=${aqua-hex},bold] "
-                        mode_session "[#,fg=${purple-hex},bold] "
-
-                        tab_normal "[#,fg=${grey1-hex}] {index}:{name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
-                        tab_active "[#,fg=${accent-hex},bold] {index}:{name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
-                        tab_fullscreen_indicator "󰊓"
-                        tab_sync_indicator "󰓦"
-                        tab_floating_indicator "󰉈"
-                    }
-                }
-
-                pane split_direction="vertical" {
-                    pane
-                }
-            }
-        '';
     }
