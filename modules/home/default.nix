@@ -11,6 +11,6 @@
         ./ssh.nix
         ./fzf.nix
         ./themes.nix
-        ./zellij.nix
+        ./tmux.nix
     ];
 }
