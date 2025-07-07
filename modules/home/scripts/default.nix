@@ -18,6 +18,10 @@
     network_status = pkgs.writeScriptBin "network_status" ''
         ${pkgs.stdenv.shell} $HOME/dotfiles/modules/home/scripts/network_status.sh
     '';
+
+    tmux_sessionizer = pkgs.writeScriptBin "tmux_sessionizer" ''
+        ${pkgs.stdenv.shell} $HOME/dotfiles/modules/home/scripts/tmux/tmux_sessionizer
+    '';
 in {
     home = {
         packages = [
@@ -27,6 +31,7 @@ in {
 
             battery_status
             network_status
+            tmux_sessionizer
         ];
     };
 }

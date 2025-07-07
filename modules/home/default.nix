@@ -19,6 +19,7 @@
         ./aichat.nix
         ./ssh.nix
         ./fzf.nix
-        ./zellij.nix
+        ./tmux.nix
+        ./qt.nix
     ];
 }

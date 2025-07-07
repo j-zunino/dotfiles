@@ -12,13 +12,14 @@
 
             eval "$(zoxide init zsh)"
 
-            source $HOME/dotfiles/modules/home/scripts/zellij_tabs.zsh
             source $HOME/dotfiles/modules/home/scripts/zsh/promp.zsh
             source $HOME/dotfiles/modules/home/scripts/zsh/fzf_scripts.zsh
 
             bindkey '^J' history-search-backward
             bindkey '^K' history-search-forward
             bindkey '^L' autosuggest-accept
+
+            bindkey -s '^f' '$HOME/dotfiles/modules/home/scripts/tmux/tmux_sessionizer^M'
         '';
 
         envExtra = ''
@@ -40,7 +41,6 @@
             v = "vim";
             y = "yazi";
             f = "yazi";
-            zj = "zellij attach --index 0";
 
             # Git
             lg = "lazygit";

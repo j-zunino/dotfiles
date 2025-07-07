@@ -66,3 +66,5 @@ map('n', '<C-l>', ':vertical resize +5<CR>', 'Increase split width')
 map('n', '<C-h>', ':vertical resize -5<CR>', 'Decrease split width')
 map('n', '+', '<C-w>+', 'Increase split height')
 map('n', '-', '<C-w>-', 'Decrease split height')
+
+map('n', '<C-f>', ':silent !tmux neww tmux_sessionizer<CR>')
