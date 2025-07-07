@@ -47,6 +47,6 @@ zle -N fzf_file
 # zle -N fzf_zoxide
 zle -N live_grep
 
-bindkey "^F" fzf_file
+bindkey "^T" fzf_file
 # bindkey "^Z" fzf_zoxide
 bindkey "^G" live_grep

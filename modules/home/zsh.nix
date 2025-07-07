@@ -12,9 +12,9 @@
 
             eval "$(zoxide init zsh)"
 
-            source $HOME/dotfiles/modules/home/scripts/promp.zsh
-            source $HOME/dotfiles/modules/home/scripts/fzf_scripts.zsh
             source $HOME/dotfiles/modules/home/scripts/zellij_tabs.zsh
+            source $HOME/dotfiles/modules/home/scripts/zsh/promp.zsh
+            source $HOME/dotfiles/modules/home/scripts/zsh/fzf_scripts.zsh
 
             bindkey '^J' history-search-backward
             bindkey '^K' history-search-forward
