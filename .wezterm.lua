@@ -82,47 +82,23 @@ config = {
         inactive_titlebar_border_bottom = '#859289',
     },
 
+    disable_default_key_bindings = true,
+
     keys = {
         {
-            mods = 'ALT',
-            key = 'Enter',
-            action = wezterm.action.DisableDefaultAssignment,
+            mods = 'CTRL',
+            key = 'V',
+            action = wezterm.action.PasteFrom('Clipboard'),
         },
         {
-            mods = 'ALT',
-            key = 'q',
-            action = wezterm.action.DisableDefaultAssignment,
+            mods = 'CTRL',
+            key = 'C',
+            action = wezterm.action.CopyTo('Clipboard'),
         },
-        {
-            mods = 'ALT',
-            key = '{',
-            action = wezterm.action.DisableDefaultAssignment,
-        },
-        {
-            mods = 'ALT',
-            key = '}',
-            action = wezterm.action.DisableDefaultAssignment,
-        },
-        {
-            mods = 'ALT',
-            key = 's',
-            action = wezterm.action.DisableDefaultAssignment,
-        },
-        {
-            mods = 'ALT',
-            key = 'v',
-            action = wezterm.action.DisableDefaultAssignment,
-        },
-        {
-            mods = 'ALT',
-            key = 'j',
-            action = wezterm.action.DisableDefaultAssignment,
-        },
-        {
-            mods = 'ALT',
-            key = 'k',
-            action = wezterm.action.DisableDefaultAssignment,
-        },
+
+        { mods = 'CTRL', key = '0', action = wezterm.action.ResetFontSize },
+        { mods = 'CTRL', key = '+', action = wezterm.action.IncreaseFontSize },
+        { mods = 'CTRL', key = '-', action = wezterm.action.DecreaseFontSize },
     },
 }
 
