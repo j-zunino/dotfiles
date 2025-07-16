@@ -27,15 +27,12 @@
         zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
         iwmenu.url = "github:e-tho/iwmenu";
-
-        zjstatus.url = "github:dj95/zjstatus";
     };
 
     outputs = inputs @ {
         nixpkgs,
         flake-utils,
         home-manager,
-        zjstatus,
         ...
     }: {
         nixosConfigurations = {
