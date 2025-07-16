@@ -20,6 +20,5 @@
         ./ssh.nix
         ./fzf.nix
         ./tmux.nix
-        ./qt.nix
     ];
 }
