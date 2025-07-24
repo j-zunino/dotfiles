@@ -59,10 +59,12 @@ H.create_default_hl = function()
     -- Define highlights
     set_hl('SillyBuflineSelected', { fg = bufsel, bg = nil, bold = true })
     set_hl('SillyBuflineNormal', { fg = bufnormal, bg = nil, bold = false })
-    set_hl( 'SillyBuflineModifiedSelected', { fg = bufmodified, bg = nil, bold = true })
-    set_hl( 'SillyBuflineModifiedNormal', { fg = bufmodified, bg = nil, bold = false })
-    set_hl( 'SillyBuflineSeparator', { fg = bufnormal, bg = nil, bold = false })
-    set_hl( 'SillyBuflineFill', { bg = 'None' })
+    set_hl('SillyBuflineModifiedSelected', { fg = bufmodified, bg = nil, bold = true })
+    set_hl('SillyBuflineModifiedNormal', { fg = bufmodified, bg = nil, bold = false })
+    set_hl('SillyBuflineSeparator', { fg = bufnormal, bg = nil, bold = false })
+    set_hl('SillyBuflineFill', { bg = nil })
+
+    vim.api.nvim_set_hl(0, "TabLineFill", { link = "SillyBuflineFill" })
 end
 
 H.concat_buffers = function(buffers)
