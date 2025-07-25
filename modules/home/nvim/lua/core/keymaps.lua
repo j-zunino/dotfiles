@@ -40,10 +40,8 @@ map('n', 'P', ':put!<CR>`[v`]=', 'Paste without saving into register')
 map({ 'n', 'v' }, 'J', '5j', 'Move down 5 lines')
 map({ 'n', 'v' }, 'K', '5k', 'Move up 5 lines')
 
-map('n', '<leader>J', ':move +1<CR>', 'Move line down')
-map('n', '<leader>K', ':move -2<CR>', 'Move line up')
-map('v', '<leader>J', ":move '>+1<CR>gv=gv", 'Move line down (Visual)')
-map('v', '<leader>K', ":move '<-2<CR>gv=gv", 'Move line up (Visual)')
+map('v', '<C-j>', ":move '>+1<CR>gv=gv", 'Move line down')
+map('v', '<C-k>', ":move '<-2<CR>gv=gv", 'Move line up')
 
 map({ 'n', 'v' }, '<C-d>', '<C-d>zz', 'Scroll down')
 map({ 'n', 'v' }, '<C-u>', '<C-u>zz', 'Scroll up')
