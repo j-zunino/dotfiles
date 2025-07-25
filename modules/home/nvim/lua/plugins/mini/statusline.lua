@@ -14,6 +14,8 @@ local icons = {
 local function mode_with_arrow()
     local mode, mode_hl = statusline.section_mode({ trunc_width = 120 })
 
+    mode = string.upper(mode)
+
     local mode_colors = vim.api.nvim_get_hl(0, { name = mode_hl })
     local next_bg =
         vim.api.nvim_get_hl(0, { name = 'MiniStatuslineDevinfo' }).bg
