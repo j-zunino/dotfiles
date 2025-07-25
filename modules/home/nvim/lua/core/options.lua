@@ -50,6 +50,8 @@ vim.opt.backspace = 'indent,eol,start'
 
 vim.opt.pumheight = 15
 
+vim.opt.colorcolumn = '80'
+
 -- Other
 function _G.custom_fold_text()
     local line = vim.fn.getline(vim.v.foldstart)
