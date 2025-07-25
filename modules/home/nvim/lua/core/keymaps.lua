@@ -68,3 +68,5 @@ map('n', '+', '<C-w>+', 'Increase split height')
 map('n', '-', '<C-w>-', 'Decrease split height')
 
 map('n', '<C-f>', ':silent !tmux neww tmux_sessionizer<CR>')
+
+map('n', '<leader>X', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
