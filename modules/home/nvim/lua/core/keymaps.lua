@@ -15,7 +15,7 @@ map({ 'n', 'v' }, '<Space>', '<Nop>')
 
 map('n', '<leader>L', '<cmd>Lazy<CR>', 'Open Lazy')
 
-map('n', '<leader>j', 'J', 'Join lines')
+map('n', '<leader>j', 'mzJ`z', 'Join lines')
 
 map('n', '<leader>Tw', '<cmd>set wrap!<CR>', 'Word wrap')
 
