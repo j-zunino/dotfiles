@@ -55,8 +55,11 @@ local function file_icon()
 
     if type(color) == 'string' then
         local hl = vim.api.nvim_get_hl(0, { name = color })
-        color = hl and hl.fg or color
+        color = (hl and hl.fg and type(hl.fg) == 'number') and hl.fg or nil
     end
+
+    color = color
+        or vim.api.nvim_get_hl(0, { name = 'MiniStatuslineDevinfo' }).fg
 
     local icon_hl = 'MiniStatuslineFileIcon'
     vim.api.nvim_set_hl(0, icon_hl, {
