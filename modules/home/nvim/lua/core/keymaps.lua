@@ -48,7 +48,8 @@ map(
     'n',
     '<leader>X',
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    'Replace word under cursor'
+    'Replace word under cursor',
+    { silent = false }
 )
 
 -------------------------------------------------------------------------------
