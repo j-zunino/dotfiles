@@ -1,6 +1,5 @@
 return {
     'stevearc/oil.nvim',
-    dependencies = { 'echasnovski/mini.icons' },
 
     config = function()
         vim.keymap.set(
