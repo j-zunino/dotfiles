@@ -11,6 +11,7 @@ return {
                 disable_italic_comments = true,
 
                 on_highlights = function(hl, palette)
+                    local bg1 = palette.bg1
                     local accent = palette.green
 
                     hl.DiagnosticVirtualTextError =
@@ -25,6 +26,7 @@ return {
                     hl.NormalFloat = { bg = 'NONE' }
                     hl.FloatBorder = { link = 'Comment' }
                     hl.FloatTitle = { link = 'Comment' }
+                    hl.TreesitterContext = { bg = bg1 } -- Treesitter context
 
                     -- Snacks
                     hl.SnacksDashboardTitle = { fg = accent }
