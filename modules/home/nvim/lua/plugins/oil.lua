@@ -1,6 +1,5 @@
 return {
     'stevearc/oil.nvim',
-
     config = function()
         vim.keymap.set(
             'n',
