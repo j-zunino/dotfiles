@@ -8,6 +8,10 @@ local debounce_delay = 50
 
 local function get_current_match_line()
     local pattern = vim.fn.getreg('/')
+    if pattern == nil or pattern == '' then
+        return 0
+    end
+
     local pos = vim.fn.searchpos(pattern, 'cnW')
     return pos[1]
 end
