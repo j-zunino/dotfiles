@@ -11,13 +11,12 @@ return {
     {
         'yioneko/nvim-vtsls',
         ft = {
-
             'javascript',
-            'javascriptreact',
-            'javascript.jsx',
             'typescript',
-            'typescriptreact',
+            'javascript.jsx',
             'typescript.tsx',
+            'javascriptreact',
+            'typescriptreact',
         },
     },
 }
