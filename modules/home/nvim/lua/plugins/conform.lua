@@ -14,10 +14,14 @@ return {
                 })
             end, { desc = 'Format buffer' }),
 
+            format_on_save = {
+                lsp_fallback = true,
+                async = false,
+                timeout_ms = 1000,
+            },
+
             formatters = {
-                typstyle = {
-                    command = '/home/juan/.nix-profile/bin/typstyle',
-                },
+                typstyle = { command = '/home/juan/.nix-profile/bin/typstyle' },
 
                 jq = {
                     command = '/home/juan/.nix-profile/bin/jq',
@@ -26,13 +30,7 @@ return {
 
                 shfmt = {
                     command = '/home/juan/.nix-profile/bin/shfmt',
-                    args = {
-                        '-i',
-                        '4',
-                        '-ci',
-                        '-s',
-                        '-',
-                    },
+                    args = { '-i', '4', '-ci', '-s', '-' },
                     stdin = true,
                 },
 
@@ -62,11 +60,6 @@ return {
                 typst = { 'typstyle' },
                 sh = { 'shfmt' },
                 zsh = { 'shfmt' },
-            },
-            format_on_save = {
-                lsp_fallback = true,
-                async = false,
-                timeout_ms = 1000,
             },
         })
     end,
