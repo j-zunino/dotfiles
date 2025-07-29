@@ -3,7 +3,7 @@ return {
     ft = { 'markdown' },
     config = function()
         require('render-markdown').setup({
-            file_types = { 'markdown',
+            file_types = { 'markdown' },
 
             sign = {
                 enabled = false,
