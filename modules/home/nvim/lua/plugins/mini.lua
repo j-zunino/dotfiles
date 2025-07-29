@@ -8,5 +8,6 @@ return {
         require('plugins.mini.ai')
         require('plugins.mini.icons')
         require('plugins.mini.statusline')
+        require('plugins.mini.indentscope')
     end,
 }
