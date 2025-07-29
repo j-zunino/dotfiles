@@ -50,60 +50,10 @@ return {
         end,
     },
     {
-        'ellisonleao/gruvbox.nvim',
-        lazy = true,
-        config = function()
-            require('gruvbox').setup({
-                italic = {
-                    strings = false,
-                    emphasis = false,
-                    comments = false,
-                    operators = false,
-                    folds = false,
-                },
-            })
-        end,
-    },
-    {
-        'navarasu/onedark.nvim',
-        lazy = true,
-        config = function()
-            require('onedark').setup({
-                style = 'dark',
-            })
-        end,
-    },
-    {
         'vague2k/vague.nvim',
         lazy = true,
         config = function()
-            require('vague').setup()
+            require('vague').setup({ italic = true })
         end,
-    },
-    {
-        'rose-pine/neovim',
-        name = 'rose-pine',
-        lazy = true,
-        config = function()
-            require('rose-pine').setup({
-                variant = 'main',
-                dark_variant = 'main',
-
-                styles = {
-                    bold = true,
-                    italic = false,
-                },
-            })
-        end,
-    },
-    {
-        'folke/tokyonight.nvim',
-        lazy = true,
-        opts = {
-            styles = {
-                comments = { italic = false },
-                keywords = { italic = false },
-            },
-        },
     },
 }
