@@ -7,13 +7,16 @@ return {
             ---@diagnostic disable-next-line: missing-fields
             require('everforest').setup({
                 transparent_background_level = 1,
-
                 disable_italic_comments = true,
 
                 on_highlights = function(hl, palette)
                     local bg1 = palette.bg1
                     local accent = palette.green
 
+                    -- Nvim
+                    hl.NormalFloat = { bg = 'NONE' }
+                    hl.FloatBorder = { link = 'Comment' }
+                    hl.FloatTitle = { link = 'Comment' }
                     hl.DiagnosticVirtualTextError =
                         { fg = palette.red, bg = palette.bg_red }
                     hl.DiagnosticVirtualTextHint =
@@ -23,9 +26,7 @@ return {
                     hl.DiagnosticVirtualTextWarn =
                         { fg = palette.yellow, bg = palette.bg_yellow }
 
-                    hl.NormalFloat = { bg = 'NONE' }
-                    hl.FloatBorder = { link = 'Comment' }
-                    hl.FloatTitle = { link = 'Comment' }
+                    hl.Pmenu = { link = 'Normal' } -- Blink
                     hl.TreesitterContext = { bg = bg1 } -- Treesitter context
 
                     -- Snacks
@@ -39,11 +40,6 @@ return {
                     hl.SnacksDashboardNormal = { link = 'Normal' }
                     hl.SnacksDashboardNormalNC = { link = 'Normal' }
 
-                    -- Blink
-                    hl.Pmenu = { link = 'Normal' }
-
-                    -- Avante
-                    hl.AvanteSidebarWinSeparator = { link = 'FloatBorder' }
                 end,
             })
 
