@@ -31,9 +31,8 @@ return {
                         { fg = palette.yellow, bg = palette.bg_yellow }
 
                     hl.Pmenu = { link = 'Normal' } -- Blink
-                    hl.TreesitterContext = { bg = bg1 } -- Treesitter context
+                    hl.TreesitterContext = { bg = bg1 }
 
-                    -- Snacks
                     hl.SnacksDashboardTitle = { fg = accent }
                     hl.SnacksDashboardIcon = { fg = accent }
                     hl.SnacksDashboardFile = { link = 'Fg' }

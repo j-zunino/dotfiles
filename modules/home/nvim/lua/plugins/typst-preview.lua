@@ -3,7 +3,6 @@ return {
     ft = 'typst',
     leader = '<leader>pt',
     version = '1.*',
-    opts = {},
     config = function()
         vim.keymap.set(
             'n',
