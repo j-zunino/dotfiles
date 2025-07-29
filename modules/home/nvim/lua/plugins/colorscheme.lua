@@ -17,6 +17,10 @@ return {
                     hl.NormalFloat = { bg = 'NONE' }
                     hl.FloatBorder = { link = 'Comment' }
                     hl.FloatTitle = { link = 'Comment' }
+                    hl.SpellBad = { link = 'DiagnosticUnderlineWarn' }
+                    hl.SpellCap = { link = 'DiagnosticUnderlineWarn' }
+                    hl.SpellLocal = { link = 'DiagnosticUnderlineWarn' }
+                    hl.SpellRare = { link = 'DiagnosticUnderlineWarn' }
                     hl.DiagnosticVirtualTextError =
                         { fg = palette.red, bg = palette.bg_red }
                     hl.DiagnosticVirtualTextHint =
@@ -39,7 +43,6 @@ return {
                     hl.SnacksDashboardFooter = { link = 'Comment' }
                     hl.SnacksDashboardNormal = { link = 'Normal' }
                     hl.SnacksDashboardNormalNC = { link = 'Normal' }
-
                 end,
             })
 
