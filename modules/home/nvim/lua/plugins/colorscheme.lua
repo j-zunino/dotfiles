@@ -42,6 +42,7 @@ return {
                     hl.SnacksDashboardFooter = { link = 'Comment' }
                     hl.SnacksDashboardNormal = { link = 'Normal' }
                     hl.SnacksDashboardNormalNC = { link = 'Normal' }
+                    hl.SnacksPickerListCursorLine = { link = 'CursorLine' }
                 end,
             })
 
