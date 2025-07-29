@@ -1,13 +1,9 @@
----@diagnostic disable: missing-fields
 return {
     'luckasRanarison/tailwind-tools.nvim',
     name = 'tailwind-tools',
-    build = ':UpdateRemotePlugins',
     keys = { '<leader>ws', '<leader>wc' },
-    dependencies = {
-        'nvim-treesitter/nvim-treesitter',
-    },
-    opts = {},
+    build = ':UpdateRemotePlugins',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
 
     config = function()
         vim.keymap.set(
@@ -24,18 +20,13 @@ return {
         )
 
         require('tailwind-tools').setup({
-            server = {
-                override = false,
-            },
-            document_color = {
-                enabled = false,
-            },
+            ---@diagnostic disable-next-line: missing-fields
+            server = { override = false },
+            document_color = { enabled = false },
             conceal = {
                 enabled = false,
                 symbol = '…',
-                highlight = {
-                    fg = '',
-                },
+                highlight = { fg = '' },
             },
         })
     end,
