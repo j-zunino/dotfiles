@@ -11,7 +11,6 @@ api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Go to last location when opening a buffer
--- this mean that when you open a file, you will be at the last position
 api.nvim_create_autocmd('BufReadPost', {
     callback = function()
         local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -22,7 +21,7 @@ api.nvim_create_autocmd('BufReadPost', {
     end,
 })
 
--- show cursor line only in active window
+-- Show cursor line only in active window
 local cursorGrp = api.nvim_create_augroup('CursorLine', { clear = true })
 api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
     pattern = '*',
