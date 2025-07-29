@@ -1,35 +1,28 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
-    event = { 'BufReadPost', 'BufNewFile' },
-    build = ':TSUpdate',
-    config = function()
-        local treesitter = require('nvim-treesitter.configs')
-        treesitter.setup({
-            highlight = {
-                enable = true,
-            },
-            indent = { enable = true },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        config = function()
+            ---@diagnostic disable-next-line: missing-fields
+            require('nvim-treesitter.configs').setup({
+                indent = { enable = true },
+                highlight = { enable = true },
 
-            auto_install = true,
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = '<C-space>',
-                    node_incremental = '<C-space>',
-                    node_decremental = '<BS>',
-                    scope_incremental = false,
+                auto_install = true,
+                ensure_installed = {
+                    'nix',
+                    'lua',
+                    'css',
+                    'html',
+                    'markdown',
+                    'javascript',
+                    'typescript',
                 },
-            },
-            ensure_installed = {
-                'html',
-                'css',
-                'javascript',
-                'typescript',
-                'lua',
-                'markdown',
-                'diff',
-                'nix',
-            },
-        })
-    end,
+            })
+        end,
+    },
+    {
+        'windwp/nvim-ts-autotag',
+        event = { 'BufReadPost', 'BufNewFile' },
+    },
 }
