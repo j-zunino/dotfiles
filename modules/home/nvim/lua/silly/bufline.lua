@@ -90,7 +90,11 @@ SillyBufline.bufline = function()
 
         if SillyBufline.config.show_icons then
             if H.has_mini_icons() then
-                icon, icon_hl = _G.MiniIcons.get('file', short_name)
+                if vim.bo[buf.bufnr].modified then
+                    icon, icon_hl = '●', ''
+                else
+                    icon, icon_hl = _G.MiniIcons.get('file', short_name)
+                end
             end
 
             if icon and icon ~= '' then
