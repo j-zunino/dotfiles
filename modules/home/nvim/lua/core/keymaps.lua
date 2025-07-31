@@ -44,13 +44,21 @@ map('n', '<leader>j', 'mzJ`z', 'Join lines')
 
 map('n', 'U', '<C-r>', 'Redo')
 
-map(
-    'n',
-    '<leader>X',
-    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    'Replace word under cursor',
-    { silent = false }
-)
+vim.keymap.set('n', '<leader>X', function()
+    local word = vim.fn.expand('<cword>')
+    vim.ui.input({ default = word, prompt = 'Replace' }, function(replacement)
+        if not replacement or replacement == '' then
+            return
+        end
+
+        local pattern = vim.fn.escape(word, '/\\')
+        local subst = vim.fn.escape(replacement, '/\\')
+
+        local cmd = string.format('%%s/\\<%s\\>/%s/gI', pattern, subst)
+        vim.cmd(cmd)
+    end)
+end, { desc = 'Replace word under cursor', silent = false })
+-- map('n', '<leader>X', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], 'Replace word under cursor', { silent = false })
 
 -------------------------------------------------------------------------------
 -- NAVIGATION
