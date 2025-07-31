@@ -51,11 +51,6 @@
             juan = home-manager.lib.homeManagerConfiguration {
                 pkgs = import nixpkgs {
                     system = "x86_64-linux";
-                    overlays = [
-                        (final: prev: {
-                            zjstatus = inputs.zjstatus.packages."x86_64-linux".default;
-                        })
-                    ];
                 };
                 extraSpecialArgs = {inherit inputs;};
                 modules = [
