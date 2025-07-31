@@ -22,14 +22,14 @@ local picker_layout = {
     reverse = true,
     layout = {
         box = 'vertical',
-        width = 0.5,
-        height = 0.7,
+        width = 0.6,
+        height = 0.8,
         border = 'single',
         title = '{title} {live} {flags}',
         {
             win = 'preview',
             border = 'bottom',
-            height = 0.5,
+            height = 0.4,
         },
         {
             box = 'vertical',
