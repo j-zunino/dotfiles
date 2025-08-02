@@ -24,6 +24,12 @@ return {
     {
         'windwp/nvim-ts-autotag',
         event = { 'BufReadPost', 'BufNewFile' },
+        opts = {},
+    },
+    {
+        'folke/ts-comments.nvim',
+        event = { 'BufReadPost', 'BufNewFile' },
+        opts = {},
     },
     {
         'nvim-treesitter/nvim-treesitter-context',
