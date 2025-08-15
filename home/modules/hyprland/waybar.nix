@@ -1,264 +1,195 @@
-{...}: {
-    programs = {
-        waybar = {
-            enable = true;
+{config, ...}: let
+    colors = config.my.colors;
+    stylixFonts = config.stylix.fonts;
+    margin-inline = "0 10px";
+in {
+    programs.waybar = {
+        enable = true;
+        settings = {
+            mainBar = {
+                layer = "top";
+                position = "top";
+                height = 24;
 
-            settings = {
-                mainBar = {
-                    layer = "top";
-                    position = "top";
-                    height = 20;
+                modules-left = [
+                    "custom/icon"
+                    "hyprland/workspaces"
+                ];
 
-                    modules-left = [
-                        "custom/nix-logo"
-                        "custom/arrow"
-                        "hyprland/workspaces"
-                        # "hyprland/window"
-                    ];
+                modules-center = ["clock"];
 
-                    modules-center = [
-                        "clock#date"
-                    ];
+                modules-right = [
+                    "tray"
+                    "cpu"
+                    "memory"
+                    "pulseaudio"
+                    "network"
+                    "battery"
+                ];
 
-                    modules-right = [
-                        "group/expand"
-                        "network"
-                        "battery"
-                    ];
+                # - [ LEFT ] -
+                "custom/icon" = {
+                    format = "󰛄";
+                    tooltip = false;
+                    on-click = "rofi_logout";
+                };
 
-                    # - [ LEFT ] -
-                    "custom/nix-logo" = {
-                        format = " ";
-                        tooltip = false;
-                        on-click = "rofi_logout";
+                "hyprland/workspaces" = {
+                    persistent-workspaces = {
+                        "1" = [];
+                        "2" = [];
+                        "3" = [];
+                        "4" = [];
+                    };
+                };
+
+                # - [ CENTER ] -
+                clock = {
+                    format = "{:%A %I:%M %p}";
+                    format-alt = "{:%A %H:%M}";
+                    timezone = "America/Argentina/Buenos_Aires";
+                    tooltip-format = "<tt>{calendar}</tt>";
+                    actions = {
+                        on-click-right = "mode";
+                        on-scroll-up = "shift_up";
+                        on-scroll-down = "shift_down";
                     };
 
-                    "custom/arrow" = {
-                        format = "";
-                        tooltip = false;
-                    };
-
-                    "hyprland/workspaces" = {
-                        active-only = false;
-                    };
-
-                    "hyprland/window" = {
-                        max-length = 25;
-                        tooltip = false;
-                    };
-
-                    # - [ CENTER ] -
-                    "clock#date" = {
-                        interval = 60;
-                        timezone = "America/Argentina/Buenos_Aires";
-                        format = "{:%d/%m | %I:%M %p}";
-                        format-alt = "{:%d/%m | %H:%M}";
-                        tooltip-format = "<tt><small>{calendar}</small></tt>";
-
-                        calendar = {
-                            mode = "month";
-                            mode-mon-col = 3;
-                            weeks-pos = "none";
-                            on-scroll = 1;
-                        };
-
-                        actions = {
-                            on-click-right = "mode";
-                            on-scroll-up = "shift_up";
-                            on-scroll-down = "shift_down";
+                    calendar = {
+                        weeks-pos = "none";
+                        on-scroll = 1;
+                        format = {
+                            months = "<span color='${colors.accent-hex}'>{}</span>";
+                            days = "<span color='${colors.fg-hex}'>{}</span>";
+                            weeks = "<span color='${colors.bg2-hex}'>W{}</span>";
+                            weekdays = "<span color='${colors.gray1-hex}'>{}</span>";
+                            today = "<span color='${colors.red-hex}'><b><u>{}</u></b></span>";
                         };
                     };
+                };
 
-                    # - [ RIGHT ] -
-                    "group/expand" = {
-                        orientation = "horizontal";
-                        drawer = {
-                            transition-duration = 600;
-                            transition-to-left = true;
-                            click-to-reveal = true;
-                        };
-                        modules = [
-                            "custom/expand"
-                            "cpu"
-                            "memory"
-                            "custom/separator"
-                            "tray"
-                            "temperature"
-                            "backlight"
-                            "pulseaudio"
-                            "custom/separator"
-                        ];
+                # - [ RIGHT ] -
+                cpu = {
+                    format = "󰍛";
+                    on-click = "wezterm start btop";
+                    states = {
+                        warning = 70;
+                        critical = 90;
                     };
+                };
 
-                    "custom/expand" = {
-                        format = "";
-                        tooltip = false;
+                memory = {
+                    format = "";
+                    on-click = "wezterm start btop";
+                    states = {
+                        warning = 70;
+                        critical = 90;
                     };
+                };
 
-                    "cpu" = {
-                        format = "{usage}% ";
+                tray = {
+                    icon-size = stylixFonts.monospace.name;
+                    spacing = 10;
+                };
 
-                        states = {
-                            warning = 70;
-                            critical = 90;
-                        };
+                pulseaudio = {
+                    format = "{icon}";
+                    tooltip-format = "{icon} {volume}%";
+                    format-muted = "󰝟";
+                    format-icons = {default = ["󰕿" "󰖀" "󰕾"];};
+                    scroll-step = 1;
+                    on-click = "wezterm start wiremix";
+                    on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+                    # ignored-sinks = ["Easy Effects Sink"];
+                };
+
+                network = {
+                    format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
+                    format = "{icon}";
+                    format-wifi = "{icon}";
+                    format-ethernet = "󰀂";
+                    format-disconnected = "";
+                    tooltip-format-wifi = "{essid} ({frequency} GHz)\n{icon} {signalStrength}%  ↓{bandwidthDownBytes}  ↑{bandwidthUpBytes}";
+                    tooltip-format-ethernet = "{icon} ↓{bandwidthDownBytes} ↑{bandwidthUpBytes}";
+                    on-click = "iwmenu --launcher rofi";
+                };
+
+                battery = {
+                    interval = 5;
+                    format = "{capacity}% {icon}";
+                    format-full = "󰂄";
+                    format-icons = {
+                        default = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+                        charging = ["󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅"];
                     };
-
-                    "memory" = {
-                        format = "{percentage}% ";
-
-                        states = {
-                            warning = 70;
-                            critical = 90;
-                        };
-                    };
-
-                    "custom/separator" = {
-                        format = "│";
-                        tooltip = false;
-                    };
-
-                    "tray" = {
-                        "icon-size" = 15;
-                        spacing = 10;
-                    };
-
-                    "temperature" = {
-                        critical-threshold = 80;
-                        format = "";
-                        tooltip-format = "{temperatureC}󰔄";
-                    };
-
-                    "backlight" = {
-                        format = "{icon}";
-                        format-icons = ["󱩎" "󱩏" "󱩐" "󱩑" "󱩒" "󱩓" "󱩔" "󱩕" "󱩖" "󰛨"];
-                        tooltip-format = "{icon} {percent}%";
-                    };
-
-                    "pulseaudio" = {
-                        format = "{icon}";
-                        format-bluetooth = "{icon}";
-                        format-muted = "󰖁";
-                        tooltip-format = "{icon} {volume}%";
-                        format-icons = {
-                            headphone = "";
-                            # hands-free = "";
-                            # headset = "";
-                            phone = "";
-                            phone-muted = "";
-                            portable = "";
-                            car = "";
-                            default = ["󰖁" "󰕿" "󰕿" "󰕿" "󰕿" "󰕿" "󰖀" "󰖀" "󰖀" "󰖀" "󰖀" "󰖀" "󰖀" "󰖀" "󰖀" "󰖀" "󰕾"];
-                        };
-                        scroll-step = 1;
-                        on-click = " wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-                        ignored-sinks = ["Easy Effects Sink"];
-                    };
-
-                    "network" = {
-                        format = "{ifname}";
-                        format-wifi = "{icon} ";
-                        format-ethernet = "󰈁 ";
-                        format-disconnected = "󰤮 ";
-                        tooltip-format-wifi = "{essid} {icon} {signalStrength}%";
-                        tooltip-format-ethernet = "{ifname} 󰈁 ";
-                        tooltip-format-disconnected = "󰤮 ";
-
-                        format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
-
-                        on-click = "iwmenu --launcher rofi";
-                    };
-
-                    "battery" = {
-                        interval = 5;
-                        states = {
-                            warning = 30;
-                            critical = 20;
-                        };
-
-                        format = "{capacity}% {icon}";
-                        format-charging = "{capacity}% 󰂄";
-                        format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-
-                        max-length = 25;
+                    tooltip-format-discharging = "{power:>1.0f}W↓ {capacity}%";
+                    tooltip-format-charging = "{power:>1.0f}W↑ {capacity}%";
+                    states = {
+                        warning = 30;
+                        critical = 20;
                     };
                 };
             };
-
-            style = ''
-                * {
-                  margin: 0;
-                  padding: 0;
-                  border: none;
-                  min-height: 0;
-                  box-shadow: none;
-                  border-radius: 0;
-                  text-shadow: none;
-                  font-family: IosevkaTerm Nerd Font;
-                  font-size: 17px;
-                }
-
-                #custom-arrow,
-                #custom-nix-logo {
-                  font-size: 20px;
-                }
-                #custom-nix-logo {
-                  padding-left: 4px;
-                }
-
-                tooltip {
-                  border: 2px solid;
-                }
-
-                #workspaces button {
-                  font-weight: normal;
-                }
-
-                /* CRITICAL STATE */
-                #cpu.critical,
-                #memory.critical,
-                #battery.critical,
-                #temperature.critical,
-                /* HOVER */
-                #cpu:hover,
-                #window:hover,
-                #memory:hover,
-                #network:hover,
-                #battery:hover,
-                #backlight:hover,
-                #clock.date:hover,
-                #pulseaudio:hover,
-                #temperature:hover,
-                #custom-expand:hover,
-                #workspaces button:hover,
-                #workspaces button.active {
-                  font-weight: bold;
-                }
-
-                #tray,
-                #memory,
-                #backlight,
-                #clock.date,
-                #pulseaudio,
-                #temperature {
-                  margin: 0 8px;
-                }
-
-                #cpu,
-                #memory,
-                #window,
-                #network,
-                #battery,
-                #backlight,
-                #pulseaudio,
-                #workspaces,
-                #temperature,
-                #group-expand,
-                #custom-expand,
-                #workspaces button {
-                  padding: 0 4px;
-                }
-            '';
         };
+
+        style = ''
+            * {
+                background: ${colors.bg1-hex};
+                font-family: ${stylixFonts.monospace.name};
+                font-size: ${toString stylixFonts.sizes.terminal}px;
+
+                margin: 0;
+                padding: 0;
+                border: none;
+                border-radius: 0;
+                text-shadow: none;
+                box-shadow: none;
+            }
+            window#waybar { color: ${colors.gray1-hex}; }
+            .charging { color: ${colors.accent-hex}; }
+            .warning { color: ${colors.yellow-hex}; }
+            .critical { color: ${colors.red-hex}; }
+            tooltip {
+                border: 2px solid;
+                border-color: ${colors.accent-hex};
+                color: ${colors.fg-hex};
+            }
+
+
+            #custom-icon {
+                color: ${colors.green-hex};
+                margin: ${margin-inline};
+            }
+
+            #workspaces button {
+                color: ${colors.gray1-hex};
+                padding: 0 4px;
+            }
+            #workspaces button.empty {
+                color: inherit;
+                opacity: 0.5;
+            }
+            #workspaces button:hover {
+                color: ${colors.fg-hex};
+                font-weight: bold;
+                background: transparent;
+                opacity: 1;
+            }
+            #workspaces button.active {
+                color: ${colors.accent-hex};
+                font-weight: bold;
+                opacity: 1;
+            }
+
+
+            #cpu,
+            #memory,
+            #pulseaudio,
+            #network,
+            #battery {
+                min-width: ${toString stylixFonts.sizes.terminal}px;
+                margin: ${margin-inline};
+            }
+        '';
     };
 }
