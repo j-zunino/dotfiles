@@ -82,7 +82,7 @@
                                 )"
 
                                 selected_message=$(aichat "$prompt" \
-                                  | fzf --ansi --preview "echo {}" --preview-window=up:40%:wrap)
+                                  | fzf)
 
                                 if [ -n "$selected_message" ]; then
                                   COMMIT_MSG_FILE=$(mktemp)
