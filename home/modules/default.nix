@@ -1,0 +1,24 @@
+{
+    imports = [
+        ./git.nix
+        ./nvim.nix
+        ./spicetify.nix
+        ./yazi.nix
+        ./btop.nix
+        ./zsh.nix
+        ./scripts
+        ./fastfetch.nix
+        ./hyprland
+        ./wezterm.nix
+        ./dunst.nix
+        ./rofi.nix
+        ../../nixos/stylix.nix
+        ./stylix-themes.nix
+        ./browser.nix
+        ./zoxide.nix
+        ./aichat.nix
+        ./ssh.nix
+        ./fzf.nix
+        ./tmux.nix
+    ];
+}
