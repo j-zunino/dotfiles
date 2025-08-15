@@ -20,5 +20,6 @@
         ./ssh.nix
         ./fzf.nix
         ./tmux.nix
+        ./stylix.nix
     ];
 }

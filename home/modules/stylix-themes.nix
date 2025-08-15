@@ -30,8 +30,8 @@
         bg0 = lib.mkForce (rgb base00);
         bg1 = lib.mkForce (rgb base01);
         bg2 = lib.mkForce (rgb base02);
-        grey1 = lib.mkForce (rgb base03);
-        grey2 = lib.mkForce (rgb base04);
+        gray1 = lib.mkForce (rgb base03);
+        gray2 = lib.mkForce (rgb base04);
         fg = lib.mkForce (rgb base05);
         red = lib.mkForce (rgb base08);
         orange = lib.mkForce (rgb base09);
@@ -44,8 +44,8 @@
         bg0-hex = hex base00;
         bg1-hex = hex base01;
         bg2-hex = hex base02;
-        grey1-hex = hex base03;
-        grey2-hex = hex base04;
+        gray1-hex = hex base03;
+        gray2-hex = hex base04;
         fg-hex = hex base05;
         red-hex = hex base08;
         orange-hex = hex base09;
@@ -60,129 +60,9 @@
     };
 in
     with colors; {
-        stylix.targets = {
-            waybar.enable = false;
-            neovim.enable = false;
-            yazi.enable = false;
-            hyprlock.enable = false;
-            zen-browser.enable = false;
-        };
-
-        stylix.iconTheme = {
-            enable = true;
-            package = pkgs.reversal-icon-theme;
-            light = "Reversal";
-            dark = "Reversal";
-        };
-
         wayland.windowManager.hyprland.settings.general = {
             "col.active_border" = accent;
             "col.inactive_border" = bg1;
-        };
-
-        programs.waybar = {
-            settings.mainBar."clock#date".calendar.format = {
-                months = "<span color='${accent-hex}'><b>{}</b></span>";
-                days = "<span color='${fg-hex}'><b>{}</b></span>";
-                weeks = "<span color='${bg2-hex}'><b>W{}</b></span>";
-                weekdays = "<span color='${grey1-hex}'><b>{}</b></span>";
-                today = "<span color='${red-hex}'><b><u>{}</u></b></span>";
-            };
-
-            style = lib.mkAfter ''
-                window#waybar {
-                  background: ${bg1-hex};
-                  color: ${grey1-hex};
-                }
-
-                tooltip {
-                  background: ${bg1-hex};
-                  border-color: ${accent-hex};
-                }
-
-                tooltip label {
-                  color: ${fg-hex};
-                }
-
-                #custom-nix-logo {
-                  background: ${accent-hex};
-                  color: ${bg0-hex};
-                }
-                #custom-nix-logo:hover {
-                  color: ${bg1-hex};
-                }
-
-                #workspaces button {
-                  color: ${grey1-hex};
-                }
-
-                #workspaces button.active {
-                  color: ${accent-hex};
-                }
-
-                #window {
-                  background: ${bg1-hex};
-                }
-
-                #clock.date {
-                  color: ${grey2-hex};
-                }
-
-                #cpu.warning,
-                #memory.warning,
-                #battery.warning {
-                  color: ${yellow-hex};
-                }
-
-                #cpu.critical,
-                #memory.critical,
-                #battery.critical,
-                #temperature.critical {
-                  color: ${red-hex};
-                }
-
-                #battery.charging {
-                  color: ${accent-hex};
-                }
-
-                #custom-arrow {
-                  background: ${bg1-hex};
-                  color: ${accent-hex};
-                }
-
-
-                #cpu:hover,
-                #memory:hover,
-                #window:hover,
-                #network:hover,
-                #battery:hover,
-                #backlight:hover,
-                #pulseaudio:hover,
-                #clock.date:hover,
-                #temperature:hover,
-                #custom-expand:hover,
-                #workspaces button:hover {
-                  background: none;
-                  color: ${fg-hex};
-                }
-
-                #custom-separator {
-                  color: ${bg2-hex};
-                }
-
-                #cpu,
-                #memory,
-                #window,
-                #battery,
-                #network,
-                #backlight,
-                #pulseaudio,
-                #temperature,
-                #custom-expand,
-                #workspaces button {
-                  color: ${grey1-hex};
-                }
-            '';
         };
 
         services.dunst.settings = {
@@ -213,7 +93,7 @@ in
 
             #mainbox {
                 border: 1px;
-                border-color: ${grey1-hex};
+                border-color: ${gray1-hex};
                 padding: 8px 4px;
             }
 
@@ -222,7 +102,7 @@ in
                 padding: 2px 0 10px 0;
                 background-color: ${bg0-hex};
                 border: 0 0 1px 0;
-                border-color: ${grey1-hex};
+                border-color: ${gray1-hex};
             }
 
             prompt, entry, element-icon, element-text {
@@ -236,7 +116,7 @@ in
             textbox {
                 border: 1px;
                 padding: 10px 4px;
-                border-color: ${grey1-hex};
+                border-color: ${gray1-hex};
             }
 
             listview {
@@ -287,7 +167,7 @@ in
         '');
 
         programs.yazi.theme = {
-            manager = {
+            mgr = {
                 cwd = {
                     fg = accent-hex;
                 };
@@ -311,12 +191,12 @@ in
                 };
 
                 marker_marked = {
-                    fg = grey1-hex;
-                    bg = grey1-hex;
+                    fg = gray1-hex;
+                    bg = gray1-hex;
                 };
                 marker_selected = {
-                    fg = grey2-hex;
-                    bg = grey2-hex;
+                    fg = gray2-hex;
+                    bg = gray2-hex;
                 };
                 marker_copied = {
                     fg = accent-hex;
@@ -334,7 +214,7 @@ in
                     reversed = false;
                 };
                 tab_inactive = {
-                    fg = grey1-hex;
+                    fg = gray1-hex;
                     bg = bg1-hex;
                 };
 
@@ -348,10 +228,10 @@ in
                 };
                 count_selected = {
                     fg = bg0-hex;
-                    bg = grey2-hex;
+                    bg = gray2-hex;
                 };
 
-                border_style = {fg = grey1-hex;};
+                border_style = {fg = gray1-hex;};
             };
 
             mode = {
@@ -361,7 +241,7 @@ in
                     bold = true;
                 };
                 normal_alt = {
-                    fg = grey1-hex;
+                    fg = gray1-hex;
                     bg = bg1-hex;
                 };
 
@@ -371,7 +251,7 @@ in
                     bold = true;
                 };
                 select_alt = {
-                    fg = grey1-hex;
+                    fg = gray1-hex;
                     bg = bg1-hex;
                 };
                 unset_main = {
@@ -380,7 +260,7 @@ in
                     bold = true;
                 };
                 unset_alt = {
-                    fg = grey1-hex;
+                    fg = gray1-hex;
                     bg = bg1-hex;
                 };
             };
@@ -390,7 +270,7 @@ in
                 perm_read = {fg = yellow-hex;};
                 perm_write = {fg = red-hex;};
                 perm_exec = {fg = green-hex;};
-                perm_sep = {fg = grey1-hex;};
+                perm_sep = {fg = gray1-hex;};
 
                 progress_label = {
                     fg = bg0-hex;
@@ -408,10 +288,10 @@ in
 
             confirm = {
                 border = {
-                    fg = grey1-hex;
+                    fg = gray1-hex;
                 };
                 title = {
-                    fg = grey1-hex;
+                    fg = gray1-hex;
                 };
                 btn_yes = {
                     fg = bg0-hex;
