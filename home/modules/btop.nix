@@ -6,6 +6,7 @@
             rounded_corners = false;
             temp_scale = "celcius";
             show_battery = true;
+            theme_background = false;
         };
     };
 }
