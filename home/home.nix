@@ -12,6 +12,9 @@
         ]
         ++ lib.optionals (hostname == "desktop") [
             ./local/desktop
+        ]
+        ++ lib.optionals (hostname == "latitude") [
+            ./local/latitude
         ];
 
     home = {

@@ -38,29 +38,9 @@
                 "hypridle"
                 "syshud -p bottom -i 24 -m 5"
                 "wl-paste --watch cliphist store"
-                "steam"
-                "discord"
-                "spotify"
-                "hyprctl dispatch workspace 1"
-                "hyprctl dispatch movecursor 960 540"
             ];
 
-            # - [ MONITORS ] -
-            monitor = [
-                "DP-1,1920x1080@60.00,0x0,1"
-                "HDMI-A-1,1920x1080@60.00,-1920x0,1"
-                ", preferred, auto, 1"
-            ];
-
-            master = {
-                new_status = "slave";
-            };
-
-            # - [ WORKSPACES ] -
-            workspace = [
-                "1, monitor:DP-1, default:true"
-                "9, monitor:HDMI-A-1, default:true"
-            ];
+            master.new_status = "slave";
 
             # - [ LOOK AND FEEL ] -
             general = {
@@ -82,9 +62,7 @@
                 dim_inactive = true;
                 dim_strength = 0.05;
 
-                shadow = {
-                    enabled = false;
-                };
+                shadow = {enabled = false;};
 
                 blur = {
                     enabled = true;
@@ -95,41 +73,15 @@
                 };
             };
 
-            animations = {
-                enabled = false;
-                first_launch_animation = false;
-
-                bezier = "myBezier, 0, 0.4, 0.2, 1";
-
-                animation = [
-                    "windows, 1, 5, myBezier, slide"
-                    "fade, 1, 3, default"
-                    "workspaces, 1, 3, default"
-                ];
-            };
+            animations.enabled = false;
 
             # - [ INPUTS ] -
             input = {
-                kb_layout = "latam";
-                kb_model = "latitude";
-                # kb_options = "caps:swapescape";
-                repeat_delay = 300;
-
                 follow_mouse = 1;
-
                 sensitivity = 0;
-
-                touchpad = {
-                    disable_while_typing = true;
-                    natural_scroll = false;
-                    scroll_factor = 0.5;
-                    middle_button_emulation = true;
-                };
             };
 
-            gestures = {
-                workspace_swipe = false;
-            };
+            gestures.workspace_swipe = false;
 
             misc = {
                 force_default_wallpaper = 0;

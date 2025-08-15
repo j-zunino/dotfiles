@@ -17,6 +17,7 @@
 
         # Utilities
         hyprshot
+        wiremix
         ripgrep
         syshud
         unzip
