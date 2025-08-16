@@ -17,7 +17,7 @@ done
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(printf "%s\n" "${results[@]}" | fzf --preview="")
+    selected=$(printf "%s\n" "${results[@]}" | fzf --preview="" --margin=6)
 fi
 
 if [[ -z $selected ]]; then
