@@ -11,6 +11,7 @@
         pointerCursor.hyprcursor.enable = true;
         packages = with pkgs; [
             hyprpicker
+            hyprshot
             wl-clipboard
             cliphist
         ];

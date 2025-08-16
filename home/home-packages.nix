@@ -17,7 +17,6 @@
 
         # Utilities
         libnotify
-        hyprshot
         wiremix
         ripgrep
         syshud
