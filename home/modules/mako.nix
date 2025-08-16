@@ -8,13 +8,13 @@
 in {
     services.mako = {
         enable = true;
-        settings = {
+        settings = lib.mkForce {
             default-timeout = 25000;
-            font = lib.mkForce "${stylixFonts.monospace.name} ${toString stylixFonts.sizes.popups}";
-            text-color = lib.mkForce colors.fg-hex;
-            background-color = lib.mkForce colors.bg1-hex;
-            border-color = lib.mkForce colors.accent-hex;
-            progress-color = lib.mkForce "source ${colors.bg1-hex}";
+            font = "${stylixFonts.monospace.name} ${toString stylixFonts.sizes.popups}";
+            text-color = colors.fg-hex;
+            background-color = colors.bg1-hex;
+            border-color = colors.accent-hex;
+            progress-color = "source ${colors.bg1-hex}";
         };
     };
 }
