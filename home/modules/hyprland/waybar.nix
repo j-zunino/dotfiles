@@ -152,6 +152,8 @@ in {
             tooltip {
                 border: 2px solid;
                 border-color: ${colors.accent-hex};
+            }
+            tooltip label {
                 color: ${colors.fg-hex};
             }
 
