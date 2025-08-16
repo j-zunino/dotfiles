@@ -39,8 +39,7 @@
             c = "clear";
             n = "nvim";
             v = "vim";
-            y = "yazi";
-            f = "yazi";
+            f = "nvim +Oil";
 
             # Git
             lg = "lazygit";

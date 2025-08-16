@@ -67,7 +67,6 @@ in {
         targets = {
             waybar.enable = false;
             neovim.enable = false;
-            yazi.enable = false;
             hyprlock.enable = false;
             zen-browser.enable = false;
             fzf.enable = false;

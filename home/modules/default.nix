@@ -3,7 +3,6 @@
         ./git.nix
         ./nvim.nix
         ./spicetify.nix
-        ./yazi.nix
         ./btop.nix
         ./zsh.nix
         ./scripts
