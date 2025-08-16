@@ -1,11 +1,7 @@
-{
-    pkgs,
-    inputs,
-    ...
-}: {
+{pkgs, ...}: {
     programs.rofi = {
-        package = pkgs.rofi-wayland;
         enable = true;
+        package = pkgs.rofi-wayland;
         location = "center";
         extraConfig = {
             kb-row-up = "Up,Control+k";
@@ -16,10 +12,4 @@
             kb-element-prev = "ISO_Left_Tab";
         };
     };
-
-    home.packages = [
-        inputs.iwmenu.packages.${pkgs.system}.default
-        pkgs.dbus
-        pkgs.iwd
-    ];
 }

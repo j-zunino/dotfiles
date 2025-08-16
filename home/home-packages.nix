@@ -19,6 +19,7 @@
         libnotify
         wiremix
         ripgrep
+        impala
         syshud
         unzip
         curl

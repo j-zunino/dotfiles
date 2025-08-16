@@ -71,7 +71,7 @@ in {
                 # - [ RIGHT ] -
                 cpu = {
                     format = "󰍛";
-                    on-click = "wezterm start btop";
+                    on-click = "wezterm start --class floating btop";
                     states = {
                         warning = 70;
                         critical = 90;
@@ -80,7 +80,7 @@ in {
 
                 memory = {
                     format = "";
-                    on-click = "wezterm start btop";
+                    on-click = "wezterm start --class floating btop";
                     states = {
                         warning = 70;
                         critical = 90;
@@ -98,7 +98,7 @@ in {
                     format-muted = "󰝟";
                     format-icons = {default = ["󰕿" "󰖀" "󰕾"];};
                     scroll-step = 1;
-                    on-click = "wezterm start wiremix";
+                    on-click = "wezterm start --class floating wiremix";
                     on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
                     # ignored-sinks = ["Easy Effects Sink"];
                 };
@@ -111,7 +111,7 @@ in {
                     format-disconnected = "";
                     tooltip-format-wifi = "{essid} ({frequency} GHz)\n{icon} {signalStrength}%  ↓{bandwidthDownBytes}  ↑{bandwidthUpBytes}";
                     tooltip-format-ethernet = "{icon} ↓{bandwidthDownBytes} ↑{bandwidthUpBytes}";
-                    on-click = "iwmenu --launcher rofi";
+                    on-click = "wezterm start --class floating impala";
                 };
 
                 battery = {

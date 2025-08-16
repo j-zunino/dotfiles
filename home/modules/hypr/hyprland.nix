@@ -1,9 +1,10 @@
 {pkgs, ...}: {
     imports = [
         ./autostart.nix
+        ./windows.nix
         ./binds.nix
-        ./look.nix
         ./input.nix
+        ./look.nix
         ./envs.nix
     ];
 
