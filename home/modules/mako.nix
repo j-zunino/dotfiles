@@ -12,7 +12,7 @@ in {
             default-timeout = 25000;
             font = lib.mkForce "${stylixFonts.monospace.name} ${toString stylixFonts.sizes.popups}";
             text-color = lib.mkForce colors.fg-hex;
-            background-color = lib.mkForce colors.bg0-hex;
+            background-color = lib.mkForce colors.bg1-hex;
             border-color = lib.mkForce colors.accent-hex;
             progress-color = lib.mkForce "source ${colors.bg1-hex}";
         };
