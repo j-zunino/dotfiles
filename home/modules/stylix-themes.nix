@@ -60,11 +60,6 @@
     };
 in
     with colors; {
-        wayland.windowManager.hyprland.settings.general = {
-            "col.active_border" = accent;
-            "col.inactive_border" = bg1;
-        };
-
         services.dunst.settings = {
             global = {
                 background = bg0;

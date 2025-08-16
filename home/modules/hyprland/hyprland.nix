@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+    pkgs,
+    config,
+    ...
+}: let
+    colors = config.my.colors;
+in {
     home = {
         pointerCursor.hyprcursor.enable = true;
         packages = with pkgs; [
@@ -51,6 +57,9 @@
 
                 border_size = 2;
                 resize_on_border = true;
+
+                "col.active_border" = colors.accent;
+                "col.inactive_border" = colors.bg1;
             };
 
             decoration = {
