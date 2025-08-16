@@ -10,7 +10,6 @@
         ./fastfetch.nix
         ./hyprland
         ./wezterm.nix
-        ./dunst.nix
         ./rofi.nix
         ../../nixos/stylix.nix
         ./stylix-themes.nix
@@ -21,5 +20,6 @@
         ./fzf.nix
         ./tmux.nix
         ./stylix.nix
+        ./mako.nix
     ];
 }

@@ -16,6 +16,7 @@
         playerctl
 
         # Utilities
+        libnotify
         hyprshot
         wiremix
         ripgrep

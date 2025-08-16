@@ -60,18 +60,6 @@
     };
 in
     with colors; {
-        services.dunst.settings = {
-            global = {
-                background = bg0;
-                foreground = fg;
-                frame_color = accent;
-            };
-
-            urgency_low.frame_color = lib.mkForce blue-hex;
-            urgency_normal.frame_color = lib.mkForce green-hex;
-            urgency_critical.frame_color = lib.mkForce red-hex;
-        };
-
         programs.rofi.theme = lib.mkForce (builtins.toFile "rofi-theme.rasi" ''
             * {
                 background-color: transparent;
