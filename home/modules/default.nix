@@ -8,7 +8,7 @@
         ./zsh.nix
         ./scripts
         ./fastfetch.nix
-        ./hyprland
+        ./hypr
         ./wezterm.nix
         ./rofi.nix
         ../../nixos/stylix.nix

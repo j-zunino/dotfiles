@@ -2,9 +2,7 @@
     programs.hyprlock = {
         enable = true;
         settings = {
-            general = {
-                immediate_render = true;
-            };
+            general.immediate_render = true;
 
             background = {
                 monitor = "";

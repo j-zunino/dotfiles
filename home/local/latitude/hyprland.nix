@@ -1,10 +1,8 @@
 {lib, ...}: {
     wayland.windowManager.hyprland = {
         settings = lib.mkAfter {
-            # - [ MONITORS ] -
             monitor = [", preferred, auto, 1"];
 
-            # - [ INPUTS ] -
             input = {
                 kb_layout = "latam";
                 kb_model = "latitude";
