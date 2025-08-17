@@ -9,6 +9,8 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
         spicetify-nix = {
             url = "github:Gerg-L/spicetify-nix";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -41,6 +43,10 @@
                 hostname = "latitude";
                 stateVersion = "24.05";
             }
+            {
+                hostname = "wsl";
+                stateVersion = "24.05";
+            }
         ];
 
         makeSystem = {
@@ -51,10 +57,12 @@
                 system = system;
                 specialArgs = {inherit inputs stateVersion hostname user;};
 
-                modules = [
-                    ./hosts/${hostname}/configuration.nix
-                    inputs.stylix.nixosModules.stylix
-                ];
+                modules =
+                    [
+                        ./hosts/${hostname}/configuration.nix
+                        inputs.stylix.nixosModules.stylix
+                    ]
+                    ++ nixpkgs.lib.optionals (hostname == "wsl") [inputs.nixos-wsl.nixosModules.default];
             };
     in {
         nixosConfigurations = nixpkgs.lib.foldl' (configs: host:
