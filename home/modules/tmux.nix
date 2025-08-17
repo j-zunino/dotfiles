@@ -26,7 +26,9 @@ in {
             bind-key -n C-f new-window -n sessionizer "$HOME/dotfiles/home/modules/scripts/tmux/tmux_sessionizer"
 
             # Pane
-            set-option -g pane-active-border-style "fg=colour2,bg=default"
+            set -g pane-active-border-style "fg=colour2,bg=default"
+
+            set -g popup-border-style "fg=colour8"
 
             # Status bar
             set -g status-position top
