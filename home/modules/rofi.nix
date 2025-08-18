@@ -31,21 +31,31 @@ in {
                 background-color: transparent;
             }
 
-            #mainbox { children: [ listview, textbox-prompt-colon, inputbar ]; }
+            #mainbox { children: [
+                    textbox-top-separator,
+                    listview,
+                    textbox-prompt-separator,
+                    inputbar,
+                    textbox-bottom-separator
+                ];
+            }
 
             window {
                 width: 60ch;
-                padding: 1.5ch 2ch;
+                padding: 0 4ch;
                 border: 2px;
                 border-color: ${colors.accent-hex};
                 background-color: ${colors.bg0-hex};
             }
 
-            textbox-prompt-colon {
-                str: "───────────────────────────────────────────────────────";
+            textbox-prompt-separator {
+                str: "───────────────────────────────────────────────────";
                 expand: false;
                 text-color: ${colors.gray1-hex};
             }
+
+            textbox-top-separator { str: ""; expand: false; }
+            textbox-bottom-separator { str: ""; expand: false; }
 
 
             listview { reverse: true; }
