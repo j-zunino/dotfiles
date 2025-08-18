@@ -19,7 +19,10 @@ in {
             kb-remove-to-eol = "Control+K";
             kb-element-next = "Shift+Tab";
             kb-element-prev = "ISO_Left_Tab";
-            display-run = ">";
+            display-drun = ">";
+            display-run = "run >";
+            display-window = "window >";
+            display-ssh = "ssh >";
         };
 
         theme = lib.mkForce (builtins.toFile "rofi-theme.rasi" ''
