@@ -11,7 +11,6 @@
         ./wezterm.nix
         ./rofi.nix
         ../../nixos/stylix.nix
-        ./stylix-themes.nix
         ./browser.nix
         ./zoxide.nix
         ./aichat.nix
