@@ -4,7 +4,7 @@
         "$browser" = "brave";
         "$browser_firefox" = "zen";
         "$file-explorer" = "nautilus";
-        "$menu" = "rofi -show run";
+        "$menu" = "rofi -show";
 
         "$mod" = "SUPER";
         "$mod_shift" = "SUPER_SHIFT";
@@ -14,7 +14,8 @@
                 "$mod, F, exec, $browser"
                 "$mod, B, exec, $browser_firefox"
                 "$mod, Q, exec, $terminal"
-                "$mod, P, exec, $menu"
+                "$mod, P, exec, $menu drun"
+                "$mod_shift, P, exec, $menu run"
                 "$mod_shift, RETURN, exec, $terminal"
                 "$mod, E, exec, $file-explorer"
 
