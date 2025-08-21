@@ -1,12 +1,12 @@
 return {
     'chomosuke/typst-preview.nvim',
-    ft = 'typst',
-    leader = '<leader>pt',
+    ft = { 'typ', 'typst' },
+    leader = '<leader>Tt',
     version = '1.*',
     config = function()
         vim.keymap.set(
             'n',
-            '<leader>pt',
+            '<leader>Tt',
             ':TypstPreviewToggle<CR>',
             { noremap = true, silent = true, desc = 'Typst preview' }
         )
