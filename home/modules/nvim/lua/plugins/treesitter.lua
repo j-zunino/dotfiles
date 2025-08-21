@@ -36,6 +36,13 @@ return {
         'nvim-treesitter/nvim-treesitter-context',
         event = { 'BufReadPost', 'BufNewFile' },
         config = function()
+            vim.keymap.set(
+                'n',
+                '<leader>Tc',
+                ':TSContext toggle',
+                { noremap = true, silent = true, desc = 'TS Context' }
+            )
+
             require('treesitter-context').setup()
         end,
     },
