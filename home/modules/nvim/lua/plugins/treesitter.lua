@@ -7,7 +7,6 @@ return {
             require('nvim-treesitter.configs').setup({
                 indent = { enable = true },
                 highlight = { enable = true },
-
                 auto_install = true,
                 ensure_installed = {
                     'nix',
@@ -24,6 +23,10 @@ return {
     {
         'windwp/nvim-ts-autotag',
         event = { 'BufReadPost', 'BufNewFile' },
+        config = function()
+            require('nvim-ts-autotag').setup()
+        end,
+    },
     },
     {
         'nvim-treesitter/nvim-treesitter-context',
