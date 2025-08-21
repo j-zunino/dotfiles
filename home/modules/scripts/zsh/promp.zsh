@@ -18,7 +18,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-check
         GIT_STATUS=$(git status --porcelain)
 
         STAGED=$(echo "$GIT_STATUS" | grep -v '??' | grep -E '^[^ ]' | wc -l)
-        [[ $STAGED   -gt 0 ]] && hook_com[misc]+=" %F{green}+$STAGED%f"
+        [[ $STAGED -gt 0 ]] && hook_com[misc]+=" %F{green}+$STAGED%f"
 
         UNSTAGED=$(echo "$GIT_STATUS" | grep -E '^ ' | wc -l)
         [[ $UNSTAGED -gt 0 ]] && hook_com[misc]+=" %F{yellow}*$UNSTAGED%f"
@@ -30,10 +30,9 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-check
 
 setopt PROMPT_SUBST
 export PS1='%B%F{red}󰉋 %~%f $(print -P "$vcs_info_msg_0_")
-%B%F{green} %f%b '
+%B%F{green}>%f%b '
 
-
-zle-keymap-select () {
+zle-keymap-select() {
     if [[ $KEYMAP == vicmd ]]; then
         echo -ne "\e[2 q"
     else
@@ -43,12 +42,9 @@ zle-keymap-select () {
 precmd_functions+=(zle-keymap-select)
 zle -N zle-keymap-select
 
-
 precmd() {
     psvar=()
     vcs_info
     [[ -n $vcs_info_msg_0_ ]] && print -v 'psvar[1]' -Pr -- "$vcs_info_msg_0_"
     zle-keymap-select
 }
-
-
