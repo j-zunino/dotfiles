@@ -44,7 +44,7 @@ return {
             picker = {
                 enabled = true,
                 hidden = true,
-                prompt = '  ',
+                prompt = '> ',
                 layout = picker.picker_layout,
                 formatters = { file = { truncate = 40 } },
                 sources = {

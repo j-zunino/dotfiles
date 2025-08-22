@@ -43,6 +43,8 @@ return {
                     hl.SnacksDashboardNormal = { link = 'Normal' }
                     hl.SnacksDashboardNormalNC = { link = 'Normal' }
                     hl.SnacksPickerListCursorLine = { link = 'CursorLine' }
+                    hl.SnacksPickerPrompt = { fg = accent, bold = true }
+                    hl.SnacksPickerBoxTitle = { fg = accent }
                 end,
             })
 
