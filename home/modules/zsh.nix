@@ -20,6 +20,7 @@
             bindkey '^L' autosuggest-accept
 
             bindkey -s '^f' '$HOME/dotfiles/home/modules/scripts/tmux/tmux_sessionizer^M'
+            bindkey -s '^e' 'nvim +Oil^M'
         '';
 
         envExtra = ''
