@@ -45,11 +45,9 @@
             # Tools
             editorconfig-checker
             imagemagick
-            tty-clock
             websocat
             luarocks
             posting
-            chafa
             vale
             fd
         ];
