@@ -2,20 +2,13 @@
     homeStateVersion,
     hostname,
     user,
-    lib,
     ...
 }: {
-    imports =
-        [
-            ./home-packages.nix
-            ./modules
-        ]
-        ++ lib.optionals (hostname == "desktop") [
-            ./local/desktop
-        ]
-        ++ lib.optionals (hostname == "latitude") [
-            ./local/latitude
-        ];
+    imports = [
+        ./base-packages.nix
+        ./local/${hostname}
+        ./modules
+    ];
 
     home = {
         username = user;
