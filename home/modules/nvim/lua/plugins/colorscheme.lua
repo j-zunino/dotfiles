@@ -11,7 +11,9 @@ return {
 
                 on_highlights = function(hl, palette)
                     local bg1 = palette.bg1
+                    local gray1 = palette.grey1
                     local accent = palette.green
+                    local fg = palette.fg
 
                     -- Nvim
                     hl.NormalFloat = { bg = 'NONE' }
@@ -45,6 +47,14 @@ return {
                     hl.SnacksPickerListCursorLine = { link = 'CursorLine' }
                     hl.SnacksPickerPrompt = { fg = accent, bold = true }
                     hl.SnacksPickerBoxTitle = { fg = accent }
+
+                    hl.MiniPickPrompt = { fg = fg }
+                    hl.MiniPickPromptCaret = { link = 'MiniPickPrompt' }
+                    hl.MiniPickPromptPrefix = { fg = accent, bold = true }
+                    hl.MiniPickMatchRanges = { fg = accent, bold = true }
+                    hl.MiniPickBorderText = { fg = accent, bold = true }
+                    hl.MiniPickMatchCurrent = { fg = fg, bg = bg1, bold = true }
+                    hl.MiniPickNormal = { fg = gray1 }
                 end,
             })
 
@@ -55,7 +65,7 @@ return {
         'vague2k/vague.nvim',
         lazy = true,
         config = function()
-            require('vague').setup({ italic = true })
+            require('vague').setup({ italic = false })
         end,
     },
 }
