@@ -6,6 +6,7 @@ vim.o.relativenumber = true
 vim.o.cursorline = true
 vim.o.signcolumn = 'yes'
 vim.o.colorcolumn = '80'
+vim.o.winborder = 'single'
 vim.o.termguicolors = true
 vim.o.showmode = false
 

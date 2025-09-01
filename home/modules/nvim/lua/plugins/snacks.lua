@@ -7,7 +7,17 @@ return {
         local picker = require('plugins.snacks.picker')
 
         require('plugins.snacks.bufdelete')
-        require('plugins.snacks.notifier')
+
+        vim.keymap.set(
+            'n',
+            '<leader>n',
+            ':lua Snacks.notifier.show_history()<CR>',
+            {
+                noremap = true,
+                silent = true,
+                desc = 'Show notifications history',
+            }
+        )
 
         snacks.setup({
             bufdelete = { enabled = true },
