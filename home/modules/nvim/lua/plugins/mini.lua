@@ -1,0 +1,17 @@
+return {
+    'nvim-mini/mini.nvim',
+    version = '*',
+    config = function()
+        require('mini.pairs').setup()
+        require('mini.surround').setup()
+        require('mini.extra').setup()
+
+        require('plugins.mini.pick')
+        require('plugins.mini.ai')
+        require('plugins.mini.diff')
+        require('plugins.mini.icons')
+        require('plugins.mini.hipatterns')
+        require('plugins.mini.statusline')
+        require('plugins.mini.indentscope')
+    end,
+}

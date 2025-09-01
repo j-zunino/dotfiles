@@ -1,46 +1,24 @@
-{pkgs, ...}: {
+{
+    homeStateVersion,
+    hostname,
+    user,
+    ...
+}: {
     imports = [
-        ../modules/home/default.nix
+        ./base-packages.nix
+        ./local/${hostname}
+        ./modules
     ];
 
-    nixpkgs.config.allowUnfree = true;
-
-    programs = {
-        home-manager.enable = true;
-        bat.enable = true;
-        eza.enable = true;
-    };
-
     home = {
-        username = "juan";
-        homeDirectory = "/home/juan";
+        username = user;
+        homeDirectory = "/home/${user}";
 
-        stateVersion = "24.05";
+        stateVersion = homeStateVersion;
 
         sessionVariables = {
             EDITOR = "nvim";
             BROWSER = "brave";
         };
-
-        packages = with pkgs; [
-            # Applications
-            nautilus
-            zathura
-            discord
-            tiled
-            love
-            gimp
-            vlc
-
-            # Utilities
-            hyprshot
-            ripgrep
-            syshud
-            unzip
-            curl
-            wget
-
-            # prismlauncher
-        ];
     };
 }

@@ -3,12 +3,13 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        flake-utils.url = "github:numtide/flake-utils";
 
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
         spicetify-nix = {
             url = "github:Gerg-L/spicetify-nix";
@@ -22,42 +23,80 @@
 
         hyprland.url = "github:hyprwm/Hyprland";
 
-        wezterm.url = "github:wez/wezterm?dir=nix";
-
         zen-browser.url = "github:0xc000022070/zen-browser-flake";
-
-        iwmenu.url = "github:e-tho/iwmenu";
     };
 
-    outputs = inputs @ {
+    outputs = {
         nixpkgs,
-        flake-utils,
         home-manager,
         ...
-    }: {
-        nixosConfigurations = {
-            nixos = nixpkgs.lib.nixosSystem {
-                system = "x86_64-linux";
-                specialArgs = {inherit inputs;};
-                modules = [
-                    ./nixos/configuration.nix
-                    ./nixos/hardware-configuration.nix
-                    inputs.stylix.nixosModules.stylix
-                ];
-            };
-        };
+    } @ inputs: let
+        system = "x86_64-linux";
+        homeStateVersion = "24.05";
+        user = "juan";
+        hosts = [
+            {
+                hostname = "desktop";
+                stateVersion = "24.05";
+            }
+            {
+                hostname = "latitude";
+                stateVersion = "24.05";
+            }
+            {
+                hostname = "wsl";
+                stateVersion = "24.05";
+            }
+        ];
 
-        homeConfigurations = {
-            juan = home-manager.lib.homeManagerConfiguration {
-                pkgs = import nixpkgs {
-                    system = "x86_64-linux";
+        makeSystem = {
+            hostname,
+            stateVersion,
+        }:
+            nixpkgs.lib.nixosSystem {
+                system = system;
+                specialArgs = {inherit inputs stateVersion hostname user;};
+
+                modules =
+                    [
+                        ./hosts/${hostname}/configuration.nix
+                        inputs.stylix.nixosModules.stylix
+                    ]
+                    ++ nixpkgs.lib.optionals (hostname == "wsl") [inputs.nixos-wsl.nixosModules.default];
+            };
+    in {
+        nixosConfigurations = nixpkgs.lib.foldl' (configs: host:
+            configs
+            // {
+                "${host.hostname}" = makeSystem {
+                    inherit (host) hostname stateVersion;
                 };
-                extraSpecialArgs = {inherit inputs;};
+            }) {}
+        hosts;
+
+        homeConfigurations = builtins.listToAttrs (map (host: {
+            name = "${user}@${host.hostname}";
+            value = home-manager.lib.homeManagerConfiguration {
+                pkgs = nixpkgs.legacyPackages.${system};
+                extraSpecialArgs = {
+                    inherit inputs homeStateVersion user;
+                    hostname = host.hostname;
+                };
                 modules = [
                     ./home/home.nix
                     inputs.stylix.homeModules.stylix
                 ];
             };
-        };
+        })
+        hosts);
+        #     .${user} = home-manager.lib.homeManagerConfiguration {
+        # pkgs = nixpkgs.legacyPackages.${system};
+        # extraSpecialArgs = {
+        #     inherit inputs homeStateVersion user hostname;
+        # };
+        # modules = [
+        #     ./home/home.nix
+        #     inputs.stylix.homeModules.stylix
+        # ];
     };
 }
