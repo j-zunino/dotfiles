@@ -8,21 +8,8 @@ return {
 
         require('plugins.snacks.bufdelete')
 
-        vim.keymap.set(
-            'n',
-            '<leader>n',
-            ':lua Snacks.notifier.show_history()<CR>',
-            {
-                noremap = true,
-                silent = true,
-                desc = 'Show notifications history',
-            }
-        )
-
         snacks.setup({
             bufdelete = { enabled = true },
-            notify = { enabled = true },
-            notifier = { enabled = true },
             input = { enabled = true },
             rename = { enabled = true },
 
