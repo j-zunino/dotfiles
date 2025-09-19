@@ -13,11 +13,7 @@ return {
             input = { enabled = true },
             rename = { enabled = true },
 
-            styles = {
-                input = { border = 'single' },
-                notification = { border = 'single' },
-                notification_history = { border = 'single', minimal = true },
-            },
+            styles = { input = { border = 'single' } },
 
             statuscolumn = {
                 enabled = true,
