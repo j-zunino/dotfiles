@@ -76,6 +76,7 @@ return {
     map('n', '<leader>sf', ':Pick files<CR>', 'Files'),
     map('n', '<leader>sg', ':Pick grep_live<CR>', 'Grep'),
     map('n', '<leader>sh', ':Pick help<CR>', 'Help'),
+    map('n', '<leader>sH', ':Pick hl_groups<CR>', 'Highlight groups'),
     map('n', '<leader>ss', ':Pick spellsuggest<CR>', 'Spellsuggest'),
     map('n', '<leader>sd', ':Pick diagnotic<CR>', 'Diagnotics'),
     map('n', '<leader><leader>', ':Pick buffers<CR>', 'Buffers'),
