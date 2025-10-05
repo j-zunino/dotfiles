@@ -6,10 +6,7 @@ return {
         local snacks = require('snacks')
         local picker = require('plugins.snacks.picker')
 
-        require('plugins.snacks.bufdelete')
-
         snacks.setup({
-            bufdelete = { enabled = true },
             input = { enabled = true },
             rename = { enabled = true },
 

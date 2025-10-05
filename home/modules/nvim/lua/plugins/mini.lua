@@ -2,11 +2,13 @@ return {
     'nvim-mini/mini.nvim',
     version = '*',
     config = function()
+        require('mini.align').setup()
+        require('mini.extra').setup()
         require('mini.pairs').setup()
         require('mini.surround').setup()
-        require('mini.extra').setup()
 
         require('plugins.mini.ai')
+        require('plugins.mini.bufremove')
         require('plugins.mini.diff')
         require('plugins.mini.hipatterns')
         require('plugins.mini.icons')
