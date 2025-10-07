@@ -12,15 +12,28 @@ local map = function(mode, keys, func, desc, opts)
 end
 
 local win_config = function()
-    local height = math.floor(0.6 * vim.o.lines)
-    local width = math.floor(0.6 * vim.o.columns)
-    return {
-        anchor = 'NW',
-        height = height,
-        width = width,
-        row = math.floor(0.5 * (vim.o.lines - height)),
-        col = math.floor(0.5 * (vim.o.columns - width)),
-    }
+    local col = vim.o.columns
+    local row = vim.o.lines
+
+    if col < 120 then
+        return {
+            relative = 'editor',
+            width = col,
+            height = row,
+            border = 'none',
+        }
+    else
+        local width = math.floor(0.6 * col)
+        local height = math.floor(0.6 * row)
+
+        return {
+            anchor = 'NW',
+            height = height,
+            width = width,
+            col = math.floor(0.5 * (col - width)),
+            row = math.floor(0.5 * (row - height)),
+        }
+    end
 end
 
 local show_align = function(buf_id, items, query, opts)
