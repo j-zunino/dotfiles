@@ -14,8 +14,8 @@ end
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-map('n', '<C-s>', ':w<CR>', 'Save file')
 map('n', '<C-q>', ':q<CR>', 'Quit file')
+map('n', '<C-s>', ':update<CR>', 'Save file')
 
 map('n', '<Esc>', ':nohls<CR>', 'Clear search highlight')
 
