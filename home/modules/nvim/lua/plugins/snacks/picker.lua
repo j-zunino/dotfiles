@@ -8,7 +8,7 @@ local map = function(mode, keys, func, desc, opts)
     vim.keymap.set(mode, keys, func, options)
 end
 
-map('n', '<leader>si', ':lua Snacks.picker.icons()<CR>', 'Icons')
+-- map('n', '<leader>si', ':lua Snacks.picker.icons()<CR>', 'Icons')
 map('n', '<leader>sc', ':lua Snacks.picker.colorschemes()<CR>', 'Colorschemes')
 
 local picker_layout = {

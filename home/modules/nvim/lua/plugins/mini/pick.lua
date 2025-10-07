@@ -1,5 +1,6 @@
 local MiniPick = require('mini.pick')
 local MiniExtra = require('mini.extra')
+local PickIcon = require('silly.icons')
 
 local map = function(mode, keys, func, desc, opts)
     local options = vim.tbl_extend(
@@ -94,4 +95,5 @@ return {
     map('n', '<leader>sd', ':Pick diagnotic<CR>', 'Diagnotics'),
     map('n', '<leader><leader>', ':Pick buffers<CR>', 'Buffers'),
     map('n', '<leader>sl', ':Pick buf_lines<CR>', 'Buffers Lines'),
+    map('n', '<leader>si', ':Pick icons<CR>', 'Icons'),
 }
