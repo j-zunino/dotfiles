@@ -22,6 +22,7 @@ in {
                     "tray"
                     "cpu"
                     "memory"
+                    "bluetooth"
                     "pulseaudio"
                     "network"
                     "battery"
@@ -69,6 +70,11 @@ in {
                 };
 
                 # - [ RIGHT ] -
+                tray = {
+                    icon-size = stylixFonts.monospace.name;
+                    spacing = 10;
+                };
+
                 cpu = {
                     format = "󰍛";
                     on-click = "wezterm start --class floating btop";
@@ -79,7 +85,7 @@ in {
                 };
 
                 memory = {
-                    format = "";
+                    format = " ";
                     on-click = "wezterm start --class floating btop";
                     states = {
                         warning = 70;
@@ -87,9 +93,12 @@ in {
                     };
                 };
 
-                tray = {
-                    icon-size = stylixFonts.monospace.name;
-                    spacing = 10;
+                bluetooth = {
+                    format-disabled = "󰂲";
+                    format = "";
+                    format-connected = "󰂱";
+                    tooltip-format = "Devices connected: {num_connections}\n  {device_battery_percentage}%";
+                    on-click = "wezterm start --class floating bluetui";
                 };
 
                 pulseaudio = {
@@ -186,6 +195,7 @@ in {
 
             #cpu,
             #memory,
+            #bluetooth,
             #pulseaudio,
             #network,
             #battery {
