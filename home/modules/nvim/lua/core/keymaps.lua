@@ -77,6 +77,7 @@ map('n', 'N', 'Nzz', 'Find previous')
 -------------------------------------------------------------------------------
 map('n', '<Tab>', ':bnext<CR>', 'Next buffer')
 map('n', '<S-Tab>', ':bprevious<CR>', 'Previous buffer')
+map('n', '<leader>bn', ':enew<CR>', 'Create buffer')
 
 -------------------------------------------------------------------------------
 -- WINDOWS / SPLITS
