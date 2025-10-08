@@ -15,26 +15,12 @@ end
 local win_config = function()
     local col = vim.o.columns
     local row = vim.o.lines
-
-    if col < 120 then
-        return {
-            relative = 'editor',
-            width = col,
-            height = row,
-            border = 'none',
-        }
-    else
-        local width = math.floor(0.6 * col)
-        local height = math.floor(0.6 * row)
-
-        return {
-            anchor = 'NW',
-            height = height,
-            width = width,
-            col = math.floor(0.5 * (col - width)),
-            row = math.floor(0.5 * (row - height)),
-        }
-    end
+    return {
+        relative = 'editor',
+        width = col,
+        height = row,
+        border = 'solid',
+    }
 end
 
 local show_align = function(buf_id, items, query, opts)
