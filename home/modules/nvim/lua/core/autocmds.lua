@@ -121,60 +121,50 @@ api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
--- LSP Progress notification
--- local progress = vim.defaulttable()
--- api.nvim_create_autocmd('LspProgress', {
---     callback = function(ev)
---         local client = vim.lsp.get_client_by_id(ev.data.client_id)
---         local value = ev.data.params.value
---
---         if not client or type(value) ~= 'table' then
---             return
---         end
---
---         local p = progress[client.id]
---
---         for i = 1, #p + 1 do
---             if i == #p + 1 or p[i].token == ev.data.params.token then
---                 p[i] = {
---                     token = ev.data.params.token,
---                     msg = ('[%3d%%] %s%s'):format(
---                         value.kind == 'end' and 100 or value.percentage or 100,
---                         value.title or '',
---                         value.message and (' **%s**'):format(value.message)
---                             or ''
---                     ),
---                     done = value.kind == 'end',
---                 }
---                 break
---             end
---         end
---
---         local msg = {}
---         progress[client.id] = vim.tbl_filter(function(v)
---             return table.insert(msg, v.msg) or not v.done
---         end, p)
---
---         local spinner = {
---             '⠋',
---             '⠙',
---             '⠹',
---             '⠸',
---             '⠼',
---             '⠴',
---             '⠦',
---             '⠧',
---             '⠇',
---             '⠏',
---         }
---
---         vim.notify(table.concat(msg, '\n'), 'info', {
---             id = 'lsp_progress',
---             title = client.name,
---             opts = function(notif)
---                 notif.icon = #progress[client.id] == 0 and ' '
---                     or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
---             end,
---         })
---     end,
--- })
+vim.api.nvim_create_autocmd('ColorScheme', {
+    group = vim.api.nvim_create_augroup(
+        'UserCustomHighlights',
+        { clear = true }
+    ),
+    callback = function()
+        local function get_hl_colors(name)
+            local hl = vim.api.nvim_get_hl(0, { name = name })
+
+            local fg = hl.fg and string.format('#%06x', hl.fg) or nil
+            local bg = hl.bg and string.format('#%06x', hl.bg) or nil
+
+            return { fg = fg, bg = bg }
+        end
+
+        local hl = vim.api.nvim_set_hl
+
+        local normal = get_hl_colors('Normal')
+        local comment = get_hl_colors('Comment')
+        local warn = get_hl_colors('DiagnosticWarn')
+        local accent = get_hl_colors('Function')
+        local cursor_line = get_hl_colors('CursorLine')
+
+        -- stylua: ignore start
+        -- Neovim
+        hl(0, 'Pmenu', { link = 'Normal' })
+
+        -- Spell
+        hl(0, 'SpellBad', { fg = warn.fg, underline = true })
+        hl(0, 'SpellCap', { fg = warn.fg, underline = true })
+        hl(0, 'SpellLocal', { fg = warn.fg, underline = true })
+        hl(0, 'SpellRare', { fg = warn.fg, underline = true })
+
+        -- Mini
+        hl(0, 'MiniPickPrompt', { fg = normal.fg })
+        hl(0, 'MiniPickPromptCaret', { link = 'MiniPickPrompt' })
+        hl(0, 'MiniPickPromptPrefix', { fg = accent.fg, bold = true })
+        hl(0, 'MiniPickNormal', { fg = comment.fg })
+        hl(0, 'MiniPickMatchRanges', { fg = accent.fg, bold = true })
+        hl(0, 'MiniPickBorderText', { fg = accent.fg, bold = true })
+        hl(0, 'MiniPickMatchCurrent', { fg = normal.fg, bg = cursor_line.bg, bold = true })
+
+        hl(0, 'TreesitterContext', { bg = cursor_line.bg })
+        hl(0, 'TreesitterContextLineNumber', { fg = comment.fg, bg = cursor_line.bg })
+        -- stylua: ignore end
+    end,
+})
