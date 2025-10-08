@@ -63,9 +63,9 @@ return {
     },
     {
         'vague2k/vague.nvim',
-        lazy = true,
-        config = function()
-            require('vague').setup({ italic = false })
-        end,
+        event = 'VimEnter',
+        opts = {
+            italic = false,
+        },
     },
 }
