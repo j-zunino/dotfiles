@@ -6,10 +6,8 @@ return {
         local snacks = require('snacks')
 
         snacks.setup({
-            input = { enabled = true },
             rename = { enabled = true },
 
-            styles = { input = { border = 'single' } },
 
             statuscolumn = {
                 enabled = true,
