@@ -1,6 +1,6 @@
 local MiniPick = require('mini.pick')
 local MiniExtra = require('mini.extra')
-local PickIcon = require('silly.icons')
+require('silly.icons')
 
 local map = function(mode, keys, func, desc, opts)
     local options = vim.tbl_extend(
