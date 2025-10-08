@@ -78,7 +78,7 @@ return {
     map('n', '<leader>sh', ':Pick help<CR>', 'Help'),
     map('n', '<leader>sH', ':Pick hl_groups<CR>', 'Highlight groups'),
     map('n', '<leader>ss', ':Pick spellsuggest<CR>', 'Spellsuggest'),
-    map('n', '<leader>sd', ':Pick diagnotic<CR>', 'Diagnotics'),
+    map('n', '<leader>sd', ':Pick diagnostic<CR>', 'Diagnotics'),
     map('n', '<leader><leader>', ':Pick buffers<CR>', 'Buffers'),
     map('n', '<leader>sl', ':Pick buf_lines<CR>', 'Buffers Lines'),
     map('n', '<leader>si', ':Pick icons<CR>', 'Icons'),
