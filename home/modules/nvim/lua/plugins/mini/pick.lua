@@ -96,4 +96,5 @@ return {
     map('n', '<leader><leader>', ':Pick buffers<CR>', 'Buffers'),
     map('n', '<leader>sl', ':Pick buf_lines<CR>', 'Buffers Lines'),
     map('n', '<leader>si', ':Pick icons<CR>', 'Icons'),
+    map('n', '<leader>sc', ':Pick colorschemes<CR>', 'Colorschemes'),
 }

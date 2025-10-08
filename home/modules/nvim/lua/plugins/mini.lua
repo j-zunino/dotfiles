@@ -1,6 +1,6 @@
 return {
     'nvim-mini/mini.nvim',
-    version = '*',
+    version = false,
     config = function()
         require('mini.align').setup()
         require('mini.extra').setup()

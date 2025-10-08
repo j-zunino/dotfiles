@@ -4,7 +4,6 @@ return {
     lazy = false,
     config = function()
         local snacks = require('snacks')
-        local picker = require('plugins.snacks.picker')
 
         snacks.setup({
             input = { enabled = true },
@@ -28,20 +27,6 @@ return {
                         indent = 3,
                     },
                     { section = 'startup', icon = '󰒲 ' },
-                },
-            },
-
-            picker = {
-                enabled = true,
-                hidden = true,
-                prompt = '> ',
-                layout = picker.picker_layout,
-                sources = {
-                    select = {
-                        config = function(opts)
-                            opts.layout.layout.height = 10
-                        end,
-                    },
                 },
             },
         })
