@@ -3,11 +3,13 @@
         gestures.workspace_swipe = false;
 
         input = {
-            follow_mouse = 1;
             sensitivity = 0;
+            accel_profile = "flat";
+            follow_mouse = 1;
 
+            kb_layout = "latam";
             repeat_rate = 40;
-            repeat_delay = 600;
+            repeat_delay = 300;
         };
     };
 }
