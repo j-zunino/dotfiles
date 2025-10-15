@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+    services.ratbagd.enable = true;
     programs = {
         gamemode.enable = true;
         steam = {
