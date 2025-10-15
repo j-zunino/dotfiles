@@ -14,7 +14,7 @@ in {
             text-color = colors.fg-hex;
             background-color = colors.bg1-hex;
             border-color = colors.accent-hex;
-            progress-color = "source ${colors.bg1-hex}";
+            progress-color = "source ${colors.bg2-hex}";
         };
     };
 }
