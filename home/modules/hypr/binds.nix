@@ -15,13 +15,13 @@
                 "$mod, B, exec, $browser_firefox"
                 "$mod, Q, exec, $terminal"
                 "$mod, P, exec, $menu drun"
+                "$mod, E, exec, $file-explorer"
+                "$mod, V, exec, rofi_clipboard"
+
                 "$mod_shift, P, exec, $menu run"
                 "$mod_shift, RETURN, exec, $terminal"
-                "$mod, E, exec, $file-explorer"
-
                 "$mod_shift, C, killactive"
                 "$mod_shift, Q, exec, rofi_logout"
-                "$mod_shift, V, exec, rofi_clipboard"
                 "$mod_shift, SPACE, exec, hyprctl --batch 'dispatch togglefloating; dispatch centerwindow'"
 
                 "$mod, M, fullscreen"
