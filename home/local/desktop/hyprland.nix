@@ -5,8 +5,8 @@
             exec-once = [
                 "hyprctl dispatch workspace 1"
                 "hyprctl dispatch movecursor 960 540"
-                "steam"
                 "discord"
+                "steam -silent"
                 "spotify"
             ];
 
