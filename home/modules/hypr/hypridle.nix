@@ -9,21 +9,21 @@
 
             listener = [
                 {
-                    timeout = 180;
+                    timeout = 600;
                     on-timeout = "brightnessctl -s set 30";
                     on-resume = "brightnessctl -r";
                 }
                 {
-                    timeout = 300;
+                    timeout = 900;
                     on-timeout = "hyprlock";
                 }
                 {
-                    timeout = 600;
+                    timeout = 1200;
                     on-timeout = "hyprctl dispatch dpms off";
                     on-resume = "hyprctl dispatch dpms on";
                 }
                 {
-                    timeout = 1200;
+                    timeout = 1500;
                     on-timeout = "sysemctl suspend";
                 }
             ];
