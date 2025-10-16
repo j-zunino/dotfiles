@@ -1,6 +1,5 @@
 {
     config,
-    pkgs,
     lib,
     ...
 }: let
@@ -9,7 +8,6 @@
 in {
     programs.rofi = {
         enable = true;
-        package = pkgs.rofi-wayland;
         font = lib.mkForce "${stylixFonts.monospace.name}  ${toString stylixFonts.sizes.terminal}";
         location = "center";
         extraConfig = {
