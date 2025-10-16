@@ -14,8 +14,8 @@
             curl
             love
             wget
+            tree
             zip
-            eza
             bat
         ]
         ++ lib.optionals (hostname != "wsl") [

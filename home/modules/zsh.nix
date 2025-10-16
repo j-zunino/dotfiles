@@ -32,10 +32,8 @@
         '';
 
         shellAliases = {
-            ls = "eza --group-directories-first --icons=always --color=always";
-            la = "eza -a --group-directories-first --icons=always --color=always";
-            ll = "eza -l --icons=always --color=always";
-            tree = "eza -T --icons=always --color=always";
+            la = "ls -a";
+            ll = "ls -l";
             ff = "fastfetch";
             c = "clear";
             n = "nvim";
