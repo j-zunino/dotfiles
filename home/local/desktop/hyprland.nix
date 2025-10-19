@@ -20,6 +20,9 @@
                 "4, monitor:HDMI-A-1, default:true"
             ];
 
+            general = {
+                allow_tearing = false;
+            };
             input = {
                 kb_layout = "latam";
                 kb_model = "latitude";
