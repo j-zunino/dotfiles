@@ -23,14 +23,6 @@
             general = {
                 allow_tearing = false;
             };
-            input = {
-                kb_layout = "latam";
-                kb_model = "latitude";
-                # kb_options = "caps:swapescape";
-                repeat_delay = 300;
-
-                sensitivity = 0;
-            };
         };
     };
 }
