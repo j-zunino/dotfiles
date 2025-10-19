@@ -5,7 +5,7 @@
                 "hyprctl dispatch workspace 1"
                 "hyprctl dispatch movecursor 960 540"
                 "steam -silent"
-                "spotify"
+                "[workspace 4 silent] spotify"
                 "[workspace 4 silent] webcord"
             ];
 
