@@ -9,6 +9,7 @@
             ./home-manager.nix
             ./nix.nix
             ./user.nix
+            ./mysql.nix
             ../stylix.nix
         ]
         ++ lib.optionals (hostname != "wsl") [
