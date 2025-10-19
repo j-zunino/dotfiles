@@ -23,6 +23,7 @@
             nautilus
             zathura
             discord
+            webcord
             tiled
             gimp
             vlc
