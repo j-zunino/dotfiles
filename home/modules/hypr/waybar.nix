@@ -16,7 +16,10 @@ in {
                     "hyprland/workspaces"
                 ];
 
-                modules-center = ["clock"];
+                modules-center = [
+                    "clock"
+                    "custom/gpu-screen-recorder"
+                ];
 
                 modules-right = [
                     "tray"
@@ -73,6 +76,13 @@ in {
                 tray = {
                     icon-size = stylixFonts.monospace.name;
                     spacing = 10;
+                };
+
+                "custom/gpu-screen-recorder" = {
+                    exec = "~/dotfiles/home/modules/scripts/gpu_replay.sh";
+                    interval = 3;
+                    return-type = "json";
+                    tooltip = true;
                 };
 
                 cpu = {
@@ -192,13 +202,15 @@ in {
                 opacity: 1;
             }
 
+            #custom-gpu-screen-recorder.recording { color: ${colors.red-hex}; }
 
             #cpu,
             #memory,
             #bluetooth,
             #pulseaudio,
             #network,
-            #battery {
+            #battery,
+            #custom-gpu-screen-recorder.recording {
                 min-width: ${toString stylixFonts.sizes.terminal}px;
                 margin: ${margin-inline};
             }

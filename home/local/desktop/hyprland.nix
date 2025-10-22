@@ -28,6 +28,14 @@
             general = {
                 allow_tearing = false;
             };
+
+            "$mod" = "SUPER";
+            "$mod_shift" = "SUPER_SHIFT";
+
+            bind = [
+                ", F8, exec, ~/dotfiles/home/modules/scripts/gpu_replay.sh toggle"
+                ", F9, exec, ~/dotfiles/home/modules/scripts/gpu_replay.sh save"
+            ];
         };
     };
 }

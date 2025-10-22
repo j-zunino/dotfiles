@@ -1,5 +1,7 @@
 {config, ...}: {
     services.xserver.videoDrivers = ["nvidia"];
+    programs.gpu-screen-recorder.enable = true;
+
     hardware = {
         graphics = {
             enable = true;

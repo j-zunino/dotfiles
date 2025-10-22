@@ -1,8 +1,4 @@
-{
-    config,
-    pkgs,
-    ...
-}: let
+{pkgs, ...}: let
     rofi_logout = pkgs.writeScriptBin "rofi_logout" ''
         ${pkgs.stdenv.shell} $HOME/dotfiles/home/modules/scripts/rofi/rofi_logout.sh
     '';
@@ -18,6 +14,9 @@
     network_status = pkgs.writeScriptBin "network_status" ''
         ${pkgs.stdenv.shell} $HOME/dotfiles/home/modules/scripts/network_status.sh
     '';
+    gpu_replay = pkgs.writeScriptBin "gpu_replay" ''
+        ${pkgs.stdenv.shell} $HOME/dotfiles/home/modules/scripts/gpu_replay.sh
+    '';
 
     tmux_sessionizer = pkgs.writeScriptBin "tmux_sessionizer" ''
         ${pkgs.stdenv.shell} $HOME/dotfiles/home/modules/scripts/tmux/tmux_sessionizer
@@ -31,6 +30,7 @@ in {
 
             battery_status
             network_status
+            gpu_replay
             tmux_sessionizer
         ];
     };
