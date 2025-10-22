@@ -26,5 +26,7 @@
             ./rofi.nix
             ./browser.nix
             ./mako.nix
+            ./mpv.nix
+            ./xdg.nix
         ];
 }

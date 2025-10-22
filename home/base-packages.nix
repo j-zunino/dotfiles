@@ -26,7 +26,6 @@
             webcord
             tiled
             gimp
-            vlc
 
             # WM
             brightnessctl
