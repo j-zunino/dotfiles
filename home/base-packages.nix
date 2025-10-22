@@ -35,6 +35,7 @@
             # Utilities
             libnotify
             wiremix
+            ffmpeg
             impala
             syshud
         ];
