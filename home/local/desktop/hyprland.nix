@@ -1,6 +1,11 @@
 {lib, ...}: {
     wayland.windowManager.hyprland = {
         settings = lib.mkAfter {
+            env = [
+                "LIBVA_DRIVER_NAME,nvidia"
+                "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+            ];
+
             exec-once = [
                 "hyprctl dispatch workspace 1"
                 "hyprctl dispatch movecursor 960 540"
