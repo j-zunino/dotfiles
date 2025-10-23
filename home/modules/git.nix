@@ -2,16 +2,12 @@
     programs = {
         git = {
             enable = true;
-            userName = "j-zunino";
-            userEmail = "zuninojuanbautista@gmail.com";
-            delta = {
-                enable = true;
-                options = {
-                    dark = true;
-                    tabs = 4;
+            settings = {
+                user = {
+                    name = "j-zunino";
+                    email = "zuninojuanbautista@gmail.com";
                 };
-            };
-            extraConfig = {
+
                 init.defaultBranch = "main";
 
                 status = {
@@ -24,6 +20,15 @@
                     renames = "copies";
                     interHunkContext = 10;
                 };
+            };
+        };
+
+        delta = {
+            enable = true;
+            enableGitIntegration = true;
+            options = {
+                dark = true;
+                tabs = 4;
             };
         };
 
