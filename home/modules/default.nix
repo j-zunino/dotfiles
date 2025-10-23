@@ -28,5 +28,6 @@
             ./mako.nix
             ./mpv.nix
             ./xdg.nix
+            ./drives.nix
         ];
 }

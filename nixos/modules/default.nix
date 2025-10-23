@@ -17,5 +17,6 @@
             ./audio.nix
             ./networking.nix
             ./hyprland.nix
+            ./drives.nix
         ];
 }
