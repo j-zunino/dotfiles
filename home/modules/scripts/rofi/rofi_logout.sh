@@ -47,9 +47,7 @@ main() {
                 exit 1
             fi
             ;;
-        lock)
-            hyprlock
-            ;;
+        lock) ;;
         reboot)
             if [[ "$(confirm_action "$choice")" == " Yes" ]]; then
                 systemctl reboot
