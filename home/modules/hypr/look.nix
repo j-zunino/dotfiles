@@ -10,7 +10,6 @@ in {
             gaps_in = 0;
             gaps_out = 0;
             border_size = 2;
-            # allow_tearing = false;
             resize_on_border = true;
 
             "col.active_border" = colors.accent;
