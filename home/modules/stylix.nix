@@ -69,6 +69,7 @@ in {
             neovim.enable = false;
             zen-browser.enable = false;
             fzf.enable = false;
+            spicetify.enable = false;
         };
 
         iconTheme = {

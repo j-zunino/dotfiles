@@ -14,7 +14,7 @@ in {
             hidePodcasts
         ];
 
-        # theme = spicePkgs.themes.text;
-        # colorScheme = "text";
+        theme = spicePkgs.themes.text;
+        colorScheme = "EverforestDarkMedium";
     };
 }
