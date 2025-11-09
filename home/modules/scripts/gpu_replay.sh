@@ -2,7 +2,7 @@
 
 REPLAY_DIR="$HOME/Videos/Replays"
 
-GSR_CMD="gpu-screen-recorder -w DP-1 -f 60 -a default_output -a default_input -c mkv -r 120 -bm cbr -q 15000 -replay-storage ram -df yes -restart-replay-on-save yes -o \"$REPLAY_DIR\""
+GSR_CMD="gpu-screen-recorder -w DP-1 -f 60 -a default_output -a default_input -c mkv -r 120 -bm cbr -q 20000 -replay-storage ram -df yes -restart-replay-on-save yes -o \"$REPLAY_DIR\""
 
 ACTION="$1" # "toggle" or "save"
 
