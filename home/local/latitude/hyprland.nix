@@ -1,6 +1,8 @@
 {lib, ...}: {
     wayland.windowManager.hyprland = {
         settings = lib.mkAfter {
+            exec-once = ["[workspace 4 silent] spotify"];
+
             monitor = [", preferred, auto, 1"];
 
             input = {
