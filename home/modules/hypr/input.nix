@@ -1,7 +1,5 @@
 {...}: {
     wayland.windowManager.hyprland.settings = {
-        gestures.workspace_swipe = false;
-
         input = {
             sensitivity = 0;
             accel_profile = "flat";
