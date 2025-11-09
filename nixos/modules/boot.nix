@@ -1,19 +1,31 @@
 {
+    lib,
     pkgs,
     inputs,
+    hostname,
     ...
 }: {
     boot = {
         kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
-        loader = {
-            systemd-boot.enable = true;
-            efi.canTouchEfiVariables = true;
-        };
+        loader =
+            if hostname == "desktop"
+            then {
+                efi.canTouchEfiVariables = true;
+                grub = {
+                    enable = true;
+                    efiSupport = true;
+                    useOSProber = true;
+                    device = "nodev";
+                };
+            }
+            else {
+                systemd-boot.enable = true;
+                efi.canTouchEfiVariables = true;
+            };
     };
-
     services.greetd = let
-        tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+        tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
         hyprland = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland";
     in {
         enable = true;
