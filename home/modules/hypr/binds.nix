@@ -14,6 +14,7 @@
                 "$mod, F, exec, $browser"
                 "$mod, B, exec, $browser_firefox"
                 "$mod, Q, exec, $terminal"
+                "$mod, D, exec, $menu drun"
                 "$mod, P, exec, $menu drun"
                 "$mod, E, exec, $file-explorer"
                 "$mod, V, exec, rofi_clipboard"
