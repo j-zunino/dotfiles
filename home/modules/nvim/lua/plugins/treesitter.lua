@@ -43,7 +43,7 @@ return {
                 { noremap = true, silent = true, desc = 'TS Context' }
             )
 
-            require('treesitter-context').setup()
+            require('treesitter-context').setup({ max_lines = 3 })
         end,
     },
 }
