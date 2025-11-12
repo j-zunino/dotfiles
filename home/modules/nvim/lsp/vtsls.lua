@@ -1,17 +1,8 @@
 return {
-    cmd = {
-        '/home/juan/.nix-profile/bin/vtsls',
-        '--stdio',
-    },
-    filetypes = {
-        'javascript',
-        'javascriptreact',
-        'javascript.jsx',
-        'typescript',
-        'typescriptreact',
-        'typescript.tsx',
-    },
-    root_markers = { 'tsconfig.json', 'package.json', 'jsconfig.json', '.git' },
+    -- cmd = {
+    --     '/home/juan/.nix-profile/bin/vtsls',
+    --     '--stdio',
+    -- },
     settings = {
         complete_function_calls = true,
         vtsls = {

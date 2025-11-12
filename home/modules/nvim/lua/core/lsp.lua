@@ -8,6 +8,7 @@ vim.lsp.enable({
     'emmet_ls',
     'jsonls',
     'tinymist',
+    'pyright',
 })
 
 vim.diagnostic.config({
