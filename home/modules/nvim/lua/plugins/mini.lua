@@ -6,6 +6,7 @@ return {
         require('mini.extra').setup()
         require('mini.pairs').setup()
         require('mini.surround').setup()
+        require('mini.splitjoin').setup()
 
         require('plugins.mini.ai')
         require('plugins.mini.bufremove')
