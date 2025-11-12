@@ -16,9 +16,10 @@
             typescript-language-server
             lua-language-server
             lua51Packages.lua
-            python313
             tinymist
             emmet-ls
+            pyright
+            python3
             vtsls
             nixd
 
