@@ -27,11 +27,11 @@ return {
             require('nvim-ts-autotag').setup()
         end,
     },
-    {
-        'folke/ts-comments.nvim',
-        event = { 'BufReadPost', 'BufNewFile' },
-        opts = {},
-    },
+    -- {
+    --     'folke/ts-comments.nvim',
+    --     event = { 'BufReadPost', 'BufNewFile' },
+    --     opts = {},
+    -- },
     {
         'nvim-treesitter/nvim-treesitter-context',
         event = { 'BufReadPost', 'BufNewFile' },
