@@ -11,8 +11,8 @@
 
         bind =
             [
-                "$mod, F, exec, $browser"
-                "$mod, B, exec, $browser_firefox"
+                "$mod, F, exec, $browser_firefox"
+                "$mod, B, exec, $browser"
                 "$mod, Q, exec, $terminal"
                 "$mod, D, exec, $menu drun"
                 "$mod, P, exec, $menu drun"
