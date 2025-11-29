@@ -1,10 +1,8 @@
-local opts = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true, desc = 'Close buffer' }
 local bufremove = require('mini.bufremove')
-
-opts.desc = 'Close buffer'
-vim.keymap.set('n', '<leader>x', require('mini.bufremove').delete, opts)
-vim.keymap.set('n', '<leader>bx', require('mini.bufremove').delete, opts)
 
 return {
     bufremove.setup(),
+    vim.keymap.set('n', '<leader>x', bufremove.delete, opts),
+    vim.keymap.set('n', '<leader>bx', bufremove.delete, opts),
 }
