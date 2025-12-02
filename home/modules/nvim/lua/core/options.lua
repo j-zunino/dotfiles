@@ -9,6 +9,7 @@ vim.o.colorcolumn = '80'
 vim.o.winborder = 'single'
 vim.o.termguicolors = true
 vim.o.showmode = false
+vim.o.shortmess = vim.o.shortmess .. 'I'
 
 vim.o.scrolloff = 8
 vim.o.pumheight = 15
