@@ -8,17 +8,6 @@ fzf_file() {
     zle reset-prompt
 }
 
-# # Fzf: Zoxide
-# fzf_zoxide() {
-#     local dir
-#     dir=$(zoxide query -l | fzf \
-#         --no-preview \
-#         --border-label=' Select a folder to cd into ') || return
-#     [[ -n "$dir" ]] && z "$dir"
-#     precmd
-#     zle reset-prompt
-# }
-
 # Fzf: Live grep
 live_grep() {
     local query result file linenumber
@@ -44,9 +33,7 @@ live_grep() {
 }
 
 zle -N fzf_file
-# zle -N fzf_zoxide
 zle -N live_grep
 
 bindkey "^T" fzf_file
-# bindkey "^Z" fzf_zoxide
 bindkey "^G" live_grep

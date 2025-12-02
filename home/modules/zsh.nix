@@ -10,8 +10,6 @@
             KEYTIMEOUT=1
             bindkey -v
 
-            eval "$(zoxide init zsh)"
-
             source $HOME/dotfiles/home/modules/scripts/zsh/promp.zsh
             source $HOME/dotfiles/home/modules/scripts/zsh/fzf_scripts.zsh
 

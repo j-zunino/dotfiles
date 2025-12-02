@@ -11,7 +11,6 @@
             ./zsh.nix
             ./scripts
             ../../nixos/stylix.nix
-            ./zoxide.nix
             ./aichat.nix
             ./ssh.nix
             ./fzf.nix
