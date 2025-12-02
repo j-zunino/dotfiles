@@ -28,11 +28,6 @@ return {
                         { fg = palette.yellow, bg = palette.bg_yellow }
 
                     hl.Pmenu = { link = 'Normal' } -- Blink
-
-                    hl.SnacksDashboardFile = { link = 'Fg' }
-                    hl.SnacksDashboardSpecial = { link = 'Comment' }
-                    hl.SnacksDashboardDir = { link = 'Comment' }
-                    hl.SnacksDashboardFooter = { link = 'Comment' }
                 end,
             })
 
