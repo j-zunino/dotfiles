@@ -1,12 +1,5 @@
 return {
-    require('mini.diff').setup({
-        delay = { text_change = 100 },
-        view = {
-            style = 'sign',
-            signs = { add = '│', change = '┊', delete = '─' },
-            -- signs = { add = '┃', change = '┇', delete = '󱘹' },
-        },
-    }),
+    require('mini.diff').setup({ delay = { text_change = 100 } }),
 
     vim.keymap.set('n', '<leader>Td', function()
         require('mini.diff').toggle_overlay(0)
