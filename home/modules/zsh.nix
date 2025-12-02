@@ -34,7 +34,7 @@
         shellAliases = {
             la = "ls -a";
             ll = "ls -l";
-            ff = "fastfetch";
+            ff = "nerdfetch";
             c = "clear";
             n = "nvim";
             v = "vim";
