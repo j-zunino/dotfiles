@@ -12,9 +12,6 @@
             {id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";} # Dark reader
             {id = "edibdbjcniadpccecjdfdjjppcpchdlm";} # I still don't care about cookies
         ];
-        commandLineArgs = [
-            "--enable-blink-features=MiddleClickAutoscroll"
-        ];
     };
 
     home.packages = with pkgs; [
