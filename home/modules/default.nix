@@ -10,7 +10,6 @@
             ./btop.nix
             ./zsh.nix
             ./scripts
-            ./fastfetch.nix
             ../../nixos/stylix.nix
             ./zoxide.nix
             ./aichat.nix

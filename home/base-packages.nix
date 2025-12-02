@@ -33,6 +33,7 @@
 
             # Utilities
             libnotify
+            nerdfetch
             wiremix
             ffmpeg
             impala
