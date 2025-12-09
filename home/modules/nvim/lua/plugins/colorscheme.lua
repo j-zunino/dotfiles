@@ -9,11 +9,6 @@ return {
                 disable_italic_comments = true,
 
                 on_highlights = function(hl, palette)
-                    local bg1 = palette.bg1
-                    local gray1 = palette.grey1
-                    local accent = palette.green
-                    local fg = palette.fg
-
                     -- Nvim
                     hl.CursorLineNr = { fg = gray1, bg = bg1 }
                     hl.NormalFloat = { bg = 'NONE' }
@@ -27,8 +22,6 @@ return {
                         { fg = palette.blue, bg = palette.bg_blue }
                     hl.DiagnosticVirtualTextWarn =
                         { fg = palette.yellow, bg = palette.bg_yellow }
-
-                    hl.Pmenu = { link = 'Normal' } -- Blink
                 end,
             })
 
