@@ -10,7 +10,6 @@ return {
 
                 on_highlights = function(hl, palette)
                     -- Nvim
-                    hl.CursorLineNr = { fg = gray1, bg = bg1 }
                     hl.NormalFloat = { bg = 'NONE' }
                     hl.FloatBorder = { link = 'Comment' }
                     hl.FloatTitle = { link = 'Comment' }

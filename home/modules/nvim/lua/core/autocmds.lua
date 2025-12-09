@@ -147,6 +147,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         -- stylua: ignore start
         -- Neovim
         hl(0, 'Pmenu', { link = 'Normal' })
+        hl(0, 'CursorLineNr', { fg = comment.fg, bg = cursor_line.bg })
 
         -- Spell
         hl(0, 'SpellBad', { fg = warn.fg, underline = true })
