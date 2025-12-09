@@ -41,11 +41,9 @@
                     nerdFontsVersion = "3";
                 };
 
-                git = {
-                    paging = {
-                        colorArg = "always";
-                        pager = "delta --dark --paging=never";
-                    };
+                git.paging = {
+                    colorArg = "always";
+                    pager = "delta --dark --paging=never";
                 };
 
                 customCommands = [
