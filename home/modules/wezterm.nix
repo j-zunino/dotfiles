@@ -11,6 +11,7 @@
                 animation_fps = 0,
                 cursor_blink_rate = 0,
                 allow_square_glyphs_to_overflow_width = "Always",
+                window_close_confirmation = 'NeverPrompt',
 
                 enable_tab_bar = false,
                 hide_mouse_cursor_when_typing = true,
