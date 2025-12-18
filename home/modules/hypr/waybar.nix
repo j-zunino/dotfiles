@@ -87,7 +87,7 @@ in {
 
                 cpu = {
                     format = "󰍛";
-                    on-click = "wezterm start --class floating btop";
+                    on-click = "~/dotfiles/home/modules/scripts/toggle_floating.sh floating btop";
                     states = {
                         warning = 70;
                         critical = 90;
@@ -96,7 +96,7 @@ in {
 
                 memory = {
                     format = " ";
-                    on-click = "wezterm start --class floating btop";
+                    on-click = "~/dotfiles/home/modules/scripts/toggle_floating.sh floating btop";
                     states = {
                         warning = 70;
                         critical = 90;
@@ -108,7 +108,7 @@ in {
                     format = "";
                     format-connected = "󰂱";
                     tooltip-format = "Devices connected: {num_connections}\n  {device_battery_percentage}%";
-                    on-click = "wezterm start --class floating bluetui";
+                    on-click = "~/dotfiles/home/modules/scripts/toggle_floating.sh floating bluetui";
                 };
 
                 pulseaudio = {
@@ -117,7 +117,7 @@ in {
                     format-muted = "󰝟";
                     format-icons = {default = ["󰕿" "󰖀" "󰕾"];};
                     scroll-step = 1;
-                    on-click = "wezterm start --class floating wiremix";
+                    on-click = "~/dotfiles/home/modules/scripts/toggle_floating.sh floating wiremix";
                     on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
                     # ignored-sinks = ["Easy Effects Sink"];
                 };
@@ -130,7 +130,7 @@ in {
                     format-disconnected = "";
                     tooltip-format-wifi = "{essid} ({frequency} GHz)\n{icon} {signalStrength}%  ↓{bandwidthDownBytes}  ↑{bandwidthUpBytes}";
                     tooltip-format-ethernet = "{icon} ↓{bandwidthDownBytes} ↑{bandwidthUpBytes}";
-                    on-click = "wezterm start --class floating impala";
+                    on-click = "~/dotfiles/home/modules/scripts/toggle_floating.sh floating impala";
                 };
 
                 battery = {
