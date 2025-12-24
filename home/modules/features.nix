@@ -12,6 +12,7 @@
         cli = {
             btop = lib.mkEnableOption "Btop";
             fzf = lib.mkEnableOption "Fuzzy finder";
+            ssh = lib.mkEnableOption "SSH";
         };
         dev = {
             aichat = lib.mkEnableOption "AiChat";
