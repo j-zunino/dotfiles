@@ -1,27 +1,34 @@
-{config, ...}: let
+{
+    lib,
+    config,
+    ...
+}: let
     colors = config.my.colors;
 in {
     wayland.windowManager.hyprland.settings = {
         master.new_status = "slave";
         animations.enabled = false;
 
-        general = {
-            layout = "master";
-            gaps_in = 0;
-            gaps_out = 0;
-            border_size = 2;
-            resize_on_border = true;
+        general = lib.mkMerge [
+            {
+                layout = "master";
+                gaps_in = 0;
+                gaps_out = 0;
+                border_size = 2;
+                resize_on_border = true;
+                col = {
+                    active_border = colors.accent;
+                    inactive_border = colors.bg1;
+                };
+            }
 
-            "col.active_border" = colors.accent;
-            "col.inactive_border" = colors.bg1;
-        };
+            (lib.mkIf config.features.gaming {
+                allow_tearing = true;
+            })
+        ];
 
         decoration = {
             rounding = 0;
-            # dim_inactive = true;
-            # dim_strength = 0.05;
-            # active_opacity = 1.0;
-            # inactive_opacity = 1.0;
             shadow.enabled = false;
 
             blur = {

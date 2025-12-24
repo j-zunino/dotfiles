@@ -1,4 +1,8 @@
-{...}: {
+{
+    lib,
+    hostname,
+    ...
+}: {
     wayland.windowManager.hyprland.settings = {
         "$terminal" = "wezterm";
         "$browser" = "brave";
@@ -31,6 +35,10 @@
                 "$mod, PRINT, exec, hyprshot -m output"
 
                 "$mod, C, exec, hyprpicker -a"
+            ]
+            ++ lib.optionals (hostname == "desktop") [
+                "$mod, F8, exec, ~/dotfiles/home/modules/scripts/gpu_replay.sh toggle"
+                ", F9, exec, ~/dotfiles/home/modules/scripts/gpu_replay.sh save"
             ]
             ++ (
                 builtins.concatLists (builtins.genList (
