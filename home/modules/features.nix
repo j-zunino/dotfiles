@@ -8,6 +8,7 @@
         };
         cli = {
             aichat = lib.mkEnableOption "Btop";
+            btop = lib.mkEnableOption "Btop";
         };
     };
 }
