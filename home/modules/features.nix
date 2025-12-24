@@ -13,6 +13,7 @@
                 brave = lib.mkEnableOption "Brave browser";
             };
         };
+
         cli = {
             aichat = lib.mkEnableOption "AiChat";
             btop = lib.mkEnableOption "Btop";
@@ -25,6 +26,10 @@
             ssh = lib.mkEnableOption "SSH";
             tmux = lib.mkEnableOption "Terminal multiplexer";
             zsh = lib.mkEnableOption "Zsh shell";
+        };
+
+        wm = {
+            waybar = lib.multimedia "Waybar";
         };
     };
 }
