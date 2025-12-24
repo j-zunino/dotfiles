@@ -2,10 +2,10 @@
     lib,
     config,
     ...
-}: let
-    colors = config.my.colors;
-in {
-    wayland.windowManager.hyprland.settings = {
+}: {
+    wayland.windowManager.hyprland.settings = let
+        colors = config.my.colors;
+    in {
         master.new_status = "slave";
         animations.enabled = false;
 
