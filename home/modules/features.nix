@@ -6,5 +6,8 @@
                 brave = lib.mkEnableOption "Brave browser";
             };
         };
+        cli = {
+            aichat = lib.mkEnableOption "Btop";
+        };
     };
 }
