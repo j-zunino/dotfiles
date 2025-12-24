@@ -13,6 +13,7 @@
             btop = lib.mkEnableOption "Btop";
             fzf = lib.mkEnableOption "Fuzzy finder";
             ssh = lib.mkEnableOption "SSH";
+            zsh = lib.mkEnableOption "Zsh shell";
         };
         dev = {
             aichat = lib.mkEnableOption "AiChat";
