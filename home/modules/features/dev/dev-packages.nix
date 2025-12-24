@@ -4,7 +4,7 @@
     config,
     ...
 }: {
-    config = lib.mkIf config.features.cli.dev-pkgs {
+    config = lib.mkIf config.features.dev.dev-pkgs {
         home = {
             packages = with pkgs; [
                 # Language Servers

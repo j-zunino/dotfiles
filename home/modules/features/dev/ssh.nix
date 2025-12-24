@@ -3,7 +3,7 @@
     config,
     ...
 }: {
-    config = lib.mkIf config.features.cli.ssh {
+    config = lib.mkIf config.features.dev.ssh {
         services.ssh-agent.enable = true;
         programs.ssh = {
             enable = true;

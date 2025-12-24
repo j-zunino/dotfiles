@@ -4,7 +4,7 @@
     config,
     ...
 }: {
-    config = lib.mkIf config.features.cli.tmux {
+    config = lib.mkIf config.features.dev.tmux {
         programs.tmux = let
             tmux-tilix = pkgs.tmuxPlugins.mkTmuxPlugin {
                 pluginName = "tilix";
