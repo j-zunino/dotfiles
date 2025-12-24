@@ -3,7 +3,7 @@
     config,
     ...
 }: {
-    confi = lib.mkMerge [
+    config = lib.mkMerge [
         (lib.mkIf config.features.dev.git {
             programs.git = {
                 enable = true;

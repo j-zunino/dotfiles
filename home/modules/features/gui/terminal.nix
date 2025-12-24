@@ -3,7 +3,7 @@
     config,
     ...
 }: {
-    confi = lib.mkMerge [
+    config = lib.mkMerge [
         (lib.mkIf config.features.gui.terminal.wezterm {
             programs.wezterm = {
                 enable = true;
