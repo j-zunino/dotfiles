@@ -23,7 +23,7 @@
             ./wezterm.nix
             ./rofi.nix
             ./browser.nix
-            ./mako.nix
+            ./notifications.nix
             ./mpv.nix
             ./xdg.nix
             ./drives.nix
