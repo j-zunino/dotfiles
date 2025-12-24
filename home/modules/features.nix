@@ -1,6 +1,7 @@
 {lib, ...}: {
     options.features = {
         gui = {
+            launcher = lib.mkEnableOption "Rofi";
             notifications = lib.mkEnableOption "Notification daemon";
             browser = {
                 zen = lib.mkEnableOption "Zen browser";
