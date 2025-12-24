@@ -8,8 +8,9 @@
             };
         };
         cli = {
-            aichat = lib.mkEnableOption "Btop";
+            aichat = lib.mkEnableOption "AiChat";
             btop = lib.mkEnableOption "Btop";
+            fzf = lib.mkEnableOption "Fuzzy finder";
         };
     };
 }
