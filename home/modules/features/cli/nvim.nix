@@ -4,9 +4,9 @@
     config,
     ...
 }: {
-    config = lib.mkIf config.features.dev.nvim {
+    config = lib.mkIf config.features.cli.nvim {
         programs.neovim.enable = true;
-        xdg.configFile.nvim.source = ./nvim;
+        xdg.configFile.nvim.source = ../../nvim;
         nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     };
 }

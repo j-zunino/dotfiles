@@ -1,10 +1,10 @@
 {lib, ...}: {
     options.features = {
         gui = {
-            spotify = lib.mkEnableOption "Spotify";
             launcher = lib.mkEnableOption "Rofi";
-            notifications = lib.mkEnableOption "Notification daemon";
             multimedia = lib.mkEnableOption "Multimedia";
+            notifications = lib.mkEnableOption "Notification daemon";
+            spotify = lib.mkEnableOption "Spotify";
             terminal = {
                 wezterm = lib.mkEnableOption "Wezterm";
             };
@@ -14,19 +14,17 @@
             };
         };
         cli = {
-            btop = lib.mkEnableOption "Btop";
-            fzf = lib.mkEnableOption "Fuzzy finder";
-            ssh = lib.mkEnableOption "SSH";
-            zsh = lib.mkEnableOption "Zsh shell";
-        };
-        dev = {
             aichat = lib.mkEnableOption "AiChat";
-            git = lib.mkEnableOption "Git";
+            btop = lib.mkEnableOption "Btop";
             delta = lib.mkEnableOption "Git pager";
-            lazygit = lib.mkEnableOption "Lazygit";
             dev-pkgs = lib.mkEnableOption "LSPs, formatters, linters and other";
-            tmux = lib.mkEnableOption "Terminal multiplexer";
+            fzf = lib.mkEnableOption "Fuzzy finder";
+            git = lib.mkEnableOption "Git";
+            lazygit = lib.mkEnableOption "Lazygit";
             nvim = lib.mkEnableOption "Neovim";
+            ssh = lib.mkEnableOption "SSH";
+            tmux = lib.mkEnableOption "Terminal multiplexer";
+            zsh = lib.mkEnableOption "Zsh shell";
         };
     };
 }

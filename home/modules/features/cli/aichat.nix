@@ -3,7 +3,7 @@
     config,
     ...
 }: {
-    config = lib.mkIf config.features.dev.aichat {
+    config = lib.mkIf config.features.cli.aichat {
         programs.aichat.enable = true;
         xdg.configFile."aichat/config.yaml".text = ''
             model: gemini

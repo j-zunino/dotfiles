@@ -4,7 +4,7 @@
     ...
 }: {
     config = lib.mkMerge [
-        (lib.mkIf config.features.dev.git {
+        (lib.mkIf config.features.cli.git {
             programs.git = {
                 enable = true;
                 settings = {
@@ -28,7 +28,7 @@
                 };
             };
         })
-        (lib.mkIf config.features.dev.delta {
+        (lib.mkIf config.features.cli.delta {
             programs.delta = {
                 enable = true;
                 enableGitIntegration = true;
@@ -38,7 +38,7 @@
                 };
             };
         })
-        (lib.mkIf config.features.dev.lazygit {
+        (lib.mkIf config.features.cli.lazygit {
             programs.lazygit = {
                 enable = true;
 
@@ -51,7 +51,7 @@
                         };
                     }
 
-                    (lib.mkIf config.features.dev.delta {
+                    (lib.mkIf config.features.cli.delta {
                         git.pagers = [
                             {pager = "delta --dark --paging=never";}
                         ];
