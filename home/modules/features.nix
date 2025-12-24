@@ -4,6 +4,7 @@
             spotify = lib.mkEnableOption "Spotify";
             launcher = lib.mkEnableOption "Rofi";
             notifications = lib.mkEnableOption "Notification daemon";
+            multimedia = lib.mkEnableOption "Multimedia";
             terminal = {
                 wezterm = lib.mkEnableOption "Wezterm";
             };
