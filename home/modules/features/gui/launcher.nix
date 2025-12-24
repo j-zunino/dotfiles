@@ -2,12 +2,12 @@
     config,
     lib,
     ...
-}: let
-    colors = config.my.colors;
-    stylixFonts = config.stylix.fonts;
-in {
+}: {
     config = lib.mkIf config.features.gui.rofi {
-        programs.rofi = {
+        programs.rofi = let
+            colors = config.my.colors;
+            stylixFonts = config.stylix.fonts;
+        in {
             enable = true;
             font = lib.mkForce "${stylixFonts.monospace.name}  ${toString stylixFonts.sizes.terminal}";
             location = "center";
