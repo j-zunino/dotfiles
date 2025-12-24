@@ -21,6 +21,7 @@
             delta = lib.mkEnableOption "Git pager";
             lazygit = lib.mkEnableOption "Lazygit";
             dev-pkgs = lib.mkEnableOption "LSPs, formatters, linters and other";
+            tmux = lib.mkEnableOption "Terminal multiplexer";
         };
     };
 }
