@@ -4,6 +4,9 @@
             spotify = lib.mkEnableOption "Spotify";
             launcher = lib.mkEnableOption "Rofi";
             notifications = lib.mkEnableOption "Notification daemon";
+            terminal = {
+                wezterm = lib.mkEnableOption "Wezterm";
+            };
             browser = {
                 zen = lib.mkEnableOption "Zen browser";
                 brave = lib.mkEnableOption "Brave browser";
@@ -22,6 +25,7 @@
             lazygit = lib.mkEnableOption "Lazygit";
             dev-pkgs = lib.mkEnableOption "LSPs, formatters, linters and other";
             tmux = lib.mkEnableOption "Terminal multiplexer";
+            nvim = lib.mkEnableOption "Neovim";
         };
     };
 }
