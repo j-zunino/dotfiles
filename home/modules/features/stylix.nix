@@ -26,6 +26,8 @@
     hex = c: "#${c}";
     rgb = c: "rgb(${c})";
 in {
+    imports = [../../../nixos/stylix.nix];
+
     options.my.colors = lib.mkOption {
         type = lib.types.attrs;
         readOnly = true;
