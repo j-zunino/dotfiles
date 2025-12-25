@@ -5,18 +5,17 @@
     hostname,
     ...
 }: {
-    config = lib.mkIf config.features.wm.hyprland {
-        imports = [
-            ./autostart.nix
-            ./windows.nix
-            ./binds.nix
-            ./input.nix
-            ./look.nix
-            ./envs.nix
-            ./wpaperd.nix
-            ./hypridle.nix
-        ];
+    imports = [
+        ./autostart.nix
+        ./binds.nix
+        ./envs.nix
+        ./hypridle.nix
+        ./input.nix
+        ./look.nix
+        ./wpaperd.nix
+    ];
 
+    config = lib.mkIf config.features.wm.hyprland {
         home = {
             pointerCursor.hyprcursor.enable = true;
             packages = with pkgs; [

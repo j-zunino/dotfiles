@@ -3,7 +3,7 @@
     hostname,
     ...
 }: {
-    wayland.windowManager.hyprland.settings.input =
+    wayland.windowManager.hyprland.settings.input = lib.mkMerge [
         {
             sensitivity = 0;
             accel_profile = "flat";
@@ -13,7 +13,8 @@
             repeat_rate = 40;
             repeat_delay = 300;
         }
-        ++ lib.optionals (hostname == "latitude") {
+
+        (lib.mkIf (hostname == "latitude") {
             kb_model = "latitude";
             kb_options = "caps:swapescape";
 
@@ -23,5 +24,6 @@
                 scroll_factor = 0.5;
                 middle_button_emulation = true;
             };
-        };
+        })
+    ];
 }
