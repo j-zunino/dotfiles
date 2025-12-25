@@ -6,6 +6,7 @@
             launcher = lib.mkEnableOption "Rofi";
             multimedia = lib.mkEnableOption "Multimedia";
             notifications = lib.mkEnableOption "Notification daemon";
+            packages = lib.mkEnableOption "Packages that doesn't need configuration";
             spotify = lib.mkEnableOption "Spotify";
             terminal = {
                 wezterm = lib.mkEnableOption "Wezterm";
@@ -20,11 +21,12 @@
             aichat = lib.mkEnableOption "AiChat";
             btop = lib.mkEnableOption "Btop";
             delta = lib.mkEnableOption "Git pager";
-            dev-pkgs = lib.mkEnableOption "LSPs, formatters, linters and other";
+            dev-packages = lib.mkEnableOption "LSPs, formatters, linters and other";
             fzf = lib.mkEnableOption "Fuzzy finder";
             git = lib.mkEnableOption "Git";
             lazygit = lib.mkEnableOption "Lazygit";
             nvim = lib.mkEnableOption "Neovim";
+            packages = lib.mkEnableOption "Packages that doesn't need configuration";
             ssh = lib.mkEnableOption "SSH";
             tmux = lib.mkEnableOption "Terminal multiplexer";
             zsh = lib.mkEnableOption "Zsh shell";
