@@ -5,10 +5,11 @@
     ...
 }: {
     imports = [
-        ./base-packages.nix
-        ./local/${hostname}
+        ./${hostname}.nix
         ./modules
     ];
+
+    nixpkgs.config.allowUnfree = true;
 
     home = {
         username = user;
