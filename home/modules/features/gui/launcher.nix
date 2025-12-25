@@ -3,7 +3,7 @@
     lib,
     ...
 }: {
-    config = lib.mkIf config.features.gui.rofi {
+    config = lib.mkIf config.features.gui.launcher {
         programs.rofi = let
             colors = config.my.colors;
             stylixFonts = config.stylix.fonts;
