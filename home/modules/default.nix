@@ -1,33 +1,5 @@
-{
-    hostname,
-    lib,
-    ...
-}: {
-    imports =
-        [
-            ./git.nix
-            ./nvim.nix
-            ./btop.nix
-            ./zsh.nix
-            ./scripts
-            ../../nixos/stylix.nix
-            ./aichat.nix
-            ./ssh.nix
-            ./fzf.nix
-            ./tmux.nix
-            ./stylix.nix
-        ]
-        ++ lib.optionals (hostname != "wsl") [
-            ./spicetify.nix
-            ./hypr
-            ./wezterm.nix
-            ./rofi.nix
-            ./browser.nix
-            ./notifications.nix
-            ./mpv.nix
-            ./xdg.nix
-            ./drives.nix
-        ];
+{lib, ...}: {
+    imports = [./features];
 
     options.features = {
         gui = {
@@ -61,6 +33,9 @@
         wm = {
             waybar = lib.mkEnableOption "Waybar";
             hyprland = lib.mkEnableOption "Hyprland window manager";
+
+        gaming = {
+            emulation = lib.mkEnableOption "Emulation";
         };
     };
 }
