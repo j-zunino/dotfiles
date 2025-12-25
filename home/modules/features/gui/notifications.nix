@@ -2,12 +2,12 @@
     lib,
     config,
     ...
-}: {
+}: let
+    colors = config.my.colors;
+    stylixFonts = config.stylix.fonts;
+in {
     config = lib.mkIf config.features.gui.notifications {
-        services.mako = let
-            colors = config.my.colors;
-            stylixFonts = config.stylix.fonts;
-        in {
+        services.mako = {
             enable = true;
             settings = lib.mkForce {
                 default-timeout = 25000;
