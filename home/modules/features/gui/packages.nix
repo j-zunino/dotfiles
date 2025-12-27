@@ -9,7 +9,6 @@
             # discord
             nautilus
             webcord
-            syshud
         ];
     };
 }

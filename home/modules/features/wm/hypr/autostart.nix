@@ -9,7 +9,6 @@
             "wpaperd"
             "waybar"
             "hypridle"
-            "syshud -p bottom -i 24 -m 5"
             "wl-paste --watch cliphist store"
         ]
         ++ lib.optionals (hostname == "desktop") [

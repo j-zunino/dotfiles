@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+BRIGHTNESS=$(brightnessctl get)
+MAX=$(brightnessctl max)
+
+PERCENT=$((BRIGHTNESS * 100 / MAX))
+if [ "$PERCENT" -eq 0 ]; then
+    ICON="󱩎"
+elif [ "$PERCENT" -lt 20 ]; then
+    ICON="󱩐"
+elif [ "$PERCENT" -lt 60 ]; then
+    ICON="󱩒"
+else
+    ICON="󰛨"
+fi
+
+notify-send -e -h string:x-canonical-private-synchronous:backlight -h int:value:"$PERCENT" -t 800 "${ICON} ${PERCENT}%"
