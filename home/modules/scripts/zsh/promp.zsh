@@ -32,19 +32,19 @@ setopt PROMPT_SUBST
 export PS1='%B%F{red}󰉋 %~%f $(print -P "$vcs_info_msg_0_")
 %B%F{green}>%f%b '
 
-zle-keymap-select() {
-    if [[ $KEYMAP == vicmd ]]; then
-        echo -ne "\e[2 q"
-    else
-        echo -ne "\e[5 q"
-    fi
-}
-precmd_functions+=(zle-keymap-select)
-zle -N zle-keymap-select
+# zle-keymap-select() {
+#     if [[ $KEYMAP == vicmd ]]; then
+#         echo -ne "\e[2 q"
+#     else
+#         echo -ne "\e[5 q"
+#     fi
+# }
+# precmd_functions+=(zle-keymap-select)
+# zle -N zle-keymap-select
 
 precmd() {
     psvar=()
     vcs_info
     [[ -n $vcs_info_msg_0_ ]] && print -v 'psvar[1]' -Pr -- "$vcs_info_msg_0_"
-    zle-keymap-select
+    # zle-keymap-select
 }
