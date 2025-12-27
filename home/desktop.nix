@@ -27,6 +27,7 @@
         cli = {
             aichat = true;
             btop = true;
+            bun = true;
             delta = true;
             dev-packages = true;
             fzf = true;

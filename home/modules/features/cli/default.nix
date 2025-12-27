@@ -2,6 +2,7 @@
     imports = [
         ./aichat.nix
         ./btop.nix
+        ./bun.nix
         ./fzf.nix
         ./git.nix
         ./nvim.nix
