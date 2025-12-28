@@ -1,5 +1,10 @@
-{inputs, ...}: {
-    home.packages = [
+{
+    pkgs,
+    inputs,
+    ...
+}: {
+    home.packages = with pkgs; [
+        prismlauncher
         inputs.affinity-nix.packages.x86_64-linux.v3
     ];
 
@@ -22,7 +27,6 @@
         cli = {
             aichat = true;
             btop = true;
-            bun = true;
             delta = true;
             dev-packages = true;
             fzf = true;
@@ -41,7 +45,7 @@
         };
 
         gaming = {
-            tweaks = true;
+            tweaks = false;
             emulation = false;
         };
     };

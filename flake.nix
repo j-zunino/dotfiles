@@ -65,7 +65,7 @@
 
                 modules =
                     [
-                        ./hosts/${hostname}/configuration.nix
+                        ./hosts/configuration.nix
                         inputs.stylix.nixosModules.stylix
                     ]
                     ++ nixpkgs.lib.optionals (hostname == "wsl") [inputs.nixos-wsl.nixosModules.default];
@@ -89,7 +89,7 @@
                     hostname = host.hostname;
                 };
                 modules = [
-                    ./home/home.nix
+                    ./host/home.nix
                     inputs.stylix.homeModules.stylix
                 ];
             };

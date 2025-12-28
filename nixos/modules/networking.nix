@@ -2,6 +2,7 @@
     services.connman.wifi.backend = "iwd";
 
     networking = {
+        networkmanager.enable = true;
         networkmanager.wifi.backend = "iwd";
 
         # TODO: Move to latitude config

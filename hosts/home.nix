@@ -4,12 +4,7 @@
     user,
     ...
 }: {
-    imports = [
-        ./${hostname}.nix
-        ../features/default.nix
-        ../features/home.nix
-        ./stylix.nix
-    ];
+    imports = [./${hostname}/features.nix];
 
     nixpkgs.config.allowUnfree = true;
 
