@@ -1,8 +1,8 @@
 {
     imports = [
+        ./default.nix
         ./gaming/nixos
         ./hardware/nixos
         ./wm/nixos
-        ./default.nix
     ];
 }

@@ -6,7 +6,7 @@
     ...
 }: {
     config = lib.mkMerge [
-        (lib.mkif (config.features.hardware.dualboot == false) {
+        (lib.mkIf (!config.features.hardware.dualboot) {
             boot.loader = {
                 efi.canTouchEfiVariables = true;
                 systemd-boot.enable = true;
@@ -15,11 +15,12 @@
 
         (lib.mkIf config.features.hardware.dualboot {
             boot.loader = {
+                systemd-boot.enable = false;
                 grub = {
                     enable = true;
                     efiSupport = true;
                     useOSProber = true;
-                    device = "nodev";
+                    devices = ["nodev"];
                 };
             };
         })
@@ -37,9 +38,7 @@
                 Type = "idle";
                 StandardInput = "tty";
                 StandardOutput = "tty";
-                # without this errors will spam on screen
                 StandardError = "journal";
-                # without these bootlogs will spam on screen
                 TTYReset = true;
                 TTYVHangup = true;
                 TTYVTDisallocate = true;

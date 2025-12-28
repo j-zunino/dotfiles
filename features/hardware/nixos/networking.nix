@@ -4,11 +4,11 @@
     ...
 }: {
     config = lib.mkMerge [
-        (lib.mkif (config.features.hardware.ethernet) {
+        (lib.mkIf (config.features.hardware.ethernet) {
             networking.networkmanager.enable = true;
         })
 
-        (lib.mkif (config.features.hardware.wifi) {
+        (lib.mkIf (config.features.hardware.wifi) {
             services.connman.wifi.backend = "iwd";
             networking = {
                 networkmanager.enable = true;

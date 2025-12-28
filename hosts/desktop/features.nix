@@ -22,9 +22,9 @@
         cli = {
             aichat = true;
             btop = true;
-            bun = true;
+            bun = false;
             delta = true;
-            dev-packages = true;
+            devPackages = true;
             fzf = true;
             git = true;
             lazygit = true;
@@ -41,8 +41,25 @@
         };
 
         gaming = {
-            tweaks = true;
             emulation = false;
+            minecraft = true;
+            tweaks = true;
+            heroic = true;
+            packages = true;
+            steam = true;
+            openFirewall = false;
+            proton = true;
+        };
+
+        hardware = {
+            driveMounting = true;
+            audio = true;
+            bluetooth = false;
+            dualboot = true;
+            greetd = true;
+            ethernet = true;
+            wifi = false;
+            nvidia = true;
         };
     };
 }

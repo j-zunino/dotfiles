@@ -3,13 +3,12 @@
     user,
     ...
 }: {
-    programs.zsh.enable = true;
-
     fonts.packages = with pkgs.nerd-fonts; [
         jetbrains-mono
         iosevka-term
     ];
 
+    programs.zsh.enable = true;
     users = {
         defaultUserShell = pkgs.zsh;
         users.${user} = {

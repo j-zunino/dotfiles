@@ -1,9 +1,12 @@
 {
     lib,
+    pkgs,
     config,
     ...
 }: {
     config = lib.mkIf config.features.gaming.heroic {
-        programs.heroic.enable = true;
+        environment.systemPackages = with pkgs; [
+            heroic
+        ];
     };
 }

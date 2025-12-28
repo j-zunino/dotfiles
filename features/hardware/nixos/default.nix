@@ -1,7 +1,14 @@
 {
     imports = [
+        ./audio.nix
         ./bluetooth.nix
-        ./nvidia.nix
+        ./boot.nix
+        ./drives.nix
         ./home-manager.nix
+        ./networking.nix
+        ./nix.nix
+        ./nvidia.nix
+        ./user.nix
+        ./stylix.nix
     ];
 }
