@@ -4,10 +4,10 @@
     ...
 }: {
     imports = [
-        ./${hostname}/configuration.nix
-        ./${hostname}/hardware-configuration.nix
-        ./${hostname}/features.nix
         ../features/nixos.nix
+        ./${hostname}/configuration.nix
+        ./${hostname}/features.nix
+        ./${hostname}/hardware-configuration.nix
     ];
 
     networking.hostName = hostname;

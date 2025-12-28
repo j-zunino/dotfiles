@@ -1,7 +1,7 @@
 {inputs, ...}: {
-    home.packages = [
-        inputs.affinity-nix.packages.x86_64-linux.v3
-    ];
+    # home.packages = [
+    #     inputs.affinity-nix.packages.x86_64-linux.v3
+    # ];
 
     features = {
         gui = {
@@ -42,24 +42,24 @@
 
         gaming = {
             emulation = false;
-            minecraft = true;
-            tweaks = true;
             heroic = true;
-            packages = true;
-            steam = true;
+            minecraft = true;
             openFirewall = false;
+            packages = true;
             proton = true;
+            steam = true;
+            tweaks = true;
         };
 
         hardware = {
-            driveMounting = true;
             audio = true;
             bluetooth = false;
+            driveMounting = true;
             dualboot = true;
-            greetd = true;
             ethernet = true;
-            wifi = false;
+            greetd = true;
             nvidia = true;
+            wifi = false;
         };
     };
 }

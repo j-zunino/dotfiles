@@ -5,8 +5,8 @@
     ...
 }: {
     imports = [
-        ./${hostname}/features.nix
         ../features/home.nix
+        ./${hostname}/features.nix
     ];
 
     nixpkgs.config.allowUnfree = true;

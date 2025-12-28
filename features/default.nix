@@ -38,24 +38,24 @@
 
         gaming = {
             emulation = lib.mkEnableOption "Emulation";
-            minecraft = lib.mkEnableOption "Minecraft launcher";
-            tweaks = lib.mkEnableOption "Settings necessary for max performance";
             heroic = lib.mkEnableOption "Epic games game launcher";
-            packages = lib.mkEnableOption "";
-            steam = lib.mkEnableOption "";
+            minecraft = lib.mkEnableOption "Minecraft launcher";
             openFirewall = lib.mkEnableOption "";
+            packages = lib.mkEnableOption "";
             proton = lib.mkEnableOption "";
+            steam = lib.mkEnableOption "";
+            tweaks = lib.mkEnableOption "Settings necessary for max performance";
         };
 
         hardware = {
-            driveMounting = lib.mkEnableOption "";
             audio = lib.mkEnableOption "";
             bluetooth = lib.mkEnableOption "";
+            driveMounting = lib.mkEnableOption "";
             dualboot = lib.mkEnableOption "";
-            greetd = lib.mkEnableOption "";
             ethernet = lib.mkEnableOption "";
-            wifi = lib.mkEnableOption "";
+            greetd = lib.mkEnableOption "";
             nvidia = lib.mkEnableOption "";
+            wifi = lib.mkEnableOption "";
         };
     };
 }

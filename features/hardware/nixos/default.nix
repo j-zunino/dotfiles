@@ -8,7 +8,7 @@
         ./networking.nix
         ./nix.nix
         ./nvidia.nix
-        ./user.nix
         ./stylix.nix
+        ./user.nix
     ];
 }
