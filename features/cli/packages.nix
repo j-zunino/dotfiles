@@ -23,7 +23,7 @@
             ];
         })
 
-        (lib.mkIf config.features.cli.dev-packages {
+        (lib.mkIf config.features.cli.devPackages {
             home = {
                 packages = with pkgs; [
                     # Language Servers

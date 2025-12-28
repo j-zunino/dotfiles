@@ -20,7 +20,7 @@
             btop = lib.mkEnableOption "Btop";
             bun = lib.mkEnableOption "JS runtime, bundler, transpiler and package manager";
             delta = lib.mkEnableOption "Git pager";
-            dev-packages = lib.mkEnableOption "LSPs, formatters, linters and other";
+            devPackages = lib.mkEnableOption "LSPs, formatters, linters and other";
             fzf = lib.mkEnableOption "Fuzzy finder";
             git = lib.mkEnableOption "Git";
             lazygit = lib.mkEnableOption "Lazygit";
