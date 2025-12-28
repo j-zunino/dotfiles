@@ -6,8 +6,8 @@
     imports = [
         ./${hostname}/configuration.nix
         ./${hostname}/hardware-configuration.nix
-        ../../nixos/modules
-        ./modules
+        ./${hostname}/features.nix
+        ../features/nixos.nix
     ];
 
     networking.hostName = hostname;
