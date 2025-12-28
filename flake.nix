@@ -89,7 +89,7 @@
                     hostname = host.hostname;
                 };
                 modules = [
-                    ./host/home.nix
+                    ./hosts/home.nix
                     inputs.stylix.homeModules.stylix
                 ];
             };
