@@ -1,5 +1,6 @@
 {
     lib,
+    pkgs,
     config,
     ...
 }: {
@@ -9,7 +10,6 @@
             enableCompletion = true;
             autosuggestion.enable = true;
             syntaxHighlighting.enable = true;
-            oh-my-zsh.enable = true;
 
             initContent = ''
                 KEYTIMEOUT=1
@@ -17,6 +17,12 @@
 
                 source $HOME/dotfiles/features/scripts/zsh/promp.zsh
                 source $HOME/dotfiles/features/scripts/zsh/fzf_scripts.zsh
+                source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+
+                setopt auto_param_slash
+                zstyle ':fzf-tab:*' use-fzf-default-opts yes
+                zstyle ':fzf-tab:*' fzf-flags --margin 0 --bind=tab:accept
+                stty stop undef
 
                 bindkey '^J' history-search-backward
                 bindkey '^K' history-search-forward
