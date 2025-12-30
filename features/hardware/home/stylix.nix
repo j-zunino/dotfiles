@@ -72,6 +72,7 @@ in {
             zen-browser.enable = false;
             fzf.enable = false;
             spicetify.enable = false;
+            lazygit.enable = false;
         };
 
         iconTheme = {
