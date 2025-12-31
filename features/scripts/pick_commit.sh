@@ -1,52 +1,49 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-prompt=$(
-    cat <<'EOF'
-Instructions:
-Suggest 10 commit messages based on the following diff:
+SELECTED_TYPE="${1:-ai-defined}"
+COMMITS_TO_SUGGEST=8
 
---- START DIFF ---
-EOF
-)
-
-prompt+=$(git diff --cached)
-
-prompt+=$(
-    cat <<'EOF'
-
---- END DIFF ---
-
-Rules:
-1. Format: <type>(<scope>): <description> — using Conventional Commits.
-2. Focus on purpose and impact.
-3. Each message must be <70 characters and lowercase.
-4. Each message must cover a different perspective or benefit.
-5. Easily understood by someone unfamiliar with the codebase.
-
-Goal:
-Provide a wide range of expressive, valid, and relevant commit messages.
-
-Output format:
-only raw commit messages, lowercase, one per line.
-EOF
-)
-
-selected_message=$(aichat "$prompt" | fzf || true)
-
-if [[ -z $selected_message ]]; then
-    echo "No message selected, commit aborted."
-    exit 0
-fi
-
-COMMIT_MSG_FILE=$(mktemp)
-echo "$selected_message" >"$COMMIT_MSG_FILE"
-nvim "$COMMIT_MSG_FILE"
-
-if [[ -s $COMMIT_MSG_FILE ]]; then
-    git commit -F "$COMMIT_MSG_FILE"
+if ! git diff --cached --quiet; then
+    :
 else
-    echo "Commit message is empty, commit aborted."
+    echo "No changes in staging. Add changes first."
+    exit 1
 fi
 
-rm -f "$COMMIT_MSG_FILE"
+aichat "
+You are an expert at writing Git commits. Your job is to write commit messages that follow the Conventional Commits format.
+
+The user has selected: $SELECTED_TYPE
+
+Your task is to:
+1. Analyze the code changes
+2. Determine the most appropriate commit type (if user selected 'ai-defined')
+3. Determine an appropriate scope (component/area affected)
+4. Decide if this is a breaking change
+5. Write clear, concise commit messages
+
+Available commit types:
+- feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert
+
+Guidelines:
+- Structure: <type>(<scope>): <description>
+- If user selected 'ai-defined', choose the best type per option
+- If user selected a specific type, always use that type: $SELECTED_TYPE
+- Add scope when applicable
+- Use ! for breaking changes
+- Lowercase, imperative mood
+- No trailing period
+- Keep under 50 characters
+
+Generate exactly $COMMITS_TO_SUGGEST messages.
+One message per line.
+No explanations.
+
+Previous commits:
+$(git log --oneline -10)
+
+Changes:
+$(git diff --cached --stat)
+$(git diff --cached)
+"
