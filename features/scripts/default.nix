@@ -4,6 +4,7 @@
     osd_volumen = pkgs.writeScriptBin "osd_volumen" ''${pkgs.stdenv.shell} $HOME/dotfiles/features/scripts/osd/volumen'';
     osd_brightness = pkgs.writeScriptBin "osd_brightness" ''${pkgs.stdenv.shell} $HOME/dotfiles/features/scripts/osd/brightness'';
     gpu_replay = pkgs.writeScriptBin "gpu_replay" ''${pkgs.stdenv.shell} $HOME/dotfiles/features/scripts/gpu_replay.sh'';
+    pick_commit = pkgs.writeScriptBin "pick_commit" ''${pkgs.stdenv.shell} $HOME/dotfiles/features/scripts/pick_commit.sh'';
     toggle_floating = pkgs.writeScriptBin "toggle_floating" ''${pkgs.stdenv.shell} $HOME/dotfiles/features/scripts/toggle_floating.sh'';
     tmux_sessionizer = pkgs.writeScriptBin "tmux_sessionizer" ''${pkgs.stdenv.shell} $HOME/dotfiles/features/scripts/tmux/tmux_sessionizer'';
 in {
@@ -13,6 +14,7 @@ in {
         osd_volumen
         osd_brightness
         gpu_replay
+        pick_commit
         toggle_floating
         tmux_sessionizer
     ];
