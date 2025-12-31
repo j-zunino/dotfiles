@@ -152,7 +152,8 @@
                                         command = "pick_commit \"{{.Form.Type}}\"";
                                     }
                                 ];
-                                command = "git commit -m \"{{.Form.CommitMsg}}\"";
+                                output = "terminal";
+                                command = "git commit -e -m \"{{.Form.CommitMsg}}\"";
                                 loadingText = "Generating commit messages...";
                             }
                         ];
