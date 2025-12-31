@@ -35,6 +35,25 @@ local show_align = function(buf_id, items, query, opts)
     MiniPick.default_show(buf_id, items, query, opts)
 end
 
+local paste_orig = vim.paste
+---@diagnostic disable-next-line: duplicate-set-field
+vim.paste = function(...)
+    if not MiniPick.is_picker_active() then
+        return paste_orig(...)
+    end
+
+    for _, reg in ipairs({ '+', '.', '*' }) do
+        local content = vim.fn.getreg(reg) or ''
+
+        if content ~= '' then
+            MiniPick.set_picker_query({ content })
+            return
+        end
+    end
+
+    vim.notify('No content to paste', vim.log.levels.WARN)
+end
+
 MiniPick.registry.grep_live = function()
     MiniPick.builtin.grep_live({}, { source = { show = show_align } })
 end
@@ -63,6 +82,7 @@ return {
             move_up = '<C-k>',
             scroll_down = '<C-d>',
             scroll_up = '<C-u>',
+            paste = '<C-r>',
         },
 
         options = { content_from_bottom = true },
