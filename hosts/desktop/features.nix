@@ -15,7 +15,7 @@
             };
             browser = {
                 zen = true;
-                brave = false;
+                brave = true;
             };
         };
 
