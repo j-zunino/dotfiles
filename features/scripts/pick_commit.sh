@@ -11,7 +11,7 @@ else
     exit 1
 fi
 
-aichat "
+aichat --model gemini:gemini-2.5-flash-lite "
 You are an expert at writing Git commits. Your job is to write commit messages that follow the Conventional Commits format.
 
 The user has selected: $SELECTED_TYPE
