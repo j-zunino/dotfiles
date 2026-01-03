@@ -36,6 +36,26 @@
                     dark = true;
                     tabs = 4;
                     line-numbers = true;
+
+                    file-decoration-style = "gray ul ol";
+                    file-style = "bold green";
+                    file-added-label = "[+]";
+                    file-copied-label = "[*]";
+                    file-modified-label = "[~]";
+                    file-removed-label = "[-]";
+                    file-renamed-label = "[>]";
+
+                    hunk-header-file-style = "bold green";
+                    hunk-header-decoration-style = "gray ul";
+                    hunk-header-line-number-style = "gray";
+
+                    line-numbers-left-format = "{nm:>1}┊";
+                    line-numbers-right-format = "{np:>2}│";
+                    line-numbers-zero-style = "gray";
+                    line-numbers-left-style = "gray";
+                    line-numbers-right-style = "gray bold";
+                    line-numbers-minus-style = "red bold";
+                    line-numbers-plus-style = "green bold";
                 };
             };
         })
