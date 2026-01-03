@@ -35,6 +35,7 @@
                 options = {
                     dark = true;
                     tabs = 4;
+                    line-numbers = true;
                 };
             };
         })

@@ -17,6 +17,7 @@
 
         cli = {
             aichat = true;
+            bat = true;
             btop = true;
             bun = false;
             delta = true;

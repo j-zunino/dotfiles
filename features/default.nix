@@ -19,6 +19,7 @@
 
         cli = {
             aichat = lib.mkEnableOption "AI chat";
+            bat = lib.mkEnableOption "cat(1) clone with wings";
             btop = lib.mkEnableOption "Btop system monitor";
             bun = lib.mkEnableOption "Bun JS runtime, bundler, and package manager";
             delta = lib.mkEnableOption "Git diff pager";

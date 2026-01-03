@@ -18,7 +18,6 @@
                 curl
                 wget
                 tree
-                bat
                 zip
             ];
         })

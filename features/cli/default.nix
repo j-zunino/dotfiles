@@ -1,6 +1,7 @@
 {
     imports = [
         ./aichat.nix
+        ./bat.nix
         ./btop.nix
         ./bun.nix
         ./fzf.nix
