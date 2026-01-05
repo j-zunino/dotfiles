@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+    lib,
+    config,
+    ...
+}: {
     options.features = {
         gui = {
             launcher = lib.mkEnableOption "App launcher";
@@ -6,12 +10,11 @@
             notifications = lib.mkEnableOption "Notification daemon";
             packages = lib.mkEnableOption "GUI packages that do not require extra configuration";
             spotify = lib.mkEnableOption "Spotify client";
-
             terminal = {
+                default = lib.mkOption {default = "foot";};
                 foot = lib.mkEnableOption "Foot terminal emulator";
                 wezterm = lib.mkEnableOption "WezTerm terminal emulator";
             };
-
             browser = {
                 zen = lib.mkEnableOption "Zen browser";
                 brave = lib.mkEnableOption "Brave browser";
@@ -62,4 +65,14 @@
             wifi = lib.mkEnableOption "Wireless network support";
         };
     };
+
+    config.assertions = [
+        {
+            assertion = let
+                t = config.features.gui.terminal;
+            in
+                (t.default == "foot" && t.foot) || (t.default == "wezterm" && t.wezterm);
+            message = "The selected default terminal must be enabled.";
+        }
+    ];
 }

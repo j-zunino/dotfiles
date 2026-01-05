@@ -1,10 +1,11 @@
 {
     lib,
+    config,
     hostname,
     ...
 }: {
     wayland.windowManager.hyprland.settings = {
-        "$terminal" = "wezterm";
+        "$terminal" = config.features.gui.terminal.default;
         "$browser" = "brave";
         "$browser_firefox" = "zen";
         "$file-explorer" = "nautilus";
