@@ -8,6 +8,7 @@
             spotify = lib.mkEnableOption "Spotify client";
 
             terminal = {
+                foot = lib.mkEnableOption "Foot terminal emulator";
                 wezterm = lib.mkEnableOption "WezTerm terminal emulator";
             };
 

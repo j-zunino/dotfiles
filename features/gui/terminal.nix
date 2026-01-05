@@ -2,8 +2,26 @@
     lib,
     config,
     ...
-}: {
+}: let
+    colors = config.my.colors;
+in {
     config = lib.mkMerge [
+        (lib.mkIf config.features.gui.terminal.foot {
+            programs.foot = let
+                fg = lib.removePrefix "#" colors.fg-hex;
+                bg = lib.removePrefix "#" colors.bg0-hex;
+            in {
+                enable = true;
+                settings = {
+                    main = {pad = "14x14";};
+                    mouse.hide-when-typing = "yes";
+                    colors = lib.mkForce {
+                        alpha = 0.9;
+                        cursor = "${bg} ${fg}";
+                    };
+                };
+            };
+        })
         (lib.mkIf config.features.gui.terminal.wezterm {
             programs.wezterm = {
                 enable = true;

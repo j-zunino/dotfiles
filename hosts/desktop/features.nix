@@ -11,6 +11,7 @@
             packages = true;
             spotify = true;
             terminal = {
+                foot = true;
                 wezterm = true;
             };
             browser = {
