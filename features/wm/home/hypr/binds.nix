@@ -6,8 +6,7 @@
 }: {
     wayland.windowManager.hyprland.settings = {
         "$terminal" = config.features.gui.terminal.default;
-        "$browser" = "brave";
-        "$browser_firefox" = "zen";
+        "$browser" = config.features.gui.browser.default;
         "$file-explorer" = "nautilus";
         "$menu" = "rofi -show";
 
@@ -16,8 +15,7 @@
 
         bind =
             [
-                "$mod, F, exec, $browser_firefox"
-                "$mod, B, exec, $browser"
+                "$mod, F, exec, $browser"
                 "$mod, Q, exec, $terminal"
                 "$mod, D, exec, $menu drun"
                 "$mod, P, exec, $menu drun"

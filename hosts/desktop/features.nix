@@ -16,6 +16,7 @@
                 wezterm = true;
             };
             browser = {
+                default = "zen";
                 zen = true;
                 brave = true;
             };

@@ -16,7 +16,7 @@
                 "audio/wav" = ["mpv.desktop"];
             })
 
-            (lib.mkIf config.features.gui.browser.brave {
+            (lib.mkIf (config.features.gui.browser.default == "brave") {
                 "x-scheme-handler/http" = ["brave.desktop"];
                 "x-scheme-handler/https" = ["brave.desktop"];
                 "x-scheme-handler/chrome" = ["brave.desktop"];
@@ -24,8 +24,7 @@
                 "application/xhtml+xml" = ["brave.desktop"];
             })
 
-            # Prefer zen as default browser if both are enabled
-            (lib.mkIf config.features.gui.browser.zen {
+            (lib.mkIf (config.features.gui.browser.default == "zen") {
                 "x-scheme-handler/http" = ["zen.desktop"];
                 "x-scheme-handler/https" = ["zen.desktop"];
                 "x-scheme-handler/chrome" = ["zen.desktop"];

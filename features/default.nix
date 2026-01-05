@@ -16,6 +16,7 @@
                 wezterm = lib.mkEnableOption "WezTerm terminal emulator";
             };
             browser = {
+                default = lib.mkOption {default = "zen";};
                 zen = lib.mkEnableOption "Zen browser";
                 brave = lib.mkEnableOption "Brave browser";
             };
@@ -73,6 +74,13 @@
             in
                 (t.default == "foot" && t.foot) || (t.default == "wezterm" && t.wezterm);
             message = "The selected default terminal must be enabled.";
+        }
+        {
+            assertion = let
+                b = config.features.gui.browser;
+            in
+                (b.default == "zen" && b.zen) || (b.default == "brave" && b.brave);
+            message = "The selected default browser must be enabled.";
         }
     ];
 }
