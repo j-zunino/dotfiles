@@ -103,4 +103,5 @@ return {
     map('n', '<leader>sl', ':Pick buf_lines<CR>', 'Buffers Lines'),
     map('n', '<leader>si', ':Pick icons<CR>', 'Icons'),
     map('n', '<leader>sc', ':Pick colorschemes<CR>', 'Colorschemes'),
+    map('n', '<leader>sr', ':Pick resume<CR>', 'Resume'),
 }
