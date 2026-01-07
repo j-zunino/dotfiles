@@ -7,6 +7,7 @@ return {
         require('mini.pairs').setup()
         require('mini.surround').setup()
         require('mini.splitjoin').setup()
+        require('mini.tabline').setup()
 
         require('plugins.mini.ai')
         require('plugins.mini.bufremove')

@@ -143,6 +143,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         local warn = get_hl_colors('DiagnosticWarn')
         local accent = get_hl_colors('Function')
         local cursor_line = get_hl_colors('CursorLine')
+        local blue = get_hl_colors('Blue')
 
         -- stylua: ignore start
         -- Neovim
@@ -150,6 +151,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         hl(0, 'StatusLine', { fg = comment.fg,  bg= cursor_line.bg })
         hl(0, 'StatusLineNC', { link = 'StatusLine' })
         hl(0, 'CursorLineNr', { fg = comment.fg, bg = cursor_line.bg })
+        hl(0, 'TabLineFill', { fg = nil, bg = nil })
 
         -- Spell
         hl(0, 'SpellBad', { fg = warn.fg, underline = true })
@@ -165,6 +167,12 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         hl(0, 'MiniPickMatchRanges', { fg = accent.fg, bold = true })
         hl(0, 'MiniPickBorderText', { fg = accent.fg, bold = true })
         hl(0, 'MiniPickMatchCurrent', { fg = normal.fg, bg = cursor_line.bg, bold = true })
+        hl(0, 'MiniTablineCurrent', { fg = normal.fg, bg = cursor_line.bg, bold = true })
+        hl(0, 'MiniTablineModifiedCurrent', { fg = blue.fg, bg = cursor_line.bg, bold = true })
+        hl(0, 'MiniTablineHidden', { fg = comment.fg, bg = nil })
+        hl(0, 'MiniTablineModifiedHidden', { fg = blue.fg, bg = nil })
+        hl(0, 'MiniTablineVisible', { fg = comment.fg, bg = nil })
+        hl(0, 'MiniTablineModifiedVisible', { fg = blue.fg, bg = nil })
 
         hl(0, 'TreesitterContext', { bg = cursor_line.bg })
         hl(0, 'TreesitterContextLineNumber', { fg = comment.fg, bg = cursor_line.bg })
