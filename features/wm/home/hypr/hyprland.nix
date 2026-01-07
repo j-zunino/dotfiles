@@ -42,9 +42,13 @@
                     "4, monitor:HDMI-A-1, default:true"
                 ];
 
-                windowrulev2 = [
-                    "float, class:^(floating)$"
-                ];
+                windowrule = {
+                    name = "float floating class";
+                    "match:class" = "^(floating)$";
+                    size = "(monitor_w/1.4) (monitor_h/1.2)";
+                    float = "on";
+                    center = "on";
+                };
             };
         };
     };
