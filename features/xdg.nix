@@ -16,20 +16,16 @@
                 "audio/wav" = ["mpv.desktop"];
             })
 
-            (lib.mkIf (config.features.gui.browser.default == "brave") {
-                "x-scheme-handler/http" = ["brave.desktop"];
-                "x-scheme-handler/https" = ["brave.desktop"];
-                "x-scheme-handler/chrome" = ["brave.desktop"];
-                "text/html" = ["brave.desktop"];
-                "application/xhtml+xml" = ["brave.desktop"];
+            (lib.mkIf (config.features.gui.terminal.default != null) {
+                "x-terminal-exec" = ["${config.features.gui.terminal.default}.desktop"];
             })
 
-            (lib.mkIf (config.features.gui.browser.default == "zen") {
-                "x-scheme-handler/http" = ["zen.desktop"];
-                "x-scheme-handler/https" = ["zen.desktop"];
-                "x-scheme-handler/chrome" = ["zen.desktop"];
-                "text/html" = ["zen.desktop"];
-                "application/xhtml+xml" = ["zen.desktop"];
+            (lib.mkIf (config.features.gui.browser.default != null) {
+                "x-scheme-handler/http" = ["${config.features.gui.browser.default}.desktop"];
+                "x-scheme-handler/https" = ["${config.features.gui.browser.default}.desktop"];
+                "x-scheme-handler/chrome" = ["${config.features.gui.browser.default}.desktop"];
+                "text/html" = ["${config.features.gui.browser.default}.desktop"];
+                "application/xhtml+xml" = ["${config.features.gui.browser.default}.desktop"];
             })
         ];
     };
