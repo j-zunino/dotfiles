@@ -92,7 +92,7 @@
 
                     cpu = {
                         format = "󰍛";
-                        on-click = "~/dotfiles/features/scripts/toggle_floating.sh floating btop";
+                        on-click = "~/dotfiles/features/scripts/toggle_floating.sh ${config.features.gui.terminal.default} floating btop";
                         states = {
                             warning = 70;
                             critical = 90;
@@ -101,7 +101,7 @@
 
                     memory = {
                         format = " ";
-                        on-click = "~/dotfiles/features/scripts/toggle_floating.sh floating btop";
+                        on-click = "~/dotfiles/features/scripts/toggle_floating.sh ${config.features.gui.terminal.default} floating btop";
                         states = {
                             warning = 70;
                             critical = 90;
@@ -113,7 +113,7 @@
                         format = "";
                         format-connected = "󰂱";
                         tooltip-format = "Devices connected: {num_connections}\n  {device_battery_percentage}%";
-                        on-click = "~/dotfiles/features/scripts/toggle_floating.sh floating bluetui";
+                        on-click = "~/dotfiles/features/scripts/toggle_floating.sh ${config.features.gui.terminal.default} floating bluetui";
                     };
 
                     pulseaudio = {
@@ -122,7 +122,7 @@
                         format-muted = "󰝟";
                         format-icons = {default = ["󰕿" "󰖀" "󰕾"];};
                         scroll-step = 1;
-                        on-click = "~/dotfiles/features/scripts/toggle_floating.sh floating wiremix";
+                        on-click = "~/dotfiles/features/scripts/toggle_floating.sh ${config.features.gui.terminal.default} floating wiremix";
                         on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
                         # ignored-sinks = ["Easy Effects Sink"];
                     };
@@ -135,7 +135,7 @@
                         format-disconnected = "";
                         tooltip-format-wifi = "{essid} ({frequency} GHz)\n{icon} {signalStrength}%  ↓{bandwidthDownBytes}  ↑{bandwidthUpBytes}";
                         tooltip-format-ethernet = "{icon} ↓{bandwidthDownBytes} ↑{bandwidthUpBytes}";
-                        on-click = "~/dotfiles/features/scripts/toggle_floating.sh floating impala";
+                        on-click = "~/dotfiles/features/scripts/toggle_floating.sh ${config.features.gui.terminal.default} floating impala";
                     };
 
                     battery = {
