@@ -27,8 +27,8 @@
 
         (lib.mkIf config.features.hardware.greetd {
             services.greetd = let
-                tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
-                hyprland = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland";
+                tuigreet = lib.getExe pkgs.tuigreet;
+                hyprland = lib.getExe inputs.hyprland.packages.${pkgs.system}.hyprland;
             in {
                 enable = true;
                 settings.default_session.command = "${tuigreet} --time --remember --remember-user-session --cmd ${hyprland} --theme 'border=green'";
