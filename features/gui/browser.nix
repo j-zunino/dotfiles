@@ -8,7 +8,7 @@
     config = lib.mkMerge [
         (lib.mkIf config.features.gui.browser.zen {
             home.packages = [
-                inputs.zen-browser.packages.${pkgs.system}.default
+                inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
             ];
         })
 
