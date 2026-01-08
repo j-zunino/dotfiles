@@ -7,9 +7,12 @@
             packages = true;
             spotify = true;
             terminal = {
-                wezterm = true;
+                default = "foot";
+                foot = true;
+                wezterm = false;
             };
             browser = {
+                default = "zen";
                 zen = true;
                 brave = true;
             };
