@@ -35,6 +35,7 @@
             nvim = true;
             packages = true;
             ssh = true;
+            starship = true;
             tmux = true;
             zsh = true;
         };

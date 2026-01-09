@@ -35,6 +35,7 @@
             nvim = lib.mkEnableOption "Text editor";
             packages = lib.mkEnableOption "CLI packages that do not require configuration";
             ssh = lib.mkEnableOption "SSH";
+            starship = lib.mkEnableOption "Shell prompt";
             tmux = lib.mkEnableOption "Terminal multiplexer";
             zsh = lib.mkEnableOption "Shell";
         };

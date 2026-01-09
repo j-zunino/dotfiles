@@ -15,7 +15,7 @@
                 KEYTIMEOUT=1
                 bindkey -v
 
-                source $HOME/dotfiles/features/scripts/zsh/promp.zsh
+                # source $HOME/dotfiles/features/scripts/zsh/promp.zsh
                 source $HOME/dotfiles/features/scripts/zsh/fzf_scripts.zsh
                 source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 
