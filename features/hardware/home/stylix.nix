@@ -64,7 +64,7 @@ in {
             lazygit.enable = false;
         };
 
-        iconTheme = {
+        icons = {
             enable = true;
             package = pkgs.reversal-icon-theme;
             light = "Reversal";
