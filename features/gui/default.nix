@@ -1,5 +1,6 @@
 {
     imports = [
+        ./affinity.nix
         ./browser.nix
         ./launcher.nix
         ./multimedia.nix

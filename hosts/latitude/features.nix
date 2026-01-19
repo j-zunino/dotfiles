@@ -1,6 +1,7 @@
 {...}: {
     features = {
         gui = {
+            affinity = false;
             launcher = true;
             multimedia = true;
             notifications = true;

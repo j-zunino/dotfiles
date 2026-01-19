@@ -5,6 +5,7 @@
 }: {
     options.features = {
         gui = {
+            affinity = lib.mkEnableOption "All-in-one creative app";
             launcher = lib.mkEnableOption "App launcher";
             multimedia = lib.mkEnableOption "Multimedia support";
             notifications = lib.mkEnableOption "Notification daemon";
