@@ -63,7 +63,7 @@
                 character = {
                     success_symbol = "[>](bold green)";
                     error_symbol = "[>](bold red)";
-                    vimcmd_symbol = "[>](bright-black)";
+                    vimcmd_symbol = "[■](bright-black)";
                 };
             };
         };
