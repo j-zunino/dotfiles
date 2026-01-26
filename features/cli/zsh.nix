@@ -28,6 +28,9 @@
                 bindkey '^K' history-search-forward
                 bindkey '^L' autosuggest-accept
 
+                bindkey '^[[D' backward-char
+                bindkey '^[[C' forward-char
+
                 bindkey -s '^f' '$HOME/dotfiles/features/scripts/tmux/tmux_sessionizer^M'
                 bindkey -s '^e' 'nvim +Oil^M'
             '';
