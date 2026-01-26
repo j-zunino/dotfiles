@@ -21,6 +21,7 @@
                 "$mod, P, exec, $menu drun"
                 "$mod, E, exec, $file-explorer"
                 "$mod, V, exec, rofi_clipboard"
+                "$mod, B, exec, pkill -SIGUSR1 waybar"
 
                 "$mod_shift, P, exec, $menu run"
                 "$mod_shift, RETURN, exec, $terminal"
