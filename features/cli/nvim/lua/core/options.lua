@@ -11,6 +11,7 @@ vim.o.termguicolors = true
 vim.o.showmode = true
 vim.o.shortmess = vim.o.shortmess .. 'I'
 vim.o.guicursor = 'a:block'
+vim.o.statusline = ' %f %r %= %l:%c - %{v:lua.custom_file_icon()} '
 
 vim.o.scrolloff = 8
 vim.o.pumheight = 15
@@ -64,4 +65,24 @@ function _G.custom_fold_text()
     local line = vim.fn.getline(vim.v.foldstart)
     local lines = vim.v.foldend - vim.v.foldstart + 1
     return line .. ' … ' .. lines .. ' lines'
+end
+
+function _G.custom_file_icon()
+    if vim.b._file_icon then
+        return vim.b._file_icon
+    end
+
+    local ok, mini_icons = pcall(require, 'mini.icons')
+    if not ok then
+        return ''
+    end
+
+    local icon, _ = mini_icons.get('file', vim.fn.expand('%:t'))
+    if not icon then
+        vim.b._file_icon = ''
+        return ''
+    end
+
+    vim.b._file_icon = icon .. ' '
+    return vim.b._file_icon
 end
