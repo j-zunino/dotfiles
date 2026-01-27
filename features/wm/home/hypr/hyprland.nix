@@ -12,7 +12,6 @@
         ./hypridle.nix
         ./input.nix
         ./look.nix
-        ./wpaperd.nix
     ];
 
     config = lib.mkIf config.features.wm.hyprland {
@@ -23,6 +22,7 @@
                 hyprshot
                 wl-clipboard
                 cliphist
+                wbg
             ];
         };
 

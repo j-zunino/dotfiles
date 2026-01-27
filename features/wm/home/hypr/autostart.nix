@@ -5,8 +5,7 @@
 }: {
     wayland.windowManager.hyprland.settings.exec-once =
         [
-            "sleep 5"
-            "wpaperd"
+            "wbg -s $(find ~/dotfiles/wallpapers -type f | shuf -n 1)"
             "waybar"
             "hypridle"
             "wl-paste --watch cliphist store"
