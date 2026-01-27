@@ -75,49 +75,6 @@ api.nvim_create_autocmd('LspAttach', {
             map('<leader>cu', ':VtsExec remove_unused_imports<CR>', 'Remove unused imports')
         end
         -- stylua: ignore end
-
-        local function client_supports_method(client, method, bufnr)
-            if vim.fn.has('nvim-0.11') == 1 then
-                return client:supports_method(method, bufnr)
-            else
-                return client.supports_method(method, { bufnr = bufnr })
-            end
-        end
-
-        local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if
-            client
-            and client_supports_method(
-                client,
-                vim.lsp.protocol.Methods.textDocument_documentHighlight,
-                event.buf
-            )
-        then
-            local highlight_augroup =
-                api.nvim_create_augroup('lsp-highlight', { clear = false })
-            api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                buffer = event.buf,
-                group = highlight_augroup,
-                callback = vim.lsp.buf.document_highlight,
-            })
-
-            api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-                buffer = event.buf,
-                group = highlight_augroup,
-                callback = vim.lsp.buf.clear_references,
-            })
-
-            api.nvim_create_autocmd('LspDetach', {
-                group = api.nvim_create_augroup('lsp-detach', { clear = true }),
-                callback = function(event2)
-                    vim.lsp.buf.clear_references()
-                    api.nvim_clear_autocmds({
-                        group = 'lsp-highlight',
-                        buffer = event2.buf,
-                    })
-                end,
-            })
-        end
     end,
 })
 
@@ -159,6 +116,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         hl(0, 'SpellRare', { fg = warn.fg, underline = true })
 
         -- Mini
+        hl(0, 'MiniCursorword', { bg = cursor_line.bg, bold = true })
         hl(0, 'MiniPickPrompt', { fg = normal.fg })
         hl(0, 'MiniPickPromptCaret', { link = 'MiniPickPrompt' })
         hl(0, 'MiniPickPromptPrefix', { fg = accent.fg, bold = true })
