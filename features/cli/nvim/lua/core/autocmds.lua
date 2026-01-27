@@ -147,8 +147,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
         -- stylua: ignore start
         -- Neovim
-        -- hl(0, 'Pmenu', { link = 'Normal' })
-        hl(0, 'StatusLine', { fg = comment.fg,  bg= cursor_line.bg })
+        hl(0, 'StatusLine', { fg = comment.fg,  bg = cursor_line.bg })
         hl(0, 'StatusLineNC', { link = 'StatusLine' })
         hl(0, 'CursorLineNr', { fg = comment.fg, bg = cursor_line.bg })
         hl(0, 'TabLineFill', { fg = nil, bg = nil })
@@ -174,8 +173,16 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         hl(0, 'MiniTablineVisible', { fg = comment.fg, bg = nil })
         hl(0, 'MiniTablineModifiedVisible', { fg = blue.fg, bg = nil })
 
+        -- Treesitter context
         hl(0, 'TreesitterContext', { bg = cursor_line.bg })
         hl(0, 'TreesitterContextLineNumber', { fg = comment.fg, bg = cursor_line.bg })
+
+        -- Completion
+        hl(0, 'Pmenu', { fg = comment.fg, bg = nil })
+        hl(0, 'PmenuSel', { fg = normal.fg, bg = cursor_line.bg, bold = true })
+        hl(0, 'BlinkCmpMenuBorder', { link = "FloatBorder" })
+        hl(0, 'BlinkCmpDocBorder', { link = "FloatBorder" })
+        hl(0, 'BlinkCmpSignatureHelpBorder', { link = "FloatBorder" })
         -- stylua: ignore end
     end,
 })
