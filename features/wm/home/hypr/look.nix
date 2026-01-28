@@ -16,8 +16,8 @@
                 gaps_out = 0;
                 border_size = 2;
                 resize_on_border = true;
-                "col.active_border" = colors.accent;
-                "col.inactive_border" = colors.bg1;
+                "col.active_border" = lib.mkForce colors.accent.rgb;
+                "col.inactive_border" = lib.mkForce colors.bg1.rgb;
             }
 
             (lib.mkIf config.features.gaming.tweaks {

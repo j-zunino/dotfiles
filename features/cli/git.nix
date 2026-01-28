@@ -72,16 +72,16 @@
                             border = "single";
                             nerdFontsVersion = 3;
                             commitHashLength = 0;
-                            authorColors = {"*" = "${colors.gray1-hex}";};
+                            authorColors = {"*" = "${colors.gray1.hex}";};
                             theme = {
-                                activeBorderColor = ["${colors.accent-hex}"];
-                                inactiveBorderColor = ["${colors.gray1-hex}"];
-                                searchingActiveBorderColor = ["${colors.purple-hex}"];
-                                optionsTextColor = ["${colors.fg-hex}"];
-                                selectedLineBgColor = ["${colors.bg1-hex}"];
-                                cherryPickedCommitFgColor = ["${colors.red-hex}"];
-                                cherryPickedCommitBgColor = ["${colors.bg0-hex}"];
-                                defaultFgColor = ["${colors.fg-hex}"];
+                                activeBorderColor = ["${colors.accent.hex}"];
+                                inactiveBorderColor = ["${colors.gray1.hex}"];
+                                searchingActiveBorderColor = ["${colors.purple.hex}"];
+                                optionsTextColor = ["${colors.fg.hex}"];
+                                selectedLineBgColor = ["${colors.bg1.hex}"];
+                                cherryPickedCommitFgColor = ["${colors.red.hex}"];
+                                cherryPickedCommitBgColor = ["${colors.bg0.hex}"];
+                                defaultFgColor = ["${colors.fg.hex}"];
                             };
                         };
                     }

@@ -29,7 +29,7 @@
                     margin: 0;
                     padding: 0;
                     spacing: 0;
-                    text-color: ${colors.fg-hex};
+                    text-color: ${colors.fg.hex};
                     background-color: transparent;
                 }
 
@@ -46,14 +46,14 @@
                     width: 60ch;
                     padding: 0 4ch;
                     border: 2px;
-                    border-color: ${colors.accent-hex};
-                    background-color: ${colors.bg0-hex};
+                    border-color: ${colors.accent.hex};
+                    background-color: ${colors.bg0.hex};
                 }
 
                 textbox-prompt-separator {
                     str: "───────────────────────────────────────────────────";
                     expand: false;
-                    text-color: ${colors.gray1-hex};
+                    text-color: ${colors.gray1.hex};
                 }
 
                 textbox-top-separator { str: ""; expand: false; }
@@ -65,7 +65,7 @@
                 inputbar { spacing: 1ch; }
 
                 prompt {
-                    text-color: ${colors.accent-hex};
+                    text-color: ${colors.accent.hex};
                     font: "${stylixFonts.monospace.name} Bold ${toString stylixFonts.sizes.terminal}";
                 }
 
@@ -74,19 +74,19 @@
 
                 element {
                     padding: 0 0 0 2ch;
-                    text-color: ${colors.gray1-hex};
+                    text-color: ${colors.gray1.hex};
                 }
 
                 element selected {
                     border: 0 0 0 0.6ch;
-                    border-color: ${colors.accent-hex};
-                    text-color: ${colors.fg-hex};
-                    background-color: ${colors.bg1-hex};
+                    border-color: ${colors.accent.hex};
+                    text-color: ${colors.fg.hex};
+                    background-color: ${colors.bg1.hex};
                 }
 
                 element-text {
                     text-color: inherit;
-                    highlight: bold ${colors.accent-hex};
+                    highlight: bold ${colors.accent.hex};
                 }
             '');
         };

@@ -68,11 +68,11 @@
                             weeks-pos = "none";
                             on-scroll = 1;
                             format = {
-                                months = "<span color='${colors.accent-hex}'>{}</span>";
-                                days = "<span color='${colors.fg-hex}'>{}</span>";
-                                weeks = "<span color='${colors.bg2-hex}'>W{}</span>";
-                                weekdays = "<span color='${colors.gray1-hex}'>{}</span>";
-                                today = "<span color='${colors.red-hex}'><b><u>{}</u></b></span>";
+                                months = "<span color='${colors.accent.hex}'>{}</span>";
+                                days = "<span color='${colors.fg.hex}'>{}</span>";
+                                weeks = "<span color='${colors.bg2.hex}'>W{}</span>";
+                                weekdays = "<span color='${colors.gray1.hex}'>{}</span>";
+                                today = "<span color='${colors.red.hex}'><b><u>{}</u></b></span>";
                             };
                         };
                     };
@@ -158,7 +158,7 @@
 
             style = ''
                 * {
-                    background: ${colors.bg1-hex};
+                    background: ${colors.bg1.hex};
                     font-family: ${stylixFonts.monospace.name};
                     font-size: ${toString stylixFonts.sizes.terminal}px;
 
@@ -169,26 +169,26 @@
                     text-shadow: none;
                     box-shadow: none;
                 }
-                window#waybar { color: ${colors.gray1-hex}; }
-                .charging { color: ${colors.accent-hex}; }
-                .warning { color: ${colors.yellow-hex}; }
-                .critical { color: ${colors.red-hex}; }
+                window#waybar { color: ${colors.gray1.hex}; }
+                .charging { color: ${colors.accent.hex}; }
+                .warning { color: ${colors.yellow.hex}; }
+                .critical { color: ${colors.red.hex}; }
                 tooltip {
                     border: 2px solid;
-                    border-color: ${colors.accent-hex};
+                    border-color: ${colors.accent.hex};
                 }
                 tooltip label {
-                    color: ${colors.fg-hex};
+                    color: ${colors.fg.hex};
                 }
 
 
                 #custom-icon {
-                    color: ${colors.green-hex};
+                    color: ${colors.green.hex};
                     margin: ${margin-inline};
                 }
 
                 #workspaces button {
-                    color: ${colors.gray1-hex};
+                    color: ${colors.gray1.hex};
                     padding: 0 4px;
                 }
                 #workspaces button.empty {
@@ -196,18 +196,18 @@
                     opacity: 0.5;
                 }
                 #workspaces button:hover {
-                    color: ${colors.fg-hex};
+                    color: ${colors.fg.hex};
                     font-weight: bold;
                     background: transparent;
                     opacity: 1;
                 }
                 #workspaces button.active {
-                    color: ${colors.accent-hex};
+                    color: ${colors.accent.hex};
                     font-weight: bold;
                     opacity: 1;
                 }
 
-                #custom-gpu-screen-recorder.recording { color: ${colors.red-hex}; }
+                #custom-gpu-screen-recorder.recording { color: ${colors.red.hex}; }
 
                 #cpu,
                 #memory,
