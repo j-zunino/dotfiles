@@ -152,6 +152,11 @@
                             warning = 30;
                             critical = 20;
                         };
+                        events = {
+                            on-discharging-warning = "notify-send -u normal 'Low Battery' 'Connect charger'";
+                            on-discharging-critical = "notify-send -u critical 'Very Low Battery' 'Connect charger'";
+                            on-charging-100 = "notify-send -u normal 'Battery Full!' 'Please unplug'";
+                        };
                     };
                 };
             };
