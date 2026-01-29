@@ -8,6 +8,7 @@
         ./networking.nix
         ./nix.nix
         ./nvidia.nix
+        ./powerManagement.nix
         ./stylix.nix
         ./user.nix
     ];

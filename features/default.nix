@@ -66,6 +66,10 @@
             greetd = lib.mkEnableOption "Greetd";
             nvidia = lib.mkEnableOption "NVIDIA GPU support";
             wifi = lib.mkEnableOption "Wireless network support";
+            powerManagement = {
+                auto-cpufreq = lib.mkEnableOption "Automatic CPU speed & power optimizer";
+                batteryLimit = lib.mkEnableOption "Battery limit threshold";
+            };
         };
     };
 
