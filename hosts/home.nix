@@ -10,6 +10,7 @@
     ];
 
     nixpkgs.config.allowUnfree = true;
+    news.display = "silent";
 
     home = {
         username = user;
