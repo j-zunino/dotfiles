@@ -18,7 +18,7 @@
 
                     modules-left = [
                         "custom/icon"
-                        "hyprland/workspaces"
+                        "ext/workspaces"
                     ];
 
                     modules-center = [
@@ -43,7 +43,8 @@
                         on-click = "rofi_logout";
                     };
 
-                    "hyprland/workspaces" = {
+                    "ext/workspaces" = {
+                        on-click = "activate";
                         persistent-workspaces = {
                             "1" = [];
                             "2" = [];
@@ -196,7 +197,7 @@
                     color: ${colors.gray1.hex};
                     padding: 0 4px;
                 }
-                #workspaces button.empty {
+                #workspaces button.empty, #workspaces button.persistent {
                     color: inherit;
                     opacity: 0.5;
                 }
@@ -210,6 +211,9 @@
                     color: ${colors.accent.hex};
                     font-weight: bold;
                     opacity: 1;
+                }
+                #workspaces button.urgent {
+                    color: ${colors.red.hex}
                 }
 
                 #custom-gpu-screen-recorder.recording { color: ${colors.red.hex}; }

@@ -23,13 +23,18 @@
 
         hyprland.url = "github:hyprwm/Hyprland";
 
+        mango = {
+            url = "github:DreamMaoMao/mangowc";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         # zen-browser.url = "github:0xc000022070/zen-browser-flake";
         zen-browser = {
             url = "github:youwen5/zen-browser-flake";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        affinity-nix.url = "github:mrshmllow/affinity-nix";
+        # affinity-nix.url = "github:mrshmllow/affinity-nix";
     };
 
     outputs = {

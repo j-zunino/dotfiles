@@ -42,6 +42,7 @@
 
         wm = {
             hyprland = lib.mkEnableOption "Wayland window manager";
+            mango = lib.mkEnableOption "Wayland window manager";
             waybar = lib.mkEnableOption "Status bar";
         };
 
