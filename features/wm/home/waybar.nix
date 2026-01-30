@@ -102,6 +102,7 @@
 
                     memory = {
                         format = " ";
+                        tooltip-format = "{used}/{total}GiB ({percentage}%) Used\n{swapUsed}/{swapTotal}GiB ({swapPercentage}%) Swap used";
                         on-click = "~/dotfiles/features/scripts/toggle_floating.sh ${config.features.gui.terminal.default} floating btop";
                         states = {
                             warning = 70;
@@ -113,7 +114,9 @@
                         format-disabled = "󰂲";
                         format = "";
                         format-connected = "󰂱";
-                        tooltip-format = "Devices connected: {num_connections}\n  {device_battery_percentage}%";
+                        tooltip-format = "No devices connected";
+                        tooltip-format-connected = "Devices connected: {num_connections}\n{device_enumerate}";
+                        tooltip-format-enumerate-connected = "{device_alias} - {device_battery_percentage}% 󰥉";
                         on-click = "~/dotfiles/features/scripts/toggle_floating.sh ${config.features.gui.terminal.default} floating bluetui";
                     };
 
