@@ -39,6 +39,7 @@
 
         wm = {
             hyprland = true;
+            mango = true;
             waybar = true;
         };
 
@@ -62,6 +63,10 @@
             greetd = true;
             nvidia = true;
             wifi = false;
+            powerManagement = {
+                auto-cpufreq = false;
+                batteryLimit = false;
+            };
         };
     };
 }
