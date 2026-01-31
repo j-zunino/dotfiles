@@ -6,17 +6,15 @@
 }: {
     imports = [
         inputs.mango.hmModules.mango
-        ./look.nix
+        ./autostart.nix
         ./binds.nix
+        ./look.nix
     ];
 
     config = lib.mkIf config.features.wm.mango {
         wayland.windowManager.mango = {
             enable = true;
             settings = ''
-                exec-once=waybar
-                exec-once=wbg -s $(find ~/dotfiles/wallpapers -type f | shuf -n 1)
-                exec-once=wl-paste --watch cliphist store
 
                 new_is_master=0
                 circle_layout=tile,scroller,vertical_scroller
