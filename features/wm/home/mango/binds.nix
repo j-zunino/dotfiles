@@ -64,33 +64,24 @@
         bind=NONE,XF86MonBrightnessDown,spawn_shell,brightnessctl -n1 set 5%- && osd_brightness
 
         # Tags
-        bind=SUPER,1,view,1,0
-        bind=SUPER,2,view,2,0
-        bind=SUPER,3,view,3,0
-        bind=SUPER,4,view,4,0
-        bind=SUPER,5,view,5,0
-        bind=SUPER,6,view,6,0
-        bind=SUPER,7,view,7,0
-        bind=SUPER,8,view,8,0
-        bind=SUPER,9,view,9,0
-        bind=SUPER+SHIFT,1,tagsilent,1,0
-        bind=SUPER+SHIFT,2,tagsilent,2,0
-        bind=SUPER+SHIFT,3,tagsilent,3,0
-        bind=SUPER+SHIFT,4,tagsilent,4,0
-        bind=SUPER+SHIFT,5,tagsilent,5,0
-        bind=SUPER+SHIFT,6,tagsilent,6,0
-        bind=SUPER+SHIFT,7,tagsilent,7,0
-        bind=SUPER+SHIFT,8,tagsilent,8,0
-        bind=SUPER+SHIFT,9,tagsilent,9,0
+        bind=SUPER,1,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 1
+        bind=SUPER,2,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 2
+        bind=SUPER,3,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 3
+        bind=SUPER,4,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 4
+        bind=SUPER,5,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 5
+        bind=SUPER,6,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 6
+        bind=SUPER,7,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 7
+        bind=SUPER,8,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 8
+        bind=SUPER,9,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 9
 
-        tagrule=id:1,layout_name:tile
-        tagrule=id:2,layout_name:tile
-        tagrule=id:3,layout_name:tile
-        tagrule=id:4,layout_name:tile
-        tagrule=id:5,layout_name:tile
-        tagrule=id:6,layout_name:tile
-        tagrule=id:7,layout_name:tile
-        tagrule=id:8,layout_name:tile
-        tagrule=id:9,layout_name:tile
+        bind=SUPER+SHIFT,1,tagcrossmon,1,DP-1
+        bind=SUPER+SHIFT,2,tagcrossmon,2,DP-1
+        bind=SUPER+SHIFT,3,tagcrossmon,3,DP-1
+        bind=SUPER+SHIFT,4,tagcrossmon,4,HDMI-A-1
+        bind=SUPER+SHIFT,5,tagcrossmon,5,HDMI-A-1
+        bind=SUPER+SHIFT,6,tagcrossmon,6,HDMI-A-1
+        bind=SUPER+SHIFT,7,tagcrossmon,7,DP-1
+        bind=SUPER+SHIFT,8,tagcrossmon,8,DP-1
+        bind=SUPER+SHIFT,9,tagcrossmon,9,DP-1
     '';
 }

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+TAG="$1"
+[ -z "$TAG" ] && exit 1
+
+# Get focused monitor
+FOCUSED_MONITOR=$(
+    mmsg -g -o | awk '$2=="selmon" && $3==1 {print $1; exit}'
+)
+
+# Find the monitor owns the tag
+OWNER=$(
+    mmsg -g -Ot |
+        awk -v tag="$TAG" '
+      $2=="tag" && $3==tag {
+        if ($4 != 0 || $5 != 0 || $6 != 0)
+          print $1
+      }
+    ' | head -n1
+)
+
+if [ -n "$OWNER" ]; then
+    # Tag exists
+    mmsg -o "$OWNER" -s -t "$TAG"
+else
+    # Tag does not exist
+    mmsg -d viewcrossmon,"$TAG","$FOCUSED_MONITOR"
+fi
