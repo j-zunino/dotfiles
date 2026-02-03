@@ -1,5 +1,6 @@
 {
     lib,
+    config,
     hostname,
     ...
 }: {
@@ -10,10 +11,11 @@
             exec-once=wl-paste --watch cliphist store
         ''
 
+        (lib.mkIf (config.features.gaming.steam) ''exec-once=steam -silent'')
+
         (lib.mkIf (hostname == "desktop") ''
             exec-once=spotify
             exec-once=webcord -m
-            exec-once=steam -silent
         '')
     ];
 }
