@@ -20,6 +20,7 @@
                 default = lib.mkOption {default = "zen";};
                 zen = lib.mkEnableOption "Zen browser";
                 brave = lib.mkEnableOption "Brave browser";
+                helium = lib.mkEnableOption "Helium browser";
             };
         };
 
@@ -86,7 +87,7 @@
             assertion = let
                 b = config.features.gui.browser;
             in
-                (b.default == "zen" && b.zen) || (b.default == "brave" && b.brave);
+                (b.default == "zen" && b.zen) || (b.default == "brave" && b.brave) || (b.default == "helium" && b.helium);
             message = "The selected default browser must be enabled.";
         }
     ];

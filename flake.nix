@@ -34,6 +34,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        helium = {
+            url = "github:vikingnope/helium-browser-nix-flake";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         affinity-nix.url = "github:mrshmllow/affinity-nix";
     };
 

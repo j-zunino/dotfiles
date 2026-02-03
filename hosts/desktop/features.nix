@@ -16,6 +16,7 @@
                 default = "zen";
                 zen = true;
                 brave = true;
+                helium = true;
             };
         };
 

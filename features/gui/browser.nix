@@ -24,5 +24,11 @@
                 ];
             };
         })
+
+        (lib.mkIf config.features.gui.browser.helium {
+            home.packages = [
+                inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
+            ];
+        })
     ];
 }

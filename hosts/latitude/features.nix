@@ -15,7 +15,8 @@
             browser = {
                 default = "zen";
                 zen = true;
-                brave = true;
+                brave = false;
+                helium = true;
             };
         };
 
