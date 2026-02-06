@@ -74,14 +74,14 @@
         bind=SUPER,8,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 8
         bind=SUPER,9,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 9
 
-        bind=SUPER+SHIFT,1,tagcrossmon,1,DP-1
-        bind=SUPER+SHIFT,2,tagcrossmon,2,DP-1
-        bind=SUPER+SHIFT,3,tagcrossmon,3,DP-1
-        bind=SUPER+SHIFT,4,tagcrossmon,4,HDMI-A-1
-        bind=SUPER+SHIFT,5,tagcrossmon,5,HDMI-A-1
-        bind=SUPER+SHIFT,6,tagcrossmon,6,HDMI-A-1
-        bind=SUPER+SHIFT,7,tagcrossmon,7,DP-1
-        bind=SUPER+SHIFT,8,tagcrossmon,8,DP-1
-        bind=SUPER+SHIFT,9,tagcrossmon,9,DP-1
+        bind=SUPER+SHIFT,1,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 1
+        bind=SUPER+SHIFT,2,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 2
+        bind=SUPER+SHIFT,3,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 3
+        bind=SUPER+SHIFT,4,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 4
+        bind=SUPER+SHIFT,5,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 5
+        bind=SUPER+SHIFT,6,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 6
+        bind=SUPER+SHIFT,7,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 7
+        bind=SUPER+SHIFT,8,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 8
+        bind=SUPER+SHIFT,9,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 9
     '';
 }
