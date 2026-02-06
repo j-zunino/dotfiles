@@ -25,13 +25,18 @@
                     xkb_rules_layout=latam
                     xkb_rules_options=caps:escape
 
-                    allow_tearing=2
                     accel_profile=0
                     warpcursor=0
                     drag_corner=4
                     drag_warp_cursor=0
                     drag_tile_to_tile=1
                 ''
+
+                (lib.mkIf (config.features.gaming.tweaks) ''
+                    allow_tearing=1
+                    syncobj_enable=1
+                    windowrule=force_tearing:1,title:Overwatch.exe
+                '')
 
                 (lib.mkIf (hostname == "desktop") ''
                     monitorrule=name:HDMI-A-1,width:1360,height:768,refresh:60,x:0,y:0,scale:1
