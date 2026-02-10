@@ -30,6 +30,7 @@
 
                 bind-key -n C-f new-window -n sessionizer "$HOME/dotfiles/features/scripts/tmux/tmux_sessionizer"
 
+                bind-key / copy-mode \; send-key ?
                 set-window-option -g mode-keys vi
                 bind-key -T copy-mode-vi v send-keys -X begin-selection
                 bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
