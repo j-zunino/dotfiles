@@ -59,7 +59,9 @@
                 tmuxPlugins.sensible
                 tmuxPlugins.resurrect
                 {
+                    plugin = tmuxPlugins.continuum;
                     extraConfig = ''
+                        set -g @continuum-restore 'on'
                     '';
                 }
                 {
