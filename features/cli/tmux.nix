@@ -30,6 +30,13 @@
 
                 bind-key -n C-f new-window -n sessionizer "$HOME/dotfiles/features/scripts/tmux/tmux_sessionizer"
 
+                set-window-option -g mode-keys vi
+                bind-key -T copy-mode-vi v send-keys -X begin-selection
+                bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+                bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+                bind-key -T copy-mode-vi Escape send-keys -X cancel
+                unbind -T copy-mode-vi MouseDragEnd1Pane
+
                 # Pane
                 set -g pane-active-border-style "fg=colour2,bg=default"
 
@@ -52,13 +59,7 @@
                 tmuxPlugins.sensible
                 tmuxPlugins.resurrect
                 {
-                    plugin = tmuxPlugins.yank;
                     extraConfig = ''
-                        set-window-option -g mode-keys vi
-                        bind-key -T copy-mode-vi v send-keys -X begin-selection
-                        bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-                        bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-                        bind-key -T copy-mode-vi Escape send-keys -X cancel
                     '';
                 }
                 {
