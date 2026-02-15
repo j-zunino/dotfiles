@@ -15,14 +15,7 @@
                 KEYTIMEOUT=1
                 bindkey -v
 
-                # source $HOME/dotfiles/features/scripts/zsh/promp.zsh
                 source $HOME/dotfiles/features/scripts/zsh/fzf_scripts.zsh
-                source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
-
-                setopt auto_param_slash
-                zstyle ':fzf-tab:*' use-fzf-default-opts yes
-                zstyle ':fzf-tab:*' fzf-flags --margin 0 --bind=tab:accept
-                stty stop undef
 
                 bindkey '^J' history-search-backward
                 bindkey '^K' history-search-forward
@@ -33,7 +26,20 @@
 
                 bindkey -s '^f' '$HOME/dotfiles/features/scripts/tmux/tmux_sessionizer^M'
                 bindkey -s '^e' 'nvim +Oil^M'
+
+                setopt auto_param_slash
+                zstyle ':fzf-tab:*' use-fzf-default-opts yes
+                zstyle ':fzf-tab:*' fzf-flags --margin 0 --bind=tab:accept
+                stty stop undef
             '';
+
+            plugins = [
+                {
+                    name = "fzf-tab";
+                    src = pkgs.zsh-fzf-tab;
+                    file = "share/fzf-tab/fzf-tab.plugin.zsh";
+                }
+            ];
 
             envExtra = ''
                 if [ -f "$HOME/dotfiles/.env" ]; then
