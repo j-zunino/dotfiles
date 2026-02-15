@@ -20,10 +20,10 @@
                 bindkey '^J' history-search-backward
                 bindkey '^K' history-search-forward
                 bindkey '^L' autosuggest-accept
-
                 bindkey '^[[D' backward-char
                 bindkey '^[[C' forward-char
-
+                bindkey '^[[1;5C' forward-word
+                bindkey '^[[1;5D' backward-word
                 bindkey -s '^f' '$HOME/dotfiles/features/scripts/tmux/tmux_sessionizer^M'
                 bindkey -s '^e' 'nvim +Oil^M'
 
