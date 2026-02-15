@@ -16,16 +16,7 @@
     ];
 
     config = lib.mkIf config.features.wm.hyprland {
-        home = {
-            pointerCursor.hyprcursor.enable = true;
-            packages = with pkgs; [
-                hyprpicker
-                hyprshot
-                wl-clipboard
-                cliphist
-                wbg
-            ];
-        };
+        home.pointerCursor.hyprcursor.enable = true;
 
         wayland.windowManager.hyprland = {
             enable = true;
