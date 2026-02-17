@@ -14,6 +14,7 @@ vim.o.guicursor = 'a:block'
 vim.o.statusline = ' %f %r %= %l:%c - %{v:lua.custom_file_icon()} '
 
 vim.o.scrolloff = 8
+vim.o.sidescrolloff = 24
 vim.o.pumheight = 15
 vim.o.mouse = 'a'
 vim.o.clipboard = 'unnamedplus'
