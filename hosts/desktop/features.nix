@@ -41,6 +41,7 @@
         wm = {
             hyprland = true;
             mango = true;
+            packages = true;
             waybar = true;
         };
 
