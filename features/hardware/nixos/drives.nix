@@ -4,6 +4,9 @@
     ...
 }: {
     config = lib.mkIf config.features.hardware.driveMounting {
-        services.udisks2.enable = true;
+        services = {
+            udisks2.enable = true;
+            devmon.enable = true;
+        };
     };
 }
