@@ -30,6 +30,8 @@
                     drag_corner=4
                     drag_warp_cursor=0
                     drag_tile_to_tile=1
+
+                    windowrule=isfloating:1,width:1200,height:900,title:^floating$
                 ''
 
                 (lib.mkIf (config.features.gaming.tweaks) ''

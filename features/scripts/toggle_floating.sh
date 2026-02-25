@@ -14,7 +14,7 @@ case "$TERM" in
         exec wezterm start --class "$CLASS" "$APP"
         ;;
     foot)
-        exec foot --app-id="$CLASS" "$APP"
+        exec foot -T "$CLASS" -e "$APP"
         ;;
     *)
         echo "Unknown terminal: $TERM" >&2
