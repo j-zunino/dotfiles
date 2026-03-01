@@ -105,14 +105,5 @@
             };
         })
         hosts);
-        #     .${user} = home-manager.lib.homeManagerConfiguration {
-        # pkgs = nixpkgs.legacyPackages.${system};
-        # extraSpecialArgs = {
-        #     inherit inputs homeStateVersion user hostname;
-        # };
-        # modules = [
-        #     ./home/home.nix
-        #     inputs.stylix.homeModules.stylix
-        # ];
     };
 }
