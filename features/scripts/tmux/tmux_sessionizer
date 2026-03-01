@@ -17,7 +17,8 @@ done
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(printf "%s\n" "${results[@]}" | fzf --preview="" --margin=6)
+    selected=$(printf "%s\n" "${results[@]}" | sed "s|$HOME|~|" | fzf --preview="")
+    selected=${selected/#\~/$HOME}
 fi
 
 if [[ -z $selected ]]; then
@@ -25,19 +26,10 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s "$selected_name" -c "$selected"
-    exit 0
-fi
-
-if ! tmux has-session -t="$selected_name" 2>/dev/null; then
-    tmux new-session -ds "$selected_name" -c "$selected"
-fi
-
-if [[ -z $TMUX ]]; then
-    tmux attach -t "$selected_name"
-else
+if [[ -n $TMUX ]]; then
+    tmux new-session -d -s "$selected_name" -c "$selected"
     tmux switch-client -t "$selected_name"
+else
+    tmux new-session -A -s "$selected_name" -c "$selected"
 fi
