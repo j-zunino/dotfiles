@@ -11,19 +11,21 @@ vim.lsp.enable({
     'pyright',
 })
 
+local diagnostic_icons = {
+    [vim.diagnostic.severity.ERROR] = '■',
+    [vim.diagnostic.severity.WARN] = '▲',
+    [vim.diagnostic.severity.HINT] = '',
+    [vim.diagnostic.severity.INFO] = '󰨐',
+}
+
 vim.diagnostic.config({
-    virtual_text = true,
+    float = { border = 'single' },
+    signs = { text = diagnostic_icons },
     virtual_lines = false,
-    float = {
-        border = 'single',
-    },
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = ' ',
-            [vim.diagnostic.severity.WARN] = ' ',
-            [vim.diagnostic.severity.HINT] = '󰌵 ',
-            [vim.diagnostic.severity.INFO] = ' ',
-        },
+    virtual_text = {
+        prefix = function(diagnostic)
+            return diagnostic_icons[diagnostic.severity] or '■'
+        end,
     },
 })
 
