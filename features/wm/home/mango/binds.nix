@@ -13,8 +13,8 @@
         bind=SUPER,c,spawn_shell,hyprpicker -a
 
         # Open menu
-        bind=SUPER,p,spawn,rofi -show drun
-        bind=SUPER,d,spawn,rofi -show drun
+        bind=SUPER,p,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/features/scripts/fzf/launcher
+        bind=SUPER,d,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/features/scripts/fzf/launcher
         bind=SUPER+SHIFT,q,spawn_shell,rofi_logout
         bind=SUPER,v,spawn_shell,rofi_clipboard
 

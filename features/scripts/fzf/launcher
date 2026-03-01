@@ -1,0 +1,65 @@
+#!/usr/bin/env zsh
+
+CACHE="/tmp/fzf-apps-cache"
+
+desktop_files() {
+    find \
+        "$HOME/.local/share/applications" \
+        "$HOME/.nix-profile/share/applications" \
+        "/run/current-system/sw/share/applications" \
+        "/usr/local/share/applications" \
+        "/var/lib/flatpak/exports/share/applications" \
+        "$HOME/.local/share/flatpak/exports/share/applications" \
+        -name "*.desktop" 2>/dev/null
+}
+
+rebuild_cache() {
+    desktop_files | sort -u | while read -r file; do
+        name=""
+        exec=""
+        nodisplay=""
+        hidden=""
+        in=0
+
+        while read -r line; do
+            case "$line" in
+                "[Desktop Entry]")
+                    in=1
+                    continue
+                    ;;
+                "[ "*) [ "$in" = 1 ] && break ;;
+            esac
+            [ "$in" = 0 ] && continue
+
+            case "$line" in
+                Name=*) [ -z "$name" ] && name="${line#Name=}" ;;
+                Exec=*) [ -z "$exec" ] && exec="${line#Exec=}" ;;
+                NoDisplay=*) nodisplay="${line#NoDisplay=}" ;;
+                Hidden=*) hidden="${line#Hidden=}" ;;
+            esac
+        done <"$file"
+
+        [ "$nodisplay" = true ] && continue
+        [ "$hidden" = true ] && continue
+        [ -z "$name" ] && name="${file##*/}" && name="${name%.desktop}"
+        [ -z "$exec" ] && continue
+
+        printf "%s\t%s\n" "$name" "$exec"
+    done | sort -f >"$CACHE"
+}
+
+if [[ ! -f "$CACHE" ]]; then
+    rebuild_cache
+else
+    for f in ${(f)"$(desktop_files)"}; do
+        [[ "$f" -nt "$CACHE" ]] && rebuild_cache && break
+    done
+fi
+
+selected="$(fzf --margin 0 --delimiter=$'\t' --with-nth=1 --multi <"$CACHE")"
+[ -z "$selected" ] && exit
+
+while IFS=$'\t' read -r name cmd; do
+    cmd=$(printf '%s\n' "$cmd" | sed -E 's/(^|[[:space:]])%[a-zA-Z]//g')
+    setsid -f sh -c "$cmd" >/dev/null 2>&1
+done <<< "$selected"
