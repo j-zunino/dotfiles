@@ -26,14 +26,20 @@
                         "custom/gpu-screen-recorder"
                     ];
 
-                    modules-right = [
-                        "tray"
-                        "cpu"
-                        "memory"
-                        "bluetooth"
-                        "pulseaudio"
-                        "network"
-                        "battery"
+                    modules-right = lib.mkMerge [
+                        [
+                            "tray"
+                            "cpu"
+                            "memory"
+                        ]
+                        (lib.mkIf config.features.hardware.bluetooth [
+                            "bluetooth"
+                        ])
+                        [
+                            "pulseaudio"
+                            "network"
+                            "battery"
+                        ]
                     ];
 
                     # - [ LEFT ] -
