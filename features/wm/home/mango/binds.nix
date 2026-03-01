@@ -15,8 +15,8 @@
         # Open menu
         bind=SUPER,p,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/features/scripts/fzf/launcher
         bind=SUPER,d,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/features/scripts/fzf/launcher
-        bind=SUPER+SHIFT,q,spawn_shell,rofi_logout
-        bind=SUPER,v,spawn_shell,rofi_clipboard
+        bind=SUPER,v,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/features/scripts/fzf/clipboard
+        bind=SUPER+SHIFT,q,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/features/scripts/fzf/logout
 
         # Windows
         bind=SUPER,j,focusstack,next

@@ -40,7 +40,7 @@
                     "custom/icon" = {
                         format = "󰛄";
                         tooltip = false;
-                        on-click = "rofi_logout";
+                        on-click = "foot -T 'floating-fzf' -e $HOME/dotfiles/features/scripts/fzf/logout"; # TODO: Allow other terminals
                     };
 
                     "ext/workspaces" = {

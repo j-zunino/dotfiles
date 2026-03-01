@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+
+confirm() {
+    local prompt=$1
+    local result
+    result=$(printf "No\nYes" | fzf --margin 0 --prompt="$prompt? ")
+    [[ $result == "Yes" ]]
+}
+
+declare -A actions
+actions=(
+    ["󰤄 Suspend"]="suspend"
+    [" Logout"]="logout"
+    ["󰑐 Reboot"]="reboot"
+    ["󰐥 Poweroff"]="poweroff"
+)
+
+choice=$(printf '%s\n' "${(k)actions[@]}" | fzf --margin 0)
+
+[[ -z $choice ]] && exit 0
+
+case "${actions[$choice]}" in
+    logout)
+        confirm "$choice" && loginctl kill-user "$UID"
+        ;;
+    reboot)
+        confirm "$choice" && systemctl reboot
+        ;;
+    poweroff)
+        confirm "$choice" && systemctl poweroff
+        ;;
+    suspend)
+        confirm "$choice" && systemctl suspend
+        ;;
+esac

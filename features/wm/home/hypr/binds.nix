@@ -13,6 +13,7 @@
         "$mod" = "SUPER";
         "$mod_shift" = "SUPER_SHIFT";
 
+        # TODO: Update rofi scripts to fzf
         bind =
             [
                 "$mod, F, exec, $browser"

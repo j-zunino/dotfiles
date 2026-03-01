@@ -6,7 +6,7 @@
     options.features = {
         gui = {
             affinity = lib.mkEnableOption "All-in-one creative app";
-            launcher = lib.mkEnableOption "App launcher";
+            launcher = lib.mkEnableOption "App launcher"; # TODO: Needs update
             multimedia = lib.mkEnableOption "Multimedia support";
             notifications = lib.mkEnableOption "Notification daemon";
             packages = lib.mkEnableOption "GUI packages that do not require extra configuration";
