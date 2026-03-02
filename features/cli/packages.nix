@@ -25,47 +25,19 @@
         (lib.mkIf config.features.cli.devPackages {
             home = {
                 packages = with pkgs; [
-                    # Language Servers
-                    vscode-langservers-extracted
-                    tailwindcss-language-server
-                    typescript-language-server
-                    prisma-language-server
-                    lua-language-server
-                    lua51Packages.lua
-                    tinymist
-                    emmet-ls
-                    pyright
-                    python3
-                    vtsls
+                    # Nix
+                    alejandra
                     nixd
 
-                    # Formatters, Linters & Compilers
-                    prettierd
-                    alejandra
-                    typstyle
-                    eslint_d
-                    gnumake
-                    stylua
-                    typst
-                    shfmt
-                    gcc
-                    jq
-
-                    # Other
                     editorconfig-checker
                     imagemagick
                     websocat
                     luarocks
-                    vi-mongo
-                    posting
                     ripgrep
-                    leetgo
-                    nodejs
-                    cargo
-                    pnpm
-                    # love
+                    shfmt
                     vale
                     nmap
+                    jq
                     fd
                 ];
 

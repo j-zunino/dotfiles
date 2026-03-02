@@ -31,6 +31,7 @@
             bun = lib.mkEnableOption "Bun JS runtime, bundler, and package manager";
             delta = lib.mkEnableOption "Git diff pager";
             devPackages = lib.mkEnableOption "Developer tools";
+            direnv = lib.mkEnableOption "Dev env";
             fzf = lib.mkEnableOption "Fuzzy finder";
             git = lib.mkEnableOption "Git version control system";
             lazygit = lib.mkEnableOption "Git TUI client";

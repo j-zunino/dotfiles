@@ -27,6 +27,7 @@
             bun = false;
             delta = true;
             devPackages = true;
+            direnv = true;
             fzf = true;
             git = true;
             lazygit = true;

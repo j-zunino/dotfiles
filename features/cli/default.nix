@@ -4,6 +4,7 @@
         ./bat.nix
         ./btop.nix
         ./bun.nix
+        ./direnv.nix
         ./fzf.nix
         ./git.nix
         ./nvim.nix
