@@ -28,6 +28,7 @@
         layer_animation_type_close=none
         animation_fade_in=0
         animation_fade_out=0
+        animation_duration_tag=0
         animation_duration_move=200
         animation_curve_move=0.16,1,0.3,1
     '';
