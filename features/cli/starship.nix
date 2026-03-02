@@ -15,6 +15,7 @@
                     "$git_status"
                     "$fill"
                     "$nodejs"
+                    "$nix_shell"
                     "$cmd_duration"
                     "$line_break"
                     "$character"
@@ -33,7 +34,7 @@
                 git_branch = {
                     format = "[$symbol $branch(:$remote_branch)]($style) ";
                     symbol = "";
-                    style = "bold yellow";
+                    style = "yellow";
                 };
 
                 git_status = {
@@ -53,6 +54,13 @@
 
                 nodejs = {
                     format = "[$symbol($version)]($style) ";
+                };
+
+                nix_shell = {
+                    symbol = " ";
+                    pure_msg = "";
+                    impure_msg = "*";
+                    format = "[$symbol$state]($style) ";
                 };
 
                 cmd_duration = {
