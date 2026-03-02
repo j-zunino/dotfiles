@@ -29,6 +29,7 @@
                     vscode-langservers-extracted
                     tailwindcss-language-server
                     typescript-language-server
+                    prisma-language-server
                     lua-language-server
                     lua51Packages.lua
                     tinymist

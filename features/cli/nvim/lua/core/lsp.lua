@@ -9,6 +9,7 @@ vim.lsp.enable({
     'jsonls',
     'tinymist',
     'pyright',
+    'prismals',
 })
 
 local diagnostic_icons = {
