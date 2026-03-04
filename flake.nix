@@ -24,7 +24,7 @@
         hyprland.url = "github:hyprwm/Hyprland";
 
         mango = {
-            url = "github:DreamMaoMao/mangowc";
+            url = "github:mangowm/mango";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
