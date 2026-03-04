@@ -10,6 +10,7 @@ vim.lsp.enable({
     'tinymist',
     'pyright',
     'prismals',
+    'clangd',
 })
 
 local diagnostic_icons = {
