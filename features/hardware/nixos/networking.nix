@@ -11,12 +11,17 @@
         (lib.mkIf (config.features.hardware.wifi) {
             services.connman.wifi.backend = "iwd";
             networking = {
-                networkmanager.enable = true;
-                networkmanager.wifi.backend = "iwd";
-                wireless.iwd.enable = true;
-                wireless.iwd.settings = {
-                    IPv6 = {Enabled = true;};
-                    Settings = {AutoConnect = true;};
+                networkmanager = {
+                    enable = true;
+                    wifi.backend = "iwd";
+                };
+
+                wireless.iwd = {
+                    enable = true;
+                    settings = {
+                        IPv6 = {Enabled = true;};
+                        Settings = {AutoConnect = true;};
+                    };
                 };
             };
         })
