@@ -40,7 +40,7 @@
         };
 
         wm = {
-            hyprland = true;
+            hyprland = false;
             mango = true;
             packages = true;
             waybar = true;
