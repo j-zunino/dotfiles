@@ -13,7 +13,7 @@
                 wezterm = false;
             };
             browser = {
-                default = "zen";
+                default = "helium";
                 zen = true;
                 brave = false;
                 helium = true;
