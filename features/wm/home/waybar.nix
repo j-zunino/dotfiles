@@ -159,10 +159,10 @@
                         format-full = "󰂄";
                         format-icons = {
                             default = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-                            charging = ["󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅"];
+                            charging = ["󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅"];
                         };
-                        tooltip-format-discharging = "{power:>1.0f}W↓ {capacity}%";
-                        tooltip-format-charging = "{power:>1.0f}W↑ {capacity}%";
+                        tooltip-format-discharging = "{capacity}% ({health}%  )\n{power:>1.0f}W↓ ~{time} left";
+                        tooltip-format-charging = "{capacity}% ({health}%  )\n{power:>1.0f}W↑ ~{time} left";
                         states = {
                             warning = 30;
                             critical = 20;
