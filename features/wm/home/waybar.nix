@@ -193,8 +193,8 @@
                 .warning { color: ${colors.yellow.hex}; }
                 .critical { color: ${colors.red.hex}; }
                 tooltip {
-                    border: 2px solid;
-                    border-color: ${colors.accent.hex};
+                    border: 1px solid;
+                    border-color: ${colors.gray1.hex};
                 }
                 tooltip label {
                     color: ${colors.fg.hex};
