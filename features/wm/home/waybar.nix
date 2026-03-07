@@ -21,9 +21,12 @@
                         "ext/workspaces"
                     ];
 
-                    modules-center = [
-                        "clock"
-                        "custom/gpu-screen-recorder"
+                    modules-center = lib.mkMerge [
+                        ["clock"]
+
+                        (lib.mkIf config.features.gaming.packages [
+                            "custom/gpu-screen-recorder"
+                        ])
                     ];
 
                     modules-right = lib.mkMerge [
@@ -32,9 +35,11 @@
                             "cpu"
                             "memory"
                         ]
+
                         (lib.mkIf config.features.hardware.bluetooth [
                             "bluetooth"
                         ])
+
                         [
                             "pulseaudio"
                             "network"
