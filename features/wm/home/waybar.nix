@@ -154,7 +154,6 @@
                     };
 
                     battery = {
-                        interval = 5;
                         format = "{capacity}% {icon}";
                         format-full = "󰂄";
                         format-icons = {
