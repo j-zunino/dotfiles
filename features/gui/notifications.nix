@@ -14,8 +14,14 @@ in {
                 font = "${stylixFonts.monospace.name} ${toString stylixFonts.sizes.popups}";
                 text-color = colors.fg.hex;
                 background-color = colors.bg1.hex;
-                border-color = colors.accent.hex;
+                border-size = 1;
+                border-color = colors.gray1.hex;
                 progress-color = "source ${colors.bg2.hex}";
+
+                "urgency=critical" = {
+                    border-size = 2;
+                    border-color = colors.red.hex;
+                };
             };
         };
     };
