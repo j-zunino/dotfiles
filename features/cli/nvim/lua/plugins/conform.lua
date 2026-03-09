@@ -43,9 +43,17 @@ return {
                         '-',
                     },
                 },
+
+                clang_format = {
+                    prepend_args = {
+                        '-style={BasedOnStyle: Google, IndentWidth: 4}',
+                        '-fallback-style=Google'
+                    },
+                },
             },
 
             formatters_by_ft = {
+                c = { 'clang_format' },
                 html = { 'prettierd' },
                 css = { 'prettierd' },
                 javascript = { 'prettierd' },
