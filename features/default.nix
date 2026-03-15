@@ -74,6 +74,13 @@
                 auto-cpufreq = lib.mkEnableOption "Automatic CPU speed & power optimizer";
                 batteryLimit = lib.mkEnableOption "Battery limit threshold";
             };
+            zram = {
+                enable = lib.mkEnableOption "Kernel module for creating a compressed block device in RAM";
+                percent = lib.mkOption {
+                    type = lib.types.int;
+                    default = 50;
+                };
+            };
         };
     };
 

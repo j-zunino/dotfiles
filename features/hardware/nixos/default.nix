@@ -11,5 +11,6 @@
         ./powerManagement.nix
         ./stylix.nix
         ./user.nix
+        ./zram.nix
     ];
 }

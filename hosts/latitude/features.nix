@@ -70,6 +70,10 @@
                 auto-cpufreq = true;
                 batteryLimit = true;
             };
+            zram = {
+                enable = true;
+                percent = 100;
+            };
         };
     };
 }
