@@ -70,6 +70,9 @@
             greetd = true;
             nvidia = true;
             wifi = false;
+            amd = {
+                cpu = true;
+            };
             powerManagement = {
                 auto-cpufreq = false;
                 batteryLimit = false;
