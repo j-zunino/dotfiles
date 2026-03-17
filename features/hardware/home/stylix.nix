@@ -66,9 +66,9 @@ in {
 
         icons = {
             enable = true;
-            package = pkgs.reversal-icon-theme;
-            light = "Reversal";
-            dark = "Reversal";
+            package = pkgs.papirus-icon-theme;
+            light = "Papirus-Light";
+            dark = "Papirus-Dark";
         };
     };
 }
