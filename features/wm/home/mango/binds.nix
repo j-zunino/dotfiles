@@ -8,7 +8,8 @@
         bind=SUPER,q,spawn,${config.features.gui.terminal.default}
         bind=SUPER+SHIFT,Return,spawn,${config.features.gui.terminal.default}
         bind=SUPER,f,spawn,${config.features.gui.browser.default}
-        bind=SUPER,e,spawn,nautilus
+        bind=SUPER,e,spawn,${config.features.gui.fileManager.default}
+
         bind=SUPER+SHIFT,s,spawn_shell,hyprshot -m region --c
         bind=SUPER,c,spawn_shell,hyprpicker -a
 

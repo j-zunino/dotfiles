@@ -22,6 +22,10 @@
                 brave = lib.mkEnableOption "Brave browser";
                 helium = lib.mkEnableOption "Helium browser";
             };
+            fileManager = {
+                default = lib.mkOption {default = "thunar";};
+                thunar = lib.mkEnableOption "GTK file manager";
+            };
         };
 
         cli = {
@@ -97,6 +101,12 @@
                 b = config.features.gui.browser;
             in
                 (b.default == "zen" && b.zen) || (b.default == "brave" && b.brave) || (b.default == "helium" && b.helium);
+            message = "The selected default browser must be enabled.";
+        }
+        {
+            assertion = let
+                f = config.features.gui.fileManager;
+            in (f.default == "thunar" && f.thunar);
             message = "The selected default browser must be enabled.";
         }
     ];

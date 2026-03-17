@@ -18,6 +18,10 @@
                 brave = true;
                 helium = true;
             };
+            fileManager = {
+                default = "thunar";
+                thunar = true;
+            };
         };
 
         cli = {
