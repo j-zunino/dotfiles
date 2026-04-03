@@ -14,6 +14,8 @@ desktop_files() {
 }
 
 rebuild_cache() {
+    local count
+    count=$(desktop_files | wc -l)
     desktop_files | sort -u | while read -r file; do
         name=""
         exec=""
@@ -46,17 +48,25 @@ rebuild_cache() {
 
         printf "%s\t%s\n" "$name" "$exec"
     done | sort -f >"$CACHE"
+    printf "%s\n" "$count" >> "$CACHE"
 }
 
 if [[ ! -f "$CACHE" ]]; then
     rebuild_cache
 else
-    for f in ${(f)"$(desktop_files)"}; do
-        [[ "$f" -nt "$CACHE" ]] && rebuild_cache && break
-    done
+    local cached_count current_count
+    cached_count=$(tail -1 "$CACHE" 2>/dev/null)
+    current_count=$(desktop_files | wc -l)
+    if [[ "$cached_count" != "$current_count" ]]; then
+        rebuild_cache
+    else
+        for f in ${(f)"$(desktop_files)"}; do
+            [[ "$f" -nt "$CACHE" ]] && rebuild_cache && break
+        done
+    fi
 fi
 
-selected="$(fzf --margin 0 --delimiter=$'\t' --with-nth=1 --multi <"$CACHE")"
+selected="$(fzf --margin 0 --delimiter=$'\t' --with-nth=1 --multi < <(head -n -1 "$CACHE") )"
 [ -z "$selected" ] && exit
 
 while IFS=$'\t' read -r name cmd; do
