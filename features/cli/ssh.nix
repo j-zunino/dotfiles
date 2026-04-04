@@ -27,6 +27,14 @@
                 "github.com" = {
                     extraOptions.ForwardAgent = "yes";
                 };
+
+                "sputnik" = {
+                    hostname = "192.168.0.209";
+                    user = "sputnik";
+                    port = 2005;
+                    identityFile = "~/.ssh/id_sputnik";
+                    extraOptions = {IdentitiesOnly = "yes";};
+                };
             };
         };
     };
