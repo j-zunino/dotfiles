@@ -77,6 +77,7 @@
                 # Dev
                 dev = "pnpm run dev";
                 build = "pnpm run build";
+                opencode = "nix run nixpkgs#opencode";
             };
 
             history = {
