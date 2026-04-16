@@ -19,12 +19,10 @@ local win_config = function()
     }
 end
 
-return {
-    require('mini.notify').setup({
-        lsp_progress = { enable = true },
-        window = {
-            config = win_config,
-            winblend = 0,
-        },
-    }),
-}
+require('mini.notify').setup({
+    lsp_progress = { enable = true },
+    window = {
+        config = win_config,
+        winblend = 0,
+    },
+})

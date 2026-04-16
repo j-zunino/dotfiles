@@ -29,6 +29,7 @@
                     alejandra
                     nixd
 
+                    lua52Packages.tree-sitter-cli
                     editorconfig-checker
                     imagemagick
                     websocat

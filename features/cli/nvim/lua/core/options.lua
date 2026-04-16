@@ -8,8 +8,6 @@ vim.o.signcolumn = 'yes'
 vim.o.colorcolumn = '80'
 vim.o.winborder = 'single'
 vim.o.termguicolors = true
-vim.o.showmode = true
-vim.o.shortmess = vim.o.shortmess .. 'I'
 vim.o.guicursor = 'a:block'
 vim.o.statusline = ' %f %r %= %l:%c - %{v:lua.custom_file_icon()} '
 

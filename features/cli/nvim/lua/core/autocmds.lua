@@ -21,18 +21,6 @@ api.nvim_create_autocmd('BufReadPost', {
     end,
 })
 
--- Show cursor line only in active window
-local cursorGrp = api.nvim_create_augroup('CursorLine', { clear = true })
-api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
-    pattern = '*',
-    command = 'set cursorline',
-    group = cursorGrp,
-})
-api.nvim_create_autocmd(
-    { 'InsertEnter', 'WinLeave' },
-    { pattern = '*', command = 'set nocursorline', group = cursorGrp }
-)
-
 api.nvim_create_autocmd('LspAttach', {
     group = api.nvim_create_augroup('lsp-attach', { clear = true }),
     callback = function(event)
@@ -56,18 +44,20 @@ api.nvim_create_autocmd('LspAttach', {
         map('gr', vim.lsp.buf.references, 'Goto references')
         map('gi', vim.lsp.buf.implementation, 'Goto implementation')
         map('gs', vim.lsp.buf.signature_help, 'Signature cocumentation')
-        map('<leader>d', vim.lsp.buf.type_definition, 'Type definition')
+        map('gt', vim.lsp.buf.type_definition, 'GoTo type definition')
         map('<leader>rn', vim.lsp.buf.rename, 'Rename')
         map('<leader>ca', vim.lsp.buf.code_action, 'Action')
 
         -- [ Diagnostics ]
         map('[d', function () vim.diagnostic.jump({ count = 1, float = true }) end, 'Go to previous diagnostic message')
         map(']d', function() vim.diagnostic.jump({ count = -1, float = true }) end, 'Go to next diagnostic message')
+        map('<leader>dk', function () vim.diagnostic.jump({ count = -1, float = true }) end, 'Go to previous diagnostic message')
+        map('<leader>dj', function() vim.diagnostic.jump({ count = 1, float = true }) end, 'Go to next diagnostic message')
         map('<leader>e', vim.diagnostic.open_float, 'Show diagnostic error messages')
         map('<leader>q', vim.diagnostic.setloclist, 'Open diagnostic quickfix list')
 
-        -- [ Typescript ]
-        if vim.tbl_contains({ 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', }, buftype) then
+        -- [ JS, TS, React ]
+        if vim.tbl_contains({ 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }, buftype) then
             map('<leader>cr', ':VtsExec restart_tsserver<CR>', 'Restart server')
             map('<leader>co', ':VtsExec organize_imports<CR>', 'Organize imports')
             map('<leader>cs', ':VtsExec sort_imports<CR>', 'Sort imports')
@@ -130,10 +120,6 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         hl(0, 'MiniTablineModifiedHidden', { fg = blue.fg, bg = nil })
         hl(0, 'MiniTablineVisible', { fg = comment.fg, bg = nil })
         hl(0, 'MiniTablineModifiedVisible', { fg = blue.fg, bg = nil })
-
-        -- Treesitter context
-        hl(0, 'TreesitterContext', { bg = cursor_line.bg })
-        hl(0, 'TreesitterContextLineNumber', { fg = comment.fg, bg = cursor_line.bg })
 
         -- Completion
         hl(0, 'Pmenu', { fg = comment.fg, bg = nil })

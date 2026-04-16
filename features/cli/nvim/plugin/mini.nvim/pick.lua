@@ -74,34 +74,33 @@ MiniPick.registry.spellsuggest = function()
     })
 end
 
-return {
-    MiniExtra.setup(),
-    MiniPick.setup({
-        mappings = {
-            move_down = '<C-j>',
-            move_up = '<C-k>',
-            scroll_down = '<C-d>',
-            scroll_up = '<C-u>',
-            paste = '<C-r>',
-        },
+MiniExtra.setup()
+MiniPick.setup({
+    mappings = {
+        move_down = '<C-j>',
+        move_up = '<C-k>',
+        scroll_down = '<C-d>',
+        scroll_up = '<C-u>',
 
-        options = { content_from_bottom = true },
+        delete_left = '<Nop>',
+    },
 
-        window = {
-            config = win_config,
-            prompt_caret = '█',
-        },
-    }),
+    options = { content_from_bottom = true },
 
-    map('n', '<leader>sf', ':Pick files<CR>', 'Files'),
-    map('n', '<leader>sg', ':Pick grep_live<CR>', 'Grep'),
-    map('n', '<leader>sh', ':Pick help<CR>', 'Help'),
-    map('n', '<leader>sH', ':Pick hl_groups<CR>', 'Highlight groups'),
-    map('n', '<leader>ss', ':Pick spellsuggest<CR>', 'Spellsuggest'),
-    map('n', '<leader>sd', ':Pick diagnostic<CR>', 'Diagnotics'),
-    map('n', '<leader><leader>', ':Pick buffers<CR>', 'Buffers'),
-    map('n', '<leader>sl', ':Pick buf_lines<CR>', 'Buffers Lines'),
-    map('n', '<leader>si', ':Pick icons<CR>', 'Icons'),
-    map('n', '<leader>sc', ':Pick colorschemes<CR>', 'Colorschemes'),
-    map('n', '<leader>sr', ':Pick resume<CR>', 'Resume'),
-}
+    window = {
+        config = win_config,
+        prompt_caret = '█',
+    },
+})
+
+map('n', '<leader>sf', ':Pick files<CR>', 'Files')
+map('n', '<leader>sg', ':Pick grep_live<CR>', 'Grep')
+map('n', '<leader>sh', ':Pick help<CR>', 'Help')
+map('n', '<leader>sH', ':Pick hl_groups<CR>', 'Highlight groups')
+map('n', '<leader>ss', ':Pick spellsuggest<CR>', 'Spellsuggest')
+map('n', '<leader>sd', ':Pick diagnostic<CR>', 'Diagnotics')
+map('n', '<leader><leader>', ':Pick buffers<CR>', 'Buffers')
+map('n', '<leader>sl', ':Pick buf_lines<CR>', 'Buffers Lines')
+map('n', '<leader>si', ':Pick icons<CR>', 'Icons')
+map('n', '<leader>sc', ':Pick colorschemes<CR>', 'Colorschemes')
+map('n', '<leader>sr', ':Pick resume<CR>', 'Resume')

@@ -44,17 +44,13 @@ map('n', '<leader>j', 'mzJ`z', 'Join lines')
 
 map('n', 'U', '<C-r>', 'Redo')
 
-vim.keymap.set('n', '<leader>X', function()
-    local word = vim.fn.expand('<cword>')
-
-    vim.ui.input({ default = word, prompt = 'Replace: ' }, function(replacement)
-        local pattern = vim.fn.escape(word, '/\\')
-        local subst = vim.fn.escape(replacement, '/\\')
-
-        local cmd = string.format('%%s/\\<%s\\>/%s/gI', pattern, subst)
-        vim.cmd(cmd)
-    end)
-end, { desc = 'Replace word', silent = false })
+map(
+    'n',
+    '<leader>X',
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    'Replace word',
+    { silent = false }
+)
 
 -------------------------------------------------------------------------------
 -- NAVIGATION
@@ -73,7 +69,6 @@ map('n', 'N', 'Nzz', 'Find previous')
 -------------------------------------------------------------------------------
 map('n', '<Tab>', ':bnext<CR>', 'Next buffer')
 map('n', '<S-Tab>', ':bprevious<CR>', 'Previous buffer')
-map('n', '<leader>bn', ':enew<CR>', 'Create buffer')
 
 -------------------------------------------------------------------------------
 -- WINDOWS / SPLITS
@@ -92,8 +87,6 @@ map('n', '-', '<C-w>-', 'Decrease split height')
 -------------------------------------------------------------------------------
 -- MISC
 -------------------------------------------------------------------------------
-map('n', '<leader>L', ':Lazy<CR>', 'Open Lazy')
-
 map('n', 'Q', '<nop>', 'Disable Ex mode')
 
 map(
