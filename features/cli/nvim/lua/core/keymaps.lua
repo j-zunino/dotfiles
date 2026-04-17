@@ -34,13 +34,11 @@ map('n', 'P', ':put!<CR>`[v`]=', 'Paste without saving into register')
 
 map('n', 'Y', 'yy', 'Yank line')
 map('n', 'yA', ':%y<CR>', 'Yank all')
-map('n', 'yJ', 'Yp', 'Yank line down')
-map('n', 'yK', 'YP', 'Yank line up')
+map('n', 'yJ', 'Yp', 'Yank line and copy down')
+map('n', 'yK', 'YP', 'Yank line and copy up')
 
-map('v', '<C-j>', ":move '>+1<CR>gv=gv", 'Move line down')
-map('v', '<C-k>', ":move '<-2<CR>gv=gv", 'Move line up')
-
-map('n', '<leader>j', 'mzJ`z', 'Join lines')
+map('v', 'J', ":move '>+1<CR>gv=gv", 'Move line down')
+map('v', 'K', ":move '<-2<CR>gv=gv", 'Move line up')
 
 map('n', 'U', '<C-r>', 'Redo')
 
@@ -55,9 +53,6 @@ map(
 -------------------------------------------------------------------------------
 -- NAVIGATION
 -------------------------------------------------------------------------------
-map({ 'n', 'v' }, 'J', '5j', 'Move down 5 lines')
-map({ 'n', 'v' }, 'K', '5k', 'Move up 5 lines')
-
 map({ 'n', 'v' }, '<C-d>', '<C-d>zz', 'Scroll down')
 map({ 'n', 'v' }, '<C-u>', '<C-u>zz', 'Scroll up')
 
