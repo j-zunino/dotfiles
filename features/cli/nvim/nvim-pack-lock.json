@@ -61,6 +61,11 @@
       "rev": "d3a26d3c449a97c44891a31736a101b60b64cf2b",
       "src": "https://github.com/axelvc/template-string.nvim"
     },
+    "typst-preview.nvim": {
+      "rev": "325036ee145ca51d9efb145c09ac16bce3bc8b7d",
+      "src": "https://github.com/chomosuke/typst-preview.nvim",
+      "version": "1.0.0 - 2.0.0"
+    },
     "vague.nvim": {
       "rev": "8751181a1aa431b4e8983b0a183afef5cbc08381",
       "src": "https://github.com/vague2k/vague.nvim"
