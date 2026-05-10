@@ -1,7 +1,6 @@
 {
   inputs,
   self,
-  config,
   ...
 }: {
   flake.nixosConfigurations = {
@@ -20,7 +19,17 @@
     # };
   };
 
-  flake.modules.nixos.desktop.imports = with self.modules.nixos; [
-    home-manager
-  ];
+  flake.modules.nixos.desktop = {
+    imports = with self.modules.nixos; [
+      users-juan
+      home-manager
+    ];
+  };
+
+  flake.modules.homeManager.desktop = {
+    imports = with self.modules.homeManager; [
+      users-juan
+      terminal
+    ];
+  };
 }
