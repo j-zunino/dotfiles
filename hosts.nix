@@ -26,13 +26,16 @@
       users-juan
       home-manager
 
+      # Services
       ethernet
+      audio
     ];
   };
 
   flake.modules.homeManager.desktop = {
     imports = with self.modules.homeManager; [
       users-juan
+
       terminal
     ];
   };
