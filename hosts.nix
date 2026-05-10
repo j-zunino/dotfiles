@@ -4,14 +4,22 @@
   config,
   ...
 }: {
-  flake.nixosConfigurations.default = inputs.nixpkgs.lib.nixosSystem {
-    specialArgs = {inherit inputs;};
-    modules = [
-      self.modules.nixos.default
-    ];
+  flake.nixosConfigurations = {
+    desktop = inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        self.modules.nixos.desktop
+      ];
+    };
+
+    # latitude = inputs.nixpkgs.lib.nixosSystem {
+    #     specialArgs = {inherit inputs;};
+    #     modules = [
+    #         self.modules.nixos.latitude
+    #     ];
+    # };
   };
 
-  flake.modules.nixos.default.imports = with self.modules.nixos; [
-    ./configuration.nix
+  flake.modules.nixos.desktop.imports = with self.modules.nixos; [
   ];
 }
