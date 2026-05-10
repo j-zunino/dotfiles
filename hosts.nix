@@ -20,9 +20,13 @@
   };
 
   flake.modules.nixos.desktop = {
+    networking.name = "desktop";
+
     imports = with self.modules.nixos; [
       users-juan
       home-manager
+
+      ethernet
     ];
   };
 
