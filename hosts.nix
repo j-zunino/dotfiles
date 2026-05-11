@@ -36,6 +36,7 @@
       driveMounting
       ethernet
       audio
+      zram
     ];
   };
 
