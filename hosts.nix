@@ -26,6 +26,7 @@
       users-juan
       home-manager
       common-settings
+      dualboot
 
       # Hardware
       gpu-nvidia
