@@ -26,6 +26,10 @@
       users-juan
       home-manager
 
+      # Hardware
+      gpu-nvidia
+      cpu-amd
+
       # Services
       ethernet
       audio
