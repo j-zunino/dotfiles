@@ -39,11 +39,11 @@
     };
   };
 
-  flake.modules.nixos.boot = {self, ...}: {
+  flake.modules.nixos.boot = {
     imports = with self.modules.nixos; [efi systemd-boot greetd];
   };
 
-  flake.modules.nixos.dualboot = {self, ...}: {
+  flake.modules.nixos.dualboot = {
     imports = with self.modules.nixos; [efi grub greetd];
   };
 }

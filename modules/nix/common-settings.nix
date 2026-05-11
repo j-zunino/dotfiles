@@ -1,6 +1,7 @@
 {...}: {
   flake.modules.nixos.common-settings = {
     nixpkgs.config.allowUnfree = true;
+    system.stateVersion = "24.05";
 
     nix = {
       settings = {

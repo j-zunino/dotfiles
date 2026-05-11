@@ -3,7 +3,7 @@
     zramSwap = {
       enable = true;
       algorithm = "lz4";
-      memoryPercent = config.zram.percent; # TODO: Create this lol
+      # memoryPercent = config.zram.percent; # TODO: Create this lol
     };
   };
 }
