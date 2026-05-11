@@ -1,13 +1,18 @@
 {inputs, self, ...}: {
     flake.nixosConfigurations.desktop = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
-        modules = [
-            self.modules.nixos.desktop
-        ];
+        modules = [ self.modules.nixos.desktop ];
+    };
+
+    flake.homeConfigurations.juan = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = { inherit inputs; };
+        modules =  [ self.modules.homeManager.juan ];
     };
 
     flake.modules.nixos.desktop = {
         networking.hostName = "desktop";
+
         imports = with inputs.self.modules.nixos; [
             users-juan
             home-manager
@@ -31,10 +36,8 @@
         ];
     };
 
-    flake.homeConfigurations.desktop = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = { inherit inputs; };
-        modules = with self.modules.homeManager; [
+    flake.modules.homeManager.juan =  {
+        imports = with self.modules.homeManager; [
             users-juan
             common-settings
 
