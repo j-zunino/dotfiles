@@ -45,9 +45,13 @@
       users-juan
       common-settings
 
-      terminal
+      # Programs
       zen
       helium
+
+      # Dev
+      terminal
+      git
     ];
 
     wayland.windowManager.mango.extraSettings = ''
