@@ -64,10 +64,7 @@
     };
   };
 
-  # TODO: Un-comment when stylix is enabled
-  flake.modules.homeManager.lazygit = let
-    # colors = config.my.colors;
-  in {
+  flake.modules.homeManager.lazygit = {
     programs.lazygit = {
       enable = true;
       settings = {
@@ -76,19 +73,26 @@
           border = "single";
           nerdFontsVersion = 3;
           commitHashLength = 0;
-          # authorColors = {"*" = "${colors.gray1.hex}";};
-          # theme = {
-          #   activeBorderColor = ["${colors.accent.hex}"];
-          #   inactiveBorderColor = ["${colors.gray1.hex}"];
-          #   searchingActiveBorderColor = ["${colors.purple.hex}"];
-          #   optionsTextColor = ["${colors.fg.hex}"];
-          #   selectedLineBgColor = ["${colors.bg1.hex}"];
-          #   cherryPickedCommitFgColor = ["${colors.red.hex}"];
-          #   cherryPickedCommitBgColor = ["${colors.bg0.hex}"];
-          #   defaultFgColor = ["${colors.fg.hex}"];
-          # };
         };
       };
     };
   };
+
+  flake.modules.homeManager.stylix = {config, ...}: let 
+      colors = config.my.colors;
+  in {
+    programs.lazygit.settings.gui = {
+        authorColors = {"*" = "${colors.gray1.hex}";};
+        theme = {
+            activeBorderColor = ["${colors.accent.hex}"];
+            inactiveBorderColor = ["${colors.gray1.hex}"];
+            searchingActiveBorderColor = ["${colors.purple.hex}"];
+            optionsTextColor = ["${colors.fg.hex}"];
+            selectedLineBgColor = ["${colors.bg1.hex}"];
+            cherryPickedCommitFgColor = ["${colors.red.hex}"];
+            cherryPickedCommitBgColor = ["${colors.bg0.hex}"];
+            defaultFgColor = ["${colors.fg.hex}"];
+        };
+    };
+    };
 }
