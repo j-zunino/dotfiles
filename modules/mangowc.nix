@@ -23,7 +23,7 @@
         xkb_rules_layout=latam
         xkb_rules_options=caps:escape
 
-        accel_profile=0
+        # accel_profile=0
         warpcursor=0
         drag_corner=4
         drag_warp_cursor=0
@@ -90,10 +90,10 @@
         bind=NONE,XF86AudioRaiseVolume,spawn_shell,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && osd_volumen
         bind=NONE,XF86AudioLowerVolume,spawn_shell,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && osd_volumen
         bind=NONE,XF86AudioMute,spawn_shell,wpctl set-mute @DEFAULT_SINK@ toggle && osd_volumen
-        bind=NONE,XF86AudioNext,spawn_shell,playerctl next"
-        bind=NONE,XF86AudioPause,spawn_shell,playerctl play-pause"
-        bind=NONE,XF86AudioPlay,spawn_shell,playerctl play-pause"
-        bind=NONE,XF86AudioPrev,spawn_shell,playerctl previous"
+        bind=NONE,XF86AudioNext,spawn_shell,playerctl next
+        bind=NONE,XF86AudioPause,spawn_shell,playerctl play-pause
+        bind=NONE,XF86AudioPlay,spawn_shell,playerctl play-pause
+        bind=NONE,XF86AudioPrev,spawn_shell,playerctl previous
         bind=NONE,XF86MonBrightnessUp,spawn_shell,brightnessctl set 5%+ && osd_brightness
         bind=NONE,XF86MonBrightnessDown,spawn_shell,brightnessctl -n1 set 5%- && osd_brightness
 

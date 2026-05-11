@@ -30,7 +30,10 @@
       zram
     ];
 
-  flake.modules.homeManager.desktop.imports = with self.modules.homeManager; [
+  flake.homeConfigurations.desktop = inputs.home-manager.lib.homeManagerConfiguration {
+    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+    extraSpecialArgs = { inherit inputs; };
+    modules = with self.modules.homeManager; [
       users-juan
       common-settings
 
@@ -41,7 +44,10 @@
       # Dev
       terminal
       git
+      delta
+      lazygit
       nvim
       mangowc
     ];
+  };
 }
