@@ -1,9 +1,10 @@
 {...}: {
-  flake.modules.nixos.users-juan = {
+  flake.modules.nixos.users-juan = {pkgs, ...}: {
     users.users.juan = {
       isNormalUser = true;
       extraGroups = ["networkmanager" "wheel"];
       initialPassword = "password";
+      shell = pkgs.zsh;
     };
   };
 

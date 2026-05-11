@@ -25,6 +25,9 @@
             ethernet
             audio
             zram
+
+            # Shell
+            zsh
         ];
     };
 
@@ -46,6 +49,11 @@
             lazygit
             nvim
             mangowc
+
+            # Shell
+            zsh
+            starship
+            tmux
         ];
     };
 }
