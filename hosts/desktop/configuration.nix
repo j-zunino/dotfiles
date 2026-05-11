@@ -59,6 +59,7 @@
             zsh
             starship
             tmux
+            fzf
         ];
     };
 }
