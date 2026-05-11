@@ -33,6 +33,7 @@
       cpu-amd
 
       # Services
+      driveMounting
       ethernet
       audio
     ];
