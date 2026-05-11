@@ -25,6 +25,7 @@
     imports = with self.modules.nixos; [
       users-juan
       home-manager
+      common-settings
 
       # Hardware
       gpu-nvidia
@@ -39,6 +40,7 @@
   flake.modules.homeManager.desktop = {
     imports = with self.modules.homeManager; [
       users-juan
+      common-settings
 
       terminal
     ];
