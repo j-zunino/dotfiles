@@ -16,6 +16,7 @@
         imports = with inputs.self.modules.nixos; [
             users-juan
             home-manager
+            stylix
             common-settings
             dualboot
 
@@ -39,6 +40,7 @@
     flake.modules.homeManager.juan =  {
         imports = with self.modules.homeManager; [
             users-juan
+            stylix
             common-settings
 
             # Programs

@@ -1,3 +1,5 @@
+# TODO: Update cursor colors
+
 {...}: {
   flake.modules.homeManager.terminal = {
     programs.foot = {
