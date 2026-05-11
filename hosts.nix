@@ -52,6 +52,7 @@
       # Dev
       terminal
       git
+      nvim
     ];
 
     wayland.windowManager.mango.extraSettings = ''
