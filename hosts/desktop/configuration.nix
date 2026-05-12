@@ -24,6 +24,7 @@
             dualboot
             stylix
 
+            # WM
             mangowc
 
             # Hardware
@@ -43,9 +44,13 @@
 
     flake.modules.homeManager.juan = {
         imports = with self.modules.homeManager; [
+            common-settings
             users-juan
             stylix
-            common-settings
+
+            # WM
+            notifications
+            mangowc
 
             # Programs
             helium
@@ -55,7 +60,6 @@
             terminal
             lazygit
             dev-cli
-            mangowc
             direnv
             delta
             nvim
