@@ -27,6 +27,13 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        spicetify-nix = {
+            url = "github:Gerg-L/spicetify-nix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        affinity-nix.url = "github:mrshmllow/affinity-nix";
+
         import-tree.url = "github:vic/import-tree";
         flake-parts.url = "github:hercules-ci/flake-parts";
         systems.url = "github:nix-systems/default";

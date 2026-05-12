@@ -56,6 +56,7 @@
             common-gui
             discord
             stremio
+            spotify
             helium
             mpv
             zen
