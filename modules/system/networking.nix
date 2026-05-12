@@ -14,8 +14,10 @@
         imports = with self.modules.nixos; [networking-common];
     };
 
-    flake.modules.nixos.wifi = {
+    flake.modules.nixos.wifi = {pkgs, ...}: {
         imports = with self.modules.nixos; [networking-common];
+
+        environment.systemPackages = with pkgs; [impala];
 
         networking = {
             networkmanager.wifi.backend = "iwd";

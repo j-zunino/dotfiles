@@ -1,6 +1,9 @@
 {...}: {
     flake.modules.nixos.audio = {pkgs, ...}: {
-        environment.systemPackages = with pkgs; [alsa-utils];
+        environment.systemPackages = with pkgs; [
+            alsa-utils
+            wiremix
+        ];
 
         security.rtkit.enable = true;
         services.pipewire = {
