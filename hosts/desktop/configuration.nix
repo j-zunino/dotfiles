@@ -55,7 +55,9 @@
             # Programs
             common-gui
             discord
+            stremio
             helium
+            mpv
             zen
 
             # Dev
