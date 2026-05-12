@@ -2,7 +2,6 @@
     flake.modules.homeManager.starship = {lib, ...}: {
         programs.starship = {
             enable = true;
-            enableZshIntegration = true;
             settings = {
                 add_newline = true;
                 format = lib.concatStrings [
@@ -71,5 +70,9 @@
                 };
             };
         };
+    };
+
+    flake.modules.homeManager.zsh = {
+        programs.starship.enableZshIntegration = true;
     };
 }

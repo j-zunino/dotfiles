@@ -1,9 +1,7 @@
 {...}: {
-    flake.modules.homeManager.fzf =  {
+    flake.modules.homeManager.fzf = {
         programs.fzf = {
             enable = true;
-            enableZshIntegration = true;
-
             defaultOptions = [
                 "--keep-right"
                 "--smart-case"
@@ -21,14 +19,18 @@
         };
     };
 
-    flake.modules.homeManager.stylix = {config, ...}: let 
+    flake.modules.homeManager.zsh = {
+        programs.fzf.enableZshIntegration = true;
+    };
+
+    flake.modules.homeManager.stylix = {config, ...}: let
         colors = config.my.colors;
     in {
-            programs.fzf.defaultOptions = [
-                    "--color fg:${colors.gray1.hex},fg+:${colors.fg.hex},bg:-1,bg+:${colors.bg1.hex},gutter:-1"
-                    "--color hl:${colors.accent.hex},hl+:${colors.accent.hex},info:${colors.gray1.hex},marker:${colors.purple.hex}"
-                    "--color prompt:${colors.accent.hex},spinner:${colors.accent.hex},pointer:${colors.accent.hex}"
-                    "--color border:${colors.gray1.hex},query:${colors.fg.hex}"
-                ];
-        };
+        programs.fzf.defaultOptions = [
+            "--color fg:${colors.gray1.hex},fg+:${colors.fg.hex},bg:-1,bg+:${colors.bg1.hex},gutter:-1"
+            "--color hl:${colors.accent.hex},hl+:${colors.accent.hex},info:${colors.gray1.hex},marker:${colors.purple.hex}"
+            "--color prompt:${colors.accent.hex},spinner:${colors.accent.hex},pointer:${colors.accent.hex}"
+            "--color border:${colors.gray1.hex},query:${colors.fg.hex}"
+        ];
+    };
 }
