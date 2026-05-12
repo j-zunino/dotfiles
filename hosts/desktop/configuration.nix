@@ -78,6 +78,7 @@
             tmux
             zsh
             fzf
+            ssh
         ];
     };
 }
