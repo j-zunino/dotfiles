@@ -54,6 +54,7 @@
 
             # Programs
             common-gui
+            discord
             helium
             zen
 
