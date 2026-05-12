@@ -15,8 +15,9 @@
       };
 
       packages = with pkgs; [
-        luarocks
         lua52Packages.tree-sitter-cli
+        luarocks
+        websocat
       ];
     };
   };

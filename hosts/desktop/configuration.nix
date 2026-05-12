@@ -14,11 +14,11 @@
         networking.hostName = "desktop";
 
         imports = with inputs.self.modules.nixos; [
-            users-juan
-            home-manager
-            stylix
             common-settings
+            home-manager
+            users-juan
             dualboot
+            stylix
 
             mangowc
 
@@ -26,7 +26,7 @@
             gpu-nvidia
             cpu-amd
 
-            # Services
+            # System
             driveMounting
             ethernet
             audio
@@ -44,21 +44,23 @@
             common-settings
 
             # Programs
-            zen
             helium
+            zen
 
             # Dev
             terminal
-            git
-            delta
             lazygit
-            nvim
+            dev-cli
             mangowc
+            delta
+            nvim
+            git
 
             # Shell
-            zsh
+            common-cli
             starship
             tmux
+            zsh
             fzf
         ];
     };
