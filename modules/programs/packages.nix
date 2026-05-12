@@ -1,6 +1,18 @@
 {...}: {
     flake.modules.homeManager.common-cli = {pkgs, ...}: {
         programs.bat.enable = true;
+
+        programs.btop = {
+            enable = true;
+            settings = {
+                vim_keys = true;
+                rounded_corners = false;
+                temp_scale = "celcius";
+                show_battery = true;
+                theme_background = false;
+            };
+        };
+
         home.packages = with pkgs; [
             nerdfetch
             ripgrep
