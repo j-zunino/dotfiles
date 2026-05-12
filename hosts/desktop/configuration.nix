@@ -52,6 +52,7 @@
             notifications
             wm-pkgs
             mangowc
+            waybar
 
             # Programs
             common-gui
