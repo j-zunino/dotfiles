@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos.home-manager = {pkgs, ...}: {
-    environment.systemPackages = with pkgs; [home-manager];
-  };
+    flake.modules.nixos.home-manager = {pkgs, ...}: {
+        environment.systemPackages = with pkgs; [home-manager];
+    };
 }

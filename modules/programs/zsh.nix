@@ -1,9 +1,9 @@
-{...}:  {
+{...}: {
     flake.modules.nixos.zsh = {
         programs.zsh.enable = true;
     };
 
-    flake.modules.homeManager.zsh = {pkgs,...}: {
+    flake.modules.homeManager.zsh = {pkgs, ...}: {
         programs.zsh = {
             enable = true;
             enableCompletion = true;

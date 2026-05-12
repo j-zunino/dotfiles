@@ -1,10 +1,13 @@
-{inputs, self, ...}: let 
-    theme = { pkgs, ... }: {
+{
+    inputs,
+    self,
+    ...
+}: let
+    theme = {pkgs, ...}: {
         stylix = {
             enable = true;
 
-            base16Scheme =
-                "${pkgs.base16-schemes}/share/themes/everforest.yaml";
+            base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
 
             cursor = {
                 package = pkgs.apple-cursor;
@@ -68,10 +71,15 @@
         accent = mkColor c.base0B;
     };
 in {
-    flake.modules.nixos.stylix =  {config, lib, pkgs, ...}: {
+    flake.modules.nixos.stylix = {
+        config,
+        lib,
+        pkgs,
+        ...
+    }: {
         imports = [
             inputs.stylix.nixosModules.stylix
-            (theme { inherit pkgs; })
+            (theme {inherit pkgs;})
         ];
 
         options.my.colors = lib.mkOption {
@@ -82,10 +90,15 @@ in {
         config.my.colors = mkColors config;
     };
 
-    flake.modules.homeManager.stylix = {config, lib, pkgs, ...}: {
+    flake.modules.homeManager.stylix = {
+        config,
+        lib,
+        pkgs,
+        ...
+    }: {
         imports = [
             inputs.stylix.homeModules.stylix
-            (theme { inherit pkgs; })
+            (theme {inherit pkgs;})
         ];
 
         options.my.colors = lib.mkOption {

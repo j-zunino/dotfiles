@@ -1,47 +1,47 @@
 {
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    inputs = {
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+        home-manager = {
+            url = "github:nix-community/home-manager";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        stylix = {
+            url = "github:danth/stylix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        zen-browser = {
+            url = "github:youwen5/zen-browser-flake";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        helium = {
+            url = "github:schembriaiden/helium-browser-nix-flake";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        mango = {
+            url = "github:mangowm/mango";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        import-tree.url = "github:vic/import-tree";
+        flake-parts.url = "github:hercules-ci/flake-parts";
+        systems.url = "github:nix-systems/default";
     };
 
-    stylix = {
-        url = "github:danth/stylix";
-        inputs.nixpkgs.follows = "nixpkgs";
-    };
+    outputs = inputs:
+        inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+            imports = [
+                inputs.flake-parts.flakeModules.modules
+                inputs.home-manager.flakeModules.home-manager
 
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+                (inputs.import-tree ./hosts)
+                (inputs.import-tree ./modules)
+            ];
 
-    helium = {
-      url = "github:schembriaiden/helium-browser-nix-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    mango = {
-      url = "github:mangowm/mango";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    import-tree.url = "github:vic/import-tree";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    systems.url = "github:nix-systems/default";
-  };
-
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [
-        inputs.flake-parts.flakeModules.modules
-        inputs.home-manager.flakeModules.home-manager
-
-        (inputs.import-tree ./hosts)
-        (inputs.import-tree ./modules)
-      ];
-
-      systems = import inputs.systems;
-    };
+            systems = import inputs.systems;
+        };
 }
