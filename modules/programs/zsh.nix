@@ -22,7 +22,7 @@
                 bindkey '^[[C' forward-char
                 bindkey '^[[1;5C' forward-word
                 bindkey '^[[1;5D' backward-word
-                bindkey -s '^f' '$HOME/dotfiles/features/scripts/tmux/tmux_sessionizer^M'
+                bindkey -s '^f' '$HOME/dotfiles/scripts/tmux/sessionizer^M'
                 bindkey -s '^e' 'nvim +Oil^M'
 
                 setopt auto_param_slash

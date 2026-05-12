@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+selection=$(printf " Clear\n%s" "$(cliphist list)" | fzf --margin 0)
+
+case "$selection" in
+    " Clear")
+        cliphist wipe
+        wl-copy ""
+        notify-send "󰅍  Clipboard" "History cleared"
+        ;;
+    "") ;;
+    *)
+        cliphist decode <<<"$selection" | wl-copy
+        ;;
+esac

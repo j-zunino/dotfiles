@@ -47,10 +47,10 @@
                 bind=SUPER,c,spawn_shell,hyprpicker -a
 
                 # Open menu
-                bind=SUPER,p,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/features/scripts/fzf/launcher
-                bind=SUPER,d,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/features/scripts/fzf/launcher
-                bind=SUPER,v,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/features/scripts/fzf/clipboard
-                bind=SUPER+SHIFT,q,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/features/scripts/fzf/logout
+                bind=SUPER,p,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/scripts/fzf/launcher
+                bind=SUPER,d,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/scripts/fzf/launcher
+                bind=SUPER,v,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/scripts/fzf/clipboard
+                bind=SUPER+SHIFT,q,spawn,foot -T "floating-fzf" -e $HOME/dotfiles/scripts/fzf/logout
 
                 # Windows
                 bind=SUPER,j,focusstack,next
@@ -98,25 +98,25 @@
                 bind=NONE,XF86MonBrightnessDown,spawn_shell,brightnessctl -n1 set 5%- && osd_brightness
 
                 # Tags
-                bind=SUPER,1,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 1
-                bind=SUPER,2,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 2
-                bind=SUPER,3,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 3
-                bind=SUPER,4,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 4
-                bind=SUPER,5,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 5
-                bind=SUPER,6,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 6
-                bind=SUPER,7,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 7
-                bind=SUPER,8,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 8
-                bind=SUPER,9,spawn_shell,~/dotfiles/features/scripts/mango/smart_tags 9
+                bind=SUPER,1,spawn_shell,~/dotfiles/scripts/mango/smart_tags 1
+                bind=SUPER,2,spawn_shell,~/dotfiles/scripts/mango/smart_tags 2
+                bind=SUPER,3,spawn_shell,~/dotfiles/scripts/mango/smart_tags 3
+                bind=SUPER,4,spawn_shell,~/dotfiles/scripts/mango/smart_tags 4
+                bind=SUPER,5,spawn_shell,~/dotfiles/scripts/mango/smart_tags 5
+                bind=SUPER,6,spawn_shell,~/dotfiles/scripts/mango/smart_tags 6
+                bind=SUPER,7,spawn_shell,~/dotfiles/scripts/mango/smart_tags 7
+                bind=SUPER,8,spawn_shell,~/dotfiles/scripts/mango/smart_tags 8
+                bind=SUPER,9,spawn_shell,~/dotfiles/scripts/mango/smart_tags 9
 
-                bind=SUPER+SHIFT,1,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 1
-                bind=SUPER+SHIFT,2,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 2
-                bind=SUPER+SHIFT,3,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 3
-                bind=SUPER+SHIFT,4,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 4
-                bind=SUPER+SHIFT,5,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 5
-                bind=SUPER+SHIFT,6,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 6
-                bind=SUPER+SHIFT,7,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 7
-                bind=SUPER+SHIFT,8,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 8
-                bind=SUPER+SHIFT,9,spawn_shell,~/dotfiles/features/scripts/mango/smart_move_tag 9
+                bind=SUPER+SHIFT,1,spawn_shell,~/dotfiles/scripts/mango/smart_move_tag 1
+                bind=SUPER+SHIFT,2,spawn_shell,~/dotfiles/scripts/mango/smart_move_tag 2
+                bind=SUPER+SHIFT,3,spawn_shell,~/dotfiles/scripts/mango/smart_move_tag 3
+                bind=SUPER+SHIFT,4,spawn_shell,~/dotfiles/scripts/mango/smart_move_tag 4
+                bind=SUPER+SHIFT,5,spawn_shell,~/dotfiles/scripts/mango/smart_move_tag 5
+                bind=SUPER+SHIFT,6,spawn_shell,~/dotfiles/scripts/mango/smart_move_tag 6
+                bind=SUPER+SHIFT,7,spawn_shell,~/dotfiles/scripts/mango/smart_move_tag 7
+                bind=SUPER+SHIFT,8,spawn_shell,~/dotfiles/scripts/mango/smart_move_tag 8
+                bind=SUPER+SHIFT,9,spawn_shell,~/dotfiles/scripts/mango/smart_move_tag 9
 
                 # Borders, gaps, shadows, opacity and cursor
                 borderpx=0

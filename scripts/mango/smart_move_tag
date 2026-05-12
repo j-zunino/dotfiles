@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+TAG="$1"
+[ -z "$TAG" ] && exit 1
+
+FOCUSED_MONITOR=$(
+    mmsg -g -o | awk '$2=="selmon" && $3==1 {print $1; exit}'
+)
+
+OWNER_MONITOR=$(
+    mmsg -g -Ot |
+        awk -v tag="$TAG" '
+            $2=="tag" && $3==tag {
+                if ($4 != 0 || $5 != 0 || $6 != 0)
+                    print $1
+            }
+        ' | head -n1
+)
+
+if [ -z "$OWNER_MONITOR" ] || [ "$OWNER_MONITOR" = "$FOCUSED_MONITOR" ]; then
+    mmsg -d tag,"$TAG"
+else
+    mmsg -d tagcrossmon,"$TAG","$OWNER_MONITOR"
+fi

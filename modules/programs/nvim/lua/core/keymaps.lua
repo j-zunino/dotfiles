@@ -87,6 +87,6 @@ map('n', 'Q', '<nop>', 'Disable Ex mode')
 map(
     'n',
     '<C-f>',
-    ':silent !tmux neww tmux_sessionizer<CR>',
+    ':silent !tmux neww $HOME/dotfiles/scripts/tmux/sessionizer<CR>',
     'Open Tmux sessionizer'
 )

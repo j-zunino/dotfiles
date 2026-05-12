@@ -23,7 +23,7 @@
                 set-option -sa terminal-features ",xterm*:RGB"
                 set -g renumber-windows on
 
-                bind-key -n C-f new-window -n sessionizer "$HOME/dotfiles/features/scripts/tmux/tmux_sessionizer"
+                bind-key -n C-f new-window -n sessionizer "$HOME/dotfiles/scripts/tmux/sessionizer"
 
                 bind-key / copy-mode \; send-key ?
                 set-window-option -g mode-keys vi
