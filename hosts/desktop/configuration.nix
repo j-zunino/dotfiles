@@ -53,6 +53,7 @@
             mangowc
 
             # Programs
+            common-gui
             helium
             zen
 
