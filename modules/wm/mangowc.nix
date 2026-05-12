@@ -141,19 +141,14 @@
                 animation_curve_move=0.16,1,0.3,1
             '';
 
+            # TODO: Add
             # extraConfig = lib.mkMerge [
             #     (lib.mkIf (config.features.gaming.tweaks) ''
             #     allow_tearing=1
             #     syncobj_enable=1
             #     windowrule=force_tearing:1,title:Overwatch.exe
             # '')
-            #
-            #     (lib.mkIf (hostname == "desktop") ''
-            #     monitorrule=name:HDMI-A-1,width:1360,height:768,refresh:60,x:0,y:0,scale:1
-            #     monitorrule=name:DP-1,width:1920,height:1080,refresh:60,x:1360,y:0,scale:1
-            #     windowrule=tags:9,appid:spotify
-            #     '')
-            # ];
+            # (lib.mkIf (config.features.gaming.steam) ''exec-once=steam -silent'')
         };
     };
 
