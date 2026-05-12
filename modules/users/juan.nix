@@ -9,6 +9,8 @@
     };
 
     flake.modules.homeManager.users-juan = {
+        news.display = "silent";
+
         home = {
             username = "juan";
             homeDirectory = "/home/juan";
