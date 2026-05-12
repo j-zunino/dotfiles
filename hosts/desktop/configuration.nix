@@ -50,6 +50,7 @@
 
             # WM
             notifications
+            wm-pkgs
             mangowc
 
             # Programs
