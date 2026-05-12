@@ -1,21 +1,20 @@
-{inputs, ...}: {
-    flake.modules.homeManager.nvim = {pkgs, ...}: {
-        programs.neovim.enable = true;
-        nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-        # TODO: Make user and path? dynamic
-        home = {
-            # TODO: FIX: read-only file system
-            file = {
-                ".config/nvim" = {
-                    source = ./nvim;
-                };
-            };
-
-            packages = with pkgs; [
-                lua52Packages.tree-sitter-cli
-                luarocks
-                websocat
-            ];
+{...}: {
+    flake.modules.homeManager.nvim = {
+        config,
+        pkgs,
+        ...
+    }: {
+        programs.neovim = {
+            enable = true;
+            sideloadInitLua = true; # NOTE: Prevents "Error installing file outside $HOME"
         };
+
+        xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/programs/nvim";
+
+        home.packages = with pkgs; [
+            lua52Packages.tree-sitter-cli
+            luarocks
+            websocat
+        ];
     };
 }
