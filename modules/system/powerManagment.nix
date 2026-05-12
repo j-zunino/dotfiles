@@ -1,0 +1,29 @@
+{...}: {
+    flake.modules.nixos.auto-cpufreq = {
+        services.auto-cpufreq = {
+            enable = true;
+            settings = {
+                charger = {
+                    governor = "performance";
+                    turbo = "auto";
+                };
+                battery = {
+                    governor = "powersave";
+                    turbo = "never";
+                };
+            };
+        };
+    };
+
+    flake.modules.nixos.battery-limit = {
+        services.thermald.enable = true;
+        systemd.services.battery-limit = {
+            wantedBy = ["multi-user.target"];
+            serviceConfig.Type = "oneshot";
+            script = ''
+                echo 20 > /sys/class/power_supply/BAT0/charge_control_start_threshold
+                echo 80 > /sys/class/power_supply/BAT0/charge_control_end_threshold
+            '';
+        };
+    };
+}
