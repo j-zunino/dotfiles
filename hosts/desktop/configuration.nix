@@ -54,10 +54,12 @@
 
             # Programs
             common-gui
+            affinity
             discord
             stremio
             spotify
             helium
+            gimp
             mpv
             zen
 
