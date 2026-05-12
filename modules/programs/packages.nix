@@ -1,5 +1,6 @@
 {...}: {
     flake.modules.homeManager.common-cli = {pkgs, ...}: {
+        programs.bat.enable = true;
         home.packages = with pkgs; [
             nerdfetch
             ripgrep
