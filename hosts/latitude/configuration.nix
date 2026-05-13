@@ -3,25 +3,25 @@
     self,
     ...
 }: {
-    flake.nixosConfigurations.desktop = inputs.nixpkgs.lib.nixosSystem {
+    flake.nixosConfigurations.latitude = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
-        modules = [self.modules.nixos.desktop];
+        modules = [self.modules.nixos.latitude];
     };
 
-    flake.homeConfigurations."juan@desktop" = inputs.home-manager.lib.homeManagerConfiguration {
+    flake.homeConfigurations."juan@latitude" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs;};
-        modules = [self.modules.homeManager.desktop-juan];
+        modules = [self.modules.homeManager.latitude-juan];
     };
 
-    flake.modules.nixos.desktop = {
-        networking.hostName = "desktop";
+    flake.modules.nixos.latitude = {
+        networking.hostName = "latitude";
 
         imports = with inputs.self.modules.nixos; [
             common-settings
             home-manager
             users-juan
-            dualboot
+            boot
             stylix
 
             # WM
@@ -34,21 +34,20 @@
             gaming
 
             # Hardware
-            gpu-nvidia
-            cpu-amd
+            # TODO: Add intel cpu/gpu?
 
             # System
             driveMounting
-            ethernet
             audio
             zram
+            wifi
 
             # Shell
             zsh
         ];
     };
 
-    flake.modules.homeManager.desktop-juan = {
+    flake.modules.homeManager.latitude-juan = {
         imports = with self.modules.homeManager; [
             common-settings
             users-juan
@@ -62,13 +61,9 @@
 
             # Programs
             common-gui
-            affinity
             discord
             stremio
-            spotify
             helium
-            gimp
-            mpv
             zen
 
             # Dev
@@ -88,11 +83,5 @@
             fzf
             ssh
         ];
-
-        wayland.windowManager.mango.extraConfig = ''
-            monitorrule=name:HDMI-A-1,width:1360,height:768,refresh:60,x:0,y:0,scale:1
-            monitorrule=name:DP-1,width:1920,height:1080,refresh:60,x:1360,y:0,scale:1
-            windowrule=tags:9,appid:spotify
-        '';
     };
 }
