@@ -27,6 +27,12 @@
             # WM
             mangowc
 
+            # Programs
+            fileManager
+
+            # Gaming
+            gaming
+
             # Hardware
             gpu-nvidia
             cpu-amd
@@ -84,9 +90,6 @@
         ];
 
         wayland.windowManager.mango.extraConfig = ''
-            exec-once=spotify
-            exec-once=webcord -m
-
             monitorrule=name:HDMI-A-1,width:1360,height:768,refresh:60,x:0,y:0,scale:1
             monitorrule=name:DP-1,width:1920,height:1080,refresh:60,x:1360,y:0,scale:1
             windowrule=tags:9,appid:spotify

@@ -14,6 +14,10 @@
                 exec-once=waybar
                 exec-once=wbg -s $(find ~/dotfiles/wallpapers -type f | shuf -n 1)
                 exec-once=wl-paste --watch cliphist store
+                exec-once=steam -silent
+                exec-once=spotify
+                exec-once=webcord -m
+
 
                 new_is_master=0
                 circle_layout=tile,scroller,vertical_scroller
@@ -31,6 +35,8 @@
 
                 windowrule=isfloating:1,width:1200,height:900,title:^floating$
                 windowrule=isfloating:1,width:600,height:600,title:^floating-fzf$
+
+                allow_tearing=1
 
                 bind=SUPER+SHIFT,r,reload_config
 
@@ -140,15 +146,6 @@
                 animation_duration_move=200
                 animation_curve_move=0.16,1,0.3,1
             '';
-
-            # TODO: Add
-            # extraConfig = lib.mkMerge [
-            #     (lib.mkIf (config.features.gaming.tweaks) ''
-            #     allow_tearing=1
-            #     syncobj_enable=1
-            #     windowrule=force_tearing:1,title:Overwatch.exe
-            # '')
-            # (lib.mkIf (config.features.gaming.steam) ''exec-once=steam -silent'')
         };
     };
 
