@@ -115,6 +115,7 @@ in {
                     fzf.enable = false;
                     spicetify.enable = false;
                     lazygit.enable = false;
+                    hyprland.enable = false;
                 };
 
                 icons = {
