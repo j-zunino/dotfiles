@@ -86,7 +86,6 @@
 
                     # WINDOWS
                     "SUPER+SHIFT,c,killclient"
-                    "SUPER,c,killclient"
                     "SUPER,j,focusstack,next"
                     "SUPER,k,focusstack,prev"
                     "SUPER+SHIFT,j,exchange_stack_client,next"
