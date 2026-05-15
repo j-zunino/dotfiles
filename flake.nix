@@ -1,6 +1,4 @@
 {
-    description = "A basic NixOS configuration flake";
-
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -9,26 +7,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-
-        spicetify-nix = {
-            url = "github:Gerg-L/spicetify-nix";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
         stylix = {
             url = "github:danth/stylix";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        hyprland.url = "github:hyprwm/Hyprland";
-
-        mango = {
-            url = "github:mangowm/mango";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        # zen-browser.url = "github:0xc000022070/zen-browser-flake";
         zen-browser = {
             url = "github:youwen5/zen-browser-flake";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -39,83 +22,35 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        mango = {
+            url = "github:mangowm/mango";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        hyprland.url = "github:hyprwm/Hyprland";
+
+        spicetify-nix = {
+            url = "github:Gerg-L/spicetify-nix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         affinity-nix.url = "github:mrshmllow/affinity-nix";
+
+        import-tree.url = "github:vic/import-tree";
+        flake-parts.url = "github:hercules-ci/flake-parts";
+        systems.url = "github:nix-systems/default";
     };
 
-    outputs = {
-        nixpkgs,
-        home-manager,
-        ...
-    } @ inputs: let
-        system = "x86_64-linux";
-        homeStateVersion = "24.05";
-        user = "juan";
-        hosts = [
-            {
-                hostname = "desktop";
-                stateVersion = "24.05";
-            }
-            {
-                hostname = "latitude";
-                stateVersion = "24.05";
-            }
-            {
-                hostname = "wsl";
-                stateVersion = "24.05";
-            }
-        ];
+    outputs = inputs:
+        inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+            imports = [
+                inputs.flake-parts.flakeModules.modules
+                inputs.home-manager.flakeModules.home-manager
 
-        makeSystem = {
-            hostname,
-            stateVersion,
-        }:
-            nixpkgs.lib.nixosSystem {
-                system = system;
-                specialArgs = {inherit inputs stateVersion hostname user;};
+                (inputs.import-tree ./hosts)
+                (inputs.import-tree ./modules)
+            ];
 
-                modules =
-                    [
-                        ./hosts/configuration.nix
-                        inputs.stylix.nixosModules.stylix
-                    ]
-                    ++ nixpkgs.lib.optionals (hostname == "wsl") [inputs.nixos-wsl.nixosModules.default];
-            };
-    in {
-        nixosConfigurations = nixpkgs.lib.foldl' (configs: host:
-            configs
-            // {
-                "${host.hostname}" = makeSystem {
-                    inherit (host) hostname stateVersion;
-                };
-            }) {}
-        hosts;
-
-        homeConfigurations = builtins.listToAttrs (map (host: {
-            name = "${user}@${host.hostname}";
-            value = home-manager.lib.homeManagerConfiguration {
-                pkgs = nixpkgs.legacyPackages.${system};
-                extraSpecialArgs = {
-                    inherit inputs homeStateVersion user;
-                    hostname = host.hostname;
-                };
-                modules = [
-                    ./hosts/home.nix
-                    inputs.stylix.homeModules.stylix
-                ];
-            };
-        })
-        hosts);
-
-        devShells.${system}.default = let
-            pkgs = nixpkgs.legacyPackages.${system};
-        in
-            pkgs.mkShell {
-                packages = with pkgs; [
-                    lua-language-server
-                    lua51Packages.lua
-                    luarocks
-                    stylua
-                ];
-            };
-    };
+            systems = import inputs.systems;
+        };
 }
