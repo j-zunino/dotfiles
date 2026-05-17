@@ -1,11 +1,13 @@
+require('binds')
+require('animations')
+
 hl.on('hyprland.start', function()
     hl.exec_cmd(
         'waybar & wbg -s $(find ~/dotfiles/wallpapers -type f | shuf -n 1) & wl-paste --watch cliphist store & steam -silent & spotify & webcord -m'
     )
 end)
 
-require('binds')
-require('animations')
+hl.window_rule({ match = { class = 'spotify' }, workspace = '10 silent' })
 
 hl.monitor({
     output = '',
