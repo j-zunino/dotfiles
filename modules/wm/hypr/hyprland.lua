@@ -33,7 +33,9 @@ hl.config({
     input = {
         kb_layout = 'latam',
         repeat_delay = 300,
+        accel_profile = 'flat',
 
+        -- TODO: Allow to enable or disable
         touchpad = {
             disable_while_typing = false,
         },
