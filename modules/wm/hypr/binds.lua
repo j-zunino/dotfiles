@@ -89,6 +89,17 @@ mapMod('K', function()
     end
 end)
 
+map(
+    'h',
+    window.resize({ x = -10, y = 0, relative = true }),
+    { repeating = true }
+)
+map(
+    'l',
+    window.resize({ x = 10, y = 0, relative = true }),
+    { repeating = true }
+)
+
 mapMod('BACKSPACE', function()
     if current_layout() == 'master' then
         hl.dispatch(layout('swapwithmaster'))
