@@ -138,3 +138,4 @@ end)
 -- MISC
 -------------------------------------------------------------------------------
 map('B', exec('pkill -SIGUSR1 waybar')) -- Toggle waybar
+map('C', exec('hyprpicker'))
