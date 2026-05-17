@@ -42,10 +42,9 @@ hl.config({
         disable_splash_rendering = true,
     },
 
-    cursor = {
-        no_warps = true,
-        -- default_monitor
-    },
+    cursor = { no_warps = true },
 
     ecosystem = { no_donation_nag = true },
 })
+
+require('overrides')
