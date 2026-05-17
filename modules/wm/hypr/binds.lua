@@ -118,7 +118,7 @@ map('mouse:273', window.resize(), { mouse = true })
 for i = 1, 10 do
     local key = i % 10
     map(key, hl.dsp.focus({ workspace = i }))
-    mapMod(key, window.move({ workspace = i, silent = true }))
+    mapMod(key, window.move({ workspace = i, follow = false }))
 end
 
 local layouts = {}
