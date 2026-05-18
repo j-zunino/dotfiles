@@ -57,8 +57,8 @@
 
             # WM
             notifications
-            wm-pkgs
             hyprland
+            wm-pkgs
             mangowc
             waybar
 

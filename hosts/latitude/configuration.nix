@@ -25,6 +25,7 @@
             stylix
 
             # WM
+            hyprland
             mangowc
 
             # Programs
@@ -55,6 +56,7 @@
 
             # WM
             notifications
+            hyprland
             wm-pkgs
             mangowc
             waybar
