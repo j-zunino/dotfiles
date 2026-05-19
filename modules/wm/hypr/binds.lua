@@ -51,6 +51,9 @@ hl.window_rule({
 
     float = true,
     center = true,
+    pin = true,
+    stay_focused = true,
+    dim_around = true,
     size = { 600, 600 },
 })
 
