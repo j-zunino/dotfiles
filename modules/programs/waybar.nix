@@ -7,6 +7,7 @@
                     layer = "top";
                     position = "top";
                     height = 24;
+                    margin = "4 4 0 4";
 
                     modules-left = [
                         "custom/icon"
@@ -46,8 +47,8 @@
 
                     # - [ CENTER ] -
                     clock = {
-                        format = "{:%A %I:%M %p}";
-                        format-alt = "{:%A %H:%M}";
+                        format = "{:%A, %I:%M %p}";
+                        format-alt = "{:%A, %H:%M}";
                         timezone = "America/Argentina/Buenos_Aires";
                         tooltip-format = "<tt>{calendar}</tt>";
                         actions = {
@@ -87,7 +88,7 @@
                     bluetooth = {
                         format-disabled = "󰂲";
                         format = "";
-                        format-connected = "󰂱";
+                        format-connected = "";
                         tooltip-format = "No devices connected";
                         tooltip-format-connected = "Devices connected: {num_connections}\n{device_enumerate}";
                         tooltip-format-enumerate-connected = "{device_alias} - {device_battery_percentage}% 󰥉";
@@ -103,11 +104,11 @@
                     };
 
                     network = {
-                        format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
+                        format-icons = [""];
+                        format-ethernet = "󰈁";
+                        format-disconnected = "";
                         format = "{icon}";
                         format-wifi = "{icon}";
-                        format-ethernet = "󰀂";
-                        format-disconnected = "";
                         tooltip-format-wifi = "{essid} ({frequency} GHz)\n{icon} {signalStrength}%  ↓{bandwidthDownBytes}  ↑{bandwidthUpBytes}";
                         tooltip-format-ethernet = "{icon} ↓{bandwidthDownBytes} ↑{bandwidthUpBytes}";
                     };
@@ -116,15 +117,18 @@
                         format = "{capacity}% {icon}";
                         format-full = "󰂄";
                         format-icons = {
-                            default = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-                            charging = ["󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅"];
+                            default = [" " " " " " " " " "];
+                            charging = ["󱐋"];
                         };
                         tooltip-format-discharging = "{capacity}% ({health}%  )\n{power:>1.0f}W↓ ~{time} left";
                         tooltip-format-charging = "{capacity}% ({health}%  )\n{power:>1.0f}W↑ ~{time} left";
+
+                        full-at = 90;
                         states = {
                             warning = 30;
                             critical = 20;
                         };
+
                         events = {
                             on-discharging-warning = "notify-send -u normal 'Low Battery' 'Connect charger'";
                             on-discharging-critical = "notify-send -u critical 'Very Low Battery' 'Connect charger'";
@@ -133,39 +137,6 @@
                     };
                 };
             };
-
-            style = ''
-                * {
-                    margin: 0;
-                    padding: 0;
-                    border: none;
-                    border-radius: 0;
-                    text-shadow: none;
-                    box-shadow: none;
-                }
-
-                tooltip {
-                    border: 1px solid;
-                }
-
-
-                #workspaces button {
-                    padding: 0 4px;
-                }
-                #workspaces button.empty, #workspaces button.persistent {
-                    color: inherit;
-                    opacity: 0.5;
-                }
-                #workspaces button:hover {
-                    font-weight: bold;
-                    background: transparent;
-                    opacity: 1;
-                }
-                #workspaces button.active {
-                    font-weight: bold;
-                    opacity: 1;
-                }
-            '';
         };
     };
 
@@ -192,39 +163,55 @@
 
             style = ''
                 * {
-                    background: ${colors.bg1.hex};
+                    margin: 0;
+                    padding: 0;
+                    border: none;
+                    border-radius: 0;
+                    text-shadow: none;
+                    box-shadow: none;
+
                     font-family: ${stylixFonts.monospace.name};
                     font-size: ${toString stylixFonts.sizes.terminal}px;
                 }
 
-                window#waybar { color: ${colors.gray1.hex}; }
-                .charging { color: ${colors.accent.hex}; }
-                .warning { color: ${colors.yellow.hex}; }
-                .critical { color: ${colors.red.hex}; }
+                window#waybar {
+                    color: ${colors.gray1.hex};
+                    background: ${colors.bg0.hex};
+                }
+
                 tooltip {
+                    border: 1px solid;
                     border-color: ${colors.gray1.hex};
+                    background: ${colors.bg0.hex};
                 }
                 tooltip label {
                     color: ${colors.fg.hex};
                 }
 
+                .charging { color: ${colors.accent.hex}; }
+                .warning { color: ${colors.yellow.hex}; }
+                .critical { color: ${colors.red.hex}; }
+
+                #workspaces button {
+                    padding: 0 4px;
+                    color: alpha(${colors.fg.hex}, 0.5);
+                }
+                #workspaces button:hover {
+                    color: ${colors.fg.hex};
+                    background: alpha(${colors.bg1.hex}, 0.5);
+                }
+                #workspaces button.active {
+                    font-weight: bold;
+                    color: ${colors.accent.hex};
+                }
+                #workspaces button.urgent {
+                    color: ${colors.red.hex};
+                    background-color: alpha(${colors.red.hex}, 0.2);
+                }
 
                 #custom-icon {
                     color: ${colors.green.hex};
                     margin: ${margin-inline};
-                }
-
-                #workspaces button {
-                    color: ${colors.gray1.hex};
-                }
-                #workspaces button:hover {
-                    color: ${colors.fg.hex};
-                }
-                #workspaces button.active {
-                    color: ${colors.accent.hex};
-                }
-                #workspaces button.urgent {
-                    color: ${colors.red.hex}
                 }
 
                 #cpu,
