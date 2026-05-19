@@ -9,6 +9,11 @@ end)
 
 hl.window_rule({ match = { class = 'spotify' }, workspace = '10 silent' })
 
+hl.window_rule({
+    match = { class = 'com.stremio.Stremio' },
+    opacity = '1.0 override 1.0 override',
+})
+
 hl.monitor({
     output = '',
     mode = 'preferred',
