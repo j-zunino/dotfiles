@@ -21,6 +21,7 @@
             common-settings
             home-manager
             users-juan
+            kernel-zen
             boot
             stylix
 
