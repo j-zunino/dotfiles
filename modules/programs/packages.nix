@@ -33,8 +33,10 @@
                 editorconfig-checker
                 imagemagick
                 alejandra
+                nodejs
                 shfmt
                 nixd
+                pnpm
                 vale
                 jq
             ];
