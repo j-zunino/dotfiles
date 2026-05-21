@@ -46,6 +46,7 @@
             zram
 
             # Shell
+            sshServer
             zsh
         ];
     };
