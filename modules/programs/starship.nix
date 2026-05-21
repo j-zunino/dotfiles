@@ -8,6 +8,7 @@
                     "$directory"
                     "$git_branch"
                     "$git_status"
+                    "$hostname"
                     "$fill"
                     "$nodejs"
                     "$nix_shell"
@@ -33,7 +34,7 @@
                 };
 
                 git_status = {
-                    format = "[$ahead_behind$all_status]($style) ";
+                    format = "[$ahead_behind$all_status]($style)";
 
                     diverged = "↕ ";
                     ahead = "[↑($count)](blue) ";
@@ -45,6 +46,13 @@
                     renamed = "[>($count)](yellow) ";
                     deleted = "[X($count)](bold red) ";
                     stashed = "";
+                };
+
+                hostname = {
+                    ssh_only = true;
+                    ssh_symbol = "󰘊 ";
+                    format = "[$ssh_symbol]($style) ";
+                    style = "bright-black";
                 };
 
                 nodejs = {
