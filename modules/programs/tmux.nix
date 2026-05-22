@@ -25,6 +25,7 @@
 
                 bind-key -n C-f new-window -n sessionizer "$HOME/dotfiles/scripts/tmux/sessionizer"
 
+                set -s set-clipboard on
                 bind-key / copy-mode \; send-key ?
                 set-window-option -g mode-keys vi
                 bind-key -T copy-mode-vi v send-keys -X begin-selection
