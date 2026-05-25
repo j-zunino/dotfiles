@@ -23,7 +23,7 @@
 
                 sansSerif = {
                     package = pkgs.inter;
-                    name = "Noto Sans";
+                    name = "Inter";
                 };
 
                 serif = {
