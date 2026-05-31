@@ -40,6 +40,7 @@
 
             # System
             driveMounting
+            bluetooth
             audio
             zram
             wifi
