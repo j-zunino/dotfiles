@@ -4,13 +4,12 @@
             enable = true;
             settings = {
                 mainBar = {
-                    layer = "top";
                     position = "top";
-                    height = 24;
-                    margin = "4 4 0 4";
+                    margin = "0";
+                    spacing = 4;
 
                     modules-left = [
-                        "custom/icon"
+                        "group/group-power"
                         "ext/workspaces"
                     ];
 
@@ -23,7 +22,7 @@
                         "cpu"
                         "memory"
                         "bluetooth" # TODO: Render conditionally
-                        "pulseaudio"
+                        "group/group-audio"
                         "network"
                         "battery"
                     ];
@@ -33,6 +32,46 @@
                         format = "󰛄";
                         tooltip = false;
                         on-click = "foot -T 'floating-fzf' -e $HOME/dotfiles/scripts/fzf/logout";
+                    };
+
+                    # TODO: Add confirmation to actions
+                    "custom/poweroff" = {
+                        format = "󰐥";
+                        tooltip = false;
+                        on-click = "systemctl poweroff";
+                    };
+
+                    "custom/reboot" = {
+                        format = "󰑐";
+                        tooltip = false;
+                        on-click = "systemctl reboot";
+                    };
+
+                    "custom/suspend" = {
+                        format = "󰤄";
+                        tooltip = false;
+                        on-click = "systemctl suspend";
+                    };
+
+                    "custom/logout" = {
+                        format = "";
+                        tooltip = false;
+                        on-click = "loginctl kill-user $UID";
+                    };
+
+                    "group/group-power" = {
+                        orientation = "inherit";
+                        drawer = {
+                            transition-duration = 180;
+                            transition-left-to-right = true;
+                        };
+                        modules = [
+                            "custom/icon"
+                            "custom/poweroff"
+                            "custom/reboot"
+                            "custom/suspend"
+                            "custom/logout"
+                        ];
                     };
 
                     "ext/workspaces" = {
@@ -47,8 +86,8 @@
 
                     # - [ CENTER ] -
                     clock = {
-                        format = "{:%A, %I:%M %p}";
-                        format-alt = "{:%A, %H:%M}";
+                        format = "{:%I:%M %p}";
+                        format-alt = "{:%H:%M}";
                         timezone = "America/Argentina/Buenos_Aires";
                         tooltip-format = "<tt>{calendar}</tt>";
                         actions = {
@@ -65,11 +104,11 @@
 
                     # - [ RIGHT ] -
                     tray = {
-                        spacing = 10;
+                        spacing = 8;
                     };
 
                     cpu = {
-                        format = "󰍛";
+                        format = " ";
                         states = {
                             warning = 70;
                             critical = 90;
@@ -86,8 +125,8 @@
                     };
 
                     bluetooth = {
-                        format-disabled = "󰂲";
                         format = "";
+                        format-disabled = "󰂲";
                         format-connected = "";
                         tooltip-format = "No devices connected";
                         tooltip-format-connected = "Devices connected: {num_connections}\n{device_enumerate}";
@@ -95,30 +134,42 @@
                     };
 
                     pulseaudio = {
-                        format = "{icon}";
+                        format = "{icon} ";
                         tooltip-format = "{icon} {volume}%";
-                        format-muted = "󰝟";
+                        format-muted = "󰝟 ";
                         format-icons = {default = ["󰕿" "󰖀" "󰕾"];};
                         scroll-step = 1;
                         on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
                     };
 
+                    "group/group-audio" = {
+                        orientation = "inherit";
+                        drawer = {
+                            transition-duration = 180;
+                            transition-left-to-right = true;
+                        };
+                        modules = [
+                            "pulseaudio"
+                            "pulseaudio/slider"
+                        ];
+                    };
+
                     network = {
-                        format-icons = [""];
-                        format-ethernet = "󰈁";
-                        format-disconnected = "";
                         format = "{icon}";
                         format-wifi = "{icon}";
+                        format-icons = [" "];
+                        format-ethernet = "󰈁";
+                        format-disconnected = " ";
                         tooltip-format-wifi = "{essid} ({frequency} GHz)\n{icon} {signalStrength}%  ↓{bandwidthDownBytes}  ↑{bandwidthUpBytes}";
                         tooltip-format-ethernet = "{icon} ↓{bandwidthDownBytes} ↑{bandwidthUpBytes}";
                     };
 
                     battery = {
-                        format = "{capacity}% {icon}";
-                        format-full = "󰂄";
+                        format = "{capacity}% {icon} ";
+                        format-full = "  ";
                         format-icons = {
                             default = [" " " " " " " " " "];
-                            charging = ["󱐋"];
+                            charging = ["󱐋 "];
                         };
                         tooltip-format-discharging = "{capacity}% ({health}%  )\n{power:>1.0f}W↓ ~{time} left";
                         tooltip-format-charging = "{capacity}% ({health}%  )\n{power:>1.0f}W↑ ~{time} left";
@@ -176,12 +227,10 @@
 
                 window#waybar {
                     color: ${colors.gray1.hex};
-                    background: ${colors.bg0.hex};
+                    background-color: ${colors.bg0.hex};
                 }
 
                 tooltip {
-                    border: 1px solid;
-                    border-color: ${colors.gray1.hex};
                     background: ${colors.bg0.hex};
                 }
                 tooltip label {
@@ -192,36 +241,60 @@
                 .warning { color: ${colors.yellow.hex}; }
                 .critical { color: ${colors.red.hex}; }
 
-                #workspaces button {
-                    padding: 0 4px;
-                    color: alpha(${colors.fg.hex}, 0.5);
+                #custom-icon,
+                #custom-poweroff,
+                #custom-reboot,
+                #custom-suspend,
+                #custom-logout,
+                #workspaces button,
+                #cpu,
+                #memory,
+                #bluetooth,
+                #pulseaudio,
+                #network,
+                battery {
+                    min-width: 24px;
                 }
+
+
+                #custom-icon {
+                    color: ${colors.accent.hex};
+                }
+
+                #custom-poweroff:hover,
+                #custom-reboot:hover,
+                #custom-suspend:hover,
+                #custom-logout:hover,
                 #workspaces button:hover {
-                    color: ${colors.fg.hex};
-                    background: alpha(${colors.bg1.hex}, 0.5);
+                    color: ${colors.gray1.hex};
+                    background-color: ${colors.bg1.hex};
+                }
+
+                #workspaces button {
+                    color: alpha(${colors.gray1.hex}, 05);
                 }
                 #workspaces button.active {
-                    font-weight: bold;
                     color: ${colors.accent.hex};
+                    background-color: ${colors.bg1.hex};
+                    font-weight: bold;
                 }
                 #workspaces button.urgent {
                     color: ${colors.red.hex};
                     background-color: alpha(${colors.red.hex}, 0.2);
                 }
 
-                #custom-icon {
-                    color: ${colors.green.hex};
-                    margin: ${margin-inline};
+                #pulseaudio-slider slider {
+                    min-height: 0px;
+                    min-width: 0px;
                 }
-
-                #cpu,
-                #memory,
-                #bluetooth,
-                #pulseaudio,
-                #network,
-                #battery {
-                    min-width: ${toString stylixFonts.sizes.terminal}px;
-                    margin: ${margin-inline};
+                #pulseaudio-slider trough {
+                    min-height: 4px;
+                    min-width: 80px;
+                    background: ${colors.bg1.hex};
+                }
+                #pulseaudio-slider highlight {
+                    min-width: 0px;
+                    background: ${colors.gray1.hex};
                 }
             '';
         };
