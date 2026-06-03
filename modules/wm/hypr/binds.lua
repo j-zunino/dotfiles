@@ -140,42 +140,42 @@ end)
 -------------------------------------------------------------------------------
 -- AUDIO & BRIGHTNESS
 -------------------------------------------------------------------------------
-hl.bind(
+map(
     'XF86MonBrightnessUp',
     exec('brightnessctl set 5%+ && $HOME/dotfiles/scripts/osd/brightness'),
     { repeating = true }
 )
-hl.bind(
+map(
     'XF86MonBrightnessDown',
     exec('brightnessctl set 5%- && $HOME/dotfiles/scripts/osd/brightness'),
     { repeating = true }
 )
 
-hl.bind(
+map(
     'XF86AudioRaiseVolume',
     exec(
         'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && $HOME/dotfiles/scripts/osd/volumen'
     ),
     { repeating = true }
 )
-hl.bind(
+map(
     'XF86AudioLowerVolume',
     exec(
         'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && $HOME/dotfiles/scripts/osd/volumen'
     ),
     { repeating = true }
 )
-hl.bind(
+map(
     'XF86AudioMute',
     exec(
         'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $HOME/dotfiles/scripts/osd/volumen'
     ),
     { repeating = true }
 )
-hl.bind('XF86AudioNext', exec('playerctl next'))
-hl.bind('XF86AudioPause', exec('playerctl play-pause'))
-hl.bind('XF86AudioPlay', exec('playerctl play-pause'))
-hl.bind('XF86AudioPrev', exec('playerctl previous'))
+map('XF86AudioNext', exec('playerctl next'))
+map('XF86AudioPause', exec('playerctl play-pause'))
+map('XF86AudioPlay', exec('playerctl play-pause'))
+map('XF86AudioPrev', exec('playerctl previous'))
 
 -------------------------------------------------------------------------------
 -- MISC
