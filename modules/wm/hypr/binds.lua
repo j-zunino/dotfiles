@@ -1,54 +1,32 @@
-local main = 'SUPER + '
-local mod = 'SHIFT + '
-
+local bind = require("lib.bind")
+local layout = require("lib.layout")
 local window = hl.dsp.window
-local layout = hl.dsp.layout
 
--------------------------------------------------------------------------------
--- UTILS
--------------------------------------------------------------------------------
-local map = function(keys, func, opts)
-    hl.bind(main .. keys, func, opts)
-end
-
-local mapMod = function(keys, func, opts)
-    hl.bind(main .. mod .. keys, func, opts)
-end
-
-local function exec(cmd)
-    return hl.dsp.exec_cmd(cmd)
-end
-
-local function current_layout()
-    return hl.get_active_workspace().tiled_layout
-end
-
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 -- APPS
--------------------------------------------------------------------------------
-map('Q', exec('foot'))
-map('F', exec('zen'))
-map('E', exec('thunar'))
+------------------------------------------------------------------------------
+bind.map({ "Q", exec = "foot" })
+bind.map({ "F", exec = "zen" })
+bind.map({ "E", exec = "thunar" })
 
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 -- MENU
--------------------------------------------------------------------------------
-local menu = 'foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/launcher'
-local clipboard = 'foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/clipboard'
-local logout = 'foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/logout'
+------------------------------------------------------------------------------
+local menu = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/launcher"
+local clipboard = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/clipboard"
+local logout = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/logout"
 
-map('P', exec(menu))
-map('D', exec(menu))
-map('V', exec(clipboard))
-mapMod('Q', exec(logout))
+bind.map({ "P", exec = menu })
+bind.map({ "D", exec = menu })
+bind.map({ "V", exec = clipboard })
+bind.map({ "Q", exec = logout, mod = "SHIFT" })
 
 hl.window_rule({
-    name = 'floating-fzf',
+    name = "floating-fzf",
     match = {
-        class = 'foot',
-        title = 'floating-fzf',
+        class = "foot",
+        title = "floating-fzf",
     },
-
     float = true,
     center = true,
     pin = true,
@@ -57,128 +35,107 @@ hl.window_rule({
     size = { 600, 600 },
 })
 
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 -- WINDOWS
--------------------------------------------------------------------------------
-mapMod('C', window.close())
+------------------------------------------------------------------------------
+bind.map({ "C", action = window.close(), mod = "SHIFT" })
 
-map('J', function()
-    if current_layout() == 'scrolling' then
-        hl.dispatch(layout('focus r'))
-    else
-        hl.dispatch(layout('cyclenext'))
-    end
-end)
-map('K', function()
-    if current_layout() == 'scrolling' then
-        hl.dispatch(layout('focus l'))
-    else
-        hl.dispatch(layout('cycleprev'))
-    end
-end)
+layout.bind({ "J", master = "cyclenext", scrolling = "focus r" })
+layout.bind({ "K", master = "cycleprev", scrolling = "focus l" })
 
-mapMod('J', function()
-    if current_layout() == 'scrolling' then
-        hl.dispatch(layout('swapcol r'))
-    else
-        hl.dispatch(layout('swapnext'))
-    end
-end)
-mapMod('K', function()
-    if current_layout() == 'scrolling' then
-        hl.dispatch(layout('swapcol l'))
-    else
-        hl.dispatch(layout('swapprev'))
-    end
-end)
+layout.bind({ "J", master = "swapnext", scrolling = "swapcol r", mod = "SHIFT" })
+layout.bind({ "K", master = "swapprev", scrolling = "swapcol l", mod = "SHIFT" })
 
-map(
-    'h',
-    window.resize({ x = -10, y = 0, relative = true }),
-    { repeating = true }
-)
-map(
-    'l',
-    window.resize({ x = 10, y = 0, relative = true }),
-    { repeating = true }
-)
+layout.bind({
+    "h",
+    master = window.resize({
+        x = -20,
+        y = 0,
+        relative = true,
+        repeating = true,
+    }),
+    scrolling = "colresize -0.1",
+})
+layout.bind({
+    "l",
+    master = window.resize({ x = 20, y = 0, relative = true, repeating = true }),
+    scrolling = "colresize +0.1",
+})
 
-mapMod('BACKSPACE', function()
-    if current_layout() == 'master' then
-        hl.dispatch(layout('swapwithmaster'))
-    end
-end)
+layout.bind({ "BACKSPACE", master = "swapwithmaster", mod = "SHIFT" })
 
-map('M', window.fullscreen({ mode = 'fullscreen', action = 'toggle' }))
-mapMod('SPACE', window.float({ action = 'toggle' }))
+bind.map({
+    "M",
+    action = window.fullscreen({ mode = "fullscreen", action = "toggle" }),
+})
+bind.map({
+    "SPACE",
+    action = window.float({ action = "toggle" }),
+    mod = "SHIFT",
+})
 
-map('mouse:272', window.drag(), { mouse = true })
-map('mouse:273', window.resize(), { mouse = true })
+bind.map({ "mouse:272", action = window.drag(), mouse = true })
+bind.map({ "mouse:273", action = window.resize(), mouse = true })
 
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 -- WORKSPACE
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 for i = 1, 10 do
-    local key = i % 10
-    map(key, hl.dsp.focus({ workspace = i }))
-    mapMod(key, window.move({ workspace = i, follow = false }))
+    local key = tostring(i % 10)
+    bind.map({ key, action = hl.dsp.focus({ workspace = i }) })
+    bind.map({
+        key,
+        action = window.move({ workspace = i, follow = false }),
+        mod = "SHIFT",
+    })
 end
 
 local layouts = {}
-map('N', function()
-    local ws = tostring(hl.get_active_workspace().id)
-    local current = layouts[ws] or 'master'
+bind.map({
+    "N",
+    action = function()
+        local ws = tostring(hl.get_active_workspace().id)
+        local current = layouts[ws] or "master"
+        layouts[ws] = current == "master" and "scrolling" or "master"
+        hl.workspace_rule({ workspace = ws, layout = layouts[ws] })
+    end,
+})
 
-    layouts[ws] = current == 'master' and 'scrolling' or 'master'
-
-    hl.workspace_rule({
-        workspace = ws,
-        layout = layouts[ws],
-    })
-end)
-
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 -- AUDIO & BRIGHTNESS
--------------------------------------------------------------------------------
-map(
-    'XF86MonBrightnessUp',
-    exec('brightnessctl set 5%+ && $HOME/dotfiles/scripts/osd/brightness'),
-    { repeating = true }
-)
-map(
-    'XF86MonBrightnessDown',
-    exec('brightnessctl set 5%- && $HOME/dotfiles/scripts/osd/brightness'),
-    { repeating = true }
-)
+------------------------------------------------------------------------------
+bind.map({
+    "XF86MonBrightnessUp",
+    exec = "brightnessctl set 5%+ && $HOME/dotfiles/scripts/osd/brightness",
+    repeating = true,
+})
+bind.map({
+    "XF86MonBrightnessDown",
+    exec = "brightnessctl set 5%- && $HOME/dotfiles/scripts/osd/brightness",
+    repeating = true,
+})
+bind.map({
+    "XF86AudioRaiseVolume",
+    exec = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && $HOME/dotfiles/scripts/osd/volumen",
+    repeating = true,
+})
+bind.map({
+    "XF86AudioLowerVolume",
+    exec = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && $HOME/dotfiles/scripts/osd/volumen",
+    repeating = true,
+})
+bind.map({
+    "XF86AudioMute",
+    exec = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $HOME/dotfiles/scripts/osd/volumen",
+    repeating = true,
+})
+bind.map({ "XF86AudioNext", exec = "playerctl next" })
+bind.map({ "XF86AudioPause", exec = "playerctl play-pause" })
+bind.map({ "XF86AudioPlay", exec = "playerctl play-pause" })
+bind.map({ "XF86AudioPrev", exec = "playerctl previous" })
 
-map(
-    'XF86AudioRaiseVolume',
-    exec(
-        'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && $HOME/dotfiles/scripts/osd/volumen'
-    ),
-    { repeating = true }
-)
-map(
-    'XF86AudioLowerVolume',
-    exec(
-        'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && $HOME/dotfiles/scripts/osd/volumen'
-    ),
-    { repeating = true }
-)
-map(
-    'XF86AudioMute',
-    exec(
-        'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $HOME/dotfiles/scripts/osd/volumen'
-    ),
-    { repeating = true }
-)
-map('XF86AudioNext', exec('playerctl next'))
-map('XF86AudioPause', exec('playerctl play-pause'))
-map('XF86AudioPlay', exec('playerctl play-pause'))
-map('XF86AudioPrev', exec('playerctl previous'))
-
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 -- MISC
--------------------------------------------------------------------------------
-map('B', exec('pkill -SIGUSR1 waybar')) -- Toggle waybar
-map('C', exec('hyprpicker'))
+------------------------------------------------------------------------------
+bind.map({ "B", exec = "pkill -SIGUSR1 waybar" })
+bind.map({ "C", exec = "hyprpicker" })
