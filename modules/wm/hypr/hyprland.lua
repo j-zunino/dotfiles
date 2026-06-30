@@ -52,4 +52,6 @@ hl.config({
 
 require("binds")
 require("animations")
-require("overrides.init")
+
+require("overrides.desktop")
+require("overrides.latitude")
