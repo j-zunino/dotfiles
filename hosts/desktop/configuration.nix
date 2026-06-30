@@ -27,7 +27,6 @@
 
             # WM
             hyprland
-            mangowc
 
             # Programs
             fileManager
@@ -61,7 +60,6 @@
             notifications
             hyprland
             wm-pkgs
-            mangowc
             waybar
 
             # Programs
@@ -92,11 +90,5 @@
             fzf
             ssh
         ];
-
-        wayland.windowManager.mango.extraConfig = ''
-            monitorrule=name:HDMI-A-1,width:1360,height:768,refresh:60,x:0,y:0,scale:1
-            monitorrule=name:DP-1,width:1920,height:1080,refresh:60,x:1360,y:0,scale:1
-            windowrule=tags:9,appid:spotify
-        '';
     };
 }

@@ -27,7 +27,6 @@
 
             # WM
             hyprland
-            mangowc
 
             # Programs
             fileManager
@@ -60,7 +59,6 @@
             notifications
             hyprland
             wm-pkgs
-            mangowc
             waybar
 
             # Programs
