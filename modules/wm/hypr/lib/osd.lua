@@ -3,10 +3,10 @@ local brightness = {
     script = "/brightness",
 }
 
-local volumen = {
+local volume = {
     set = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@",
     mute = "wpctl set-mute @DEFAULT_AUDIO_SINK@",
-    script = "/volumen",
+    script = "/volume",
 }
 
 local M = {}
@@ -23,9 +23,9 @@ M.brightness = {
 }
 
 M.volume = {
-    up = osd(volumen.set, "5%+", volumen.script),
-    down = osd(volumen.set, "5%-", volumen.script),
-    toggle = osd(volumen.mute, "toggle", volumen.script),
+    up = osd(volume.set, "5%+", volume.script),
+    down = osd(volume.set, "5%-", volume.script),
+    toggle = osd(volume.mute, "toggle", volume.script),
 }
 
 M.play = {

@@ -119,9 +119,9 @@
                     # AUDIO & BRIGHTNESS
                     "NONE,XF86MonBrightnessUp,spawn_shell,brightnessctl set 5%+ && osd_brightness"
                     "NONE,XF86MonBrightnessDown,spawn_shell,brightnessctl -n1 set 5%- && osd_brightness"
-                    "NONE,XF86AudioRaiseVolume,spawn_shell,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && osd_volumen"
-                    "NONE,XF86AudioLowerVolume,spawn_shell,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && osd_volumen"
-                    "NONE,XF86AudioMute,spawn_shell,wpctl set-mute @DEFAULT_SINK@ toggle && osd_volumen"
+                    "NONE,XF86AudioRaiseVolume,spawn_shell,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && osd_volume"
+                    "NONE,XF86AudioLowerVolume,spawn_shell,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && osd_volume"
+                    "NONE,XF86AudioMute,spawn_shell,wpctl set-mute @DEFAULT_SINK@ toggle && osd_volume"
                     "NONE,XF86AudioNext,spawn_shell,playerctl next"
                     "NONE,XF86AudioPause,spawn_shell,playerctl play-pause"
                     "NONE,XF86AudioPlay,spawn_shell,playerctl play-pause"
