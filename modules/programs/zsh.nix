@@ -53,24 +53,12 @@
                 ff = "nerdfetch";
                 c = "clear";
                 n = "nvim";
-                v = "vim";
-                f = "nvim +Oil";
-
-                # Git
-                lg = "lazygit";
-                gs = "git status --short";
-                ga = "git add";
-                gaa = "git add --all";
-                gc = "git commit";
-                gp = "git push";
-                gu = "git pull";
-                gf = "git fetch";
-                gd = "git diff";
-                gds = "git diff --staged";
 
                 # Nix
-                hms = "home-manager switch --flake $HOME/dotfiles/.";
-                nrs = "sudo nixos-rebuild switch --flake $HOME/dotfiles/.";
+                dotfiles = "$HOME/dotfiles/scripts/dotfiles";
+
+                # Git
+                gaa = "git add --all";
 
                 # Dev
                 dev = "pnpm run dev";
