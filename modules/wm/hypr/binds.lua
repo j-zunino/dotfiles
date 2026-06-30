@@ -48,18 +48,15 @@ layout.bind({ "K", master = "swapprev", scrolling = "swapcol l", mod = "SHIFT" }
 
 layout.bind({
     "h",
-    master = window.resize({
-        x = -20,
-        y = 0,
-        relative = true,
-        repeating = true,
-    }),
+    master = window.resize({ x = -20, y = 0, relative = true }),
     scrolling = "colresize -0.1",
+    repeating = true,
 })
 layout.bind({
     "l",
-    master = window.resize({ x = 20, y = 0, relative = true, repeating = true }),
+    master = window.resize({ x = 20, y = 0, relative = true }),
     scrolling = "colresize +0.1",
+    repeating = true,
 })
 
 layout.bind({ "BACKSPACE", master = "swapwithmaster", mod = "SHIFT" })
