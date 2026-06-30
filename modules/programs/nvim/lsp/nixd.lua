@@ -1,9 +1,9 @@
 return {
-    filetypes = { 'nix' },
+    filetypes = { "nix" },
     settings = {
         nixd = {
-            nixpkgs = { expr = 'import <nixpkgs> { }' },
-            formatting = { command = { 'alejandra' } },
+            nixpkgs = { expr = "import <nixpkgs> { }" },
+            formatting = { command = { "alejandra" } },
         },
         options = {
             nixos = {

@@ -1,17 +1,17 @@
 local api = vim.api
 
 -- Don't auto comment new line
-api.nvim_create_autocmd('BufEnter', { command = [[set formatoptions-=cro]] })
+api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
 
 -- Highlight on yank
-api.nvim_create_autocmd('TextYankPost', {
+api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.hl.on_yank()
     end,
 })
 
 -- Go to last location when opening a buffer
-api.nvim_create_autocmd('BufReadPost', {
+api.nvim_create_autocmd("BufReadPost", {
     callback = function()
         local mark = api.nvim_buf_get_mark(0, '"')
         local lcount = api.nvim_buf_line_count(0)
@@ -21,16 +21,16 @@ api.nvim_create_autocmd('BufReadPost', {
     end,
 })
 
-api.nvim_create_autocmd('LspAttach', {
-    group = api.nvim_create_augroup('lsp-attach', { clear = true }),
+api.nvim_create_autocmd("LspAttach", {
+    group = api.nvim_create_augroup("lsp-attach", { clear = true }),
     callback = function(event)
         local buftype =
-            api.nvim_get_option_value('filetype', { buf = event.buf })
+            api.nvim_get_option_value("filetype", { buf = event.buf })
 
         -- LSP keymaps
         local map = function(keys, func, desc)
             vim.keymap.set(
-                'n',
+                "n",
                 keys,
                 func,
                 { buffer = event.buf, silent = true, desc = desc }
@@ -68,29 +68,29 @@ api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-vim.api.nvim_create_autocmd('ColorScheme', {
+vim.api.nvim_create_autocmd("ColorScheme", {
     group = vim.api.nvim_create_augroup(
-        'UserCustomHighlights',
+        "UserCustomHighlights",
         { clear = true }
     ),
     callback = function()
         local function get_hl_colors(name)
             local hl = vim.api.nvim_get_hl(0, { name = name })
 
-            local fg = hl.fg and string.format('#%06x', hl.fg) or nil
-            local bg = hl.bg and string.format('#%06x', hl.bg) or nil
+            local fg = hl.fg and string.format("#%06x", hl.fg) or nil
+            local bg = hl.bg and string.format("#%06x", hl.bg) or nil
 
             return { fg = fg, bg = bg }
         end
 
         local hl = vim.api.nvim_set_hl
 
-        local normal = get_hl_colors('Normal')
-        local comment = get_hl_colors('Comment')
-        local warn = get_hl_colors('DiagnosticWarn')
-        local accent = get_hl_colors('Function')
-        local cursor_line = get_hl_colors('CursorLine')
-        local blue = get_hl_colors('Blue')
+        local normal = get_hl_colors("Normal")
+        local comment = get_hl_colors("Comment")
+        local warn = get_hl_colors("DiagnosticWarn")
+        local accent = get_hl_colors("Function")
+        local cursor_line = get_hl_colors("CursorLine")
+        local blue = get_hl_colors("Blue")
 
         -- stylua: ignore start
         -- Neovim

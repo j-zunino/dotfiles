@@ -1,5 +1,5 @@
 local map = function(mode, keys, func, desc, opts)
-    local options = vim.tbl_extend('force', {
+    local options = vim.tbl_extend("force", {
         noremap = true,
         silent = true,
         desc = desc,
@@ -11,82 +11,82 @@ end
 -------------------------------------------------------------------------------
 -- GENERAL
 -------------------------------------------------------------------------------
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-map('n', '<C-s>', ':update<CR>', 'Save file')
-map('n', '<C-q>', ':quit<CR>', 'Quit file')
+map("n", "<C-s>", ":update<CR>", "Save file")
+map("n", "<C-q>", ":quit<CR>", "Quit file")
 
-map('n', '<Esc>', ':nohls<CR>', 'Clear search highlight')
+map("n", "<Esc>", ":nohls<CR>", "Clear search highlight")
 
-map('n', '<leader>Tw', '<cmd>set wrap!<CR>', 'Toggle word wrap')
+map("n", "<leader>Tw", "<cmd>set wrap!<CR>", "Toggle word wrap")
 
 -------------------------------------------------------------------------------
 -- EDITING
 -------------------------------------------------------------------------------
-map('n', '<leader>}', 'gcc', 'Comment line', { remap = true })
-map('v', '<leader>}', 'gc', 'Comment lines', { remap = true })
+map("n", "<leader>}", "gcc", "Comment line", { remap = true })
+map("v", "<leader>}", "gc", "Comment lines", { remap = true })
 
-map({ 'n', 'v' }, 'x', '"_x', 'Delete without saving into register')
-map({ 'n', 'v' }, 'X', '"_X', 'Delete without saving into register')
-map('v', 'p', '"_dP', 'Paste without saving into register')
-map('n', 'P', ':put!<CR>`[v`]=', 'Paste without saving into register')
+map({ "n", "v" }, "x", '"_x', "Delete without saving into register")
+map({ "n", "v" }, "X", '"_X', "Delete without saving into register")
+map("v", "p", '"_dP', "Paste without saving into register")
+map("n", "P", ":put!<CR>`[v`]=", "Paste without saving into register")
 
-map('n', 'Y', 'yy', 'Yank line')
-map('n', 'yA', ':%y<CR>', 'Yank all')
-map('n', 'yJ', 'Yp', 'Yank line and copy down')
-map('n', 'yK', 'YP', 'Yank line and copy up')
+map("n", "Y", "yy", "Yank line")
+map("n", "yA", ":%y<CR>", "Yank all")
+map("n", "yJ", "Yp", "Yank line and copy down")
+map("n", "yK", "YP", "Yank line and copy up")
 
-map('v', 'J', ":move '>+1<CR>gv=gv", 'Move line down')
-map('v', 'K', ":move '<-2<CR>gv=gv", 'Move line up')
+map("v", "J", ":move '>+1<CR>gv=gv", "Move line down")
+map("v", "K", ":move '<-2<CR>gv=gv", "Move line up")
 
-map('n', 'U', '<C-r>', 'Redo')
+map("n", "U", "<C-r>", "Redo")
 
 map(
-    'n',
-    '<leader>X',
+    "n",
+    "<leader>X",
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    'Replace word',
+    "Replace word",
     { silent = false }
 )
 
 -------------------------------------------------------------------------------
 -- NAVIGATION
 -------------------------------------------------------------------------------
-map({ 'n', 'v' }, '<C-d>', '<C-d>zz', 'Scroll down')
-map({ 'n', 'v' }, '<C-u>', '<C-u>zz', 'Scroll up')
+map({ "n", "v" }, "<C-d>", "<C-d>zz", "Scroll down")
+map({ "n", "v" }, "<C-u>", "<C-u>zz", "Scroll up")
 
-map('n', 'n', 'nzz', 'Find next')
-map('n', 'N', 'Nzz', 'Find previous')
+map("n", "n", "nzz", "Find next")
+map("n", "N", "Nzz", "Find previous")
 
 -------------------------------------------------------------------------------
 -- BUFFERS
 -------------------------------------------------------------------------------
-map('n', '<Tab>', ':bnext<CR>', 'Next buffer')
-map('n', '<S-Tab>', ':bprevious<CR>', 'Previous buffer')
+map("n", "<Tab>", ":bnext<CR>", "Next buffer")
+map("n", "<S-Tab>", ":bprevious<CR>", "Previous buffer")
 
 -------------------------------------------------------------------------------
 -- WINDOWS / SPLITS
 -------------------------------------------------------------------------------
-map('n', '<C-j>', '<C-w>w', 'Focus next window')
-map('n', '<C-k>', '<C-w>W', 'Focus previous window')
+map("n", "<C-j>", "<C-w>w", "Focus next window")
+map("n", "<C-k>", "<C-w>W", "Focus previous window")
 
-map('n', '<C-w>s', ':split<CR>', 'Split horizontal')
-map('n', '<C-w>v', ':vsplit<CR>', 'Split vertical')
+map("n", "<C-w>s", ":split<CR>", "Split horizontal")
+map("n", "<C-w>v", ":vsplit<CR>", "Split vertical")
 
-map('n', '<C-l>', ':vertical resize +5<CR>', 'Increase split width')
-map('n', '<C-h>', ':vertical resize -5<CR>', 'Decrease split width')
-map('n', '+', '<C-w>+', 'Increase split height')
-map('n', '-', '<C-w>-', 'Decrease split height')
+map("n", "<C-l>", ":vertical resize +5<CR>", "Increase split width")
+map("n", "<C-h>", ":vertical resize -5<CR>", "Decrease split width")
+map("n", "+", "<C-w>+", "Increase split height")
+map("n", "-", "<C-w>-", "Decrease split height")
 
 -------------------------------------------------------------------------------
 -- MISC
 -------------------------------------------------------------------------------
-map('n', 'Q', '<nop>', 'Disable Ex mode')
+map("n", "Q", "<nop>", "Disable Ex mode")
 
 map(
-    'n',
-    '<C-f>',
-    ':silent !tmux neww $HOME/dotfiles/scripts/tmux/sessionizer<CR>',
-    'Open Tmux sessionizer'
+    "n",
+    "<C-f>",
+    ":silent !tmux neww $HOME/dotfiles/scripts/tmux/sessionizer<CR>",
+    "Open Tmux sessionizer"
 )

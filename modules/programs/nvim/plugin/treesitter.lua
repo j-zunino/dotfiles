@@ -1,35 +1,35 @@
-vim.api.nvim_create_autocmd('PackChanged', {
+vim.api.nvim_create_autocmd("PackChanged", {
     callback = function(ev)
         local name, kind = ev.data.spec.name, ev.data.kind
-        if name == 'nvim-treesitter' and kind == 'update' then
+        if name == "nvim-treesitter" and kind == "update" then
             if not ev.data.active then
-                vim.cmd.packadd('nvim-treesitter')
+                vim.cmd.packadd("nvim-treesitter")
             end
-            vim.cmd('TSUpdate')
+            vim.cmd("TSUpdate")
         end
     end,
 })
 
 vim.pack.add({
-    'https://github.com/nvim-treesitter/nvim-treesitter',
-    'https://github.com/windwp/nvim-ts-autotag',
-    'https://github.com/axelvc/template-string.nvim',
+    "https://github.com/nvim-treesitter/nvim-treesitter",
+    "https://github.com/windwp/nvim-ts-autotag",
+    "https://github.com/axelvc/template-string.nvim",
 })
 
 local parsers = {
-    'c',
-    'css',
-    'html',
-    'javascript',
-    'jsx',
-    'lua',
-    'markdown',
-    'nix',
-    'tsx',
-    'typescript',
+    "c",
+    "css",
+    "html",
+    "javascript",
+    "jsx",
+    "lua",
+    "markdown",
+    "nix",
+    "tsx",
+    "typescript",
 }
 
-require('nvim-treesitter').install(parsers)
+require("nvim-treesitter").install(parsers)
 
 local function treesitter_try_attach(buf, language)
     if not vim.treesitter.language.add(language) then
@@ -37,10 +37,10 @@ local function treesitter_try_attach(buf, language)
     end
     vim.treesitter.start(buf, language)
 
-    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-    vim.wo.foldmethod = 'expr'
+    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    vim.wo.foldmethod = "expr"
 
-    local has_indent_query = vim.treesitter.query.get(language, 'indents')
+    local has_indent_query = vim.treesitter.query.get(language, "indents")
         ~= nil
 
     if has_indent_query then
@@ -48,8 +48,8 @@ local function treesitter_try_attach(buf, language)
     end
 end
 
-local available_parsers = require('nvim-treesitter').get_available()
-vim.api.nvim_create_autocmd('FileType', {
+local available_parsers = require("nvim-treesitter").get_available()
+vim.api.nvim_create_autocmd("FileType", {
     callback = function(args)
         local buf, filetype = args.buf, args.match
 
@@ -59,12 +59,12 @@ vim.api.nvim_create_autocmd('FileType', {
         end
 
         local installed_parsers =
-            require('nvim-treesitter').get_installed('parsers')
+            require("nvim-treesitter").get_installed("parsers")
 
         if vim.tbl_contains(installed_parsers, language) then
             treesitter_try_attach(buf, language)
         elseif vim.tbl_contains(available_parsers, language) then
-            require('nvim-treesitter').install(language):await(function()
+            require("nvim-treesitter").install(language):await(function()
                 treesitter_try_attach(buf, language)
             end)
         else
@@ -73,9 +73,9 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
-require('nvim-ts-autotag').setup()
+require("nvim-ts-autotag").setup()
 
-require('template-string').setup({
+require("template-string").setup({
     jsx_brackets = true,
     remove_template_string = true,
     restore_quotes = {

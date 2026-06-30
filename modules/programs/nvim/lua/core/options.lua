@@ -4,27 +4,27 @@
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cursorline = true
-vim.o.signcolumn = 'yes'
-vim.o.colorcolumn = '80'
-vim.o.winborder = 'single'
+vim.o.signcolumn = "yes"
+vim.o.colorcolumn = "80"
+vim.o.winborder = "single"
 vim.o.termguicolors = true
-vim.o.guicursor = 'a:block'
-vim.o.statusline = ' %f %r %= %l:%c - %{v:lua.custom_file_icon()} '
+vim.o.guicursor = "a:block"
+vim.o.statusline = " %f %r %= %l:%c - %{v:lua.custom_file_icon()} "
 
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 24
 vim.o.pumheight = 15
-vim.o.mouse = 'a'
-vim.o.clipboard = 'unnamedplus'
+vim.o.mouse = "a"
+vim.o.clipboard = "unnamedplus"
 
 vim.o.wrap = false
 vim.o.linebreak = true
 vim.o.list = true
-vim.opt.listchars = { trail = '·', nbsp = '␣' }
+vim.opt.listchars = { trail = "·", nbsp = "␣" }
 
 vim.o.undofile = true
 vim.o.swapfile = false
-vim.o.backspace = 'indent,eol,start'
+vim.o.backspace = "indent,eol,start"
 
 vim.o.updatetime = 100
 vim.o.timeoutlen = 300
@@ -38,7 +38,7 @@ vim.o.splitright = true
 vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.inccommand = 'split'
+vim.o.inccommand = "split"
 
 ---------------------------------------------------------------
 -- INDENT
@@ -54,16 +54,16 @@ vim.o.breakindent = true
 ---------------------------------------------------------------
 -- FOLD
 ---------------------------------------------------------------
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.o.foldtext = 'v:lua.custom_fold_text()'
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldtext = "v:lua.custom_fold_text()"
 vim.o.foldenable = true
 vim.o.foldlevel = 99
 
 function _G.custom_fold_text()
     local line = vim.fn.getline(vim.v.foldstart)
     local lines = vim.v.foldend - vim.v.foldstart + 1
-    return line .. ' … ' .. lines .. ' lines'
+    return line .. " … " .. lines .. " lines"
 end
 
 function _G.custom_file_icon()
@@ -71,17 +71,17 @@ function _G.custom_file_icon()
         return vim.b._file_icon
     end
 
-    local ok, mini_icons = pcall(require, 'mini.icons')
+    local ok, mini_icons = pcall(require, "mini.icons")
     if not ok then
-        return ''
+        return ""
     end
 
-    local icon, _ = mini_icons.get('file', vim.fn.expand('%:t'))
+    local icon, _ = mini_icons.get("file", vim.fn.expand("%:t"))
     if not icon then
-        vim.b._file_icon = ''
-        return ''
+        vim.b._file_icon = ""
+        return ""
     end
 
-    vim.b._file_icon = icon .. ' '
+    vim.b._file_icon = icon .. " "
     return vim.b._file_icon
 end

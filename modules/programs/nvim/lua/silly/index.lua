@@ -1,18 +1,18 @@
 local M = {}
 
-local namespace_id = vim.api.nvim_create_namespace('SillySearchIndex')
+local namespace_id = vim.api.nvim_create_namespace("SillySearchIndex")
 local extmark_id = nil
 local last_line = nil
 local last_update = 0
 local debounce_delay = 50
 
 local function get_current_match_line()
-    local pattern = vim.fn.getreg('/')
-    if pattern == nil or pattern == '' then
+    local pattern = vim.fn.getreg("/")
+    if pattern == nil or pattern == "" then
         return 0
     end
 
-    local pos = vim.fn.searchpos(pattern, 'cnW')
+    local pos = vim.fn.searchpos(pattern, "cnW")
     return pos[1]
 end
 
@@ -44,11 +44,11 @@ M.show_search_index = function()
         {
             virt_text = {
                 {
-                    string.format('[%d/%d]', count.current, count.total),
-                    'DiagnosticVirtualTextInfo',
+                    string.format("[%d/%d]", count.current, count.total),
+                    "DiagnosticVirtualTextInfo",
                 },
             },
-            virt_text_pos = 'eol',
+            virt_text_pos = "eol",
             right_gravity = false,
         }
     )
@@ -59,7 +59,7 @@ M.show_search_index = function()
     else
         extmark_id = nil
         last_line = nil
-        vim.notify('Error setting search index extmark', vim.log.levels.ERROR)
+        vim.notify("Error setting search index extmark", vim.log.levels.ERROR)
     end
 end
 
@@ -74,10 +74,10 @@ end
 
 -- Autocommands
 local group =
-    vim.api.nvim_create_augroup('SillySearchIndexAu', { clear = true })
+    vim.api.nvim_create_augroup("SillySearchIndexAu", { clear = true })
 
 local function handle_search_index_update()
-    if not (vim.opt.hlsearch:get() and vim.fn.mode():find('[nc]')) then
+    if not (vim.opt.hlsearch:get() and vim.fn.mode():find("[nc]")) then
         M.clear_search_index()
         return
     end
@@ -98,17 +98,17 @@ local function handle_search_index_update()
     end
 end
 
-vim.api.nvim_create_autocmd({ 'CursorMoved', 'ModeChanged' }, {
+vim.api.nvim_create_autocmd({ "CursorMoved", "ModeChanged" }, {
     group = group,
-    pattern = '*',
+    pattern = "*",
     callback = function()
         vim.defer_fn(handle_search_index_update, 10)
     end,
 })
 
-vim.api.nvim_create_autocmd('BufLeave', {
+vim.api.nvim_create_autocmd("BufLeave", {
     group = group,
-    pattern = '*',
+    pattern = "*",
     callback = M.clear_search_index,
 })
 

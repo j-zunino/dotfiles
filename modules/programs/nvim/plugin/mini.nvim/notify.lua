@@ -1,9 +1,9 @@
-vim.notify = require('mini.notify').make_notify()
+vim.notify = require("mini.notify").make_notify()
 
-vim.keymap.set('n', '<leader>n', ':lua MiniNotify.show_history()<CR>', {
+vim.keymap.set("n", "<leader>n", ":lua MiniNotify.show_history()<CR>", {
     noremap = true,
     silent = true,
-    desc = 'Show notification history',
+    desc = "Show notification history",
 })
 
 local win_config = function()
@@ -11,15 +11,15 @@ local win_config = function()
     local pad = vim.o.cmdheight + (has_statusline and 1 or 0)
 
     return {
-        anchor = 'SE',
+        anchor = "SE",
         col = vim.o.columns,
         row = vim.o.lines - pad,
-        title = '',
-        border = 'solid',
+        title = "",
+        border = "solid",
     }
 end
 
-require('mini.notify').setup({
+require("mini.notify").setup({
     lsp_progress = { enable = true },
     window = {
         config = win_config,
