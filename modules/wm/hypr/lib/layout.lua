@@ -22,10 +22,10 @@ end
 
 function M.bind(spec)
     local keys = spec[1]
-    local prefix = spec.mod and "SUPER + SHIFT + " or "SUPER + "
+    local prefix = spec.shift and "SUPER + SHIFT + " or "SUPER + "
     local opts = {}
     for k, v in pairs(spec) do
-        if k ~= 1 and k ~= "mod" and k ~= "master" and k ~= "scrolling" then
+        if k ~= 1 and k ~= "shift" and k ~= "master" and k ~= "scrolling" then
             opts[k] = v
         end
     end

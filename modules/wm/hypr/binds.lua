@@ -1,6 +1,5 @@
 local bind = require("lib.bind")
 local layout = require("lib.layout")
-local media = require("lib.media")
 local osd = require("lib.osd")
 local window = hl.dsp.window
 
@@ -14,14 +13,16 @@ bind.map({ "E", exec = "thunar" })
 ------------------------------------------------------------------------------
 -- MENU
 ------------------------------------------------------------------------------
-local menu = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/launcher"
-local clipboard = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/clipboard"
-local logout = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/logout"
+local menu = {
+    launcher = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/launcher",
+    clipboard = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/clipboard",
+    logout = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/logout",
+}
 
-bind.map({ "P", exec = menu })
-bind.map({ "D", exec = menu })
-bind.map({ "V", exec = clipboard })
-bind.map({ "Q", exec = logout, mod = "SHIFT" })
+bind.map({ "P", exec = menu.launcher })
+bind.map({ "D", exec = menu.launcher })
+bind.map({ "V", exec = menu.clipboard })
+bind.map({ "Q", exec = menu.logout, shift = true })
 
 hl.window_rule({
     name = "floating-fzf",
@@ -40,13 +41,13 @@ hl.window_rule({
 ------------------------------------------------------------------------------
 -- WINDOWS
 ------------------------------------------------------------------------------
-bind.map({ "C", action = window.close(), mod = "SHIFT" })
+bind.map({ "C", action = window.close(), shift = true })
 
 layout.bind({ "J", master = "cyclenext", scrolling = "focus r" })
 layout.bind({ "K", master = "cycleprev", scrolling = "focus l" })
 
-layout.bind({ "J", master = "swapnext", scrolling = "swapcol r", mod = "SHIFT" })
-layout.bind({ "K", master = "swapprev", scrolling = "swapcol l", mod = "SHIFT" })
+layout.bind({ "J", master = "swapnext", scrolling = "swapcol r", shift = true })
+layout.bind({ "K", master = "swapprev", scrolling = "swapcol l", shift = true })
 
 layout.bind({
     "h",
@@ -61,7 +62,7 @@ layout.bind({
     repeating = true,
 })
 
-layout.bind({ "BACKSPACE", master = "swapwithmaster", mod = "SHIFT" })
+layout.bind({ "BACKSPACE", master = "swapwithmaster", shift = true })
 
 bind.map({
     "M",
@@ -70,7 +71,7 @@ bind.map({
 bind.map({
     "SPACE",
     action = window.float({ action = "toggle" }),
-    mod = "SHIFT",
+    shift = true,
 })
 
 bind.map({ "mouse:272", action = window.drag(), mouse = true })
@@ -85,7 +86,7 @@ for i = 1, 10 do
     bind.map({
         key,
         action = window.move({ workspace = i, follow = false }),
-        mod = "SHIFT",
+        shift = true,
     })
 end
 
@@ -103,14 +104,34 @@ bind.map({
 ------------------------------------------------------------------------------
 -- AUDIO & BRIGHTNESS
 ------------------------------------------------------------------------------
-media.bind({ "XF86MonBrightnessUp", osd.brightness.up, repeating = true })
-media.bind({ "XF86MonBrightnessDown", osd.brightness.down, repeating = true })
-media.bind({ "XF86AudioRaiseVolume", osd.volume.up, repeating = true })
-media.bind({ "XF86AudioLowerVolume", osd.volume.down, repeating = true })
-media.bind({ "XF86AudioMute", osd.volume.toggle })
-media.bind({ "XF86AudioNext", osd.play.next })
-media.bind({ "XF86AudioPlay", osd.play.play_pause })
-media.bind({ "XF86AudioPrev", osd.play.previous })
+bind.map({
+    "XF86MonBrightnessUp",
+    action = osd.brightness.up,
+    repeating = true,
+    super = false,
+})
+bind.map({
+    "XF86MonBrightnessDown",
+    action = osd.brightness.down,
+    repeating = true,
+    super = false,
+})
+bind.map({
+    "XF86AudioRaiseVolume",
+    action = osd.volume.up,
+    repeating = true,
+    super = false,
+})
+bind.map({
+    "XF86AudioLowerVolume",
+    action = osd.volume.down,
+    repeating = true,
+    super = false,
+})
+bind.map({ "XF86AudioMute", action = osd.volume.toggle, super = false })
+bind.map({ "XF86AudioNext", action = osd.play.next, super = false })
+bind.map({ "XF86AudioPlay", action = osd.play.play_pause, super = false })
+bind.map({ "XF86AudioPrev", action = osd.play.previous, super = false })
 
 ------------------------------------------------------------------------------
 -- MISC
