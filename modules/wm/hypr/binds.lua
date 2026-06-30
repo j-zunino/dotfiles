@@ -1,5 +1,7 @@
 local bind = require("lib.bind")
 local layout = require("lib.layout")
+local media = require("lib.media")
+local osd = require("lib.osd")
 local window = hl.dsp.window
 
 ------------------------------------------------------------------------------
@@ -101,35 +103,14 @@ bind.map({
 ------------------------------------------------------------------------------
 -- AUDIO & BRIGHTNESS
 ------------------------------------------------------------------------------
-bind.map({
-    "XF86MonBrightnessUp",
-    exec = "brightnessctl set 5%+ && $HOME/dotfiles/scripts/osd/brightness",
-    repeating = true,
-})
-bind.map({
-    "XF86MonBrightnessDown",
-    exec = "brightnessctl set 5%- && $HOME/dotfiles/scripts/osd/brightness",
-    repeating = true,
-})
-bind.map({
-    "XF86AudioRaiseVolume",
-    exec = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && $HOME/dotfiles/scripts/osd/volumen",
-    repeating = true,
-})
-bind.map({
-    "XF86AudioLowerVolume",
-    exec = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && $HOME/dotfiles/scripts/osd/volumen",
-    repeating = true,
-})
-bind.map({
-    "XF86AudioMute",
-    exec = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $HOME/dotfiles/scripts/osd/volumen",
-    repeating = true,
-})
-bind.map({ "XF86AudioNext", exec = "playerctl next" })
-bind.map({ "XF86AudioPause", exec = "playerctl play-pause" })
-bind.map({ "XF86AudioPlay", exec = "playerctl play-pause" })
-bind.map({ "XF86AudioPrev", exec = "playerctl previous" })
+media.bind({ "XF86MonBrightnessUp", osd.brightness.up, repeating = true })
+media.bind({ "XF86MonBrightnessDown", osd.brightness.down, repeating = true })
+media.bind({ "XF86AudioRaiseVolume", osd.volume.up, repeating = true })
+media.bind({ "XF86AudioLowerVolume", osd.volume.down, repeating = true })
+media.bind({ "XF86AudioMute", osd.volume.toggle })
+media.bind({ "XF86AudioNext", osd.play.next })
+media.bind({ "XF86AudioPlay", osd.play.play_pause })
+media.bind({ "XF86AudioPrev", osd.play.previous })
 
 ------------------------------------------------------------------------------
 -- MISC
