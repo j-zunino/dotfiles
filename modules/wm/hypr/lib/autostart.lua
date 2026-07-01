@@ -7,7 +7,9 @@ function M.add(cmd)
 end
 
 function M.start()
-    hl.exec_cmd(table.concat(cmds, " & "))
+    for _, cmd in ipairs(cmds) do
+        hl.exec_cmd(cmd)
+    end
 end
 
 return M
