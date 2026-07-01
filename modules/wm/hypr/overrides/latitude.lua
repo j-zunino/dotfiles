@@ -1,4 +1,4 @@
-local host = require("lib").host
+local host = require("lib.host")
 
 host.when("latitude", function()
     hl.config({

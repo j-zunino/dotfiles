@@ -1,4 +1,4 @@
-local autostart = require("lib").autostart
+local autostart = require("lib.autostart")
 
 autostart.add("waybar")
 autostart.add("wbg -s $(find ~/dotfiles/wallpapers -type f | shuf -n 1)")
