@@ -1,3 +1,4 @@
+local bind = require("lib.bind")
 local hl_layout = hl.dsp.layout
 
 local M = {}
@@ -21,17 +22,19 @@ function M.dispatch(actions)
 end
 
 function M.bind(spec)
-    local keys = spec[1]
-    local prefix = spec.shift and "SUPER + SHIFT + " or "SUPER + "
-    local opts = {}
+    local map_spec = {
+        [1] = spec[1],
+        action = function()
+            M.dispatch(spec)
+        end,
+        shift = spec.shift,
+    }
     for k, v in pairs(spec) do
         if k ~= 1 and k ~= "shift" and k ~= "master" and k ~= "scrolling" then
-            opts[k] = v
+            map_spec[k] = v
         end
     end
-    hl.bind(prefix .. keys, function()
-        M.dispatch(spec)
-    end, next(opts) and opts or nil)
+    bind.map(map_spec)
 end
 
 return M
