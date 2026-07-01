@@ -1,20 +1,20 @@
+local script_dir = os.getenv("HOME") .. "/dotfiles/scripts/osd"
+
 local brightness = {
     cmd = "brightnessctl set",
-    script = "/brightness",
+    script = script_dir .. "/brightness",
 }
 
 local volume = {
     set = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@",
     mute = "wpctl set-mute @DEFAULT_AUDIO_SINK@",
-    script = "/volume",
+    script = script_dir .. "/volume",
 }
 
 local M = {}
 
 local function osd(cmd, steps, script)
-    local script_dir = os.getenv("HOME") .. "/dotfiles/scripts/osd" .. script
-
-    return hl.dsp.exec_cmd(table.concat({ cmd, steps, "&&", script_dir }, " "))
+    return hl.dsp.exec_cmd(table.concat({ cmd, steps, "&&", script }, " "))
 end
 
 M.brightness = {
