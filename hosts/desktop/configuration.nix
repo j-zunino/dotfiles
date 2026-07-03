@@ -75,6 +75,7 @@
 
             # Dev
             terminal
+            opencode
             lazygit
             dev-cli
             direnv

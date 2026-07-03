@@ -35,13 +35,12 @@ in {
         };
     };
 
-    flake.modules.homeManager.opencode-baseline = {pkgs, ...}: {
-        nixpkgs.overlays = [
-            inputs.self.overlays.opencode-baseline
-        ];
+    flake.modules.homeManager.opencode = {pkgs, ...}: {
+        home.packages = [pkgs.opencode];
+    };
 
-        home.packages = [
-            pkgs.opencode-baseline
-        ];
+    flake.modules.homeManager.opencode-baseline = {pkgs, ...}: {
+        nixpkgs.overlays = [inputs.self.overlays.opencode-baseline];
+        home.packages = [pkgs.opencode-baseline];
     };
 }

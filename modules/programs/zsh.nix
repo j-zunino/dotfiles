@@ -64,7 +64,6 @@
                 dev = "pnpm run dev";
                 build = "pnpm run build";
                 shadcn = "pnpm dlx shadcn@latest";
-                opencode = "nix run nixpkgs#opencode";
             };
         };
     };
