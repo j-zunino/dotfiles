@@ -69,6 +69,7 @@
             zen
 
             # Dev
+            opencode-baseline
             terminal
             lazygit
             dev-cli
