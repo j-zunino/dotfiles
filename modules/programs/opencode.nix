@@ -11,11 +11,12 @@ in {
                 hash = "sha256-LPWOqWpLjkJY8Ji9ZBP5D7VULMTy/3pYHe+LqimmQhA=";
             };
 
-            nativeBuildInputs = [final.autoPatchelfHook];
+            nativeBuildInputs = [
+                final.autoPatchelfHook
+                final.makeBinaryWrapper
+            ];
 
             buildInputs = [
-                final.stdenv.cc.cc
-                final.libgcc
                 final.glibc
             ];
 
@@ -26,6 +27,8 @@ in {
             installPhase = ''
                 mkdir -p $out/bin
                 cp opencode $out/bin/opencode
+                wrapProgram $out/bin/opencode \
+                    --set OPENCODE_DISABLE_AUTOUPDATE true
             '';
 
             meta.mainProgram = "opencode";
