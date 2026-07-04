@@ -6,6 +6,7 @@ autostart.add("wl-paste --watch cliphist store")
 autostart.add("steam -silent")
 autostart.add("spotify")
 autostart.add("webcord -m")
+autostart.add("systemctl --user start hyprpolkitagent")
 
 hl.on("hyprland.start", autostart.start)
 
