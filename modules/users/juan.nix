@@ -15,6 +15,11 @@
             username = "juan";
             homeDirectory = "/home/juan";
             stateVersion = "24.05";
+
+            sessionVariables = {
+                EDITOR = "nvim";
+                BROWSER = "zen";
+            };
         };
     };
 }
