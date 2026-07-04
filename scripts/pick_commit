@@ -1,19 +1,20 @@
--- TODO: Drop aichat dependency --
-
 #!/usr/bin/env bash
 set -euo pipefail
 
 SELECTED_TYPE="${1:-ai-defined}"
 COMMITS_TO_SUGGEST=8
 
-if ! git diff --cached --quiet; then
-    :
-else
+if git diff --cached --quiet; then
     echo "No changes in staging. Add changes first."
     exit 1
 fi
 
-aichat --model gemini:gemini-2.5-flash-lite "
+if [[ -z "${GEMINI_API_KEY:-}" ]]; then
+    echo "Error: GEMINI_API_KEY is not set."
+    exit 1
+fi
+
+PROMPT=$(cat << PROMPT_EOF
 You are an expert at writing Git commits. Your job is to write commit messages that follow the Conventional Commits format.
 
 The user has selected: $SELECTED_TYPE
@@ -48,4 +49,53 @@ $(git log --oneline -10)
 Changes:
 $(git diff --cached --stat)
 $(git diff --cached)
-"
+PROMPT_EOF
+)
+
+TMPDIR=$(mktemp -d)
+trap 'rm -rf "$TMPDIR"' EXIT
+
+echo "$PROMPT" > "$TMPDIR/prompt.txt"
+
+awk '{
+  gsub(/\\/, "\\\\")
+  gsub(/"/, "\\\"")
+  gsub(/\t/, "\\t")
+  printf "%s\\n", $0
+}' "$TMPDIR/prompt.txt" > "$TMPDIR/escaped.txt"
+
+{
+  printf '{"contents":[{"parts":[{"text":"'
+  cat "$TMPDIR/escaped.txt"
+  printf '"}]}]}'
+} > "$TMPDIR/payload.json"
+
+RESPONSE=$(curl -s -X POST \
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${GEMINI_API_KEY}" \
+    -H "Content-Type: application/json" \
+    -d @"$TMPDIR/payload.json")
+
+echo "$RESPONSE" > "$TMPDIR/response.json"
+
+COMMITS=$(awk '
+/"text": "/ {
+  sub(/.*"text": "/, "")
+  sub(/",?$/, "")
+  text = $0
+}
+END {
+  if (text == "") exit 1
+  gsub(/\\n/, "\n", text)
+  gsub(/\\"/, "\"", text)
+  gsub(/\\\\/, "\\", text)
+  print text
+}
+' "$TMPDIR/response.json")
+
+if [[ -z "${COMMITS:-}" ]]; then
+    echo "Error: failed to parse response from Gemini API." >&2
+    echo "$RESPONSE" >&2
+    exit 1
+fi
+
+echo "$COMMITS" | grep -v '^\s*$'
