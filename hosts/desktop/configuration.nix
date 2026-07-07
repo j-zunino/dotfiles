@@ -30,6 +30,7 @@
 
             # Programs
             fileManager
+            localsend
 
             # Gaming
             gaming
