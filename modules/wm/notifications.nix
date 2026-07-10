@@ -7,25 +7,22 @@
         services.mako = {
             enable = true;
             settings = {
-                default-timeout = 25000;
+                default-timeout = 4000;
                 border-size = 1;
 
                 "urgency=critical" = {
+                    default-timeout = 6000;
                     border-size = 2;
                 };
             };
         };
     };
 
-    flake.modules.homeManager.stylix = {
-        config,
-        lib,
-        ...
-    }: let
+    flake.modules.homeManager.stylix = {config, ...}: let
         colors = config.my.colors;
         stylixFonts = config.stylix.fonts;
     in {
-        services.mako.settings = lib.mkForce {
+        services.mako.settings = {
             font = "${stylixFonts.monospace.name} ${toString stylixFonts.sizes.popups}";
             text-color = colors.fg.hex;
             background-color = colors.bg1.hex;
