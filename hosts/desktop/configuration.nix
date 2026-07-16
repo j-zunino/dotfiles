@@ -81,6 +81,7 @@
             dev-cli
             direnv
             delta
+            handy
             nvim
             git
 
