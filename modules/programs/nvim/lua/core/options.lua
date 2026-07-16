@@ -16,7 +16,7 @@ vim.o.sidescrolloff = 24
 vim.o.pumheight = 15
 vim.o.mouse = "a"
 vim.o.clipboard = "unnamedplus"
-vim.o.clipboard = {
+vim.g.clipboard = {
     name = "OSC 52",
     copy = {
         ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
@@ -31,7 +31,7 @@ vim.o.clipboard = {
 vim.o.wrap = false
 vim.o.linebreak = true
 vim.o.list = true
-vim.o.listchars = { trail = "·", nbsp = "␣" }
+vim.opt.listchars = { trail = "·", nbsp = "␣" }
 
 vim.o.undofile = true
 vim.o.swapfile = false
