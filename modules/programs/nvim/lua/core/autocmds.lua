@@ -47,6 +47,7 @@ api.nvim_create_autocmd("LspAttach", {
         map('gt', vim.lsp.buf.type_definition, 'GoTo type definition')
         map('<leader>rn', vim.lsp.buf.rename, 'Rename')
         map('<leader>ca', vim.lsp.buf.code_action, 'Action')
+        map('<leader>cc', vim.lsp.document_color.color_presentation, 'Color presentation')
 
         -- [ Diagnostics ]
         map('[d', function () vim.diagnostic.jump({ count = 1, float = true }) end, 'Go to previous diagnostic message')
