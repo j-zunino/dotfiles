@@ -17,14 +17,14 @@ vim.o.pumheight = 15
 vim.o.mouse = "a"
 vim.o.clipboard = "unnamedplus"
 vim.g.clipboard = {
-    name = "OSC 52",
+    name = "OSC 52 + wl-clipboard",
     copy = {
         ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
         ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
     },
     paste = {
-        ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-        ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+        ["+"] = "wl-paste --no-newline",
+        ["*"] = "wl-paste --no-newline --primary",
     },
 }
 
