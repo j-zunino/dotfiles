@@ -5,16 +5,17 @@ host.when("desktop", function()
     hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
     hl.config({
-        general = {
-            allow_tearing = true,
-        },
-        cursor = {
-            default_monitor = "DP-1",
-        },
+        general = { allow_tearing = true },
+        cursor = { default_monitor = "DP-1" },
     })
 
     hl.window_rule({
         match = { class = "steam_app_2357570" },
+        immediate = true,
+    })
+
+    hl.window_rule({
+        match = { class = "^Minecraft\\*" },
         immediate = true,
     })
 
