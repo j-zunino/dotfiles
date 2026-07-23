@@ -9,7 +9,7 @@
         programs.mpv = {
             enable = true;
             package = pkgs.mpv.override {
-                scripts = with pkgs.mpvScripts; [modernx];
+                scripts = with pkgs.mpvScripts; [modernz];
             };
         };
     };
