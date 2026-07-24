@@ -1,12 +1,22 @@
 local host = require("lib.host")
+local autostart = require("lib.autostart")
 
 host.when("desktop", function()
+    autostart.add("steam -silent")
+    autostart.add("webcord -m")
+    autostart.add("spotify")
+
     hl.env("LIBVA_DRIVER_NAME", "nvidia")
     hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
     hl.config({
         general = { allow_tearing = true },
         cursor = { default_monitor = "DP-1" },
+    })
+
+    hl.window_rule({
+        match = { class = "spotify" },
+        workspace = "10 silent",
     })
 
     hl.window_rule({

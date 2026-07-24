@@ -3,19 +3,7 @@ local autostart = require("lib.autostart")
 autostart.add("waybar")
 autostart.add("wbg -s $(find ~/dotfiles/wallpapers -type f | shuf -n 1)")
 autostart.add("wl-paste --watch cliphist store")
-autostart.add("steam -silent")
-autostart.add("spotify")
-autostart.add("webcord -m")
 autostart.add("systemctl --user start hyprpolkitagent")
-
-hl.on("hyprland.start", autostart.start)
-
-hl.window_rule({ match = { class = "spotify" }, workspace = "10 silent" })
-
-hl.window_rule({
-    match = { class = "com.stremio.Stremio" },
-    opacity = "1.0 override 1.0 override",
-})
 
 hl.monitor({
     output = "",
@@ -56,3 +44,5 @@ require("animations")
 
 require("overrides.desktop")
 require("overrides.latitude")
+
+hl.on("hyprland.start", autostart.start)
