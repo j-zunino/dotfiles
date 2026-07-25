@@ -66,6 +66,8 @@
             discord
             stremio
             helium
+            mpv
+            imv
             zen
 
             # Dev

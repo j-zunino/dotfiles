@@ -72,6 +72,7 @@
             helium
             gimp
             mpv
+            imv
             zen
 
             # Dev
