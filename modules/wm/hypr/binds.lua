@@ -138,4 +138,9 @@ bind.map({ "XF86AudioPrev", action = osd.play.previous, super = false })
 ------------------------------------------------------------------------------
 bind.map({ "B", exec = "pkill -SIGUSR1 waybar" })
 bind.map({ "C", exec = "hyprpicker -a" })
+bind.map({
+    "S",
+    exec = "hyprshot -m region -z -s --clipboard-only",
+    shift = true,
+})
 bind.map({ "A", exec = "handy --toggle-transcription" })

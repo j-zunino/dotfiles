@@ -6,6 +6,7 @@
             wl-clipboard
             hyprpicker
             playerctl
+            hyprshot
             cliphist
             wbg
         ];
