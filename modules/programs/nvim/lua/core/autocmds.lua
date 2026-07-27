@@ -24,9 +24,6 @@ api.nvim_create_autocmd("BufReadPost", {
 api.nvim_create_autocmd("LspAttach", {
     group = api.nvim_create_augroup("lsp-attach", { clear = true }),
     callback = function(event)
-        local buftype =
-            api.nvim_get_option_value("filetype", { buf = event.buf })
-
         -- LSP keymaps
         local map = function(keys, func, desc)
             vim.keymap.set(
@@ -37,35 +34,47 @@ api.nvim_create_autocmd("LspAttach", {
             )
         end
 
-        -- stylua: ignore start
         -- [ LSP ]
-        map('<leader>h', vim.lsp.buf.hover, 'Hover')
-        map('gd', vim.lsp.buf.declaration, 'Goto declaration')
-        map('gr', vim.lsp.buf.references, 'Goto references')
-        map('gi', vim.lsp.buf.implementation, 'Goto implementation')
-        map('gs', vim.lsp.buf.signature_help, 'Signature cocumentation')
-        map('gt', vim.lsp.buf.type_definition, 'GoTo type definition')
-        map('<leader>rn', vim.lsp.buf.rename, 'Rename')
-        map('<leader>ca', vim.lsp.buf.code_action, 'Action')
-        map('<leader>cc', vim.lsp.document_color.color_presentation, 'Color presentation')
+        local lsp = vim.lsp
+        local buf = lsp.buf
+        local color = lsp.document_color
+        local diagnostics = vim.diagnostic
+
+        map("<leader>h", buf.hover, "Hover")
+        map("gd", buf.declaration, "Goto declaration")
+        map("gr", buf.references, "Goto references")
+        map("gi", buf.implementation, "Goto implementation")
+        map("gs", buf.signature_help, "Signature cocumentation")
+        map("gt", buf.type_definition, "GoTo type definition")
+        map("<leader>rn", buf.rename, "Rename")
+        map("<leader>ca", buf.code_action, "Action")
+        map("<leader>cr", ":LspRestart", "Restart LSP")
+        map("<leader>cc", color.color_presentation, "Color presentation")
+        -- stylua: ignore start
+        map("<leader>cu", function()
+            buf.code_action({ apply = true, context = { only = { "source.removeUnusedImports" }}})
+        end, "Remove unused imports")
+        map("<leader>cs", function()
+            buf.code_action({ apply = true, context = { only = { "source.sortImports" }}})
+        end, "Sort imports")
+        map("<leader>co", function()
+            buf.code_action({ apply = true, context = { only = { "source.organizeImports" }}})
+        end, "Organize imports")
+        -- HACK: tsgo doesn't support add missing imports
+        map("<leader>ci", function()
+            buf.code_action({ apply = true, filter = function(action) return action.title:match("Add all missing imports") end })
+        end, "Add missing imports")
+        -- stylua: ignore stop
 
         -- [ Diagnostics ]
-        map('[d', function () vim.diagnostic.jump({ count = 1, float = true }) end, 'Go to previous diagnostic message')
-        map(']d', function() vim.diagnostic.jump({ count = -1, float = true }) end, 'Go to next diagnostic message')
-        map('<leader>dk', function () vim.diagnostic.jump({ count = -1, float = true }) end, 'Go to previous diagnostic message')
-        map('<leader>dj', function() vim.diagnostic.jump({ count = 1, float = true }) end, 'Go to next diagnostic message')
-        map('<leader>e', vim.diagnostic.open_float, 'Show diagnostic error messages')
-        map('<leader>q', vim.diagnostic.setloclist, 'Open diagnostic quickfix list')
-
-        -- [ JS, TS, React ]
-        if vim.tbl_contains({ 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }, buftype) then
-            map('<leader>cr', ':VtsExec restart_tsserver<CR>', 'Restart server')
-            map('<leader>co', ':VtsExec organize_imports<CR>', 'Organize imports')
-            map('<leader>cs', ':VtsExec sort_imports<CR>', 'Sort imports')
-            map('<leader>ci', ':VtsExec add_missing_imports<CR>', 'Add missing imports')
-            map('<leader>cu', ':VtsExec remove_unused_imports<CR>', 'Remove unused imports')
-        end
-        -- stylua: ignore end
+        map("<leader>e", diagnostics.open_float, "Show diagnostic")
+        map("<leader>q", diagnostics.setloclist, "Show quickfix")
+        map("<leader>dk", function()
+            diagnostics.jump({ count = -1, float = true })
+        end, "Previous diagnostic")
+        map("<leader>dj", function()
+            diagnostics.jump({ count = 1, float = true })
+        end, "Next diagnostic")
     end,
 })
 

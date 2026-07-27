@@ -1,7 +1,7 @@
 vim.lsp.enable({
     "nixd",
     "lua_ls",
-    "vtsls",
+    "tsgo",
     "html",
     "cssls",
     "tailwindcss",
