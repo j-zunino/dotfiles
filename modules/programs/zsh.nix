@@ -64,6 +64,7 @@
                 dev = "pnpm run dev";
                 build = "pnpm run build";
                 shadcn = "pnpm dlx shadcn@latest";
+                sshx = "$HOME/dotfiles/scripts/sshx";
             };
         };
     };

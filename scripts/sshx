@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ssh_args=()
+forward_args=()
+forward_info=()
+host=""
+
+add_forward() {
+    local flag=$1
+    local spec=$2
+
+    local local_port remote_host remote_port
+    IFS=: read -r local_port remote_host remote_port <<<"$spec"
+
+    if [[ -z $remote_host ]]; then
+        remote_host=localhost
+        remote_port=$local_port
+    elif [[ -z $remote_port ]]; then
+        remote_port=$remote_host
+        remote_host=localhost
+    fi
+
+    forward_args+=("$flag" "$local_port:$remote_host:$remote_port")
+    forward_info+=("${flag#-} $local_port → $remote_host:$remote_port")
+}
+
+usage() {
+    cat >&2 <<EOF
+Usage: sshx [ssh flags] <host> <forward>...
+
+Forward formats:
+  <port>                  Local:  port -> localhost:port
+  <local>:<remote>        Local:  local -> localhost:remote
+  <local>:<host>:<remote> Local:  local -> host:remote
+  l:<...>                 Explicit local forward
+  r:<...>                 Remote forward
+  d:<port>                Dynamic SOCKS proxy
+
+Examples:
+  sshx server
+  sshx server 3000
+  sshx server 3000 5173
+  sshx server 3000:8080
+  sshx server 3000:db:80
+  sshx server r:2222:22
+  sshx -N server 3000 d:1080
+EOF
+    exit 1
+}
+
+while (($#)); do
+    case $1 in
+        -*)
+            ssh_args+=("$1")
+            shift
+            ;;
+        *)
+            host=$1
+            shift
+            break
+            ;;
+    esac
+done
+
+[[ -n $host ]] || usage
+
+for spec in "$@"; do
+    case $spec in
+        l:*)
+            add_forward -L "${spec#l:}"
+            ;;
+        r:*)
+            add_forward -R "${spec#r:}"
+            ;;
+        d:*)
+            port=${spec#d:}
+            forward_args+=(-D "$port")
+            forward_info+=("D $port")
+            ;;
+        *)
+            add_forward -L "$spec"
+            ;;
+    esac
+done
+
+echo "Host: $host"
+
+if ((${#forward_info[@]})); then
+    echo "Forwards:"
+    for forward in "${forward_info[@]}"; do
+        echo "  $forward"
+    done
+else
+    echo "No port forwards."
+fi
+
+echo
+if printf '%s\n' "${ssh_args[@]}" | grep -qx -- '-N'; then
+    echo "Establishing tunnel..."
+else
+    echo "Connecting..."
+fi
+
+ssh "${ssh_args[@]}" "${forward_args[@]}" "$host"
+status=$?
+
+echo
+echo "Disconnected (exit code $status)"
+exit "$status"
