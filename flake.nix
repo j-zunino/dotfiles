@@ -24,6 +24,11 @@
 
         hyprland.url = "github:hyprwm/Hyprland";
 
+        quickshell = {
+            url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         spicetify-nix = {
             url = "github:Gerg-L/spicetify-nix";
             inputs.nixpkgs.follows = "nixpkgs";

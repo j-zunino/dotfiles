@@ -1,16 +1,17 @@
 vim.lsp.enable({
-    "nixd",
-    "lua_ls",
-    "tsgo",
-    "html",
-    "cssls",
-    "tailwindcss",
-    "emmet_ls",
-    "jsonls",
-    "tinymist",
-    "pyright",
-    "prismals",
     "clangd",
+    "cssls",
+    "emmet_ls",
+    "html",
+    "jsonls",
+    "lua_ls",
+    "nixd",
+    "prismals",
+    "pyright",
+    "qml-language-server",
+    "tailwindcss",
+    "tinymist",
+    "tsgo",
 })
 
 local diagnostic_icons = {
