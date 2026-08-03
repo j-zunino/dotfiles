@@ -59,6 +59,7 @@
 
             # WM
             notifications
+            quickshell
             hyprland
             wm-pkgs
             waybar

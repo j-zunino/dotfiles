@@ -45,10 +45,6 @@
       "rev": "88c1453db4ba7dd24131086fe51fdf74e587d275",
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
-    "nvim-vtsls": {
-      "rev": "0b5f73c9e50ce95842ea07bb3f05c7d66d87d14a",
-      "src": "https://github.com/yioneko/nvim-vtsls"
-    },
     "oil.nvim": {
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
       "src": "https://github.com/stevearc/oil.nvim"

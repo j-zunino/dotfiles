@@ -8,7 +8,7 @@ vim.lsp.enable({
     "nixd",
     "prismals",
     "pyright",
-    "qml-language-server",
+    "qmlls",
     "tailwindcss",
     "tinymist",
     "tsgo",
