@@ -45,6 +45,7 @@
             wifi
 
             # Shell
+            tailscale
             zsh
         ];
     };

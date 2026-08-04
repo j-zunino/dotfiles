@@ -47,6 +47,7 @@
 
             # Shell
             sshServer
+            tailscale
             zsh
         ];
     };
