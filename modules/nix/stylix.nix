@@ -88,6 +88,8 @@ in {
         };
 
         config.my.colors = mkColors config;
+
+        config.stylix.targets.chromium.enable = false;
     };
 
     flake.modules.homeManager.stylix = {
@@ -116,7 +118,6 @@ in {
                     spicetify.enable = false;
                     lazygit.enable = false;
                     hyprland.enable = false;
-                    mako.enable = false;
                 };
 
                 icons = {
