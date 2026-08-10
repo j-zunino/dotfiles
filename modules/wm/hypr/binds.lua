@@ -1,6 +1,6 @@
 local bind = require("lib.bind")
 local layout = require("lib.layout")
-local osd = require("lib.osd")
+local media = require("lib.media")
 local window = hl.dsp.window
 
 ------------------------------------------------------------------------------
@@ -106,32 +106,32 @@ bind.map({
 ------------------------------------------------------------------------------
 bind.map({
     "XF86MonBrightnessUp",
-    action = osd.brightness.up,
+    action = media.brightness.up,
     repeating = true,
     super = false,
 })
 bind.map({
     "XF86MonBrightnessDown",
-    action = osd.brightness.down,
+    action = media.brightness.down,
     repeating = true,
     super = false,
 })
 bind.map({
     "XF86AudioRaiseVolume",
-    action = osd.volume.up,
+    action = media.volume.up,
     repeating = true,
     super = false,
 })
 bind.map({
     "XF86AudioLowerVolume",
-    action = osd.volume.down,
+    action = media.volume.down,
     repeating = true,
     super = false,
 })
-bind.map({ "XF86AudioMute", action = osd.volume.toggle, super = false })
-bind.map({ "XF86AudioNext", action = osd.play.next, super = false })
-bind.map({ "XF86AudioPlay", action = osd.play.play_pause, super = false })
-bind.map({ "XF86AudioPrev", action = osd.play.previous, super = false })
+bind.map({ "XF86AudioMute", action = media.volume.toggle, super = false })
+bind.map({ "XF86AudioNext", action = media.play.next, super = false })
+bind.map({ "XF86AudioPlay", action = media.play.play_pause, super = false })
+bind.map({ "XF86AudioPrev", action = media.play.previous, super = false })
 
 ------------------------------------------------------------------------------
 -- MISC

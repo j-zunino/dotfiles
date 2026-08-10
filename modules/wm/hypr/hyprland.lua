@@ -3,7 +3,6 @@ local autostart = require("lib.autostart")
 autostart.add("waybar")
 autostart.add("wbg -s $(find ~/dotfiles/wallpapers -type f | shuf -n 1)")
 autostart.add("wl-paste --watch cliphist store")
-autostart.add("systemctl --user start hyprpolkitagent")
 
 hl.monitor({
     output = "",
