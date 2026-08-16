@@ -9,6 +9,9 @@ function M.map(spec)
     if spec.shift then
         table.insert(parts, "SHIFT")
     end
+    if spec.ctrl then
+        table.insert(parts, "CTRL")
+    end
     if spec.alt then
         table.insert(parts, "ALT")
     end
@@ -20,6 +23,7 @@ function M.map(spec)
             k ~= 1
             and k ~= "super"
             and k ~= "shift"
+            and k ~= "ctrl"
             and k ~= "alt"
             and k ~= "exec"
             and k ~= "action"
