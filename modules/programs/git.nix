@@ -57,7 +57,7 @@
 
         programs.lazygit = {
             settings = {
-                git.pagers = [
+                git.diffRenders = [
                     {pager = "delta --dark --paging=never";}
                 ];
             };
