@@ -60,6 +60,14 @@
         };
     };
 
+    flake.modules.homeManager.dev-gui = {pkgs, ...}: {
+        home = {
+            packages = with pkgs; [
+                t3code
+            ];
+        };
+    };
+
     flake.modules.homeManager.common-gui = {pkgs, ...}: {
         home.packages = with pkgs; [
             gparted

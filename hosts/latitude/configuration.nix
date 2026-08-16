@@ -76,6 +76,7 @@
             terminal
             lazygit
             dev-cli
+            dev-gui
             direnv
             delta
             nvim

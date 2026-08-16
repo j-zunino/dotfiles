@@ -81,6 +81,7 @@
             opencode
             lazygit
             dev-cli
+            dev-gui
             direnv
             delta
             handy
