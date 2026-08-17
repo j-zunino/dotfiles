@@ -35,45 +35,39 @@
         programs.ssh = {
             enable = true;
             enableDefaultConfig = false;
-            matchBlocks = {
+            settings = {
                 "*" = {
-                    extraOptions = {
-                        AddKeysToAgent = "yes";
-                        ForwardAgent = "no";
-                        Compression = "no";
-                        ServerAliveInterval = "30";
-                        ServerAliveCountMax = "3";
-                        HashKnownHosts = "yes";
-                        UserKnownHostsFile = "~/.ssh/known_hosts";
-                        ControlMaster = "auto";
-                        ControlPersist = "10m";
-                        ControlPath = "~/.ssh/master-%r@%n:%p";
-                    };
+                    AddKeysToAgent = "yes";
+                    ForwardAgent = "no";
+                    Compression = "no";
+                    ServerAliveInterval = 30;
+                    ServerAliveCountMax = 3;
+                    HashKnownHosts = "yes";
+                    UserKnownHostsFile = "~/.ssh/known_hosts";
+                    ControlMaster = "auto";
+                    ControlPersist = "10m";
+                    ControlPath = "~/.ssh/master-%r@%n:%p";
                 };
 
                 "sputnik" = {
-                    hostname = "192.168.0.209";
-                    user = "sputnik";
-                    port = 2005;
-                    identityFile = "~/.ssh/id_sputnik";
-                    extraOptions = {IdentitiesOnly = "yes";};
+                    HostName = "192.168.0.209";
+                    User = "sputnik";
+                    Port = 2005;
+                    IdentityFile = "~/.ssh/id_sputnik";
+                    IdentitiesOnly = "yes";
                 };
 
                 "desktop" = {
-                    hostname = "192.168.0.185";
-                    user = "juan";
-                    port = 2005;
-                    identityFile = "~/.ssh/id_desktop";
-                    extraOptions = {IdentitiesOnly = "yes";};
+                    HostName = "192.168.0.185";
+                    User = "juan";
+                    Port = 2005;
+                    IdentityFile = "~/.ssh/id_desktop";
+                    IdentitiesOnly = "yes";
                 };
-            };
-        };
-    };
 
-    flake.modules.homeManager.git = {
-        programs.ssh.matchBlocks = {
-            "github.com" = {
-                extraOptions.ForwardAgent = "yes";
+                "github.com" = {
+                    ForwardAgent = "yes";
+                };
             };
         };
     };
