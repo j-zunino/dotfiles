@@ -40,6 +40,7 @@
             # System
             driveMounting
             bluetooth
+            upower
             audio
             zram
             wifi
