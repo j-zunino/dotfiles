@@ -14,13 +14,56 @@ bind.map({ "E", exec = "thunar" })
 -- MENU
 ------------------------------------------------------------------------------
 local menu = {
-    launcher = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/launcher",
     clipboard = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/clipboard",
     logout = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/logout",
 }
 
-bind.map({ "P", exec = menu.launcher })
-bind.map({ "D", exec = menu.launcher })
+bind.map({
+    "P",
+    action = function()
+        hl.dispatch(hl.dsp.global("quickshell:launcher-toggle"))
+        hl.dispatch(hl.dsp.submap("launcher"))
+    end,
+})
+
+hl.define_submap("launcher", function()
+    bind.map({
+        "P",
+        action = function()
+            hl.dispatch(hl.dsp.global("quickshell:launcher-toggle"))
+            hl.dispatch(hl.dsp.submap("reset"))
+        end,
+    })
+
+    bind.map({
+        "J",
+        action = hl.dsp.global("quickshell:launcher-next"),
+        ctrl = true,
+        super = false,
+        repeating = true,
+    })
+    bind.map({
+        "K",
+        action = hl.dsp.global("quickshell:launcher-prev"),
+        ctrl = true,
+        super = false,
+        repeating = true,
+    })
+
+    bind.map({
+        "ESCAPE",
+        action = hl.dsp.submap("reset"),
+        super = false,
+        non_consuming = true,
+    })
+    bind.map({
+        "RETURN",
+        action = (hl.dsp.submap("reset")),
+        super = false,
+        non_consuming = true,
+    })
+end)
+
 bind.map({ "V", exec = menu.clipboard })
 bind.map({ "Q", exec = menu.logout, shift = true })
 
@@ -82,11 +125,16 @@ bind.map({ "mouse:273", action = window.resize(), mouse = true })
 ------------------------------------------------------------------------------
 for i = 1, 10 do
     local key = tostring(i % 10)
-    bind.map({ key, action = hl.dsp.focus({ workspace = i }) })
+    bind.map({
+        key,
+        action = hl.dsp.focus({ workspace = i }),
+        submap_universal = true,
+    })
     bind.map({
         key,
         action = window.move({ workspace = i, follow = false }),
         shift = true,
+        submap_universal = true,
     })
 end
 
@@ -109,38 +157,63 @@ bind.map({
     action = media.brightness.up,
     repeating = true,
     super = false,
+    submap_universal = true,
 })
 bind.map({
     "XF86MonBrightnessDown",
     action = media.brightness.down,
     repeating = true,
     super = false,
+    submap_universal = true,
 })
 bind.map({
     "XF86AudioRaiseVolume",
     action = media.volume.up,
     repeating = true,
     super = false,
+    submap_universal = true,
 })
 bind.map({
     "XF86AudioLowerVolume",
     action = media.volume.down,
     repeating = true,
     super = false,
+    submap_universal = true,
 })
-bind.map({ "XF86AudioMute", action = media.volume.toggle, super = false })
-bind.map({ "XF86AudioNext", action = media.play.next, super = false })
-bind.map({ "XF86AudioPlay", action = media.play.play_pause, super = false })
-bind.map({ "XF86AudioPrev", action = media.play.previous, super = false })
+bind.map({
+    "XF86AudioMute",
+    action = media.volume.toggle,
+    super = false,
+    submap_universal = true,
+})
+bind.map({
+    "XF86AudioNext",
+    action = media.play.next,
+    super = false,
+    submap_universal = true,
+})
+bind.map({
+    "XF86AudioPlay",
+    action = media.play.play_pause,
+    super = false,
+    submap_universal = true,
+})
+bind.map({
+    "XF86AudioPrev",
+    action = media.play.previous,
+    super = false,
+    submap_universal = true,
+})
 
 ------------------------------------------------------------------------------
 -- MISC
 ------------------------------------------------------------------------------
 bind.map({ "B", exec = "pkill -SIGUSR1 waybar" })
-bind.map({ "C", exec = "hyprpicker -a" })
+bind.map({ "A", exec = "handy --toggle-transcription" })
+bind.map({ "C", exec = "hyprpicker -a", submap_universal = true })
 bind.map({
     "S",
     exec = "hyprshot -m region -z -s --clipboard-only",
     shift = true,
+    submap_universal = true,
 })
-bind.map({ "A", exec = "handy --toggle-transcription" })
