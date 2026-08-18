@@ -13,17 +13,20 @@ bind.map({ "E", exec = "thunar" })
 ------------------------------------------------------------------------------
 -- MENU
 ------------------------------------------------------------------------------
-local menu = {
-    clipboard = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/clipboard",
-    logout = "foot -T floating-fzf -e $HOME/dotfiles/scripts/fzf/logout",
-}
-
 bind.map({
     "P",
     action = function()
         hl.dispatch(hl.dsp.global("quickshell:launcher-toggle"))
         hl.dispatch(hl.dsp.submap("launcher"))
     end,
+})
+bind.map({
+    "Q",
+    action = function()
+        hl.dispatch(hl.dsp.global("quickshell:power-toggle"))
+        hl.dispatch(hl.dsp.submap("launcher"))
+    end,
+    shift = true,
 })
 
 hl.define_submap("launcher", function()
@@ -33,6 +36,14 @@ hl.define_submap("launcher", function()
             hl.dispatch(hl.dsp.global("quickshell:launcher-toggle"))
             hl.dispatch(hl.dsp.submap("reset"))
         end,
+    })
+    bind.map({
+        "Q",
+        action = function()
+            hl.dispatch(hl.dsp.global("quickshell:power-toggle"))
+            hl.dispatch(hl.dsp.submap("reset"))
+        end,
+        shift = true,
     })
 
     bind.map({
@@ -63,23 +74,6 @@ hl.define_submap("launcher", function()
         non_consuming = true,
     })
 end)
-
-bind.map({ "V", exec = menu.clipboard })
-bind.map({ "Q", exec = menu.logout, shift = true })
-
-hl.window_rule({
-    name = "floating-fzf",
-    match = {
-        class = "foot",
-        title = "floating-fzf",
-    },
-    float = true,
-    center = true,
-    pin = true,
-    stay_focused = true,
-    dim_around = true,
-    size = { 600, 600 },
-})
 
 ------------------------------------------------------------------------------
 -- WINDOWS
