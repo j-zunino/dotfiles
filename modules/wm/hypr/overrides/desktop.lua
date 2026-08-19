@@ -3,7 +3,7 @@ local autostart = require("lib.autostart")
 
 host.when("desktop", function()
     autostart.add("steam -silent")
-    autostart.add("discord")
+    autostart.add("discord --start-minimized")
     autostart.add("spotify")
 
     hl.env("LIBVA_DRIVER_NAME", "nvidia")
