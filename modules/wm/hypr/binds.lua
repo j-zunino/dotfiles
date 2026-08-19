@@ -117,6 +117,20 @@ bind.map({ "mouse:273", action = window.resize(), mouse = true })
 ------------------------------------------------------------------------------
 -- WORKSPACE
 ------------------------------------------------------------------------------
+bind.map({
+    "SUPER_L",
+    action = hl.dsp.global("quickshell:workspace-show"),
+    super = false,
+    transparent = true,
+})
+
+bind.map({
+    "SUPER_L",
+    action = hl.dsp.global("quickshell:workspace-show"),
+    release = true,
+    transparent = true,
+})
+
 for i = 1, 10 do
     local key = tostring(i % 10)
     bind.map({
