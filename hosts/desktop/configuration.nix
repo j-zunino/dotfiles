@@ -42,6 +42,7 @@
             # System
             driveMounting
             ethernet
+            upower
             audio
             zram
 
