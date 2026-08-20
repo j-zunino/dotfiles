@@ -88,8 +88,6 @@ in {
         };
 
         config.my.colors = mkColors config;
-
-        config.stylix.targets.chromium.enable = false;
     };
 
     flake.modules.homeManager.stylix = {
