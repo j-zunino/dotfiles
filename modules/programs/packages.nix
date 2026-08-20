@@ -32,6 +32,7 @@
             packages = with pkgs; [
                 editorconfig-checker
                 imagemagick
+                github-cli
                 alejandra
                 nodejs
                 shfmt
