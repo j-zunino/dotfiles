@@ -27,6 +27,7 @@
 
             # WM
             hyprland
+            keyring
 
             # Programs
             fileManager
@@ -62,6 +63,7 @@
             # WM
             quickshell
             hyprland
+            keyring
             wm-pkgs
             waybar
 
