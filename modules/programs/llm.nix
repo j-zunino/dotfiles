@@ -8,7 +8,7 @@ in {
 
             src = final.fetchzip {
                 url = "https://github.com/anomalyco/opencode/releases/download/v${version}/opencode-linux-x64-baseline.tar.gz";
-                hash = "sha256-LPWOqWpLjkJY8Ji9ZBP5D7VULMTy/3pYHe+LqimmQhA=";
+                hash = "sha256-tcghrzZbMWvcbkkmESu+OE+LHeTS9iSJPY8m3Vm3aaI=";
             };
 
             nativeBuildInputs = [
@@ -47,7 +47,7 @@ in {
     flake.modules.homeManager.llm = {pkgs, ...}: {
         home.packages = with pkgs; [
             antigravity-cli
-            grok-cli
+            grok-build
             t3code
             codex
 
