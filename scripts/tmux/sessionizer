@@ -2,6 +2,7 @@
 
 search_paths=(
     "$HOME/dotfiles:0:0"
+    "$HOME/.config/quickshell:0:0"
     "$HOME/workspace:1:1"
 )
 
