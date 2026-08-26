@@ -1,5 +1,5 @@
 {inputs, ...}: let
-    version = "1.17.13";
+    version = "1.18.23";
 in {
     flake.overlays.opencode-baseline = final: prev: {
         opencode-baseline = final.stdenv.mkDerivation {
@@ -42,5 +42,17 @@ in {
     flake.modules.homeManager.opencode-baseline = {pkgs, ...}: {
         nixpkgs.overlays = [inputs.self.overlays.opencode-baseline];
         home.packages = [pkgs.opencode-baseline];
+    };
+
+    flake.modules.homeManager.llm = {pkgs, ...}: {
+        home.packages = with pkgs; [
+            antigravity-cli
+            grok-cli
+            t3code
+            codex
+
+            handy
+            wtype
+        ];
     };
 }

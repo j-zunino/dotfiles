@@ -78,12 +78,12 @@
             opencode-baseline
             terminal
             lazygit
-            dev-cli
-            dev-gui
             direnv
             delta
             nvim
             git
+            dev
+            llm
 
             # Shell
             common-cli

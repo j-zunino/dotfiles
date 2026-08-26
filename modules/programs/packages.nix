@@ -27,7 +27,7 @@
         ];
     };
 
-    flake.modules.homeManager.dev-cli = {pkgs, ...}: {
+    flake.modules.homeManager.dev = {pkgs, ...}: {
         home = {
             packages = with pkgs; [
                 editorconfig-checker
@@ -61,16 +61,11 @@
         };
     };
 
-    flake.modules.homeManager.dev-gui = {pkgs, ...}: {
-        home = {
-            packages = with pkgs; [
-                t3code
-            ];
-        };
-    };
-
     flake.modules.homeManager.common-gui = {pkgs, ...}: {
         home.packages = with pkgs; [
+            nestopia-ue
+            chiaki-ng
+            # inkscape
             gparted
         ];
     };

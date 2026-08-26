@@ -83,13 +83,12 @@
             terminal
             opencode
             lazygit
-            dev-cli
-            dev-gui
             direnv
             delta
-            handy
             nvim
             git
+            dev
+            llm
 
             # Shell
             common-cli
