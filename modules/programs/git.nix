@@ -5,7 +5,7 @@
             settings = {
                 user = {
                     # TODO: Make dynamic
-                    name = "j-zunino";
+                    name = "Juan B. Zunino";
                     email = "zuninojuanbautista@gmail.com";
                 };
 
