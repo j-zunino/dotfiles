@@ -36,7 +36,7 @@ require("conform").setup({
         jsonc = { "jq" },
         lock = { "jq" },
         lua = { "stylua" },
-        markdown = { "prettierd" },
+        markdown = { "prettierd", "rumdl" },
         sh = { "shfmt" },
         typescript = { "prettierd" },
         typescriptreact = { "prettierd" },
