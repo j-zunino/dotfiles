@@ -71,7 +71,7 @@
             common-gui
             affinity
             discord
-            stremio
+            nuvio
             spotify
             helium
             gimp

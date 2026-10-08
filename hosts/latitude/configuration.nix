@@ -68,7 +68,7 @@
             # Programs
             common-gui
             discord
-            stremio
+            nuvio
             helium
             mpv
             imv
