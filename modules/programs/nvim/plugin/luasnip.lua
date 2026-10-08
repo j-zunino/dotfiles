@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.pack.add({
-    { src = "https://github.com/L3MON4D3/LuaSnip", vim.version.range("^v2") },
+    { src = "https://github.com/L3MON4D3/LuaSnip", version = vim.version.range("^v2") },
     "https://github.com/rafamadriz/friendly-snippets",
 })
 
