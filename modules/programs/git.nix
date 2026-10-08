@@ -167,8 +167,8 @@
         colors = config.my.colors;
     in {
         programs.lazygit.settings.gui = {
-            authorColors = {"*" = "${colors.gray1.hex}";};
             theme = {
+                authorColors = {"*" = "${colors.gray1.hex}";};
                 activeBorderColor = ["${colors.accent.hex}"];
                 inactiveBorderColor = ["${colors.gray1.hex}"];
                 searchingActiveBorderColor = ["${colors.purple.hex}"];
