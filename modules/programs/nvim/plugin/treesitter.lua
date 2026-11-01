@@ -20,6 +20,7 @@ local parsers = {
     "c",
     "css",
     "html",
+    "http",
     "javascript",
     "jsx",
     "lua",

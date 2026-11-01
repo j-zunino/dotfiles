@@ -22,6 +22,11 @@ require("which-key").add({
             icon = { icon = "" },
         },
         {
+            "<leader>R",
+            group = "Rest",
+            icon = { icon = "", color = "red" },
+        },
+        {
             "<leader>s",
             group = "Pick",
             icon = { icon = "", color = "purple" },
