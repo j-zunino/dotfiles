@@ -11,7 +11,7 @@ vim.lsp.enable({
     "qmlls",
     "tailwindcss",
     "tinymist",
-    "tsgo",
+    "tsc",
 })
 
 local diagnostic_icons = {
