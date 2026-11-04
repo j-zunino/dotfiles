@@ -6,6 +6,12 @@
             settings = {
                 main = {pad = "14x14";};
                 mouse.hide-when-typing = "yes";
+                bell = {
+                    system = false;
+                    urgent = false;
+                    notify = false;
+                    visual = false;
+                };
             };
         };
     };
