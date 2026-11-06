@@ -2,7 +2,7 @@
     flake.modules.nixos.desktop = {
         fileSystems."/mnt/games-win" = {
             device = "/dev/disk/by-uuid/7C78EE9F78EE5782";
-            fsType = "ntfs";
+            fsType = "ntfs3";
             options = [
                 "defaults"
                 "nofail"
