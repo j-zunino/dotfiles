@@ -48,6 +48,9 @@
         environment.sessionVariables = {
             STEAM_EXTRA_COMPAT_TOOLS_PATHS = "$HOME/.steam/root/compatibilitytools.d";
             PROTON_USE_NTSYNC = "1";
+            __GL_SHADER_DISK_CACHE = "1";
+            __GL_SHADER_DISK_CACHE_SIZE = "10737418240";
+            __GL_SHADER_DISK_CACHE_SKIP_CLEANUP = "1";
         };
     };
 }
