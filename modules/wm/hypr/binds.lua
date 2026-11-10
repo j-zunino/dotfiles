@@ -216,7 +216,6 @@ bind.map({
 ------------------------------------------------------------------------------
 -- MISC
 ------------------------------------------------------------------------------
-bind.map({ "B", exec = "pkill -SIGUSR1 waybar" })
 bind.map({ "A", exec = "handy --toggle-transcription" })
 bind.map({ "C", exec = "hyprpicker -a", submap_universal = true })
 bind.map({

@@ -136,7 +136,6 @@ in {
 
             stylix = {
                 targets = {
-                    waybar.enable = false;
                     zen-browser.enable = false;
                     fzf.enable = false;
                     spicetify.enable = false;

@@ -63,7 +63,6 @@
             hyprland
             keyring
             wm-pkgs
-            waybar
 
             # Programs
             common-gui
