@@ -24,4 +24,4 @@ require("everforest").setup({
 
 require("vague").setup({ italic = false })
 
-vim.cmd.colorscheme("everforest")
+vim.cmd.colorscheme("base16")

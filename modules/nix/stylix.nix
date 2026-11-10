@@ -7,8 +7,25 @@
         stylix = {
             enable = true;
 
-            base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
             polarity = "dark";
+            base16Scheme = {
+                base00 = "#151515";
+                base01 = "#202020";
+                base02 = "#303030";
+                base03 = "#505050";
+                base04 = "#B0B0B0";
+                base05 = "#D0D0D0";
+                base06 = "#E0E0E0";
+                base07 = "#F5F5F5";
+                base08 = "#d36a6b";
+                base09 = "#dc8e5d";
+                base0A = "#d8a96c";
+                base0B = "#9cb56d";
+                base0C = "#86c1b9";
+                base0D = "#6ea5af";
+                base0E = "#c78dae";
+                base0F = "#a16946";
+            };
 
             cursor = {
                 package = pkgs.apple-cursor;
@@ -102,16 +119,24 @@ in {
             (theme {inherit pkgs;})
         ];
 
-        options.my.colors = lib.mkOption {
-            type = lib.types.attrs;
-            readOnly = true;
+        options.my = {
+            colors = lib.mkOption {
+                type = lib.types.attrs;
+                readOnly = true;
+            };
+
+            wallpaper = lib.mkOption {
+                type = lib.types.str;
+                default = "classic_dark";
+            };
         };
 
         config = {
+            my.colors = mkColors config;
+
             stylix = {
                 targets = {
                     waybar.enable = false;
-                    neovim.enable = false;
                     zen-browser.enable = false;
                     fzf.enable = false;
                     spicetify.enable = false;
@@ -127,7 +152,19 @@ in {
                 };
             };
 
-            my.colors = mkColors config;
+            home.packages = [
+                (pkgs.writeShellApplication {
+                    name = "random-wallpaper";
+                    runtimeInputs = [pkgs.wbg pkgs.findutils pkgs.coreutils pkgs.procps];
+                    text = ''
+                        dir="$HOME/dotfiles/wallpapers/${config.my.wallpaper}"
+                        img=$(find "$dir" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) | shuf -n 1)
+
+                        pkill -x wbg || true
+                        exec wbg -s "$img"
+                    '';
+                })
+            ];
         };
     };
 }
