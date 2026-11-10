@@ -69,12 +69,11 @@
     mkColors = config: let
         c = config.lib.stylix.colors;
     in {
-        bg0 = mkColor c.base00;
-        bg1 = mkColor c.base01;
-        bg2 = mkColor c.base02;
-
-        gray1 = mkColor c.base03;
-        gray2 = mkColor c.base04;
+        bg = mkColor c.base00;
+        surface = mkColor c.base01;
+        overlay = mkColor c.base02;
+        muted = mkColor c.base03;
+        subtle = mkColor c.base04;
 
         fg = mkColor c.base05;
 

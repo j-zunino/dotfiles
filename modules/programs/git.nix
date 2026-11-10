@@ -168,14 +168,14 @@
     in {
         programs.lazygit.settings.gui = {
             theme = {
-                authorColors = {"*" = "${colors.gray1.hex}";};
+                authorColors = {"*" = "${colors.muted.hex}";};
                 activeBorderColor = ["${colors.accent.hex}"];
-                inactiveBorderColor = ["${colors.gray1.hex}"];
+                inactiveBorderColor = ["${colors.muted.hex}"];
                 searchingActiveBorderColor = ["${colors.purple.hex}"];
                 optionsTextColor = ["${colors.fg.hex}"];
-                selectedLineBgColor = ["${colors.bg1.hex}"];
+                selectedLineBgColor = ["${colors.surface.hex}"];
                 cherryPickedCommitFgColor = ["${colors.red.hex}"];
-                cherryPickedCommitBgColor = ["${colors.bg0.hex}"];
+                cherryPickedCommitBgColor = ["${colors.bg.hex}"];
                 defaultFgColor = ["${colors.fg.hex}"];
             };
         };
