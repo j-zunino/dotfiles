@@ -38,6 +38,7 @@
                 # Pane
                 set -g pane-active-border-style "fg=colour2,bg=default"
 
+                set -g popup-style "bg=default"
                 set -g popup-border-style "fg=colour8"
 
                 # Status bar
