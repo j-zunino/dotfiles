@@ -26,11 +26,6 @@
 
         hardware.steam-hardware.enable = true;
 
-        services.scx = {
-            enable = true;
-            scheduler = "scx_lavd";
-        };
-
         boot.kernel.sysctl = {
             "vm.swappiness" = 150;
             "vm.vfs_cache_pressure" = 50;
