@@ -4,7 +4,7 @@
             enable = true;
             settings = {
                 user = {
-                    # TODO: Make dynamic
+                    # TODO: Configure per user
                     name = "j-zunino";
                     email = "zuninojuanbautista@gmail.com";
                 };
@@ -32,36 +32,17 @@
             options = {
                 dark = true;
                 tabs = 4;
-                line-numbers = true;
-                file-decoration-style = "gray ul ol";
-                file-style = "bold green";
                 file-added-label = "[+]";
                 file-copied-label = "[*]";
                 file-modified-label = "[~]";
                 file-removed-label = "[-]";
                 file-renamed-label = "[>]";
-
-                hunk-header-file-style = "bold green";
-                hunk-header-decoration-style = "gray ul";
-                hunk-header-line-number-style = "gray";
-
-                line-numbers-left-format = "{nm:>1}┊";
-                line-numbers-right-format = "{np:>2}│";
-                line-numbers-zero-style = "gray";
-                line-numbers-left-style = "gray";
-                line-numbers-right-style = "gray bold";
-                line-numbers-minus-style = "red bold";
-                line-numbers-plus-style = "green bold";
             };
         };
 
-        programs.lazygit = {
-            settings = {
-                git.diffRenders = [
-                    {pager = "delta --dark --paging=never";}
-                ];
-            };
-        };
+        programs.lazygit.settings.git.diffRenderers = [
+            {command = "delta --{{colorScheme}} --paging=never";}
+        ];
     };
 
     flake.modules.homeManager.lazygit = {
@@ -178,6 +159,15 @@
                 cherryPickedCommitBgColor = ["${colors.bg.hex}"];
                 defaultFgColor = ["${colors.fg.hex}"];
             };
+        };
+
+        programs.delta.options = {
+            file-decoration-style = "${colors.muted.hex} ul ol";
+            file-style = "bold ${colors.fg.hex}";
+
+            hunk-header-file-style = "bold ${colors.fg.hex}";
+            hunk-header-decoration-style = "${colors.muted.hex} ul";
+            hunk-header-line-number-style = "${colors.muted.hex}";
         };
     };
 }
