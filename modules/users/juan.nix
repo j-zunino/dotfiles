@@ -1,4 +1,4 @@
-{...}: {
+{inputs, ...}: {
     flake.modules.nixos.users-juan = {pkgs, ...}: {
         users.users.juan = {
             isNormalUser = true;
@@ -9,7 +9,14 @@
     };
 
     flake.modules.homeManager.users-juan = {
+        imports = [inputs.self.modules.homeManager.identity];
+
         news.display = "silent";
+
+        my.identity = {
+            name = "j-zunino";
+            email = "zuninojuanbautista@gmail.com";
+        };
 
         home = {
             username = "juan";

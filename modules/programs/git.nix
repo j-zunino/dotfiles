@@ -1,12 +1,11 @@
 {...}: {
-    flake.modules.homeManager.git = {
+    flake.modules.homeManager.git = {config, ...}: {
         programs.git = {
             enable = true;
             settings = {
                 user = {
-                    # TODO: Configure per user
-                    name = "j-zunino";
-                    email = "zuninojuanbautista@gmail.com";
+                    name = config.my.identity.name;
+                    email = config.my.identity.email;
                 };
 
                 init.defaultBranch = "main";
