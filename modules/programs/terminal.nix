@@ -1,4 +1,3 @@
-# TODO: Update cursor colors
 {...}: {
     flake.modules.homeManager.terminal = {
         programs.foot = {
@@ -12,6 +11,16 @@
                     notify = false;
                     visual = false;
                 };
+            };
+        };
+    };
+
+    flake.modules.homeManager.stylix = {config, ...}: let
+        colors = config.my.colors;
+    in {
+        programs.foot.settings = {
+            "colors-dark" = {
+                cursor = "${colors.bg.hexNoPrefix} ${colors.fg.hexNoPrefix}";
             };
         };
     };
