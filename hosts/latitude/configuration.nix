@@ -17,6 +17,23 @@
     flake.modules.nixos.latitude = {
         networking.hostName = "latitude";
 
+        my.power = {
+            cpu.onBat = {
+                governor = "powersave";
+                epp = "power";
+                maxPerfPct = 70; # N5100: 1.1 GHz base / 2.8 GHz burst
+                boost = false;
+            };
+            zramPercent = 40;
+            swappiness = 100;
+            hibernateDelaySec = "30min";
+            criticalPowerAction = "Hibernate";
+            chargeThreshold = {
+                start = 50;
+                end = 80;
+            };
+        };
+
         imports = with inputs.self.modules.nixos; [
             common-settings
             home-manager
@@ -36,7 +53,8 @@
             gaming
 
             # Hardware
-            # TODO: Add intel cpu/gpu?
+            cpu-intel
+            gpu-intel
 
             # System
             bluetooth
@@ -44,6 +62,10 @@
             audio
             zram
             wifi
+            power-options
+            power-tlp
+            power-sleep
+            thermal
 
             # Shell
             tailscale
@@ -52,6 +74,8 @@
     };
 
     flake.modules.homeManager.latitude-juan = {
+        my.idle.suspendCommand = "systemctl suspend-then-hibernate";
+
         imports = with self.modules.homeManager; [
             common-settings
             users-juan

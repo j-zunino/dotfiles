@@ -26,14 +26,6 @@
 
         hardware.steam-hardware.enable = true;
 
-        boot.kernel.sysctl = {
-            "vm.swappiness" = 150;
-            "vm.vfs_cache_pressure" = 50;
-            "kernel.nmi_watchdog" = 0;
-        };
-
-        powerManagement.scsiLinkPolicy = "max_performance";
-
         environment.systemPackages = with pkgs; [
             prismlauncher
             protonplus

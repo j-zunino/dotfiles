@@ -17,6 +17,12 @@
     flake.modules.nixos.desktop = {
         networking.hostName = "desktop";
 
+        # Gaming options
+        my.power = {
+            swappiness = 150;
+            scsiLinkPolicy = "max_performance";
+        };
+
         imports = with inputs.self.modules.nixos; [
             common-settings
             home-manager
@@ -45,6 +51,8 @@
             upower
             audio
             zram
+            power-options
+            power-sleep
 
             # Shell
             sshServer

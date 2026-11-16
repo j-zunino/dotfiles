@@ -1,18 +1,18 @@
 {
     flake.modules.nixos.latitude = {
-        config,
         lib,
-        pkgs,
         modulesPath,
         ...
-    }: {
+    }: let
+        swapDevice = "/dev/disk/by-uuid/4ea932a1-450a-4d97-be7e-878845d0112b";
+    in {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
         ];
 
         boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod"];
         boot.initrd.kernelModules = [];
-        boot.kernelModules = ["kvm-intel"];
+        boot.kernelModules = [];
         boot.extraModulePackages = [];
 
         fileSystems."/" = {
@@ -27,17 +27,20 @@
         };
 
         swapDevices = [
-            {device = "/dev/disk/by-uuid/4ea932a1-450a-4d97-be7e-878845d0112b";}
+            {device = swapDevice;}
         ];
+
+        # Hibernate target, derived from the same device above so the UUID is
+        # stated once. Safe because swap (8.4 GiB) exceeds RAM (3.8 GiB).
+        boot.resumeDevice = swapDevice;
 
         # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
         # (the default) this is the recommended approach. When using systemd-networkd it's
-        # still possible to use this option, but it's recommended to use it in conjunction
-        # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+        # still possible to use this option, but it's recommended to use it in
+        # conjunction with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
         networking.useDHCP = lib.mkDefault true;
         # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
         nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-        hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     };
 }

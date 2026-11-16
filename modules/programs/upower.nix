@@ -1,9 +1,11 @@
 {...}: {
-    flake.modules.nixos.upower = {
+    flake.modules.nixos.upower = {config, ...}: {
         services.upower = {
             enable = true;
-            percentageLow = 30;
-            percentageCritical = 20;
+            percentageLow = 20;
+            percentageCritical = 10;
+            percentageAction = 5;
+            criticalPowerAction = config.my.power.criticalPowerAction;
         };
     };
 }

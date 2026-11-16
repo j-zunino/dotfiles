@@ -21,8 +21,10 @@
 
         networking = {
             networkmanager = {
-                wifi.backend = "iwd";
-                wifi.powersave = true;
+                wifi = {
+                    backend = "iwd";
+                    powersave = true;
+                };
             };
 
             wireless.iwd = {
