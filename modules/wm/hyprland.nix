@@ -17,9 +17,14 @@
             portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
             configType = "lua";
-            extraConfig = '''';
+            extraConfig = builtins.readFile ./hypr/hyprland.lua;
         };
 
-        xdg.configFile."hypr".source = ./hypr;
+        xdg.configFile = {
+            "hypr/animations.lua".source = ./hypr/animations.lua;
+            "hypr/binds.lua".source = ./hypr/binds.lua;
+            "hypr/lib".source = ./hypr/lib;
+            "hypr/overrides".source = ./hypr/overrides;
+        };
     };
 }
