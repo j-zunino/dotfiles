@@ -1,9 +1,9 @@
 ---@param p table<string, string> palette
 ---@param set fun(groups: string[], opts: table)
 return function(p, set)
-    set({ "MiniCursorword" }, { bg = p.base01, bold = true })
-
+    set({ "MiniIconsBlue" }, { fg = p.base0D })
     set({ "MiniIndentScopeSymbol" }, { fg = p.base03 })
+    set({ "MiniCursorword" }, { bg = p.base01, bold = true })
 
     set({ "MiniPickMatchCurrent" }, { fg = p.base05, bg = p.base01 })
     set({ "MiniPickNormal" }, { fg = p.base03 })
