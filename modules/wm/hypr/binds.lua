@@ -146,16 +146,7 @@ for i = 1, 10 do
     })
 end
 
-local layouts = {}
-bind.map({
-    "N",
-    action = function()
-        local ws = tostring(hl.get_active_workspace().id)
-        local current = layouts[ws] or "master"
-        layouts[ws] = current == "master" and "scrolling" or "master"
-        hl.workspace_rule({ workspace = ws, layout = layouts[ws] })
-    end,
-})
+bind.map({ "N", action = layout.toggle })
 
 ------------------------------------------------------------------------------
 -- AUDIO & BRIGHTNESS

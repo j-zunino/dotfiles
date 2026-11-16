@@ -1,10 +1,38 @@
 local bind = require("lib.bind")
 local hl_layout = hl.dsp.layout
 
+local LAYOUTS = { "master", "scrolling" }
+
 local M = {}
 
+local function active()
+    return hl.get_active_special_workspace() or hl.get_active_workspace()
+end
+
+local function next_layout(current)
+    for i, layout_name in ipairs(LAYOUTS) do
+        if layout_name == current then
+            return LAYOUTS[i % #LAYOUTS + 1]
+        end
+    end
+    return LAYOUTS[1]
+end
+
 function M.current()
-    return hl.get_active_workspace().tiled_layout
+    local workspace = active()
+    return workspace and workspace.tiled_layout or nil
+end
+
+function M.toggle()
+    local workspace = active()
+    if not workspace then
+        return
+    end
+    local selector = tostring(workspace.name)
+    hl.workspace_rule({
+        workspace = selector,
+        layout = next_layout(workspace.tiled_layout),
+    })
 end
 
 function M.dispatch(actions)
