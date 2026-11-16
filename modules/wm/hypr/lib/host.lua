@@ -8,9 +8,6 @@ end
 local name = getHostname()
 
 local M = {}
-M.name = name
-M.is_desktop = name == "desktop"
-M.is_latitude = name == "latitude"
 
 function M.when(hostname, fn)
     if name == hostname then

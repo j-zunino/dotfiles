@@ -13,11 +13,6 @@
 
         news.display = "silent";
 
-        my.identity = {
-            name = "j-zunino";
-            email = "zuninojuanbautista@gmail.com";
-        };
-
         home = {
             username = "juan";
             homeDirectory = "/home/juan";

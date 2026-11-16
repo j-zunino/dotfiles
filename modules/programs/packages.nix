@@ -7,7 +7,7 @@
             settings = {
                 vim_keys = true;
                 rounded_corners = false;
-                temp_scale = "celcius";
+                temp_scale = "celsius";
                 show_battery = true;
                 theme_background = false;
             };
@@ -55,7 +55,7 @@
                 trim_trailing_whitespace = true
                 insert_final_newline = true
                 max_line_length = 80
-                quote_type = single
+                quote_type = double
                 spaces_around_brackets = inside
             '';
         };

@@ -1,20 +1,18 @@
 {inputs, ...}: {
-    flake.modules.nixos.fileManager = {...}: {
+    flake.modules.nixos.file-manager = {...}: {
         services = {
             udisks2.enable = true;
             devmon.enable = true;
-            # gvfs.enable = true;
-            # tumbler.enable = true;
         };
     };
 
-    flake.modules.homeManager.fileManager = {
+    flake.modules.homeManager.file-manager = {
         config,
         pkgs,
         lib,
         ...
     }: {
-        options.programs.nordend = {
+        options.my.nordend = {
             settings = lib.mkOption {
                 type = lib.types.attrsOf lib.types.anything;
                 default = {};
@@ -59,19 +57,17 @@
                     "nordend/config.toml".source =
                         (pkgs.formats.toml {}).generate
                         "nordend-config.toml"
-                        config.programs.nordend.settings;
+                        config.my.nordend.settings;
                 };
             };
         };
     };
 
     flake.modules.homeManager.stylix = {config, ...}: {
-        programs.nordend = {
-            settings.font = {
-                family = config.stylix.fonts.sansSerif.name;
-                monospace = config.stylix.fonts.monospace.name;
-                size = config.stylix.fonts.sizes.applications;
-            };
+        my.nordend.settings.font = {
+            family = config.stylix.fonts.sansSerif.name;
+            monospace = config.stylix.fonts.monospace.name;
+            size = config.stylix.fonts.sizes.applications;
         };
     };
 }

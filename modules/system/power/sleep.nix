@@ -23,7 +23,7 @@
             "kernel.nmi_watchdog" = 0;
         };
 
-        # Only hosts without TLP set this; the laptop uses TLP instead.
+        # Always assigned; it stays null on the TLP host by convention.
         powerManagement.scsiLinkPolicy = config.my.power.scsiLinkPolicy;
     };
 }

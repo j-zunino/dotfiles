@@ -1,5 +1,5 @@
 {...}: {
-    flake.modules.nixos.sshServer = {
+    flake.modules.nixos.ssh-server = {
         services = {
             fail2ban = {
                 enable = true;

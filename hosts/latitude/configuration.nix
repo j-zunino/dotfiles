@@ -25,7 +25,6 @@
                 boost = false;
             };
             zramPercent = 40;
-            swappiness = 100;
             hibernateDelaySec = "30min";
             criticalPowerAction = "Hibernate";
             chargeThreshold = {
@@ -47,7 +46,7 @@
             keyring
 
             # Programs
-            fileManager
+            file-manager
 
             # Gaming
             gaming
@@ -89,7 +88,7 @@
             wm-pkgs
 
             # Programs
-            fileManager
+            file-manager
             common-gui
             discord
             nuvio

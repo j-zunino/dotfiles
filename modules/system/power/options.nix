@@ -74,8 +74,8 @@ in {
 
             swappiness = lib.mkOption {
                 type = lib.types.int;
-                default = 150;
-                description = "vm.swappiness. Default preserves the gaming sysctl value.";
+                default = 100;
+                description = "vm.swappiness. Hosts that want a different value override it.";
             };
 
             hibernateDelaySec = lib.mkOption {

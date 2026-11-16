@@ -1,20 +1,20 @@
 {inputs, ...}: let
-    nuvio-version = "0.1.32-alpha";
+    nuvioVersion = "0.1.32-alpha";
 in {
     flake.overlays.nuvio = final: prev: let
         src = final.fetchurl {
-            url = "https://github.com/NuvioMedia/NuvioDesktop/releases/download/${nuvio-version}/Nuvio-Linux-x86_64-${nuvio-version}.AppImage";
+            url = "https://github.com/NuvioMedia/NuvioDesktop/releases/download/${nuvioVersion}/Nuvio-Linux-x86_64-${nuvioVersion}.AppImage";
             hash = "sha256-oytUeHM2lG27+eizRVmksIUi2MT/ZwKgWxL1s9drSI0=";
         };
         appimageContents = final.appimageTools.extract {
             pname = "nuvio";
-            version = nuvio-version;
+            version = nuvioVersion;
             inherit src;
         };
     in {
         nuvio = final.appimageTools.wrapType2 {
             pname = "nuvio";
-            version = nuvio-version;
+            version = nuvioVersion;
             inherit src;
 
             extraInstallCommands = ''

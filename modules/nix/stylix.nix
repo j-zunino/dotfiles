@@ -114,16 +114,14 @@ in {
             (theme {inherit pkgs;})
         ];
 
-        options.my = {
-            colors = lib.mkOption {
-                type = lib.types.attrs;
-                readOnly = true;
-            };
+        options.my.colors = lib.mkOption {
+            type = lib.types.attrs;
+            readOnly = true;
+        };
 
-            wallpaper = lib.mkOption {
-                type = lib.types.str;
-                default = "classic_dark";
-            };
+        options.my.wallpaper = lib.mkOption {
+            type = lib.types.str;
+            default = "classic_dark";
         };
 
         config = {

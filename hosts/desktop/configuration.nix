@@ -36,7 +36,7 @@
             keyring
 
             # Programs
-            fileManager
+            file-manager
             localsend
 
             # Gaming
@@ -55,7 +55,7 @@
             power-sleep
 
             # Shell
-            sshServer
+            ssh-server
             tailscale
             zsh
         ];
@@ -75,7 +75,7 @@
             wm-pkgs
 
             # Programs
-            fileManager
+            file-manager
             common-gui
             affinity
             discord
