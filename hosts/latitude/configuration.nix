@@ -39,7 +39,6 @@
             # TODO: Add intel cpu/gpu?
 
             # System
-            driveMounting
             bluetooth
             upower
             audio
@@ -65,6 +64,7 @@
             wm-pkgs
 
             # Programs
+            fileManager
             common-gui
             discord
             nuvio

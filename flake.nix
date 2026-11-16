@@ -36,6 +36,11 @@
 
         affinity-nix.url = "github:mrshmllow/affinity-nix";
 
+        nordend = {
+            url = "github:pankaspe/nordend-fm";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         import-tree.url = "github:vic/import-tree";
         flake-parts.url = "github:hercules-ci/flake-parts";
         systems.url = "github:nix-systems/default";

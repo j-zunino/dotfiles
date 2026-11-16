@@ -831,6 +831,26 @@
         "type": "github"
       }
     },
+    "nordend": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794779732,
+        "narHash": "sha256-f3Zf5sgfqbpp+QbXi82tTCJlliP+3V4mMqwBhMy9bm0=",
+        "owner": "pankaspe",
+        "repo": "nordend-fm",
+        "rev": "49222bb33fa70dc82168873c130c7e9ba5dd39ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pankaspe",
+        "repo": "nordend-fm",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -940,6 +960,7 @@
         "hyprland": "hyprland",
         "import-tree": "import-tree",
         "nixpkgs": "nixpkgs_5",
+        "nordend": "nordend",
         "quickshell": "quickshell",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",

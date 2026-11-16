@@ -41,7 +41,6 @@
             cpu-amd
 
             # System
-            driveMounting
             ethernet
             upower
             audio
@@ -67,6 +66,7 @@
             wm-pkgs
 
             # Programs
+            fileManager
             common-gui
             affinity
             discord
