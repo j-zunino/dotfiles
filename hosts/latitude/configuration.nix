@@ -60,6 +60,7 @@
             # WM
             quickshell
             hyprland
+            hypridle
             keyring
             wm-pkgs
 

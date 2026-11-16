@@ -2,6 +2,7 @@ local autostart = require("lib.autostart")
 
 autostart.add("systemctl --user start hyprland-session.target") -- FIX: xdg-desktop-portal-hyprland
 autostart.add("quickshell")
+autostart.add("hypridle")
 autostart.add("random-wallpaper")
 autostart.add("wl-paste --watch cliphist store")
 
