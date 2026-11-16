@@ -1,8 +1,4 @@
-{
-    inputs,
-    self,
-    ...
-}: let
+{inputs, ...}: let
     theme = {pkgs, ...}: {
         stylix = {
             enable = true;
@@ -148,6 +144,11 @@ in {
                     light = "Papirus-Light";
                     dark = "Papirus-Dark";
                 };
+
+                targets.gtk.extraCss = ''
+                    @define-color accent_color ${config.my.colors.accent.hex};
+                    @define-color accent_bg_color ${config.my.colors.accent.hex};
+                '';
             };
 
             home.packages = [
