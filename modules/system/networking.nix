@@ -20,7 +20,10 @@
         environment.systemPackages = with pkgs; [impala];
 
         networking = {
-            networkmanager.wifi.backend = "iwd";
+            networkmanager = {
+                wifi.backend = "iwd";
+                wifi.powersave = true;
+            };
 
             wireless.iwd = {
                 enable = true;
@@ -28,6 +31,7 @@
                 settings = {
                     IPv6.Enabled = true;
                     Settings.AutoConnect = true;
+                    General.EnableNetworkConfiguration = true;
                 };
             };
         };
