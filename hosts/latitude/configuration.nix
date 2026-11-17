@@ -38,8 +38,8 @@
             home-manager
             users-juan
             kernel-zen
-            boot
             stylix
+            boot
 
             # WM
             hyprland

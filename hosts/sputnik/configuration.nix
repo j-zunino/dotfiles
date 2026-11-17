@@ -22,11 +22,20 @@
             common-settings
             users-sputnik
             home-manager
+            boot
+
+            # System
+            power-options
+            power-sleep
+            power-tlp
             ethernet
-            zsh
+            thermal
+            zram
+            wifi
 
             # Shell
             ssh-server
+            zsh
         ];
     };
 
@@ -36,12 +45,17 @@
             users-sputnik
 
             # Dev
+            lazygit
+            direnv
             nvim
             git
+            dev
 
             # Shell
             common-cli
+            tmux
             zsh
+            fzf
             ssh
         ];
     };
