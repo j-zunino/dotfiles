@@ -1,30 +1,44 @@
 {...}: {
     flake.modules.nixos.ssh-server = {
-        services = {
-            fail2ban = {
-                enable = true;
-                jails.sshd.enabled = true;
-            };
+        lib,
+        config,
+        ...
+    }: {
+        options.my.ssh.allowUsers = lib.mkOption {
+            type = lib.types.listOf lib.types.str;
+            default = ["juan"];
+            description = "Users allowed to log in over SSH";
+        };
 
-            endlessh = {
-                enable = true;
-                port = 22;
-                openFirewall = true;
-            };
+        config = {
+            networking.firewall.allowedTCPPorts = config.services.openssh.ports;
 
-            openssh = {
-                enable = true;
-                ports = [2005];
-                settings = {
-                    X11Forwarding = false;
-                    IgnoreRhosts = true;
-                    PermitEmptyPasswords = false;
-                    MaxAuthTries = 3;
-                    PubKeyAuthentication = true;
-                    PasswordAuthentication = false;
-                    PermitRootLogin = "no";
-                    KbdInteractiveAuthentication = false;
-                    AllowUsers = ["juan"];
+            services = {
+                fail2ban = {
+                    enable = true;
+                    jails.sshd.enabled = true;
+                };
+
+                endlessh = {
+                    enable = true;
+                    port = 22;
+                    openFirewall = true;
+                };
+
+                openssh = {
+                    enable = true;
+                    ports = [2005];
+                    settings = {
+                        X11Forwarding = false;
+                        IgnoreRhosts = true;
+                        PermitEmptyPasswords = false;
+                        MaxAuthTries = 3;
+                        PubKeyAuthentication = true;
+                        PasswordAuthentication = false;
+                        PermitRootLogin = "no";
+                        KbdInteractiveAuthentication = false;
+                        AllowUsers = config.my.ssh.allowUsers;
+                    };
                 };
             };
         };
