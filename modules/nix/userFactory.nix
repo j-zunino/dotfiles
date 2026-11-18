@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{...}: {
     config.flake.factory.user = {
         name,
         groups ? ["wheel"],
@@ -13,8 +13,6 @@
         };
 
         homeManager."users-${name}" = {
-            imports = [inputs.self.modules.generic.identity];
-
             home = {
                 username = name;
                 homeDirectory = "/home/${name}";
