@@ -3,16 +3,7 @@
     self,
     ...
 }: {
-    flake.nixosConfigurations.desktop = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [self.modules.nixos.desktop];
-    };
-
-    flake.homeConfigurations."juan@desktop" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs;};
-        modules = [self.modules.homeManager.desktop-juan];
-    };
+    mkHost.desktop = {user = "juan";};
 
     flake.modules.nixos.desktop = {
         networking.hostName = "desktop";

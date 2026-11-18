@@ -3,16 +3,7 @@
     self,
     ...
 }: {
-    flake.nixosConfigurations.sputnik = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [self.modules.nixos.sputnik];
-    };
-
-    flake.homeConfigurations."sputnik@sputnik" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs;};
-        modules = [self.modules.homeManager.sputnik-sputnik];
-    };
+    mkHost.sputnik = {user = "sputnik";};
 
     flake.modules.nixos.sputnik = {
         config,

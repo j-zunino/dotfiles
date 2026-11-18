@@ -3,16 +3,7 @@
     self,
     ...
 }: {
-    flake.nixosConfigurations.latitude = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [self.modules.nixos.latitude];
-    };
-
-    flake.homeConfigurations."juan@latitude" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs;};
-        modules = [self.modules.homeManager.latitude-juan];
-    };
+    mkHost.latitude = {user = "juan";};
 
     flake.modules.nixos.latitude = {
         networking.hostName = "latitude";
