@@ -1,4 +1,63 @@
-{...}: {
+{
+    inputs,
+    lib,
+    ...
+}: let
+    cpuProfile = lib.types.submodule {
+        options = {
+            governor = lib.mkOption {
+                type = lib.types.str;
+                default = "powersave";
+                description = "Scaling governor. intel_pstate only accepts powersave/performance.";
+            };
+            epp = lib.mkOption {
+                type = lib.types.str;
+                default = "balance_performance";
+                description = "CPU energy_performance_preference.";
+            };
+            maxPerfPct = lib.mkOption {
+                type = lib.types.ints.between 1 100;
+                default = 100;
+                description = "intel_pstate max_perf_pct, as a percentage.";
+            };
+            boost = lib.mkOption {
+                type = lib.types.bool;
+                default = true;
+                description = "Allow turbo/boost.";
+            };
+        };
+    };
+in {
+    flake.modules.generic.power-tlp = {
+        options.my.power = {
+            cpu = {
+                onAc = lib.mkOption {
+                    type = cpuProfile;
+                    default = {};
+                    description = "CPU profile while on AC power.";
+                };
+                onBat = lib.mkOption {
+                    type = cpuProfile;
+                    default.epp = "power";
+                    description = "CPU profile while on battery.";
+                };
+            };
+
+            chargeThreshold = {
+                start = lib.mkOption {
+                    type = lib.types.nullOr (lib.types.ints.between 0 100);
+                    default = null;
+                    description = "TLP START_CHARGE_THRESH_BAT0. null leaves it unset.";
+                };
+                end = lib.mkOption {
+                    type = lib.types.nullOr (lib.types.ints.between 0 100);
+                    default = null;
+                    description = "TLP STOP_CHARGE_THRESH_BAT0. null leaves it unset.";
+                };
+            };
+        };
+    };
+
     flake.modules.nixos.power-tlp = {
         config,
         lib,
@@ -15,6 +74,8 @@
                 else 0;
         };
     in {
+        imports = [inputs.self.modules.generic.power-tlp];
+
         services.tlp = {
             enable = true;
             settings =

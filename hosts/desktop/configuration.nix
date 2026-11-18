@@ -48,7 +48,6 @@ in {
             upower
             audio
             zram
-            power-options
             power-sleep
 
             # Shell

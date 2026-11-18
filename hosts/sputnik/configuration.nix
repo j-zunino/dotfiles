@@ -34,7 +34,6 @@ in {
             boot
 
             # System
-            power-options
             power-sleep
             power-tlp
             ethernet

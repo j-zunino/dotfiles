@@ -58,7 +58,6 @@ in {
             audio
             zram
             wifi
-            power-options
             power-tlp
             power-sleep
             thermal
