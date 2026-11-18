@@ -1,14 +1,22 @@
-{...}: {
-    flake.modules.nixos.ssh-server = {
-        lib,
-        config,
-        ...
-    }: {
+{
+    inputs,
+    lib,
+    ...
+}: {
+    flake.modules.generic.ssh = {
         options.my.ssh.allowUsers = lib.mkOption {
             type = lib.types.listOf lib.types.str;
             default = ["juan"];
             description = "Users allowed to log in over SSH";
         };
+    };
+
+    flake.modules.nixos.ssh-server = {
+        lib,
+        config,
+        ...
+    }: {
+        imports = [inputs.self.modules.generic.ssh];
 
         config = {
             networking.firewall.allowedTCPPorts = config.services.openssh.ports;
@@ -77,10 +85,6 @@
                     Port = 2005;
                     IdentityFile = "~/.ssh/id_desktop";
                     IdentitiesOnly = "yes";
-                };
-
-                "github.com" = {
-                    ForwardAgent = "yes";
                 };
             };
         };

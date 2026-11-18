@@ -1,5 +1,9 @@
-{lib, ...}: {
-    flake.modules.homeManager.hypridle = {config, ...}: {
+{
+    inputs,
+    lib,
+    ...
+}: {
+    flake.modules.generic.idle = {
         options.my.idle = {
             dpmsOffSec = lib.mkOption {
                 type = lib.types.int;
@@ -20,6 +24,14 @@
                 '';
             };
         };
+    };
+
+    flake.modules.homeManager.hypridle = {
+        config,
+        lib,
+        ...
+    }: {
+        imports = [inputs.self.modules.generic.idle];
 
         config.services.hypridle = {
             enable = true;

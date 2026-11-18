@@ -54,53 +54,13 @@
             };
         };
     };
-
-    mkColor = color: {
-        raw = color;
-        hex = "#${color}";
-        hexNoPrefix = color;
-        rgb = "rgb(${color})";
-    };
-
-    mkColors = config: let
-        c = config.lib.stylix.colors;
-    in {
-        bg = mkColor c.base00;
-        surface = mkColor c.base01;
-        overlay = mkColor c.base02;
-        muted = mkColor c.base03;
-        subtle = mkColor c.base04;
-
-        fg = mkColor c.base05;
-
-        red = mkColor c.base08;
-        orange = mkColor c.base09;
-        yellow = mkColor c.base0A;
-        green = mkColor c.base0B;
-        aqua = mkColor c.base0C;
-        blue = mkColor c.base0D;
-        purple = mkColor c.base0E;
-
-        accent = mkColor c.base0B;
-    };
 in {
-    flake.modules.nixos.stylix = {
-        config,
-        lib,
-        pkgs,
-        ...
-    }: {
+    flake.modules.nixos.stylix = {pkgs, ...}: {
         imports = [
             inputs.stylix.nixosModules.stylix
             (theme {inherit pkgs;})
+            inputs.self.modules.generic.colors
         ];
-
-        options.my.colors = lib.mkOption {
-            type = lib.types.attrs;
-            readOnly = true;
-        };
-
-        config.my.colors = mkColors config;
     };
 
     flake.modules.homeManager.stylix = {
@@ -112,12 +72,8 @@ in {
         imports = [
             inputs.stylix.homeModules.stylix
             (theme {inherit pkgs;})
+            inputs.self.modules.generic.colors
         ];
-
-        options.my.colors = lib.mkOption {
-            type = lib.types.attrs;
-            readOnly = true;
-        };
 
         options.my.wallpaper = lib.mkOption {
             type = lib.types.str;
@@ -125,8 +81,6 @@ in {
         };
 
         config = {
-            my.colors = mkColors config;
-
             stylix = {
                 targets = {
                     zen-browser.enable = false;

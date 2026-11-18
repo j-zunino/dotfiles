@@ -1,8 +1,22 @@
-{inputs, ...}: {
+{
+    inputs,
+    lib,
+    ...
+}: {
     flake.modules.nixos.file-manager = {...}: {
         services = {
             udisks2.enable = true;
             devmon.enable = true;
+        };
+    };
+
+    flake.modules.generic.nordend = {
+        options.my.nordend = {
+            settings = lib.mkOption {
+                type = lib.types.attrsOf lib.types.anything;
+                default = {};
+                description = "Nordend configuration.";
+            };
         };
     };
 
@@ -12,13 +26,7 @@
         lib,
         ...
     }: {
-        options.my.nordend = {
-            settings = lib.mkOption {
-                type = lib.types.attrsOf lib.types.anything;
-                default = {};
-                description = "Nordend configuration.";
-            };
-        };
+        imports = [inputs.self.modules.generic.nordend];
 
         config = {
             nixpkgs.overlays = [inputs.nordend.overlays.default];
