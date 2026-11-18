@@ -11,11 +11,7 @@
         };
     };
 
-    flake.modules.nixos.ssh-server = {
-        lib,
-        config,
-        ...
-    }: {
+    flake.modules.nixos.ssh-server = {config, ...}: {
         imports = [inputs.self.modules.generic.ssh];
 
         config = {

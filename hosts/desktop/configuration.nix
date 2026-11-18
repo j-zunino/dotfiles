@@ -44,11 +44,11 @@ in {
             cpu-amd
 
             # System
+            power-sleep
             ethernet
             upower
             audio
             zram
-            power-sleep
 
             # Shell
             ssh-server
@@ -72,12 +72,11 @@ in {
 
             # Programs
             file-manager
-            common-gui
             affinity
             discord
-            nuvio
             spotify
             helium
+            nuvio
             gimp
             mpv
             imv

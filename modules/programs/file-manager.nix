@@ -23,7 +23,6 @@
     flake.modules.homeManager.file-manager = {
         config,
         pkgs,
-        lib,
         ...
     }: {
         imports = [inputs.self.modules.generic.nordend];

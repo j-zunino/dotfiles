@@ -20,22 +20,16 @@
         programs.git = {
             enable = true;
             settings = {
+                init.defaultBranch = "main";
+
                 user = {
                     name = config.my.identity.name;
                     email = config.my.identity.email;
                 };
 
-                init.defaultBranch = "main";
-
                 status = {
+                    short = true;
                     branch = true;
-                    showStash = true;
-                };
-
-                diff = {
-                    context = 3;
-                    renames = "copies";
-                    interHunkContext = 10;
                 };
             };
         };
@@ -48,11 +42,6 @@
             options = {
                 dark = true;
                 tabs = 4;
-                file-added-label = "[+]";
-                file-copied-label = "[*]";
-                file-modified-label = "[~]";
-                file-removed-label = "[-]";
-                file-renamed-label = "[>]";
             };
         };
 
@@ -178,9 +167,8 @@
         };
 
         programs.delta.options = {
-            file-decoration-style = "${colors.muted.hex} ul ol";
+            file-decoration-style = "${colors.muted.hex} ul";
             file-style = "bold ${colors.fg.hex}";
-
             hunk-header-file-style = "bold ${colors.fg.hex}";
             hunk-header-decoration-style = "${colors.muted.hex} ul";
             hunk-header-line-number-style = "${colors.muted.hex}";

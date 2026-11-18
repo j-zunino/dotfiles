@@ -5,16 +5,8 @@
             defaultOptions = [
                 "--keep-right"
                 "--smart-case"
-                "--margin 2"
                 "--info=right"
-                "--scrollbar █"
-                "--marker '>'"
                 "--gutter ' '"
-                "--preview-window hidden:border-sharp"
-
-                # TODO: Make only available if bat is installed
-                "--preview 'bat --style=numbers --color=always --line-range:500 {}'"
-                "--bind alt-p:toggle-preview"
             ];
         };
     };

@@ -48,23 +48,16 @@
             '';
 
             shellAliases = {
-                la = "ls -a";
-                ll = "ls -l";
-                ff = "nerdfetch";
-                c = "clear";
+                dot = "$HOME/dotfiles/scripts/dotfiles";
+
                 n = "nvim";
+                ll = "ls -l";
 
-                # Nix
-                dotfiles = "$HOME/dotfiles/scripts/dotfiles";
-
-                # Git
                 gaa = "git add --all";
-
-                # Dev
                 dev = "pnpm run dev";
+                sshx = "$HOME/dotfiles/scripts/sshx";
                 build = "pnpm run build";
                 shadcn = "pnpm dlx shadcn@latest";
-                sshx = "$HOME/dotfiles/scripts/sshx";
             };
         };
     };

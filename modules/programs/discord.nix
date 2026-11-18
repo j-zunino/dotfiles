@@ -1,7 +1,5 @@
 {...}: {
     flake.modules.homeManager.discord = {pkgs, ...}: {
-        home.packages = with pkgs; [
-            discord
-        ];
+        home.packages = with pkgs; [discord];
     };
 }

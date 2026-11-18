@@ -85,10 +85,9 @@ in {
 
             # Programs
             file-manager
-            common-gui
             discord
-            nuvio
             helium
+            nuvio
             mpv
             imv
             zen
