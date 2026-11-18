@@ -1,5 +1,5 @@
 {lib, ...}: {
-    flake.modules.homeManager.identity = {
+    flake.modules.generic.identity = {
         options.my.identity = {
             name = lib.mkOption {
                 type = lib.types.str;
