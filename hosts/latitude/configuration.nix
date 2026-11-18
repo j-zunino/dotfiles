@@ -2,8 +2,14 @@
     inputs,
     self,
     ...
-}: {
-    mkHost.latitude = {user = "juan";};
+}: let
+    host = self.factory.host {
+        name = "latitude";
+        user = "juan";
+    };
+in {
+    flake.nixosConfigurations = host.nixosConfigurations;
+    flake.homeConfigurations = host.homeConfigurations;
 
     flake.modules.nixos.latitude = {
         networking.hostName = "latitude";

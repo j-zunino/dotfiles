@@ -2,8 +2,14 @@
     inputs,
     self,
     ...
-}: {
-    mkHost.sputnik = {user = "sputnik";};
+}: let
+    host = self.factory.host {
+        name = "sputnik";
+        user = "sputnik";
+    };
+in {
+    flake.nixosConfigurations = host.nixosConfigurations;
+    flake.homeConfigurations = host.homeConfigurations;
 
     flake.modules.nixos.sputnik = {
         config,

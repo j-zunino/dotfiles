@@ -2,8 +2,14 @@
     inputs,
     self,
     ...
-}: {
-    mkHost.desktop = {user = "juan";};
+}: let
+    host = self.factory.host {
+        name = "desktop";
+        user = "juan";
+    };
+in {
+    flake.nixosConfigurations = host.nixosConfigurations;
+    flake.homeConfigurations = host.homeConfigurations;
 
     flake.modules.nixos.desktop = {
         networking.hostName = "desktop";
